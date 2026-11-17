@@ -1,0 +1,599 @@
+\documentclass[11pt,a4paper,fleqn,oneside,a4paper,usenames,dvipsnames,linedheaders]
+{book}
+\renewcommand{\familydefault}{cmss}
+
+\usepackage[nobottomtitles,pagestyles]{titlesec}%outermarks option?
+\renewpagestyle{plain}[\bfseries]{\footrule\setfoot{}{\thepage}{}}
+\newpagestyle{mystyle}[\bfseries]{
+\headrule
+\sethead[\thepage][][F. Della Pietra]{\sectiontitle}{}{\thepage}
+}
+
+\usepackage[italian]{babel}                     
+\usepackage[T1]{fontenc}                   
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}      
+\usepackage{yhmath}
+\usepackage[font=small]{quoting}            %  
+\usepackage{mparhack,relsize}      %
+\usepackage{comment}      
+\usepackage{caption,multicol}
+\usepackage{array}
+\usepackage{pgf,tikz}
+\usepackage{pgfplots}
+\usepackage{polynom}
+\usepackage{pifont}
+\usepackage[framemethod=TikZ,nobreak=true]{mdframed}
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+
+\usetikzlibrary{lindenmayersystems}
+\usetikzlibrary[shadings]
+\usetikzlibrary{arrows,decorations}
+\usetikzlibrary{snakes,patterns}
+\usetikzlibrary{decorations.markings}
+\makeatletter
+\tikzset{% customization of pattern
+         % based on <m.wibrow@gm...> - 2013-03-24 07:20: 
+        hatch distance/.store in=\hatchdistance,
+        hatch distance=5pt,
+        hatch thickness/.store in=\hatchthickness,
+        hatch thickness=5pt
+        }
+\pgfdeclarepatternformonly[\hatchdistance,\hatchthickness]{north east hatch}% name
+    {\pgfqpoint{-1pt}{-1pt}}% below left
+    {\pgfqpoint{\hatchdistance}{\hatchdistance}}% above right
+    {\pgfpoint{\hatchdistance-1pt}{\hatchdistance-1pt}}%
+    {
+        \pgfsetcolor{\tikz@pattern@color}
+        \pgfsetlinewidth{\hatchthickness}
+        \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+        \pgfpathlineto{\pgfqpoint{\hatchdistance}{\hatchdistance}}
+        \pgfusepath{stroke}
+    }
+\makeatother		
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\definecolor{oldlace}{rgb}{0.99, 0.96, 0.9}	                    %	Old lace 	                        #FDF5E6 
+\tcbset{enhanced,colback=gray!10!white
+%,drop shadow
+}
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
+\usepackage{enumitem,wrapfig}
+\setenumerate[1]{label=(\arabic*)}
+\setitemize[1]{label=$\textcolor{gray}{\bullet}$}
+\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
+\definecolor{lightcoral}{rgb}{0.94, 0.5, 0.5}
+\definecolor{lightcornflowerblue}{rgb}{0.6, 0.81, 0.93}
+\definecolor{lapislazuli}{rgb}{0.15, 0.38, 0.61}
+\definecolor{indigo}{rgb}{0.0, 0.25, 0.42}
+\definecolor{internationalkleinblue}{rgb}{0.0, 0.18, 0.65}
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}	               
+\definecolor{chiaro}{RGB}{111,180,180}
+\definecolor{arancia}{RGB}{253,134,40}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}	 
+\newcommand{\eqre}[1]{\textcolor{internationalkleinblue}{{(\ref{#1})}}}   
+\newcommand{\boxx}[1]{
+\begin{tcolorbox}[opacityframe=0.75,
+colframe=lightcornflowerblue%,drop fuzzy shadow=lightcornflowerblue!70!white
+] 
+#1
+\end{tcolorbox}
+}
+\newcommand{\boxb}[1]{
+\begin{tcolorbox}[opacityframe=0.75,
+colframe=green%,drop fuzzy shadow=lightcornflowerblue!70!white
+] 
+#1
+\end{tcolorbox}
+}
+\newcommand{\boxr}[1]{
+\begin{tcolorbox}[opacityframe=0.75,
+colframe=lightcoral%,drop fuzzy shadow=lightcoral!50!white
+] 
+#1
+\end{tcolorbox}
+}
+\newcommand{\boxa}[1]{
+\begin{tcolorbox}[opacityframe=0.75,
+colframe=ao(english)%,drop fuzzy shadow=lightcornflowerblue!70!white
+] 
+#1
+\end{tcolorbox}
+}
+\pgfplotsset{compat=1.16}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+
+%\newcommand{\boxx}[1]{
+%\begin{tcolorbox}[opacityframe=0.75,colback=white,
+%colframe=blue] 
+%#1
+%\end{tcolorbox}
+%}
+%\newcommand{\boxr}[1]{
+%\begin{tcolorbox}[opacityframe=0.75,colback=white,
+%colframe=red] 
+%#1
+%\end{tcolorbox}
+%}
+\usepackage{xcolor}
+       
+\usepackage[colorlinks=true,linkcolor=internationalkleinblue]{hyperref}
+ %\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+
+         % 
+%\usepackage[nochapters,beramono,eulermath,%                 
+%           pdfspacing,%                    %
+%           listings,%                      % 
+%            ]{classicthesis}                % 
+%\usepackage{arsclassica}     
+
+%\usepackage{framed}
+\usepackage[hyperpageref]{backref}
+               
+%\usepackage{geometry}
+%\input impostazioni-articolo.tex 
+%\usepackage{showkeys}
+%\usepackage{cite}
+%\usepackage{refcheck}
+\usepackage{picture}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{comment}
+\usepackage{titling} 
+
+
+
+			%%%%%%%%%%%%%%%%%%%
+			%%			 	 %%
+			%%    Comandi    %%
+			%%			 	 %%
+			%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\diesis}{^\#}
+
+\theoremstyle{definition}
+\newcounter{definiz}[chapter]
+\setcounter{definiz}{0}
+\renewcommand{\thedefiniz}{\arabic{chapter}.\arabic{definiz}}
+\newenvironment{definiz}[2][]{%
+\refstepcounter{definiz}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,line width=1pt,draw=cadmiumgreen,fill=cadmiumgreen!10,rounded corners]
+{\strut Definizione~\thedefiniz};}}
+}%
+{\mdfsetup{%
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,line width=1pt,draw=cadmiumgreen,fill=cadmiumgreen!10,rounded corners] 
+{\strut Definizione~\thedefiniz:~#1};}}%
+}%
+\mdfsetup{
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+\begin{mdframed}[]\relax%
+}{\end{mdframed}}
+
+%%%%Assioma
+\newcounter{assioma}[chapter]
+\setcounter{assioma}{0}
+\renewcommand{\theassioma}{\arabic{chapter}.\arabic{assioma}}
+\newenvironment{assioma}[2][]{%
+\refstepcounter{assioma}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,line width=1pt,draw=cadmiumgreen,fill=cadmiumgreen!10,rounded corners]
+{\strut Assioma~\theassioma};}}
+}%
+{\mdfsetup{%
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,line width=1pt,draw=cadmiumgreen,fill=cadmiumgreen!10,rounded corners] 
+{\strut Assioma~\theassioma:~#1};}}%
+}%
+\mdfsetup{
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+\begin{mdframed}[]\relax%
+}{\end{mdframed}}
+
+\newcounter{vuoto}[chapter]
+\setcounter{vuoto}{0}
+\renewcommand{\thevuoto}{\arabic{chapter}.\arabic{vuoto}}
+\newenvironment{vuoto}[2][]{%
+\refstepcounter{vuoto}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,line width=1pt,draw=cadmiumgreen,fill=cadmiumgreen!10,rounded corners]
+{\strut };}}
+}%
+{\mdfsetup{%
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,line width=1pt,draw=cadmiumgreen,fill=cadmiumgreen!10,rounded corners] 
+{\strut ~#1};}}%
+}%
+\mdfsetup{
+backgroundcolor=cadmiumgreen!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=cadmiumgreen!50,%
+linewidth=1.5pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+\begin{mdframed}[nobreak=false]\relax%
+}{\end{mdframed}}
+
+
+\newtheorem*{claim}{Claim}
+%\newtheorem{rem}[definiz]{Osservazione}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Esempio}
+%\newcounter{ex}[chapter]
+\setcounter{ex}{0}
+\renewcommand{\theex}{\thechapter.\arabic{ex}}
+\newtheorem{esercizio}{Esercizio}
+%\newcounter{ex}[chapter]
+\setcounter{esercizio}{0}
+\renewcommand{\theesercizio}{\thechapter.\arabic{esercizio}}
+
+\newtheorem*{notazione}{Notazione}
+\newtheorem*{sol}{Soluzione}
+\theoremstyle{plain}
+%\newtheorem{theorem}[definiz]{Teorema}
+\newtheorem*{princ}{Principio di induzione matematica}
+\newtheorem{lemma}[definiz]{Lemma}
+\newtheorem{cor}[definiz]{Corollario}
+
+\newcounter{prop}[chapter]%\setcounter{prop}{0}
+\renewcommand{\theprop}{\arabic{chapter}.\arabic{prop}}
+\newenvironment{prop}[2][]{%
+\refstepcounter{prop}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+backgroundcolor=arancia!7,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,
+linecolor=arancia,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,line width=1pt,draw=arancia,fill=arancia!15,rounded corners]
+{\strut Proposizione~\theprop};}}
+}%
+{\mdfsetup{%
+backgroundcolor=arancia!7,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,
+linecolor=arancia,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[draw=arancia,line width=1pt,anchor=east,line width=1pt,rectangle,draw=arancia,fill=arancia!15,rounded corners] 
+{\strut Proposizione~\theprop:~#1};}}%
+}%
+\mdfsetup{
+backgroundcolor=arancia!7,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,
+linecolor=arancia,%
+linewidth=1.5pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+\begin{mdframed}[]\relax%
+}{\end{mdframed}}
+
+\newcounter{propvuota}[chapter]%\setcounter{prop}{0}
+\renewcommand{\thepropvuota}{\arabic{chapter}.\arabic{propvuota}}
+\newenvironment{propvuota}[2][]{%
+\refstepcounter{propvuota}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+backgroundcolor=arancia!7,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,
+linecolor=arancia,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,line width=1pt,draw=arancia,fill=arancia!15,rounded corners]
+{\strut ~#1};}}
+}%
+{\mdfsetup{%
+backgroundcolor=arancia!7,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,
+linecolor=arancia,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[draw=arancia,line width=1pt,anchor=east,line width=1pt,rectangle,draw=arancia,fill=arancia!15,rounded corners] 
+{\strut ~#1};}}%
+}%
+\mdfsetup{
+backgroundcolor=arancia!7,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,
+linecolor=arancia,%
+linewidth=1.5pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+\begin{mdframed}[]\relax%
+}{\end{mdframed}}
+
+
+\newcounter{theorem}[chapter]%\setcounter{prop}{0}
+\renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
+\newenvironment{theorem}[2][]{%
+\refstepcounter{theorem}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+backgroundcolor=arancia!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=chiaro,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,draw=arancia,fill=arancia!15,rounded corners]
+{\strut Teorema~\thetheorem};}}
+}%
+{\mdfsetup{%
+backgroundcolor=arancia!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=chiaro,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,draw=arancia,fill=arancia!20,rounded corners] 
+{\strut Teorema~\thetheorem:~#1};}}%
+}%
+\mdfsetup{
+backgroundcolor=arancia!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=arancia!20,%
+linewidth=1.5pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+\begin{mdframed}[]\relax%
+}{\end{mdframed}}
+
+
+
+
+
+%%% OSSERVAZIONE
+
+\newcounter{rem}[chapter]
+\setcounter{rem}{0}
+\renewcommand{\therem}{\arabic{chapter}.\arabic{rem}}
+\newenvironment{rem}[2][]{%
+\refstepcounter{rem}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+backgroundcolor=chiaro!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=chiaro,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[line width=1pt,draw=chiaro,anchor=east,rectangle,fill=chiaro!20,rounded corners]
+{\strut Osservazione~\therem};}}
+}%
+{\mdfsetup{%
+backgroundcolor=chiaro!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=chiaro,%
+linewidth=1.5pt,topline=true,
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[line width=1pt,draw=chiaro,anchor=east,rectangle,fill=chiaro!20,rounded corners]
+{\strut Osservazione~\therem:~#1};}}%
+}%
+\mdfsetup{
+backgroundcolor=chiaro!5,%
+roundcorner=10pt,
+innertopmargin=5pt,
+innerbottommargin=10pt,linecolor=chiaro,%
+linewidth=1.5pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+\begin{mdframed}[nobreak=false]\relax%
+\label{#2}
+}{\end{mdframed}}
+\numberwithin{equation}{chapter}
+
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Rn}{\mathbb R^n}
+\newcommand{\W}{\mathcal W}
+\newcommand{\de}{\partial}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\wS}{\overline w_{\eps,\delta}}
+\newcommand{\ws}{\underline w_{\eps,\delta}}
+\newcommand{\lto}{\left(}
+\newcommand{\rto}{\right)}
+\newcommand{\lqu}{\left[}
+\newcommand{\rqu}{\right]}
+\newcommand{\lgr}{\left\{}
+\newcommand{\rgr}{\right\}}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+\newcommand{\bul}{$\textcolor{gray}{\bullet}$}
+\newcommand{\enclose}[1]{{\left( #1 \right)}}
+\newcommand{\Enclose}[1]{{\left[ #1 \right]}}
+\newcommand{\ENCLOSE}[1]{{\left\{ #1 \right\}}}
+\DeclareMathOperator{\divergenza}{div}
+\DeclareMathOperator{\epi}{epi}
+\DeclareMathOperator{\ess}{ess}
+\DeclareMathOperator{\esssup}{ess\,sup}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Sk}{S}
+\DeclareMathOperator{\Imm}{Im}
+\DeclareMathOperator{\osc}{osc}
+
+\newcounter{es}
+\setcounter{es}{1}
+\newcommand{\esn}{\thees\stepcounter{es}}
+
+\usepackage{textgreek}
+\makeatletter
+\newcommand{\romangreek}[1]{\c@romangreek{#1}}
+\newcommand{\c@romangreek}[1]{%
+  {%
+    \ifcase\number\value{#1} %
+    \or a\or b\or c\or d\or e\or f\or g\or h\or i\or j\or k\or l\or m\or n\or o\or p\or q\or r\or s\or t\or u\or v\or w\or x\or y\or z\or \textalpha \or \textbeta \or \textgamma \or \textdelta \or \textepsilon \or \textzeta \or \texteta \or \texttheta  %\or \straighttheta
+    \or    \textiota \or \textkappa \or \textlambda \or \textmu \or \textnu    \or \textxi \or \textomikron \or \textrho \or \textpi \or \textsigma \or \texttau \or \textupsilon \or \textphi
+ \or   \textchi \or  \textpsi \or \textomega
+ \or A\or B\or C\or D\or E\or F\or G\or H\or I\or J\or K\or M\or N\or O\or P\or Q\or R\or S\or T\or \or U \or V \or W \or X \or Y \or Z
+  \textAlpha \or \textBeta \or \textGamma \or \textDelta \or \textEpsilon \or \textZeta
+\or \textEta \or \textTheta \or \textIota \or \textKappa \or \textLambda\or\textMu\or\textNu\or\textXi\or\textOmikron\or\textRho\or
+\textPi\or\textSigma\or\textTau\or\textUpsilon\or\textPhi\or\textChi\or\textPsi\or\textOmega\fi
+  }%
+}
+
+
+\AddEnumerateCounter*{\romangreek}{\c@romangreek}{5}
+
+
+%\newtheoremstyle{note}% name
+% {3pt}% measure of space to leave above the theorem. E.g.: 3pt
+%   {3pt}% measure of space to leave below the theorem. E.g.: 3pt
+%   {\ttfamily}% name of font to use in the body of the theorem
+%   {1pt}% measure of space to indent
+%   {\bfseries}% name of head font
+%   {\textbf{.}}% punctuation between head and body
+%   {10mm}% space after theorem head
+%   {}% Manually specify head
+%
+%\theoremstyle{note}
+%\newtheorem{note}{Osservazione}[chapter]
+
+
+%\includeonly{alfabetogreco}
+%\includeonly{reali}
+%\includeonly{successioni}
+%\includeonly{serie}
+%\includeonly{continue}
+%\includeonly{calcolodiff}
+%\includeonly{integrali}
+%\includeonly{biblio}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Impostazioni specifiche della raccolta di esercizi
+\makeatletter\@addtoreset{esercizio}{chapter}\makeatother   % numerazione per scheda
+\addto\captionsitalian{\renewcommand{\chaptername}{Scheda}}
+\newif\ifsoluzioni
+\soluzionitrue      % \soluzionifalse per la versione senza soluzioni
+% --- pagina ---
+\usepackage{geometry}
+\geometry{a4paper,top=2.3cm,bottom=2.3cm,left=2.5cm,right=2.5cm}
+% --- soluzioni raccolte in fondo a ogni scheda ---
+% \risp{...} dopo ogni esercizio mette da parte la soluzione (con il numero
+% dell'esercizio); \stampasoluzioni, alla fine di ogni scheda, le stampa
+% tutte a partire da una pagina nuova. Con \soluzionifalse non stampa nulla.
+\makeatletter
+\newcommand{\solbuf}{}
+\newcommand{\risp}[1]{\ifsoluzioni\edef\sol@num{\theesercizio}%
+  \expandafter\sol@append\expandafter{\sol@num}{#1}\fi}
+\newcommand{\sol@append}[2]{\g@addto@macro\solbuf{\solitem{#1}{#2}}}
+\newcommand{\solitem}[2]{\par\noindent\textbf{\textcolor{internationalkleinblue}{#1.}}\ #2\par\medskip}
+\newpagestyle{solstyle}[\bfseries]{\headrule\sethead{Soluzioni --- Scheda \thechapter}{}{\thepage}}
+\newcommand{\stampasoluzioni}{\ifsoluzioni\clearpage\pagestyle{solstyle}
+  \section*{Soluzioni degli esercizi della Scheda~\thechapter}
+  \addcontentsline{toc}{section}{Soluzioni}
+  {\small\solbuf}\gdef\solbuf{}\clearpage\pagestyle{mystyle}\fi}
+\makeatother
+\newcommand{\liv}[1]{\ifcase#1\or\ding{72}\or\ding{72}\ding{72}\or\ding{72}\ding{72}\ding{72}\fi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\pagestyle{mystyle}
+\title{\large\textsc{Istituzioni di Matematica --- Esercizi} \\[.2cm] \normalsize Corso di Laurea in Scienze per la Natura e per l'Ambiente \\[.3cm] \textit{Schede settimanali, aggiornate progressivamente}}
+\author{\normalsize \textsc{F. Della Pietra}}
+\date{A.A. 2026--2027}
+
+\maketitle
+
+\tableofcontents
+
+\include{scheda01}   % Lezioni 1--3
+\include{scheda02}   % Lezioni 4--6
+\include{scheda03}   % Lezioni 7--9
+\include{scheda04}   % Lezioni 10--12
+\include{scheda05}   % Lezioni 13--15
+\include{scheda06}   % Lezioni 16--18
+\include{scheda07}   % Lezioni 19--21 (L21: esercitazione)
+
+% --- Schede di recupero: sempre in fondo, dopo le schede settimanali ---
+\include{scheda-recupero-1}   % R1: recupero della prima prova (11/11)
+
+\end{document}

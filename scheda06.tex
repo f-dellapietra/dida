@@ -1,0 +1,204 @@
+% !TEX root =esercizi.tex
+% ---------------------------------------------------------------------
+% Scheda 6: Lezioni 16--18 (limiti di funzioni, continuita' e zeri,
+% derivata). La regola della funzione composta non e' ancora stata fatta
+% (L19): negli esercizi sulle derivate compaiono solo somme, prodotti e
+% quozienti di funzioni elementari. Discontinuita' secondo la convenzione
+% del docente: anche nei punti in cui f non e' definita ma lo e' vicino.
+% ---------------------------------------------------------------------
+\chapter{Lezioni 16--18 (28 ottobre -- 2 novembre 2026)}
+
+\begin{vuoto}[Argomenti svolti]{}
+\begin{itemize}
+\item[\bul] \textbf{Lezione 16 --- Limiti di funzioni}. Definizione di limite con le successioni; legame con la definizione con $\varepsilon$ e $\delta$. La catena dei limiti notevoli: da $\frac{\sin a_n}{a_n}$ e dal numero $e$ fino a $\ln(1+a_n)$, $e^{a_n}$, $(1+a_n)^\alpha$. Regole di calcolo, forme indeterminate, gerarchia e limiti notevoli per le funzioni; il cambio di variabile.
+\item[\bul] \textbf{Lezione 17 --- Continuità e teorema degli zeri}. Limiti destro e sinistro; non esistenza del limite. Asintoti verticali, orizzontali, obliqui. Funzioni continue; punti di discontinuità e loro classificazione. Teorema degli zeri con il metodo di bisezione; teorema dei valori intermedi; teorema di Weierstrass.
+\item[\bul] \textbf{Lezione 18 --- La derivata}. Rapporto incrementale e derivata; retta tangente; significato fisico. Derivata destra e sinistra, punto angoloso; derivabilità e continuità. Derivate delle funzioni elementari con i limiti notevoli. Regole della somma, del prodotto e del quoziente; tabella delle derivate.
+\end{itemize}
+\end{vuoto}
+
+Il livello di difficoltà è indicato con \liv{1} (esercizio di base), \liv{2} (esercizio standard), \liv{3} (esercizio più impegnativo).
+
+\begin{vuoto}[Promemoria: limiti notevoli e derivate]{}
+Per $x\to0$:
+\begin{gather*}
+\frac{\sin x}x\to1,\qquad \frac{\tan x}x\to1,\qquad \frac{1-\cos x}{x^2}\to\frac12,\\
+\frac{\ln(1+x)}x\to1,\qquad \frac{e^x-1}x\to1,\qquad \frac{(1+x)^\alpha-1}x\to\alpha,\qquad (1+x)^{1/x}\to e;
+\end{gather*}
+per $x\to\pm\infty$: $\bigl(1+\frac1x\bigr)^x\to e$. \emph{Cambio di variabile}: si pone $t=g(x)$, si dice dove va $t$, e si riscrive tutto con $t$.
+
+Derivate: $(x^\alpha)'=\alpha x^{\alpha-1}$, $(e^x)'=e^x$, $(a^x)'=a^x\ln a$, $(\ln x)'=\frac1x$, $(\log_ax)'=\frac1{x\ln a}$, $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$, $(\tan x)'=\frac1{\cos^2x}$. Regole: $(f+g)'=f'+g'$, $(fg)'=f'g+fg'$, $\bigl(\frac fg\bigr)'=\frac{f'g-fg'}{g^2}$.
+\end{vuoto}
+
+%-------------------------------------------------------------------
+\section{La definizione di limite}
+
+\begin{esercizio}[\liv{1}]
+Verificare con la definizione (con le successioni): \ (a) $\lim_{x\to2}(x^2+1)=5$; \ (b) $\lim_{x\to+\infty}\dfrac{3x-1}{x+2}=3$; \ (c) $\lim_{x\to1}\dfrac1{(x-1)^2}=+\infty$.
+\end{esercizio}
+\risp{(a) Se $x_n\to2$, allora $x_n^2+1\to5$ (algebra dei limiti). (b) Se $x_n\to+\infty$, si raccoglie: $\frac{3-1/x_n}{1+2/x_n}\to3$. (c) Se $x_n\to1$ con $x_n\ne1$, allora $(x_n-1)^2\to0$ ed è positivo, quindi il reciproco tende a $+\infty$.}
+
+\begin{esercizio}[\liv{1}]
+Per $\lim_{x\to1}(4x-3)=1$, trovare un $\delta$ che vada bene per $\varepsilon=0{,}01$ nella definizione con $\varepsilon$ e $\delta$.
+\end{esercizio}
+\risp{$|(4x-3)-1|=4|x-1|<0{,}01$ se $|x-1|<0{,}0025$: va bene $\delta=0{,}0025$.}
+
+\begin{esercizio}[\liv{2}]
+Dimostrare, trovando due successioni, che non esistono: \ (a) $\lim_{x\to+\infty}\sin x$; \ (b) $\lim_{x\to0}\cos\dfrac\pi x$.
+\end{esercizio}
+\risp{(a) Con $x_n=n\pi$ si ha $\sin x_n=0$; con $y_n=\frac\pi2+2n\pi$ si ha $\sin y_n=1$. (b) Con $x_n=\frac1{2n}$ si ha $\cos(2n\pi)=1$; con $y_n=\frac1{2n+1}$ si ha $\cos\bigl((2n+1)\pi\bigr)=-1$.}
+
+%-------------------------------------------------------------------
+\section{Forme indeterminate e gerarchia}
+
+\begin{esercizio}[\liv{1}]
+Calcolare:
+\begin{gather*}
+\text{(a) }\lim_{x\to+\infty}\frac{2x^3-x+1}{x^3+4x^2};\qquad \text{(b) }\lim_{x\to-\infty}\frac{x^2-3}{2x+1};\qquad \text{(c) }\lim_{x\to3}\frac{x^2-9}{x^2-5x+6};\\
+\text{(d) }\lim_{x\to-1}\frac{x^3+1}{x+1};\qquad \text{(e) }\lim_{x\to0}\frac{\sqrt{4+x}-2}x;\qquad \text{(f) }\lim_{x\to+\infty}\bigl(\sqrt{x^2+3x}-x\bigr).
+\end{gather*}
+\end{esercizio}
+\risp{(a) $2$; (b) $-\infty$ (domina $\frac{x^2}{2x}=\frac x2$); (c) $\frac{(x-3)(x+3)}{(x-3)(x-2)}=\frac{x+3}{x-2}\to6$; (d) $x^3+1=(x+1)(x^2-x+1)$: il limite è $3$; (e) razionalizzando, $\frac1{\sqrt{4+x}+2}\to\frac14$; (f) $\frac{3x}{\sqrt{x^2+3x}+x}=\frac3{\sqrt{1+3/x}+1}\to\frac32$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare con la gerarchia degli infiniti:
+\begin{gather*}
+\text{(a) }\lim_{x\to+\infty}\frac{e^x+x^{100}}{e^x-\ln x};\qquad \text{(b) }\lim_{x\to+\infty}\frac{\ln(x^3+1)}{\ln x};\qquad \text{(c) }\lim_{x\to0^+}x^2\ln x;\\
+\text{(d) }\lim_{x\to+\infty}\frac{(\ln x)^{10}}{x^{0{,}1}};\qquad \text{(e) }\lim_{x\to+\infty}x^{1/\ln x}.
+\end{gather*}
+\end{esercizio}
+\risp{(a) Si divide per $e^x$: $\frac{1+x^{100}/e^x}{1-\ln x/e^x}\to1$; (b) $\ln(x^3+1)=3\ln x+\ln\bigl(1+\frac1{x^3}\bigr)$, quindi il quoziente tende a $3$; (c) con $t=\frac1x\to+\infty$: $-\frac{\ln t}{t^2}\to0$; (d) $0$: ogni potenza di $x$, anche piccola, batte ogni potenza del logaritmo; (e) $x^{1/\ln x}=e^{\ln x/\ln x}=e$ per ogni $x>1$.}
+
+%-------------------------------------------------------------------
+\section{Limiti notevoli e cambio di variabile}
+
+\begin{esercizio}[\liv{1}]
+Calcolare con i limiti notevoli:
+\begin{gather*}
+\text{(a) }\lim_{x\to0}\frac{\sin4x}{3x};\qquad \text{(b) }\lim_{x\to0}\frac{1-\cos2x}{x^2};\qquad \text{(c) }\lim_{x\to0}\frac{\tan5x}x;\qquad \text{(d) }\lim_{x\to0}\frac{\ln(1+4x)}x;\\
+\text{(e) }\lim_{x\to0}\frac{e^{2x}-1}{3x};\qquad \text{(f) }\lim_{x\to0}\frac{\sqrt{1+x}-1}x;\\ \text{(g) }\lim_{x\to0}(1-3x)^{1/x};\qquad \text{(h) }\lim_{x\to+\infty}\Bigl(1+\frac1{2x}\Bigr)^x.
+\end{gather*}
+\end{esercizio}
+\risp{(a) $\frac43\cdot\frac{\sin4x}{4x}\to\frac43$; (b) $4\cdot\frac{1-\cos2x}{(2x)^2}\to2$; (c) $5$; (d) $4$; (e) $\frac23$; (f) $\frac12$ ($\alpha=\frac12$; oppure razionalizzando); (g) $\bigl[(1-3x)^{\frac1{-3x}}\bigr]^{-3}\to e^{-3}$; (h) $\Bigl[\bigl(1+\frac1{2x}\bigr)^{2x}\Bigr]^{1/2}\to\sqrt e$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare con un cambio di variabile, dicendo ogni volta dove va la nuova variabile:
+\begin{gather*}
+\text{(a) }\lim_{x\to+\infty}x\tan\frac1x;\qquad \text{(b) }\lim_{x\to\pi}\frac{1+\cos x}{(x-\pi)^2};\qquad \text{(c) }\lim_{x\to1}\frac{x^3-1}{\ln x};\\
+\text{(d) }\lim_{x\to0^+}x\ln^2x;\qquad \text{(e) }\lim_{x\to2}\frac{2^x-4}{x-2};\qquad \text{(f) }\lim_{x\to+\infty}x\bigl(2^{1/x}-1\bigr).
+\end{gather*}
+\end{esercizio}
+\risp{(a) $t=\frac1x\to0^+$: $\frac{\tan t}t\to1$; (b) $t=x-\pi\to0$, $\cos x=-\cos t$: $\frac{1-\cos t}{t^2}\to\frac12$; (c) $t=x-1\to0$: $\frac{(1+t)^3-1}t\cdot\frac t{\ln(1+t)}\to3\cdot1=3$; (d) $t=\frac1x\to+\infty$: $\frac{(\ln t)^2}t\to0$; (e) $t=x-2\to0$: $\frac{4(2^t-1)}t=4\ln2\cdot\frac{e^{t\ln2}-1}{t\ln2}\to4\ln2$; (f) $t=\frac1x\to0^+$: $\frac{2^t-1}t\to\ln2$.}
+
+\begin{esercizio}[\liv{3}]
+Calcolare:
+\[
+\text{(a) }\lim_{x\to0}\frac{e^{\sin3x}-1}{\ln(1+x)};\qquad \text{(b) }\lim_{x\to0^+}(\sin x)^x;\qquad \text{(c) }\lim_{x\to0}(\cos x)^{1/x^2};\qquad \text{(d) }\lim_{x\to+\infty}\Bigl(\cos\frac1x\Bigr)^{x^2}.
+\]
+\end{esercizio}
+\risp{(a) $\frac{e^{\sin3x}-1}{\sin3x}\cdot\frac{\sin3x}{3x}\cdot3\cdot\frac x{\ln(1+x)}\to1\cdot1\cdot3\cdot1=3$ (con $t=\sin3x\to0$ nel primo fattore). (b) $(\sin x)^x=e^{x\ln\sin x}$, e $x\ln\sin x=x\ln x+x\ln\frac{\sin x}x\to0+0$: il limite è $1$. (c) Con $a=\cos x-1\to0$: $(\cos x)^{1/x^2}=\bigl[(1+a)^{1/a}\bigr]^{a/x^2}$, e $\frac a{x^2}\to-\frac12$: il limite è $e^{-1/2}$. (d) Con $t=\frac1x\to0^+$ diventa (c): $e^{-1/2}$.}
+
+%-------------------------------------------------------------------
+\section{Limiti destro e sinistro, asintoti}
+
+\begin{esercizio}[\liv{1}]
+Calcolare i limiti destro e sinistro e dire se il limite esiste: \ (a) $\dfrac1{x-2}$ per $x\to2$; \ (b) $e^{-1/x}$ per $x\to0$; \ (c) $\dfrac{|x|}{x^2+x}$ per $x\to0$; \ (d) $\arctan\dfrac1x$ per $x\to0$.
+\end{esercizio}
+\risp{(a) $+\infty$ e $-\infty$: no; (b) da destra $-\frac1x\to-\infty$, quindi $0$; da sinistra $-\frac1x\to+\infty$, quindi $+\infty$: no; (c) $\frac{|x|}{x(x+1)}$: da destra $\frac1{x+1}\to1$, da sinistra $-\frac1{x+1}\to-1$: no; (d) $\frac\pi2$ e $-\frac\pi2$: no.}
+
+\begin{esercizio}[\liv{2}]
+Determinare tutti gli asintoti di:
+\[
+\text{(a) }\frac{x^2+x}{x-1};\qquad \text{(b) }\frac{2x^2-1}{x^2+1};\qquad \text{(c) }\sqrt{x^2+1};\qquad \text{(d) }x\,e^{1/x};\qquad \text{(e) }\ln(x^2-4);\qquad \text{(f) }\frac{x^3}{x^2-4}.
+\]
+\end{esercizio}
+\risp{(a) Verticale $x=1$; obliquo $y=x+2$ da entrambe le parti ($m=1$, $q=\lim\frac{2x}{x-1}=2$). (b) Orizzontale $y=2$; nessun verticale. (c) Obliqui: $y=x$ per $x\to+\infty$ e $y=-x$ per $x\to-\infty$ (per esempio $\sqrt{x^2+1}-x=\frac1{\sqrt{x^2+1}+x}\to0$). (d) Verticale $x=0$ da destra ($t=\frac1x\to+\infty$: $\frac{e^t}t\to+\infty$; da sinistra il limite è $0$); obliquo $y=x+1$ da entrambe le parti: $m=\lim e^{1/x}=1$, $q=\lim x\bigl(e^{1/x}-1\bigr)=1$ con $t=\frac1x\to0$. (e) Dominio $|x|>2$; verticali $x=\pm2$ (il limite è $-\infty$); nessun orizzontale né obliquo ($\frac{\ln(x^2-4)}x\to0$ ma $\ln(x^2-4)\to+\infty$). (f) Verticali $x=\pm2$; obliquo $y=x$ ($\frac{x^3}{x^2-4}-x=\frac{4x}{x^2-4}\to0$).}
+
+%-------------------------------------------------------------------
+\section{Continuità e punti di discontinuità}
+
+\begin{esercizio}[\liv{1}]
+Determinare il parametro in modo che la funzione sia continua nel suo insieme di definizione:
+\begin{gather*}
+\text{(a) }f(x)=\begin{cases}ax^2+1 & x\le1\\ 3x-a & x>1\end{cases};\qquad \text{(b) }f(x)=\begin{cases}\dfrac{\sin2x}x & x\ne0\\ b & x=0\end{cases};\\ \text{(c) }f(x)=\begin{cases}\dfrac{e^x-1}x & x<0\\ x+c & x\ge0\end{cases};\qquad \text{(d) }f(x)=\begin{cases}(1+x)^{1/x} & x>0\\ k & x=0\end{cases}.
+\end{gather*}
+\end{esercizio}
+\risp{(a) In $1$: $a+1=3-a$, $a=1$. (b) $b=\lim_{x\to0}\frac{\sin2x}x=2$. (c) Il limite sinistro in $0$ è $1$, il valore è $c$: $c=1$. (d) $k=e$.}
+
+\begin{esercizio}[\liv{2}]
+Trovare e classificare i punti di discontinuità (eliminabile, di salto, di seconda specie):
+\begin{gather*}
+\text{(a) }\frac{x^2-4}{x-2};\qquad \text{(b) }\frac{\sin x}{|x|};\qquad \text{(c) }e^{1/x};\qquad \text{(d) }\frac{1-\cos x}{x^2};\\
+\text{(e) }\frac x{x^2-1};\qquad \text{(f) }x\sin\frac1x;\qquad \text{(g) }\ln|x|;\qquad \text{(h) }\lfloor x\rfloor+\lfloor-x\rfloor.
+\end{gather*}
+\end{esercizio}
+\risp{(a) $2$, eliminabile (limite $4$). (b) $0$, di salto (limiti destro e sinistro $1$ e $-1$). (c) $0$, di seconda specie (limite destro $+\infty$). (d) $0$, eliminabile (limite $\frac12$). (e) $\pm1$, di seconda specie. (f) $0$, eliminabile: $|x\sin\frac1x|\le|x|\to0$. (g) $0$, di seconda specie (limite $-\infty$). (h) La funzione vale $0$ negli interi e $-1$ altrove: ogni intero è una discontinuità eliminabile (il limite è $-1$, il valore è $0$).}
+
+%-------------------------------------------------------------------
+\section{Zeri, valori intermedi, Weierstrass}
+
+\begin{esercizio}[\liv{1}]
+Dimostrare che ogni equazione ha almeno una soluzione nell'intervallo indicato: \ (a) $x^3+2x-5=0$ in $[1,2]$; \ (b) $\ln x=2-x$ in $[1,2]$; \ (c) $2^x=3x$ in $[0,1]$.
+\end{esercizio}
+\risp{Si applica il teorema degli zeri a una funzione continua: (a) $f(1)=-2<0$, $f(2)=7>0$; (b) $g(x)=\ln x+x-2$: $g(1)=-1$, $g(2)=\ln2>0$; (c) $h(x)=2^x-3x$: $h(0)=1$, $h(1)=-1$.}
+
+\begin{esercizio}[\liv{2}]
+Per l'equazione (a) dell'esercizio precedente, eseguire quattro passi del metodo di bisezione. Quanto dista al più dallo zero il punto medio dell'ultimo intervallo? Quanti passi servono per un errore minore di $10^{-3}$?
+\end{esercizio}
+\risp{Punti medi e segni di $f$: $1{,}5$ ($+$), $1{,}25$ ($-$), $1{,}375$ ($+$), $1{,}3125$ ($-$): lo zero sta in $[1{,}3125;\,1{,}375]$, di lunghezza $\frac1{16}$; il punto medio $1{,}34375$ dista al più $\frac1{32}\approx0{,}031$ dallo zero (che è $1{,}3283\dots$). Dopo $n$ passi il punto medio dista al più $\frac1{2^{n+1}}$: serve $2^{n+1}>1000$, cioè $n\ge9$.}
+
+\begin{esercizio}[\liv{2}]
+(a) Dimostrare che $f(x)=x^5-3x+1$ assume il valore $10$ in qualche punto di $[1,2]$. (b) Quali delle seguenti funzioni hanno massimo e minimo? Il teorema di Weierstrass si applica? \ $x^2-2x$ su $[0,3]$; \ $\frac1x$ su $[1,2]$; \ $\frac1x$ su $]0,1]$; \ $e^{-x^2}$ su $\R$; \ $\arctan x$ su $\R$.
+\end{esercizio}
+\risp{(a) $f(1)=-1$, $f(2)=27$, e $f$ è continua: per i valori intermedi assume ogni valore fra $-1$ e $27$, quindi anche $10$. (b) $x^2-2x$ su $[0,3]$: minimo $-1$ in $1$, massimo $3$ in $3$ (Weierstrass si applica). $\frac1x$ su $[1,2]$: massimo $1$, minimo $\frac12$ (si applica). $\frac1x$ su $]0,1]$: minimo $1$, nessun massimo (intervallo non chiuso). $e^{-x^2}$ su $\R$: massimo $1$ in $0$, nessun minimo ($\inf=0$; $\R$ non è limitato). $\arctan x$ su $\R$: né massimo né minimo ($\sup=\frac\pi2$, $\inf=-\frac\pi2$).}
+
+%-------------------------------------------------------------------
+\section{La derivata}
+
+\begin{esercizio}[\liv{1}]
+Calcolare con la definizione: \ (a) $f'(1)$ per $f(x)=2x^2-3x$; \ (b) $f'(0)$ per $f(x)=\dfrac1{x+2}$; \ (c) $f'(9)$ per $f(x)=\sqrt x$.
+\end{esercizio}
+\risp{(a) $\frac{2(1+h)^2-3(1+h)+1}h=\frac{h+2h^2}h\to1$; (b) $\frac{\frac1{2+h}-\frac12}h=-\frac1{2(2+h)}\to-\frac14$; (c) razionalizzando, $\frac{\sqrt{9+h}-3}h=\frac1{\sqrt{9+h}+3}\to\frac16$.}
+
+\begin{esercizio}[\liv{2}]
+Dire se la funzione è derivabile nel punto indicato, calcolando derivata destra e sinistra:
+\begin{gather*}
+\text{(a) }|x^2-1|\text{ in }\pm1;\qquad \text{(b) }\begin{cases}x^2 & x\le0\\ x^3 & x>0\end{cases}\text{ in }0;\\ \text{(c) }\begin{cases}x+1 & x<0\\ e^x & x\ge0\end{cases}\text{ in }0;\qquad \text{(d) }\begin{cases}x^2 & x\le1\\ 2x & x>1\end{cases}\text{ in }1.
+\end{gather*}
+\end{esercizio}
+\risp{(a) In $1$: derivata destra $2$ (lì $f=x^2-1$), sinistra $-2$ (lì $f=1-x^2$): punto angoloso; in $-1$ allo stesso modo (destra $2$, sinistra $-2$). (b) Continua; derivate destra e sinistra $0$: derivabile, $f'(0)=0$. (c) Continua ($f(0)=1$); derivate destra e sinistra $1$: derivabile, $f'(0)=1$. (d) $f(1)=1$, ma il limite destro è $2$: non è continua, quindi non è derivabile.}
+
+\begin{esercizio}[\liv{1}]
+Derivare con le regole:
+\begin{gather*}
+\text{(a) }5x^4-3x^2+2x;\qquad \text{(b) }x^3e^x;\qquad \text{(c) }x^2\ln x;\qquad \text{(d) }\frac{x+1}{x^2+1};\\
+\text{(e) }\sin x\cos x;\qquad \text{(f) }\frac{e^x}{1+e^x};\qquad \text{(g) }\sqrt x\,\ln x;\qquad \text{(h) }x^{2/3};\\
+\text{(i) }x\cdot3^x;\qquad \text{(j) }\tan x-x;\qquad \text{(k) }\frac{\ln x}{x^2};\qquad \text{(l) }\frac x{\sin x}.
+\end{gather*}
+\end{esercizio}
+\risp{(a) $20x^3-6x+2$; (b) $(x^3+3x^2)\,e^x$; (c) $2x\ln x+x$; (d) $\frac{1-2x-x^2}{(x^2+1)^2}$; (e) $\cos^2x-\sin^2x$; (f) $\frac{e^x}{(1+e^x)^2}$; (g) $\frac{\ln x}{2\sqrt x}+\frac{\sqrt x}x=\frac{\ln x+2}{2\sqrt x}$; (h) $\frac23x^{-1/3}$; (i) $3^x(1+x\ln3)$; (j) $\frac1{\cos^2x}-1=\tan^2x$; (k) $\frac{1-2\ln x}{x^3}$; (l) $\frac{\sin x-x\cos x}{\sin^2x}$.}
+
+\begin{esercizio}[\liv{2}]
+(a) Scrivere l'equazione della retta tangente: a $y=x^3-2x$ in $x_0=1$; a $y=e^x$ in $x_0=1$; a $y=\ln x$ in $x_0=e$; a $y=\sin x$ in $x_0=\pi$. (b) Trovare i punti in cui la tangente è orizzontale: $x^3-3x$; $x\,e^x$; $\dfrac{\ln x}x$; $x^2e^x$.
+\end{esercizio}
+\risp{(a) $y=x-2$; \ $y=ex$; \ $y=\frac xe$; \ $y=-(x-\pi)$. (b) $3x^2-3=0$: $x=\pm1$; \ $(1+x)e^x=0$: $x=-1$; \ $\frac{1-\ln x}{x^2}=0$: $x=e$; \ $(x^2+2x)e^x=0$: $x=0$ e $x=-2$.}
+
+\begin{esercizio}[\liv{2}]
+Un corpo si muove lungo una retta con legge oraria $s(t)=t^3-6t^2+9t$ (metri, secondi). Calcolare la velocità $v(t)=s'(t)$. In quali istanti il corpo è fermo? In quali intervalli di tempo torna indietro?
+\end{esercizio}
+\risp{$v(t)=3t^2-12t+9=3(t-1)(t-3)$ m/s: è fermo in $t=1$ e $t=3$; torna indietro ($v<0$) per $1<t<3$.}
+
+\begin{esercizio}[\liv{3}]
+Mostrare che la retta tangente alla parabola $y=x^2$ nel punto $(a,a^2)$ incontra l'asse $y$ nel punto $(0,-a^2)$. Usare questo fatto per disegnare, con riga e squadra, la tangente alla parabola in un punto dato.
+\end{esercizio}
+\risp{La tangente è $y=a^2+2a(x-a)=2ax-a^2$: per $x=0$ vale $-a^2$. Per disegnarla basta congiungere $(a,a^2)$ con il punto dell'asse $y$ simmetrico di $(0,a^2)$ rispetto all'origine.}
+
+%-------------------------------------------------------------------
+\section{Riepilogo}
+
+\begin{esercizio}[\liv{2}]
+Vero o falso? Motivare con una dimostrazione o con un controesempio. \ (a) Se $f$ è continua in $x_0$, allora è derivabile in $x_0$. \ (b) Se $f$ è derivabile in $x_0$, allora è continua in $x_0$. \ (c) Se $f(a)f(b)<0$, allora $f$ ha uno zero in $]a,b[$. \ (d) $\frac{\sin x}x\to1$ per $x\to+\infty$. \ (e) Una funzione continua in $]0,1[$ ha massimo. \ (f) La derivata di un prodotto è il prodotto delle derivate.
+\end{esercizio}
+\risp{(a) Falso: $|x|$ in $0$. (b) Vero (teorema di L18). (c) Falso senza la continuità: $\frac1x$ su $[-1,1]$. (d) Falso: per il confronto il limite è $0$; $\frac{\sin x}x\to1$ vale per $x\to0$. (e) Falso: $f(x)=x$ su $]0,1[$. (f) Falso: $(x\cdot x)'=2x$, mentre $1\cdot1=1$.}
+
+%-------------------------------------------------------------------
+\stampasoluzioni

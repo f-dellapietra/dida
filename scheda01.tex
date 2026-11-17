@@ -1,0 +1,437 @@
+% !TEX root =esercizi.tex
+\chapter{Lezioni 1--3 (21--28 settembre 2026)}
+
+\begin{vuoto}[Argomenti svolti]{}
+\begin{itemize}
+\item[\bul] \textbf{Lezione 1 --- Insiemi}. Insiemi, appartenenza, inclusione, insieme vuoto, insieme delle parti; unione, intersezione, differenza, complementare. Quantificatori $\forall$ ed $\exists$. (Le leggi di De Morgan e la negazione dei quantificatori sono nell'Approfondimento~1.1 degli appunti: gli esercizi 1.10 e 1.12 qui sotto vanno con quello.) Prodotto cartesiano, partizioni. Cardinalit\`a: principio di addizione, principio di inclusione-esclusione (richiamato all'inizio della sezione 1.3), $|A\times B|=|A|\,|B|$.
+\item[\bul] \textbf{Lezione 2 --- Induzione e calcolo combinatorio}. Principio di induzione (forma insiemistica e dimostrazioni per induzione). Principio di moltiplicazione. Disposizioni con ripetizione, $|\mathcal P(A)|=2^{n}$. Fattoriale, disposizioni semplici, permutazioni. Combinazioni e coefficienti binomiali, triangolo di Tartaglia, binomio di Newton.
+\item[\bul] \textbf{Lezione 3 --- I numeri reali}. Naturali, interi, razionali; sviluppo decimale dei razionali; irrazionalit\`a di $\sqrt2$. I numeri reali come allineamenti decimali; troncamenti; ordine e operazioni. Retta reale, intervalli, valore assoluto e distanza, disuguaglianza triangolare. (Estremo superiore e completezza, \S3.8, sono nella Scheda~2.)
+\end{itemize}
+\end{vuoto}
+
+Il livello di difficolt\`a \`e indicato con \liv{1} (esercizio di base), \liv{2} (esercizio standard), \liv{3} (esercizio pi\`u impegnativo).
+
+%-------------------------------------------------------------------
+\section{Insiemi e operazioni}
+
+\begin{esercizio}[\liv{1}]
+Siano $U=\{1,2,\ldots,12\}$, $A$ l'insieme dei multipli di $2$, $B$ quello dei multipli di $3$, $C$ quello dei divisori di $12$ (tutti in $U$). Scrivere per elencazione
+\begin{gather*}
+A\cap B\cap C,\qquad (A\cup B)\setminus C,\\
+C^{c},\qquad A\cap(B\cup C).
+\end{gather*}
+\end{esercizio}
+\risp{$A=\{2,4,6,8,10,12\}$, $B=\{3,6,9,12\}$, $C=\{1,2,3,4,6,12\}$. Si ha $A\cap B\cap C=\{6,12\}$, $(A\cup B)\setminus C=\{8,9,10\}$, $C^{c}=\{5,7,8,9,10,11\}$, $A\cap(B\cup C)=\{2,4,6,12\}$.}
+
+\begin{esercizio}[\liv{1}]
+Descrivere mediante una propriet\`a caratteristica gli insiemi
+\[
+\{1,4,9,16,25\},\qquad\{\ldots,-6,-3,0,3,6,\ldots\},\qquad\Bigl\{\frac12,\frac14,\frac18,\frac1{16}\Bigr\}.
+\]
+\end{esercizio}
+\risp{$\{n^{2}\colon n\in\N,\ n\le5\}$; \ $\{3k\colon k\in\Z\}$; \ $\{2^{-n}\colon n\in\N,\ n\le4\}$.}
+
+\begin{esercizio}[\liv{1}]
+Scrivere per elencazione gli insiemi
+\[
+\{x\in\N\colon x^{2}-5x+6=0\},\quad\{x\in\Z\colon |x|<3\},\quad\{x\in\N\colon 3x+1<11\}.
+\]
+\end{esercizio}
+\risp{$\{2,3\}$; \ $\{-2,-1,0,1,2\}$; \ $\{1,2,3\}$.}
+
+\begin{esercizio}[\liv{1}]
+Stabilire quali delle seguenti affermazioni sono vere:
+\begin{gather*}
+\emptyset\in\emptyset,\qquad\emptyset\subseteq\emptyset,\qquad\emptyset\in\{\emptyset\},\\
+\{1\}\subseteq\{\{1\},2\},\qquad\{1\}\in\{\{1\},2\},\qquad\{1,2\}\subseteq\{1,2,\{1,2\}\}.
+\end{gather*}
+\end{esercizio}
+\risp{Sono vere la seconda, la terza, la quinta e la sesta.}
+
+\begin{esercizio}[\liv{2}]
+Scrivere l'insieme delle parti di $\{1,\{2\}\}$.
+\end{esercizio}
+\risp{$\bigl\{\emptyset,\ \{1\},\ \{\{2\}\},\ \{1,\{2\}\}\bigr\}$.}
+
+\begin{esercizio}[\liv{2}]
+Provare le \textit{leggi di assorbimento}: $A\cup(A\cap B)=A$ e $A\cap(A\cup B)=A$.
+\end{esercizio}
+\risp{Poiché $A\cap B\subseteq A$, unire $A\cap B$ ad $A$ non aggiunge elementi: $A\cup(A\cap B)=A$. Poiché $A\subseteq A\cup B$, gli elementi comuni ad $A$ e ad $A\cup B$ sono esattamente quelli di $A$: $A\cap(A\cup B)=A$.}
+
+\begin{esercizio}[\liv{2}]
+Dimostrare o confutare con un controesempio:
+\begin{enumerate}
+\item se $A\setminus B=B\setminus A$, allora $A=B$;
+\item se $A\cup B=A\cup C$, allora $B=C$;
+\item $A\cap B=A$ se e solo se $A\subseteq B$.
+\end{enumerate}
+\end{esercizio}
+\risp{(1) Vera: se esistesse $x\in A\setminus B$, sarebbe $x\in B\setminus A$, e quindi $x\in B$, assurdo; dunque $A\setminus B=\emptyset$, cio\`e $A\subseteq B$, e analogamente $B\subseteq A$. (2) Falsa: $A=\{1,2\}$, $B=\{1\}$, $C=\{2\}$. (3) Vera.}
+
+\begin{esercizio}[\liv{1}]
+Sia $U$ l'insieme delle specie presenti in una riserva, $M$ l'insieme dei mammiferi, $N$ quello delle specie notturne, $P$ quello delle specie protette. Esprimere mediante operazioni tra insiemi: (a) i mammiferi notturni non protetti; (b) le specie che non sono n\'e mammiferi n\'e protette; (c) le specie protette che non sono mammiferi notturni.
+\end{esercizio}
+\risp{(a) $M\cap N\cap P^{c}$; (b) $M^{c}\cap P^{c}$; (c) $P\setminus(M\cap N)$.}
+
+\begin{esercizio}[\liv{2}]
+Si definisce \textit{differenza simmetrica} di $A$ e $B$ l'insieme $A\,\Delta\,B=(A\setminus B)\cup(B\setminus A)$. Provare che
+\[
+A\,\Delta\,B=(A\cup B)\setminus(A\cap B).
+\]
+Calcolare $N\,\Delta\,S$ per i due stagni dell'Esempio 1.1 degli appunti, e interpretare il risultato.
+\end{esercizio}
+\risp{$N\,\Delta\,S=\{g,c,p,a,s\}$: le specie osservate in uno solo dei due stagni.}
+
+%-------------------------------------------------------------------
+\section{Quantificatori}
+
+\begin{esercizio}[\liv{1}]
+Scrivere con i quantificatori, e poi negare senza usare ``non è vero che'':
+(a) ``ogni campione ha pH minore di $8$''; (b) ``esiste una specie presente in tutti i siti''; (c) ``in ogni sito c'è almeno una specie protetta''.
+\end{esercizio}
+\risp{(a) $\forall$ campione $c$: $\mathrm{pH}(c)<8$; negazione: esiste un campione con pH maggiore o uguale a $8$. (b) $\exists$ specie $s$ $\forall$ sito $x$: $s$ è presente in $x$; negazione: per ogni specie esiste un sito in cui non è presente. (c) $\forall$ sito $x$ $\exists$ specie protetta $s$ presente in $x$; negazione: esiste un sito in cui non c'è alcuna specie protetta.}
+
+\begin{esercizio}[\liv{1}]
+Stabilire se sono vere o false:
+(a) $\forall n\in\N:\ n^2\ge n$; \ (b) $\exists n\in\N:\ n^2=2n$; \ (c) $\forall n\in\N\ \exists m\in\N:\ m>n$; \ (d) $\exists m\in\N\ \forall n\in\N:\ m>n$.
+\end{esercizio}
+\risp{(a) vera; (b) vera ($n=2$); (c) vera (basta $m=n+1$); (d) falsa: nessun naturale è maggiore di tutti i naturali (non lo è di sé stesso). La (c) e la (d) differiscono solo per l'ordine dei quantificatori.}
+
+\begin{esercizio}[\liv{2}]
+Sia $A\subseteq\R$. Scrivere con i quantificatori la frase ``esiste un numero reale maggiore o uguale a tutti gli elementi di $A$'' (cioè: $A$ è limitato superiormente), e scriverne la negazione.
+\end{esercizio}
+\risp{$\exists\,M\in\R\ \forall x\in A:\ x\le M$. Negazione: $\forall M\in\R\ \exists\,x\in A:\ x>M$ (per quanto grande si scelga $M$, c'è un elemento di $A$ che lo supera).}
+
+%-------------------------------------------------------------------
+\section{Prodotto cartesiano e cardinalit\`a}
+
+\begin{vuoto}[Il principio di inclusione-esclusione]{}
+Se $A$ e $B$ sono insiemi finiti \emph{disgiunti}, $|A\cup B|=|A|+|B|$: è il principio di addizione. Se invece hanno elementi in comune, sommando $|A|$ e $|B|$ gli elementi di $A\cap B$ vengono contati \emph{due volte}, una in $A$ e una in $B$; per correggere si sottraggono una volta:
+\[
+|A\cup B|=|A|+|B|-|A\cap B| .
+\]
+Esempio: se in $10$ stagni c'è la rana verde, in $7$ il tritone e in $4$ entrambi, gli stagni con almeno una delle due specie sono $10+7-4=13$. Con tre insiemi si ragiona allo stesso modo: si sommano le cardinalità, si tolgono quelle delle intersezioni a due a due (contate due volte), e si rimette quella dell'intersezione dei tre, che a quel punto era stata aggiunta tre volte e tolta tre volte:
+\[
+|A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|A\cap C|-|B\cap C|+|A\cap B\cap C| .
+\]
+\end{vuoto}
+
+\begin{esercizio}[\liv{1}]
+Siano $|A|=3$ e $|B|=4$. Quanti elementi hanno $A\times B$, $\mathcal P(A)$, $\mathcal P(A\times B)$?
+\end{esercizio}
+\risp{$12$, $8$, $2^{12}=4096$.}
+
+\begin{esercizio}[\liv{1}]
+Elencare gli elementi di $\{0,1\}\times\{a,b,c\}$ e di $\{a,b,c\}\times\{0,1\}$. I due insiemi sono uguali?
+\end{esercizio}
+\risp{$\{(0,a),(0,b),(0,c),(1,a),(1,b),(1,c)\}$ e $\{(a,0),(a,1),(b,0),(b,1),(c,0),(c,1)\}$. Non sono uguali: le coppie sono ordinate, e $(0,a)\ne(a,0)$. Hanno però lo stesso numero di elementi, $6$.}
+
+\begin{esercizio}[\liv{1}]
+Un piano di monitoraggio prevede $4$ siti ($s_1,\dots,s_4$) e $3$ campagne di prelievo (primavera, estate, autunno). Quanti prelievi si fanno in tutto? Elencare quelli relativi al sito $s_1$.
+\end{esercizio}
+\risp{$|S\times C|=4\cdot3=12$. Per il sito $s_1$: $(s_1,\text{primavera})$, $(s_1,\text{estate})$, $(s_1,\text{autunno})$.}
+
+\begin{esercizio}[\liv{1}]
+Siano $A=\{\text{rosso},\text{verde}\}$ e $B=\{1,2,3\}$. Quante sono le coppie $(a,b)$ con $a\in A$ e $b\in B$? Quante di esse hanno $b$ dispari?
+\end{esercizio}
+\risp{$|A\times B|=6$; con $b$ dispari: $2\cdot2=4$.}
+
+\begin{esercizio}[\liv{2}]
+In un'indagine su $80$ siti, la specie $X$ \`e presente in $50$ siti, la specie $Y$ in $35$, e $10$ siti non ospitano nessuna delle due. In quanti siti sono presenti entrambe? In quanti soltanto $X$?
+\end{esercizio}
+\risp{$|X\cup Y|=70$, quindi $|X\cap Y|=50+35-70=15$; soltanto $X$: $35$; soltanto $Y$: $20$.}
+
+\begin{esercizio}[\liv{2}]
+Su $60$ campioni di suolo, $25$ superano la soglia per i nitrati ($N$), $20$ quella per i fosfati ($F$), $15$ quella per i metalli pesanti ($M$). Inoltre $|N\cap F|=8$, $|N\cap M|=5$, $|F\cap M|=4$, e $2$ campioni superano tutte e tre le soglie. Quanti campioni superano almeno una soglia? Quanti nessuna? Quanti esattamente una?
+\end{esercizio}
+\risp{Almeno una: $25+20+15-8-5-4+2=45$; nessuna: $15$. Soltanto $N$: $25-8-5+2=14$; soltanto $F$: $10$; soltanto $M$: $8$; esattamente una: $32$.}
+
+\begin{esercizio}[\liv{2}]
+Stabilire quali delle seguenti famiglie sono partizioni dell'intervallo $[0,14]$ dei valori di pH:
+\begin{gather*}
+\text{(a) } [0,7[,\ \{7\},\ ]7,14];\qquad \text{(b) } [0,6],\ [6,8],\ [8,14];\\
+\text{(c) } [0,6[,\ [6,8[,\ ]8,14].
+\end{gather*}
+\end{esercizio}
+\risp{Solo (a). In (b) i valori $6$ e $8$ appartengono a due classi; in (c) il valore $8$ non appartiene ad alcuna classe.}
+
+\begin{esercizio}[\liv{2}]
+Tre siti ospitano le specie $A=\{1,2,3,4,5,6\}$, $B=\{4,5,6,7,8\}$, $C=\{1,2,9\}$. Calcolare l'indice di Jaccard (ossia il numero $J(X,Y):=|X\cap Y|/|X\cup Y|$) per ciascuna coppia di siti. Quali sono i due siti pi\`u simili?
+\end{esercizio}
+\risp{$J(A,B)=\frac38$, $J(A,C)=\frac27$, $J(B,C)=0$. I pi\`u simili sono $A$ e $B$.}
+
+\begin{esercizio}[\liv{2}]
+Trenta campioni d'acqua sono classificati come ``acidi'', ``neutri'' o ``basici'', e le tre classi formano una partizione. Se $12$ campioni sono acidi e $7$ neutri, quanti sono basici? Perché, per rispondere, è importante che le classi formino una partizione?
+\end{esercizio}
+\risp{$30-12-7=11$. Poiché le classi sono disgiunte e la loro unione è tutto l'insieme dei campioni, le numerosità si sommano (principio di addizione): ogni campione è contato una e una sola volta.}
+
+\begin{esercizio}[\liv{3}]
+Siano $A$ e $B$ insiemi finiti. Provare che $|A\setminus B|=|A|-|A\cap B|$, e che se $A\subseteq B$ allora $|A|\le|B|$.
+\end{esercizio}
+\risp{$A$ \`e unione disgiunta di $A\setminus B$ e $A\cap B$. Se $A\subseteq B$, $B$ \`e unione disgiunta di $A$ e $B\setminus A$, dunque $|B|=|A|+|B\setminus A|\ge|A|$.}
+
+%-------------------------------------------------------------------
+\section{Principio di induzione}
+
+\begin{esercizio}[\liv{1}]
+Sia $\mathbb I=\{n\in\N\colon 2^{n}\ge n+1\}$. Verificare che $1\in\mathbb I$ e che, se $n\in\mathbb I$, allora $n+1\in\mathbb I$. Che cosa si conclude, per il principio di induzione?
+\end{esercizio}
+\risp{$2^1=2\ge2$, quindi $1\in\mathbb I$. Se $2^n\ge n+1$, allora $2^{n+1}=2\cdot2^n\ge2(n+1)=2n+2\ge n+2$, quindi $n+1\in\mathbb I$. Per il principio di induzione $\mathbb I=\N$: $2^n\ge n+1$ per ogni $n\in\N$.}
+
+\begin{esercizio}[\liv{1}]
+Provare per induzione che, per ogni $n\in\N$,
+\[
+\sum_{k=1}^{n}k(k+1)=\frac{n(n+1)(n+2)}{3}.
+\]
+\end{esercizio}
+\risp{Per $n=1$: $2=2$. Passo: $\frac{n(n+1)(n+2)}{3}+(n+1)(n+2)=\frac{(n+1)(n+2)(n+3)}{3}$.}
+
+\begin{esercizio}[\liv{1}]
+Provare per induzione che, per ogni $n\in\N$,
+\[
+\sum_{k=1}^{n}\frac{1}{k(k+1)}=\frac{n}{n+1}.
+\]
+\end{esercizio}
+\risp{Passo: $\frac{n}{n+1}+\frac{1}{(n+1)(n+2)}=\frac{n^{2}+2n+1}{(n+1)(n+2)}=\frac{n+1}{n+2}$.}
+
+\begin{esercizio}[\liv{2}]
+Sia $q\ne1$. Provare per induzione che, per ogni $n\in\N_{0}$,
+\[
+\sum_{k=0}^{n}q^{k}=\frac{1-q^{n+1}}{1-q}.
+\]
+\end{esercizio}
+\risp{Per $n=0$: $1=\frac{1-q}{1-q}$. Passo: $\frac{1-q^{n+1}}{1-q}+q^{n+1}=\frac{1-q^{n+1}+q^{n+1}-q^{n+2}}{1-q}=\frac{1-q^{n+2}}{1-q}$.}
+
+\begin{esercizio}[\liv{2}]
+Provare che $n^{3}-n$ \`e divisibile per $3$ per ogni $n\in\N$.
+\end{esercizio}
+\risp{Per $n=1$ si ha $0$. Passo: $(n+1)^{3}-(n+1)=(n^{3}-n)+3(n^{2}+n)$.}
+
+\begin{esercizio}[\liv{2}]
+Provare che $2^{n}>n^{2}$ per ogni $n\ge5$. Per quali $n\le4$ la disuguaglianza \`e falsa?
+\end{esercizio}
+\risp{Base: $32>25$. Passo: $2^{n+1}=2\cdot2^{n}>2n^{2}\ge(n+1)^{2}$, perch\'e $n^{2}-2n-1=(n-1)^{2}-2\ge0$ per $n\ge3$. La disuguaglianza \`e falsa per $n=2,3,4$ (vera per $n=1$).}
+
+\begin{esercizio}[\liv{2}]
+Una popolazione conta $P_{1}=100$ individui e aumenta di $20$ individui ogni anno: $P_{n+1}=P_{n}+20$. Un'altra conta $Q_{1}=100$ individui e aumenta del $10\,\%$ ogni anno: $Q_{n+1}=1{,}1\,Q_{n}$. Congetturare formule esplicite per $P_{n}$ e $Q_{n}$ e dimostrarle per induzione.
+\end{esercizio}
+\risp{$P_{n}=100+20(n-1)$, \ $Q_{n}=100\cdot1{,}1^{\,n-1}$.}
+
+\begin{esercizio}[\liv{3}]
+Trovare l'errore nel seguente ragionamento, che ``dimostra'' che tutti i cavalli hanno lo stesso colore. \textit{Sia $P(n)$: ``in ogni gruppo di $n$ cavalli, tutti hanno lo stesso colore''. $P(1)$ \`e ovvia. Supponiamo $P(n)$ vera e consideriamo $n+1$ cavalli $c_{1},\ldots,c_{n+1}$. Per l'ipotesi induttiva, $c_{1},\ldots,c_{n}$ hanno lo stesso colore, e anche $c_{2},\ldots,c_{n+1}$. Poich\'e i due gruppi hanno cavalli in comune, tutti gli $n+1$ cavalli hanno lo stesso colore.}
+\end{esercizio}
+\risp{Il passo da $n=1$ a $n=2$ non funziona: i gruppi $\{c_{1}\}$ e $\{c_{2}\}$ non hanno cavalli in comune.}
+
+%-------------------------------------------------------------------
+\section{Calcolo combinatorio}
+
+\begin{esercizio}[\liv{1}]
+Quanti codici di $4$ cifre (da $0$ a $9$) esistono? Quanti hanno le cifre tutte diverse?
+\end{esercizio}
+\risp{$10^{4}$; \ $10\cdot9\cdot8\cdot7=5040$.}
+
+\begin{esercizio}[\liv{1}]
+In quanti modi si possono disporre $6$ provette in un portaprovette con $6$ posti?
+\end{esercizio}
+\risp{$6!=720$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolare $\binom83$, $\binom{10}{5}$, $\binom{20}{2}$, $\binom{20}{18}$.
+\end{esercizio}
+\risp{$56$, $252$, $190$, $190$.}
+
+\begin{esercizio}[\liv{1}]
+Tra $12$ studenti si devono scegliere un responsabile, un vice e un segretario di un gruppo di lavoro. In quanti modi? E se si devono scegliere semplicemente $3$ rappresentanti?
+\end{esercizio}
+\risp{$D_{12,3}=1320$; \ $\binom{12}{3}=220$.}
+
+\begin{esercizio}[\liv{2}]
+Una riserva ha $9$ sentieri. Un'escursione ne percorre $3$ distinti, uno dopo l'altro. Quante escursioni diverse sono possibili? E se si tiene conto solo di quali sentieri si percorrono?
+\end{esercizio}
+\risp{$9\cdot8\cdot7=504$; \ $\binom93=84$.}
+
+\begin{esercizio}[\liv{2}]
+In un campione di $15$ insetti, $5$ sono coleotteri. Se ne scelgono $4$ da esaminare. Quante scelte contengono esattamente $2$ coleotteri? Quante almeno un coleottero?
+\end{esercizio}
+\risp{$\binom52\binom{10}{2}=450$; \ $\binom{15}{4}-\binom{10}{4}=1365-210=1155$.}
+
+\begin{esercizio}[\liv{2}]
+Quante sequenze di DNA di lunghezza $5$ contengono almeno una volta la base A?
+\end{esercizio}
+\risp{Dal totale si tolgono quelle senza A: $4^{5}-3^{5}=1024-243=781$.}
+
+\begin{esercizio}[\liv{2}]
+Quanti sottoinsiemi di $\{1,2,\ldots,10\}$ contengono il numero $1$? Quanti hanno esattamente $3$ elementi e contengono il numero $1$?
+\end{esercizio}
+\risp{$2^{9}=512$; \ $\binom92=36$.}
+
+\begin{esercizio}[\liv{2}]
+In una riunione ciascun partecipante stringe la mano a tutti gli altri, e le strette di mano sono $45$. Quanti sono i partecipanti?
+\end{esercizio}
+\risp{$\binom n2=\frac{n(n-1)}{2}=45$, da cui $n=10$.}
+
+\begin{esercizio}[\liv{2}]
+Quante stringhe di $8$ cifre binarie contengono esattamente tre cifre $1$? Quante contengono almeno una cifra $1$?
+\end{esercizio}
+\risp{$\binom83=56$; \ $2^{8}-1=255$.}
+
+\begin{esercizio}[\liv{2}]
+Un esperimento combina $4$ temperature, $3$ salinit\`a e $2$ specie di alghe, con $3$ repliche per trattamento. Quante unit\`a sperimentali servono? Se ogni vasca contiene $6$ unit\`a, quante vasche servono?
+\end{esercizio}
+\risp{$4\cdot3\cdot2\cdot3=72$ unit\`a; $12$ vasche.}
+
+\begin{esercizio}[\liv{2}]
+Scrivere la riga $n=7$ del triangolo di Tartaglia e verificare che la somma dei suoi elementi \`e $2^{7}$.
+\end{esercizio}
+\risp{$1,7,21,35,35,21,7,1$; somma $128$.}
+
+\begin{esercizio}[\liv{2}]
+Determinare il coefficiente di $x^{3}$ nello sviluppo di $(1+2x)^{6}$ e il termine che non contiene $x$ nello sviluppo di $\left(x+\frac1x\right)^{6}$.
+\end{esercizio}
+\risp{$\binom63\,2^{3}=160$; \ $\binom63=20$.}
+
+\begin{esercizio}[\liv{3}]
+Quanti sono gli anagrammi (anche privi di significato) della parola NATURA? E della parola AMBIENTE? (Suggerimento: contare prima gli anagrammi supponendo le lettere uguali distinguibili, poi chiedersi quante volte \`e stato contato ciascun anagramma.)
+\end{esercizio}
+\risp{$\frac{6!}{2!}=360$; \ $\frac{8!}{2!}=20\,160$.}
+
+\begin{esercizio}[\liv{1}]
+Un menù offre $3$ primi, $4$ secondi e $2$ dolci. Quanti pasti diversi (un primo, un secondo e un dolce) si possono comporre?
+\end{esercizio}
+\risp{$3\cdot4\cdot2=24$ (principio di moltiplicazione).}
+
+\begin{esercizio}[\liv{1}]
+Calcolare $5!$, \ $\dfrac{7!}{5!}$, \ $\dfrac{10!}{8!\,2!}$ senza calcolare i fattoriali per intero.
+\end{esercizio}
+\risp{$120$; \ $7\cdot6=42$; \ $\frac{10\cdot9}{2}=45$.}
+
+\begin{esercizio}[\liv{3}]
+Provare che $k\binom nk=n\binom{n-1}{k-1}$ per $1\le k\le n$, sia con la formula per $\binom nk$ sia con un argomento combinatorio. (Suggerimento: contare in due modi le commissioni di $k$ persone scelte tra $n$, con un presidente scelto tra i membri della commissione.)
+\end{esercizio}
+\risp{Con la formula: $k\binom nk=k\frac{n!}{k!(n-k)!}=\frac{n!}{(k-1)!(n-k)!}=n\frac{(n-1)!}{(k-1)!(n-k)!}=n\binom{n-1}{k-1}$. Contando in due modi: si sceglie la commissione ($\binom nk$ modi) e poi il presidente al suo interno ($k$ modi); oppure si sceglie prima il presidente ($n$ modi) e poi gli altri $k-1$ membri fra le $n-1$ persone rimaste ($\binom{n-1}{k-1}$ modi).}
+
+\begin{esercizio}[\liv{3}]
+Provare che, per $n\in\N$,
+\[
+\sum_{k=0}^{n}(-1)^{k}\binom nk=0.
+\]
+Dedurre che un insieme con $n$ elementi ha tanti sottoinsiemi con un numero pari di elementi quanti con un numero dispari, cio\`e $2^{n-1}$.
+\end{esercizio}
+\risp{Con $a=1$, $b=-1$ nel binomio di Newton: $0=(1-1)^n=\sum_{k=0}^n\binom nk(-1)^k$. La somma dei $\binom nk$ con $k$ pari è quindi uguale a quella con $k$ dispari; poiché in tutto i sottoinsiemi sono $2^n$, ciascuna delle due somme vale $2^{n-1}$ (per $n\ge1$).}
+
+%-------------------------------------------------------------------
+\section{Numeri razionali e irrazionali}
+
+\begin{esercizio}[\liv{1}]
+Scrivere come frazioni ridotte ai minimi termini: $0{,}\overline{7}$, \ $0{,}1\overline{2}$, \ $0{,}0\overline{45}$, \ $3{,}\overline{142}$.
+\end{esercizio}
+\risp{$\frac79$; \ $\frac{11}{90}$; \ $\frac{1}{22}$; \ $\frac{3139}{999}$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolare la rappresentazione decimale di $\frac38$, $\frac7{12}$, $\frac{13}{40}$, $\frac{5}{6}$. Quali sono finite? Formulare una congettura sui denominatori delle frazioni (ridotte) che hanno rappresentazione finita.
+\end{esercizio}
+\risp{$0{,}375$; $0{,}58\overline{3}$; $0{,}325$; $0{,}8\overline{3}$. Una frazione ridotta ai minimi termini ha rappresentazione finita se e solo se il denominatore non ha fattori primi diversi da $2$ e $5$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare le rappresentazioni decimali di $\frac17$ e di $\frac{1}{13}$. Confrontare la lunghezza del periodo con la stima che si ricava dalla dimostrazione del Teorema 3.2 degli appunti.
+\end{esercizio}
+\risp{$\frac17=0{,}\overline{142857}$, $\frac1{13}=0{,}\overline{076923}$: entrambi hanno periodo di $6$ cifre (la stima d\`a al pi\`u $6$ e $12$).}
+
+\begin{esercizio}[\liv{2}]
+Siano $q\in\Q$ e $x\notin\Q$. Provare che $q+x\notin\Q$ e che, se $q\ne0$, $qx\notin\Q$.
+\end{esercizio}
+\risp{Se fosse $q+x=r\in\Q$, si avrebbe $x=r-q\in\Q$, assurdo. Analogamente $x=\frac{qx}{q}$.}
+
+\begin{esercizio}[\liv{2}]
+La somma di due numeri irrazionali \`e sempre irrazionale? E il prodotto?
+\end{esercizio}
+\risp{No in entrambi i casi: $\sqrt2+(-\sqrt2)=0$, $\sqrt2\cdot\sqrt2=2$.}
+
+\begin{esercizio}[\liv{2}]
+Usando l'esercizio precedente e l'irrazionalità di $\sqrt2$, provare che $3\sqrt2$, \ $1+\sqrt2$ \ e \ $\frac{\sqrt2}{5}$ sono irrazionali.
+\end{esercizio}
+\risp{$3\sqrt2$ e $\frac{\sqrt2}5$ sono prodotti di un razionale non nullo ($3$ e $\frac15$) per l'irrazionale $\sqrt2$; $1+\sqrt2$ è somma di un razionale e di un irrazionale.}
+
+%-------------------------------------------------------------------
+\section{Numeri reali e ordine}
+
+\begin{esercizio}[\liv{1}]
+Stabilire quali dei seguenti numeri sono razionali, giustificando la risposta (nel secondo, a ogni blocco si aggiunge un $1$):
+\begin{gather*}
+0{,}\overline{12},\qquad 0{,}12112111211112\ldots,\qquad \sqrt{\tfrac{16}{9}},\\
+3{,}14,\qquad \sqrt2\cdot\sqrt8 .
+\end{gather*}
+\end{esercizio}
+\risp{$0{,}\overline{12}=\frac{12}{99}=\frac4{33}$ \`e razionale (periodico); il secondo non \`e periodico, quindi \`e irrazionale; $\sqrt{16/9}=\frac43$; $3{,}14=\frac{157}{50}$; $\sqrt2\cdot\sqrt8=\sqrt{16}=4$. Sono tutti razionali tranne il secondo.}
+
+\begin{esercizio}[\liv{1}]
+Disporre in ordine crescente:
+\begin{gather*}
+1{,}41,\qquad \sqrt2=1{,}41421\ldots,\qquad 1{,}4142,\\
+\tfrac{99}{70},\qquad 1{,}\overline{41}.
+\end{gather*}
+\end{esercizio}
+\risp{$\frac{99}{70}=1{,}4\overline{142857}=1{,}41428\ldots$ e $1{,}\overline{41}=1{,}414141\ldots$. L'ordine \`e $1{,}41<1{,}\overline{41}<1{,}4142<\sqrt2<\frac{99}{70}$.}
+
+\begin{esercizio}[\liv{2}]
+Trovare un numero razionale e un numero irrazionale compresi fra $0{,}4999$ e $0{,}5$.
+\end{esercizio}
+\risp{Ad esempio $0{,}49995$ (razionale) e $0{,}4999+\sqrt2\cdot10^{-5}=0{,}49991414\ldots$ (irrazionale: somma di un razionale e di un irrazionale, esercizio della sezione precedente).}
+
+\begin{esercizio}[\liv{2}]
+Mostrare con un controesempio che da $x<y$ non segue $x^2<y^2$. Provare che invece l'implicazione vale se $0\le x<y$.
+\end{esercizio}
+\risp{$-3<1$ ma $9>1$. Se $0\le x<y$, moltiplicando $x<y$ per $x\ge0$ e per $y>0$ si ha $x^2\le xy<y^2$.}
+
+%-------------------------------------------------------------------
+\section{Intervalli e valore assoluto}
+
+\begin{esercizio}[\liv{1}]
+Scrivere come intervalli (o unioni di intervalli) e rappresentare sulla retta:
+\begin{gather*}
+\{x\colon -2<x\le5\},\qquad \{x\colon x\ge3\}\cap\{x\colon x<7\},\\
+\{x\colon x<0\}\cup\{x\colon x\ge1\},\qquad \R\setminus[0,1[.
+\end{gather*}
+\end{esercizio}
+\risp{$]-2,5]$; \ $[3,7[$; \ $]-\infty,0[\,\cup\,[1,+\infty[$; \ $]-\infty,0[\,\cup\,[1,+\infty[$ (il terzo e il quarto coincidono).}
+
+\begin{esercizio}[\liv{1}]
+Scrivere con un'unica disuguaglianza che contiene un valore assoluto: $]1,5[$; \ $[-4,2]$; \ $]-\infty,-1[\,\cup\,]1,+\infty[$; \ un intervallo chiuso $[a,b]$ qualsiasi.
+\end{esercizio}
+\risp{$|x-3|<2$; \ $|x+1|\le3$; \ $|x|>1$; \ $\bigl|x-\frac{a+b}2\bigr|\le\frac{b-a}2$ (centro e semiampiezza).}
+
+\begin{esercizio}[\liv{2}]
+Un protocollo prescrive che il pH di una vasca sia $7{,}2$ con una tolleranza di $0{,}3$. Scrivere la condizione con il valore assoluto e come intervallo. Stesso esercizio per una temperatura di $20\,^\circ$C con tolleranza $1{,}5\,^\circ$C.
+\end{esercizio}
+\risp{$|\mathrm{pH}-7{,}2|\le0{,}3$, cio\`e $[6{,}9;\,7{,}5]$. $|T-20|\le1{,}5$, cio\`e $[18{,}5;\,21{,}5]$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare $|x-2|+|x+3|$ per $x=0$, $x=5$, $x=-4$. In tutti e tre i casi il risultato è almeno $5$: perché, pensando alle distanze sulla retta?
+\end{esercizio}
+\risp{$5$, $11$, $7$. $|x-2|+|x+3|$ è la somma delle distanze di $x$ da $2$ e da $-3$: non può essere minore della distanza fra $2$ e $-3$, che è $5$ (è la disuguaglianza triangolare). Vale esattamente $5$ quando $x$ sta fra $-3$ e $2$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolare $|-3|$, \ $|2-5|$, \ $|\sqrt2-2|$, \ $|3-\pi|$. Verificare poi la disuguaglianza $|x+y|\le|x|+|y|$ per $x=3,\ y=4$ e per $x=3,\ y=-4$: in quale dei due casi vale l'uguaglianza?
+\end{esercizio}
+\risp{$3$; \ $3$; \ $2-\sqrt2$; \ $\pi-3$. Per $x=3$, $y=4$: $7=7$, uguaglianza. Per $x=3$, $y=-4$: $|{-1}|=1<7$. L'uguaglianza vale quando $x$ e $y$ hanno lo stesso segno.}
+
+%-------------------------------------------------------------------
+\section{Problemi di riepilogo}
+
+\begin{esercizio}[\liv{2}]
+In un monitoraggio si vogliono scegliere $3$ siti tra $10$ e, in ciascun sito scelto, campionare in $2$ delle $4$ stagioni. In quanti modi si pu\`o costruire il piano di campionamento?
+\end{esercizio}
+\risp{$\binom{10}{3}\cdot\binom42^{3}=120\cdot216=25\,920$.}
+
+\begin{esercizio}[\liv{1}]
+In una stazione si registrano le temperature $12{,}4$; $13{,}1$; $12{,}9$; $13{,}6\ ^\circ$C. Scrivere il più piccolo intervallo chiuso che le contiene tutte, e scriverlo nella forma $|T-c|\le\delta$.
+\end{esercizio}
+\risp{$[12{,}4;\,13{,}6]$; centro $c=13$, semiampiezza $\delta=0{,}6$: $|T-13|\le0{,}6$.}
+
+\begin{esercizio}[\liv{3}]
+Un'indagine su $200$ laghi rileva che il $40\,\%$ ha concentrazioni elevate di fosforo, il $25\,\%$ ha fioriture algali e $30$ laghi presentano entrambe le condizioni. Quanti laghi non presentano nessuna delle due condizioni? Quale percentuale dei laghi con fioriture algali ha concentrazioni elevate di fosforo?
+\end{esercizio}
+\risp{$80$ laghi con fosforo elevato, $50$ con fioriture; almeno una condizione: $80+50-30=100$; nessuna: $100$. Dei $50$ laghi con fioriture, $30$ hanno fosforo elevato: il $60\,\%$.}
+
+%-------------------------------------------------------------------
+\stampasoluzioni

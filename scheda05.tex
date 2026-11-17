@@ -1,0 +1,230 @@
+% !TEX root =esercizi.tex
+% ---------------------------------------------------------------------
+% Scheda 5: Lezioni 13--15 (limiti di successioni). Per scelta del docente
+% molti esercizi sui campi di esistenza (riepilogo) e sui limiti, con tutti
+% i casi svolti a lezione. I limiti notevoli sono in forma generale:
+% sin(a_n)/a_n con a_n -> 0, (1+1/a_n)^{a_n} con a_n -> +-infinito.
+% ---------------------------------------------------------------------
+\chapter{Lezioni 13--15 (21--26 ottobre 2026)}
+
+\begin{vuoto}[Argomenti svolti]{}
+\begin{itemize}
+\item[\bul] \textbf{Lezione 13 --- Limiti di successioni}. Definizione di limite finito e infinito; successioni convergenti, divergenti, irregolari. Unicità del limite, limitatezza delle successioni convergenti, permanenza del segno. Teorema del confronto. Il limite $\frac{\sin a_n}{a_n}\to1$ per $a_n\to0$ e le sue conseguenze. Algebra dei limiti finiti.
+\item[\bul] \textbf{Lezione 14 --- Il calcolo dei limiti}. Aritmetica dell'infinito. Le forme indeterminate $+\infty-\infty$, $0\cdot\infty$, $\frac\infty\infty$, $\frac00$; quozienti di polinomi, razionalizzazione. Gerarchia degli infiniti.
+\item[\bul] \textbf{Lezione 15 --- Successioni monotone e il numero $e$}. Teorema sulle successioni monotone. Il numero $e$; $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$ per $a_n\to\pm\infty$. Esponenziale e logaritmo lungo le successioni; $a_n^{b_n}=e^{b_n\ln a_n}$; forme determinate e forme indeterminate $1^\infty$, $0^0$, $\infty^0$.
+\end{itemize}
+\end{vuoto}
+
+Il livello di difficoltà è indicato con \liv{1} (esercizio di base), \liv{2} (esercizio standard), \liv{3} (esercizio più impegnativo).
+
+\begin{vuoto}[Promemoria: i limiti notevoli in forma generale]{}
+Se $a_n\to0$ con $a_n\ne0$:
+\[
+\frac{\sin a_n}{a_n}\to1,\qquad \frac{\tan a_n}{a_n}\to1,\qquad \frac{1-\cos a_n}{a_n^2}\to\frac12 .
+\]
+Se $a_n\to+\infty$ oppure $a_n\to-\infty$:
+\[
+\Bigl(1+\frac1{a_n}\Bigr)^{a_n}\to e .
+\]
+Per usarli si cerca, dentro l'espressione, la successione $a_n$ giusta, e la si fa comparire anche dove manca, moltiplicando e dividendo. Per esempio $n\sin\frac3n=3\cdot\dfrac{\sin(3/n)}{3/n}\to3$, con $a_n=\frac3n$.
+\end{vuoto}
+
+%-------------------------------------------------------------------
+\section{Campi di esistenza}
+
+\begin{esercizio}[\liv{1}]
+Determinare il dominio di: \ $\sqrt{x^2-4x}$; \ $\ln(x^2-x-6)$; \ $\dfrac1{2^x-4}$; \ $\sqrt{3-|x|}$; \ $\log_3(5-x)+\sqrt x$.
+\end{esercizio}
+\risp{$x\le0$ oppure $x\ge4$; \ $x<-2$ oppure $x>3$; \ $x\ne2$; \ $[-3,3]$; \ $x\ge0$ e $x<5$: $[0,5[$.}
+
+\begin{esercizio}[\liv{2}]
+Determinare il dominio di:
+\[
+\sqrt{\frac{x+2}{1-x}},\qquad \ln\frac{x-1}{x^2-4},\qquad \sqrt{\ln(2-x)},\qquad \frac1{\ln(x+3)},\qquad \sqrt{e^{2x}-3e^x+2}.
+\]
+\end{esercizio}
+\risp{$[-2,1[$; \ $\frac{x-1}{(x-2)(x+2)}>0$: $]-2,1[\,\cup\,]2,+\infty[$; \ $\ln(2-x)\ge0$, cioè $2-x\ge1$: $x\le1$; \ $x>-3$ e $\ln(x+3)\ne0$, cioè $x\ne-2$; \ con $t=e^x>0$: $t^2-3t+2\ge0$, cioè $t\le1$ o $t\ge2$: $x\le0$ oppure $x\ge\ln2$.}
+
+\begin{esercizio}[\liv{2}]
+Determinare il dominio di: \ $\sqrt{2\cos x-1}$ (in $[0,2\pi]$); \ $\ln(\sin x)$; \ $\arcsin\dfrac{x-1}2$; \ $\arccos(\ln x)$; \ $\dfrac1{\tan x-1}$; \ $\sqrt{\arcsin x}$.
+\end{esercizio}
+\risp{$\cos x\ge\frac12$: $[0,\frac\pi3]\cup[\frac{5\pi}3,2\pi]$; \ $\sin x>0$: $]2k\pi,\pi+2k\pi[$; \ $-1\le\frac{x-1}2\le1$: $[-1,3]$; \ $-1\le\ln x\le1$: $[\frac1e,e]$; \ $x\ne\frac\pi2+k\pi$ (dove la tangente non esiste) e $x\ne\frac\pi4+k\pi$; \ $\arcsin x\ge0$: $[0,1]$ ($k\in\Z$).}
+
+\begin{esercizio}[\liv{3}]
+Determinare il dominio di:
+\[
+\sqrt{\log_{1/2}(x^2-2x)},\qquad \ln\bigl(\sqrt{x+1}-x+1\bigr),\qquad \sqrt{\frac{\ln x-1}{x-3}},\qquad \arcsin(2^x-1),\qquad \frac{\sqrt{|x-1|-2}}{\ln x}.
+\]
+\end{esercizio}
+\risp{Primo: $x^2-2x>0$ e, con base minore di $1$, $x^2-2x\le1$; cioè ($x<0$ o $x>2$) e $1-\sqrt2\le x\le1+\sqrt2$: $[1-\sqrt2,0[\,\cup\,]2,1+\sqrt2]$. \ Secondo: $x\ge-1$ e $\sqrt{x+1}>x-1$; vera se $x<1$; per $x\ge1$ si eleva: $x^2-3x<0$, $0<x<3$. Dominio $[-1,3[$. \ Terzo: $x>0$, $x\ne3$, quoziente $\ge0$: il numeratore è $\le0$ per $x\le e$ e il denominatore è negativo per $x<3$; dominio $]0,e]\cup\,]3,+\infty[$. \ Quarto: $0\le2^x\le2$, cioè $x\le1$. \ Quinto: $|x-1|\ge2$ ($x\le-1$ o $x\ge3$), $x>0$, $x\ne1$: $[3,+\infty[$.}
+
+\begin{esercizio}[\liv{3}]
+Determinare il dominio di $f(x)=\ln\bigl(1-\sqrt{1-x^2}\bigr)$.
+\end{esercizio}
+\risp{Serve $1-x^2\ge0$, cioè $|x|\le1$, e $1-\sqrt{1-x^2}>0$, cioè $\sqrt{1-x^2}<1$, cioè $x\ne0$: $[-1,0[\,\cup\,]0,1]$.}
+
+\begin{esercizio}[\liv{2}]
+Determinare dominio e segno di $f(x)=\dfrac{e^x-2}{\ln(x+1)}$.
+\end{esercizio}
+\risp{Dominio: $x>-1$ e $x\ne0$. Il numeratore è positivo per $x>\ln2$, il denominatore per $x>0$. Quindi $f>0$ in $]-1,0[$ e in $]\ln2,+\infty[$, $f<0$ in $]0,\ln2[$, $f=0$ in $x=\ln2$.}
+
+%-------------------------------------------------------------------
+\section{La definizione di limite}
+
+\begin{esercizio}[\liv{1}]
+Verificare con la definizione, trovando l'indice $N$: (a) $\dfrac{3n+2}{n+1}\to3$, con $\varepsilon=10^{-2}$; \ (b) $\dfrac2{\sqrt n}\to0$; \ (c) $n^2+1\to+\infty$.
+\end{esercizio}
+\risp{(a) $\bigl|\frac{3n+2}{n+1}-3\bigr|=\frac1{n+1}<\varepsilon$ per $n>\frac1\varepsilon-1$: con $\varepsilon=10^{-2}$, $N=100$. (b) $\frac2{\sqrt n}<\varepsilon$ per $n>\frac4{\varepsilon^2}$. (c) $n^2+1>M$ per $n>\sqrt M$ (se $M>1$).}
+
+\begin{esercizio}[\liv{2}]
+Dire se sono convergenti, divergenti o irregolari: \ $(-1)^n\dfrac n{n+1}$; \ $\cos\dfrac{n\pi}2$; \ $\dfrac{(-1)^n}{n^2}$; \ $n+(-1)^n$; \ $(-1)^nn^2$.
+\end{esercizio}
+\risp{Irregolare (i termini pari si avvicinano a $1$, i dispari a $-1$); \ irregolare (vale $0,-1,0,1,\dots$); \ converge a $0$ (confronto con $\pm\frac1{n^2}$); \ diverge a $+\infty$ ($n+(-1)^n\ge n-1$); \ irregolare (non limitata, di segno alterno).}
+
+%-------------------------------------------------------------------
+\section{Confronto e limiti trigonometrici}
+
+\begin{esercizio}[\liv{1}]
+Calcolare usando il teorema del confronto: \ $\dfrac{\sin n}{n}$; \ $\dfrac{n+\cos n}{n}$; \ $\dfrac{(-1)^n+3}{\sqrt n}$; \ $\dfrac{\lfloor\sqrt n\rfloor}{\sqrt n}$.
+\end{esercizio}
+\risp{$0$ ($|\sin n|\le1$); \ $1$ ($\frac{n-1}n\le\cdot\le\frac{n+1}n$); \ $0$ (fra $\frac2{\sqrt n}$ e $\frac4{\sqrt n}$); \ $1$ ($\sqrt n-1<\lfloor\sqrt n\rfloor\le\sqrt n$, quindi $1-\frac1{\sqrt n}<\cdot\le1$).}
+
+\begin{esercizio}[\liv{1}]
+Calcolare, riconoscendo la successione $a_n\to0$: \ $n\sin\dfrac2n$; \ $n^2\sin\dfrac1{n^2}$; \ $\dfrac{\sin(1/n)}{\sin(2/n)}$; \ $n\tan\dfrac3n$; \ $\dfrac{\sin(3/n)}{\tan(5/n)}$.
+\end{esercizio}
+\risp{$2$ ($a_n=\frac2n$); \ $1$ ($a_n=\frac1{n^2}$); \ $\frac{\sin(1/n)}{1/n}\cdot\frac{2/n}{\sin(2/n)}\cdot\frac12\to\frac12$; \ $3$; \ $\frac{\sin(3/n)}{3/n}\cdot\frac{5/n}{\tan(5/n)}\cdot\frac35\to\frac35$.}
+
+\begin{esercizio}[\liv{2}]\label{es:s5cos}
+(Il limite di $1-\cos a_n$, rivisto.) Sia $a_n\to0$ con $a_n\ne0$. (a) Moltiplicando numeratore e denominatore per $1+\cos a_n$, mostrare che
+\[
+\frac{1-\cos a_n}{a_n^2}=\Bigl(\frac{\sin a_n}{a_n}\Bigr)^2\cdot\frac1{1+\cos a_n},
+\]
+e dedurre che $\dfrac{1-\cos a_n}{a_n^2}\to\dfrac12$. (b) Calcolare $n^2\Bigl(1-\cos\dfrac1n\Bigr)$, \ $n\Bigl(1-\cos\dfrac1n\Bigr)$, \ $n^2\Bigl(1-\cos\dfrac3n\Bigr)$.
+\end{esercizio}
+\risp{(a) $(1-\cos a_n)(1+\cos a_n)=1-\cos^2a_n=\sin^2a_n$; poiché $\cos a_n\to1$, il secondo fattore tende a $\frac12$ e il primo a $1$. \ (b) $\frac12$ ($a_n=\frac1n$); \ $\frac{1-\cos(1/n)}{(1/n)^2}\cdot\frac1n\to\frac12\cdot0=0$; \ $9\cdot\frac{1-\cos(3/n)}{(3/n)^2}\to\frac92$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare: \ $n\sin\dfrac1{n^2}$; \ $\dfrac{1-\cos(2/n)}{\sin^2(1/n)}$; \ $\sqrt n\,\sin\dfrac1n$; \ $\dfrac{\tan(1/n)-\sin(1/n)}{\sin(1/n)}$.
+\end{esercizio}
+\risp{$\frac{\sin(1/n^2)}{1/n^2}\cdot\frac1n\to0$; \ $\frac{1-\cos(2/n)}{(2/n)^2}\cdot4\cdot\bigl(\frac{1/n}{\sin(1/n)}\bigr)^2\to\frac12\cdot4=2$; \ $\frac{\sin(1/n)}{1/n}\cdot\frac1{\sqrt n}\to0$; \ $\frac1{\cos(1/n)}-1\to0$.}
+
+\begin{esercizio}[\liv{2}]
+(Il perimetro dei poligoni, L12.) Il perimetro del poligono regolare di $n$ lati inscritto in una circonferenza di diametro $1$ è $p_n=n\sin\frac\pi n$. Dimostrare che $p_n\to\pi$.
+\end{esercizio}
+\risp{$p_n=\pi\cdot\dfrac{\sin(\pi/n)}{\pi/n}$, con $a_n=\frac\pi n\to0$: $p_n\to\pi\cdot1=\pi$. La lunghezza della circonferenza di diametro $1$ è davvero il limite dei perimetri dei poligoni inscritti.}
+
+\begin{esercizio}[\liv{3}]
+Calcolare $\lim n^3\Bigl(\sin\dfrac1n-\tan\dfrac1n\Bigr)$. (Suggerimento: $\sin a-\tan a=\sin a\cdot\dfrac{\cos a-1}{\cos a}$.)
+\end{esercizio}
+\risp{Con $a_n=\frac1n$: $n^3(\sin a_n-\tan a_n)=\frac{\sin a_n}{a_n}\cdot\frac{\cos a_n-1}{a_n^2}\cdot\frac1{\cos a_n}\to1\cdot\bigl(-\frac12\bigr)\cdot1=-\frac12$.}
+
+%-------------------------------------------------------------------
+\section{Algebra dei limiti e forme indeterminate}
+
+\begin{esercizio}[\liv{1}]
+Calcolare (non ci sono forme indeterminate): \ $\Bigl(2+\dfrac1n\Bigr)\Bigl(3-\dfrac2{n^2}\Bigr)$; \ $n+\dfrac1n$; \ $\dfrac{1-n}{2+\frac1n}$; \ $\dfrac1{n^2+\sin n}$; \ $\dfrac{3+\frac{(-1)^n}n}{1+\frac1{\sqrt n}}$; \ $n^2\Bigl(2+\dfrac1n\Bigr)$.
+\end{esercizio}
+\risp{$6$; \ $+\infty$; \ $-\infty$ ($\frac{-\infty}2$); \ $0$ ($\frac1{+\infty}$); \ $3$; \ $+\infty$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolare: \ $\dfrac{2n^3-n+4}{5n^3+n^2}$; \ $\dfrac{n^2+1}{n^3-2}$; \ $\dfrac{1-4n^4}{n^3+2n}$; \ $\dfrac{\sqrt n+2n}{3n-\sqrt n}$; \ $\dfrac{(n+1)^3-n^3}{n^2}$.
+\end{esercizio}
+\risp{$\frac25$; \ $0$; \ $-\infty$; \ $\frac23$ (si raccoglie $n$); \ $\frac{3n^2+3n+1}{n^2}\to3$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare, razionalizzando: \ $\sqrt{n^2+4n}-n$; \ $\sqrt{n+1}-\sqrt{n-1}$; \ $n\bigl(\sqrt{n^2+1}-n\bigr)$; \ $\sqrt{n^2+n}-\sqrt{n^2-n}$.
+\end{esercizio}
+\risp{$\frac{4n}{\sqrt{n^2+4n}+n}\to2$; \ $\frac2{\sqrt{n+1}+\sqrt{n-1}}\to0$; \ $\frac{n}{\sqrt{n^2+1}+n}\to\frac12$; \ $\frac{2n}{\sqrt{n^2+n}+\sqrt{n^2-n}}\to1$.}
+
+\begin{esercizio}[\liv{3}]
+Calcolare $\lim\bigl(\sqrt[3]{n^3+n^2}-n\bigr)$. (Suggerimento: $a-b=\dfrac{a^3-b^3}{a^2+ab+b^2}$.)
+\end{esercizio}
+\risp{Con $a=\sqrt[3]{n^3+n^2}$ e $b=n$: $a^3-b^3=n^2$ e $a^2+ab+b^2=n^2\bigl(\sqrt[3]{(1+\frac1n)^2}+\sqrt[3]{1+\frac1n}+1\bigr)$, quindi il limite è $\frac13$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare: \ $n^2\Bigl(\dfrac1n-\dfrac1{n+1}\Bigr)$; \ $n-\ln n$; \ $2^n-n^{10}$; \ $\ln(n+1)-\ln n$; \ $\ln(2n^2+1)-2\ln n$.
+\end{esercizio}
+\risp{$\frac{n^2}{n(n+1)}\to1$; \ $n\bigl(1-\frac{\ln n}n\bigr)\to+\infty$; \ $2^n\bigl(1-\frac{n^{10}}{2^n}\bigr)\to+\infty$; \ $\ln\bigl(1+\frac1n\bigr)\to\ln1=0$; \ $\ln\frac{2n^2+1}{n^2}\to\ln2$.}
+
+%-------------------------------------------------------------------
+\section{Gerarchia degli infiniti}
+
+\begin{esercizio}[\liv{1}]
+Calcolare: \ $\dfrac{n^5+3^n}{2^n+4^n}$; \ $\dfrac{n!+2^n}{n!-n^3}$; \ $\dfrac{(\ln n)^2}{\sqrt n}$; \ $\dfrac{n^n}{n!}$; \ $\dfrac{5^n+n!}{n^n}$; \ $\dfrac{n^2\,2^n}{3^n}$.
+\end{esercizio}
+\risp{Si divide per $4^n$: $\frac{n^5/4^n+(3/4)^n}{(1/2)^n+1}\to0$; \ $1$; \ $\bigl(\frac{\ln n}{n^{1/4}}\bigr)^2\to0$; \ $+\infty$ (reciproco di $\frac{n!}{n^n}\to0^+$); \ $\frac{5^n}{n!}\cdot\frac{n!}{n^n}+\frac{n!}{n^n}\to0$; \ $\frac{n^2}{(3/2)^n}\to0$.}
+
+\begin{esercizio}[\liv{2}]
+Ordinare dalla più lenta alla più veloce, per $n$ grande: \ $n\ln n$, \ $1{,}1^n$, \ $\sqrt n$, \ $n!$, \ $3\ln n$, \ $n^n$, \ $n^2$. Giustificare ogni confronto con un limite.
+\end{esercizio}
+\risp{$3\ln n\ll\sqrt n\ll n\ln n\ll n^2\ll1{,}1^n\ll n!\ll n^n$. Per esempio $\frac{n\ln n}{n^2}=\frac{\ln n}n\to0$ e $\frac{\sqrt n}{n\ln n}=\frac1{\sqrt n\ln n}\to0$; gli altri sono casi della gerarchia.}
+
+%-------------------------------------------------------------------
+\section{Successioni monotone}
+
+\begin{esercizio}[\liv{2}]
+Sia $a_1=1$ e $a_{n+1}=\sqrt{6+a_n}$. (a) Dimostrare per induzione che $1\le a_n<3$ e che $(a_n)$ è strettamente crescente. (b) Dedurre che converge. (c) Mostrare che $3-a_{n+1}=\dfrac{3-a_n}{3+a_{n+1}}\le\dfrac{3-a_n}3$ e calcolare il limite.
+\end{esercizio}
+\risp{(a) Se $1\le a_n<3$, allora $\sqrt7\le a_{n+1}<\sqrt9=3$. Inoltre $a_{n+1}>a_n$ equivale a $6+a_n>a_n^2$, cioè $(a_n-3)(a_n+2)<0$, vero per $0\le a_n<3$. (b) Crescente e limitata: converge. (c) $3-\sqrt{6+a_n}=\frac{9-(6+a_n)}{3+a_{n+1}}$; quindi $0<3-a_n\le\frac2{3^{n-1}}\to0$ e il limite è $3$ (i termini: $2{,}646$; $2{,}940$; $2{,}990$; $2{,}998$; \dots).}
+
+\begin{esercizio}[\liv{2}]
+Sia $b_n=\dfrac{2^n}{n!}$. (a) Mostrare che $b_{n+1}=\dfrac2{n+1}\,b_n$ e dedurre che $(b_n)$ è decrescente. (b) Dedurre che converge. (c) Passando al limite nella relazione del punto (a), trovare il limite.
+\end{esercizio}
+\risp{(a) $\frac2{n+1}\le1$ per $n\ge1$: decrescente ($b_1=b_2=2$, poi strettamente). (b) Decrescente e limitata inferiormente da $0$: converge a un $\ell\ge0$. (c) $b_{n+1}\to\ell$ e $\frac2{n+1}b_n\to0\cdot\ell=0$: per l'unicità del limite $\ell=0$.}
+
+\begin{esercizio}[\liv{3}]
+Sia $c_n=\bigl(1+\frac1n\bigr)^{n+1}$. (a) Mostrare che $\dfrac{c_{n-1}}{c_n}=\Bigl(1+\dfrac1{n^2-1}\Bigr)^n\cdot\dfrac n{n+1}$ per $n\ge2$. (b) Usando la disuguaglianza di Bernoulli, dedurre che $c_{n-1}>c_n$: la successione è decrescente. (c) Dedurre che $c_n\to e$ e che $\bigl(1+\frac1n\bigr)^n<e<\bigl(1+\frac1n\bigr)^{n+1}$ per ogni $n$. Che cosa si ottiene per $n=10$?
+\end{esercizio}
+\risp{(a) $c_{n-1}=\bigl(\frac n{n-1}\bigr)^n$, $c_n=\bigl(\frac{n+1}n\bigr)^{n+1}$, e $\frac n{n-1}\cdot\frac n{n+1}=\frac{n^2}{n^2-1}$. (b) Per Bernoulli $\bigl(1+\frac1{n^2-1}\bigr)^n\ge1+\frac n{n^2-1}>1+\frac1n$, quindi $\frac{c_{n-1}}{c_n}>\frac{n+1}n\cdot\frac n{n+1}=1$. (c) $c_n=e_n\bigl(1+\frac1n\bigr)\to e\cdot1=e$; $e_n$ cresce verso $e$ e $c_n$ decresce verso $e$, quindi $e_n<e<c_n$. Per $n=10$: $2{,}5937<e<2{,}8531$.}
+
+%-------------------------------------------------------------------
+\section{Il numero $e$ e le forme esponenziali}
+
+\begin{esercizio}[\liv{1}]
+Calcolare, riconducendosi a $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$: \ $\Bigl(1+\dfrac2n\Bigr)^n$; \ $\Bigl(1-\dfrac1n\Bigr)^n$; \ $\Bigl(1+\dfrac1{n^2}\Bigr)^{n^2}$; \ $\Bigl(1+\dfrac1{3n}\Bigr)^n$; \ $\Bigl(\dfrac{n+3}n\Bigr)^{2n}$; \ $\Bigl(1+\dfrac1n\Bigr)^{n/2}$.
+\end{esercizio}
+\risp{$\bigl[(1+\frac1{n/2})^{n/2}\bigr]^2\to e^2$; \ $a_n=-n$: $\bigl[(1+\frac1{-n})^{-n}\bigr]^{-1}\to e^{-1}$; \ $e$ ($a_n=n^2$); \ $e^{1/3}$; \ $\bigl[(1+\frac1{n/3})^{n/3}\bigr]^6\to e^6$; \ $\sqrt e$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare: \ $\Bigl(\dfrac{n+1}{n-1}\Bigr)^n$; \ $\Bigl(\dfrac{n^2+1}{n^2}\Bigr)^n$; \ $\Bigl(1+\sin\dfrac1n\Bigr)^n$; \ $\Bigl(1+\dfrac1n\Bigr)^{\sqrt n}$; \ $\Bigl(1+\dfrac1{\sqrt n}\Bigr)^n$.
+\end{esercizio}
+\risp{$\frac{n+1}{n-1}=1+\frac1{a_n}$ con $a_n=\frac{n-1}2$, ed $n=a_n\cdot\frac{2n}{n-1}$: il limite è $e^2$; \ $\bigl[(1+\frac1{n^2})^{n^2}\bigr]^{1/n}\to e^0=1$; \ con $a_n=\frac1{\sin(1/n)}\to+\infty$: $(1+\frac1{a_n})^{a_n\cdot n\sin(1/n)}\to e^1=e$; \ $\bigl[(1+\frac1n)^n\bigr]^{1/\sqrt n}\to e^0=1$; \ $\bigl[(1+\frac1{\sqrt n})^{\sqrt n}\bigr]^{\sqrt n}$: la base tende a $e>1$ e l'esponente a $+\infty$, quindi $+\infty$.}
+
+\begin{esercizio}[\liv{3}]
+Calcolare $\lim\Bigl(\cos\dfrac1n\Bigr)^{n^2}$. (Suggerimento: $\cos\frac1n=1+\frac1{a_n}$ con $a_n=\frac1{\cos(1/n)-1}\to-\infty$.)
+\end{esercizio}
+\risp{$\bigl(\cos\frac1n\bigr)^{n^2}=\bigl(1+\frac1{a_n}\bigr)^{a_n\cdot b_n}$ con $b_n=n^2\bigl(\cos\frac1n-1\bigr)\to-\frac12$: il limite è $e^{-1/2}\approx0{,}607$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare (forme $0^0$ e $\infty^0$), scrivendo $a_n^{b_n}=e^{b_n\ln a_n}$: \ $\sqrt[n]n$; \ $\sqrt[n]{n^2+3^n}$; \ $\Bigl(\dfrac1n\Bigr)^{1/\ln n}$; \ $(\ln n)^{1/n}$; \ $\sqrt[n]{2^n+5^n}$; \ $\bigl(n^n\bigr)^{1/n^2}$.
+\end{esercizio}
+\risp{$e^{\frac{\ln n}n}\to e^0=1$; \ $3\sqrt[n]{1+\frac{n^2}{3^n}}\to3$ (o con il confronto: $3^n\le n^2+3^n\le2\cdot3^n$); \ $e^{-\frac{\ln n}{\ln n}}=e^{-1}$: una forma $0^0$ che vale $\frac1e$; \ $e^{\frac{\ln\ln n}n}\to1$; \ $5$; \ $n^{1/n}\to1$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolare (forme determinate): \ $\Bigl(\dfrac12+\dfrac1n\Bigr)^n$; \ $\Bigl(2-\dfrac1n\Bigr)^n$; \ $\Bigl(\dfrac1n\Bigr)^n$; \ $\Bigl(3+\dfrac1n\Bigr)^{-n}$; \ $\Bigl(\dfrac{n+1}n\Bigr)^{-n}$. Quale delle cinque è invece una forma indeterminata?
+\end{esercizio}
+\risp{$0$ (base verso $\frac12<1$, esponente verso $+\infty$); \ $+\infty$; \ $0$ ($0^{+\infty}$); \ $0$; \ l'ultima è una forma $1^\infty$: $\bigl[(1+\frac1n)^n\bigr]^{-1}\to\frac1e$.}
+
+%-------------------------------------------------------------------
+\section{Riepilogo}
+
+\begin{esercizio}[\liv{2}]
+Calcolare:
+\[
+\frac{n^2\sin(1/n)+\ln n}{n+1};\qquad \frac{3^{n+1}+2^n}{3^n+n^3};\qquad n\bigl(\ln(n+1)-\ln n\bigr);\qquad \sqrt n\bigl(\sqrt{n+1}-\sqrt n\bigr).
+\]
+\end{esercizio}
+\risp{$n^2\sin\frac1n=n\cdot\frac{\sin(1/n)}{1/n}$, quindi il quoziente è $\frac{n\cdot\frac{\sin(1/n)}{1/n}+\ln n}{n+1}\to1$; \ $\frac{3+(2/3)^n}{1+n^3/3^n}\to3$; \ $\ln\bigl(1+\frac1n\bigr)^n\to\ln e=1$; \ $\frac{\sqrt n}{\sqrt{n+1}+\sqrt n}\to\frac12$.}
+
+\begin{esercizio}[\liv{3}]
+Al variare del parametro $a>0$, calcolare $\lim\dfrac{a^n+n^2}{2^n+n}$.
+\end{esercizio}
+\risp{Se $a>2$: $+\infty$ (si divide per $2^n$: $(\frac a2)^n\to+\infty$). Se $a=2$: $1$. Se $0<a<2$: $0$ (anche per $a\le1$, dove $a^n$ resta limitato e $\frac{n^2}{2^n}\to0$).}
+
+\begin{esercizio}[\liv{3}]
+Vero o falso? Motivare. (a) Se $a_n\to1$ e $b_n\to+\infty$, allora $a_n^{b_n}\to1$. (b) Se $a_n\to\frac12$ e $b_n\to+\infty$, allora $a_n^{b_n}\to0$. (c) Se $\frac{a_n}{b_n}\to1$ e $b_n\to+\infty$, allora $a_n-b_n\to0$. (d) Se $a_n\to0$, allora $\frac{\sin a_n}{a_n}\to1$.
+\end{esercizio}
+\risp{(a) Falso: $(1+\frac1n)^n\to e$. (b) Vero: è una forma determinata ($b_n\ln a_n\to-\infty$). (c) Falso: $a_n=n+1$, $b_n=n$, la differenza è $1$; con $a_n=n+\sqrt n$ diverge. (d) Falso così come è scritto: serve $a_n\ne0$ (altrimenti il quoziente non è definito), ma con $a_n\ne0$ è vero.}
+
+%-------------------------------------------------------------------
+\stampasoluzioni

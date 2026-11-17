@@ -1,0 +1,210 @@
+% !TEX root =esercizi.tex
+% ---------------------------------------------------------------------
+% Scheda 7: Lezioni 19--21 (regole di derivazione; estremi, Fermat,
+% ottimizzazione; L21 = esercitazione del 9/11, con gli esercizi del
+% fascicolo esercitazione-9-novembre e le loro soluzioni).
+% Le derivate delle inverse trigonometriche sono state svolte in L19 ma
+% non sono materia della prima prova.
+% ---------------------------------------------------------------------
+\chapter{Lezioni 19--21 (4 -- 9 novembre 2026)}
+
+\begin{vuoto}[Argomenti svolti]{}
+\begin{itemize}
+\item[\bul] \textbf{Lezione 19 --- Regole di derivazione}. Dimostrazione delle regole della somma, del prodotto e del quoziente; regola della funzione composta; derivata della funzione inversa (argomento geometrico) e delle inverse trigonometriche; approssimazione lineare (formula di Taylor al primo ordine), il simbolo $o$ piccolo e gli sviluppi al primo ordine delle funzioni elementari.
+\item[\bul] \textbf{Lezione 20 --- Massimi, minimi e il teorema di Fermat}. Massimi e minimi assoluti e locali; teorema di Fermat; metodo dei candidati in un intervallo chiuso; problemi di ottimizzazione; il problema di Fermat dei tre punti; il rettangolo di perimetro assegnato. Lettura: il problema di Didone e la disuguaglianza isoperimetrica.
+\item[\bul] \textbf{Lezione 21 --- Esercitazione in vista della prima prova}. Correzione del fascicolo distribuito prima della lezione: calcolo combinatorio, percentuali e progressioni, disequazioni, campi di esistenza, limiti di successioni e di funzioni, calcolo di derivate. Gli esercizi sono riportati qui sotto, con le soluzioni.
+\end{itemize}
+\end{vuoto}
+
+Il livello di difficoltà è indicato con \liv{1} (esercizio di base), \liv{2} (esercizio standard), \liv{3} (esercizio più impegnativo).
+
+\begin{vuoto}[Promemoria: regole di derivazione]{}
+$(f+g)'=f'+g'$, \quad $(fg)'=f'g+fg'$, \quad $\Bigl(\dfrac fg\Bigr)'=\dfrac{f'g-fg'}{g^2}$, \quad $\bigl(g(f(x))\bigr)'=g'\bigl(f(x)\bigr)\,f'(x)$.\\[2pt]
+Inversa: $(f^{-1})'(y_0)=\dfrac1{f'(x_0)}$ con $y_0=f(x_0)$. \quad $(\arctan x)'=\dfrac1{1+x^2}$, \ $(\arcsin x)'=\dfrac1{\sqrt{1-x^2}}$, \ $(\arccos x)'=-\dfrac1{\sqrt{1-x^2}}$.\\[2pt]
+Approssimazione lineare: $f(x_0+h)\approx f(x_0)+f'(x_0)\,h$; \ per $x\to0$: $e^x=1+x+o(x)$, $\sin x=x+o(x)$, $\ln(1+x)=x+o(x)$, $(1+x)^\alpha=1+\alpha x+o(x)$.
+\end{vuoto}
+
+%-------------------------------------------------------------------
+\section{Regole di derivazione e funzione composta (L19)}
+
+\begin{esercizio}[\liv{1}]
+Derivare: \ (a) $x^3\sin x$; \ (b) $\dfrac{x^2+1}{x-1}$; \ (c) $e^{-x^2}$; \ (d) $\ln(\cos x)$; \ (e) $(3x-2)^7$; \ (f) $\sqrt{x^2+9}$.
+\end{esercizio}
+\risp{(a) $3x^2\sin x+x^3\cos x$. (b) $\frac{2x(x-1)-(x^2+1)}{(x-1)^2}=\frac{x^2-2x-1}{(x-1)^2}$. (c) $-2x\,e^{-x^2}$. (d) $\frac{-\sin x}{\cos x}=-\tan x$, dove $\cos x>0$. (e) $21(3x-2)^6$. (f) $\frac x{\sqrt{x^2+9}}$.}
+
+\begin{esercizio}[\liv{2}]
+Derivare: \ (a) $e^x\sin2x$; \ (b) $\ln\dfrac{x+1}{x^2+1}$; \ (c) $x^x$ per $x>0$ (si scriva $x^x=e^{x\ln x}$); \ (d) $\sin^3(x^2)$.
+\end{esercizio}
+\risp{(a) $e^x(\sin2x+2\cos2x)$. (b) Con le proprietà del logaritmo, $\ln(x+1)-\ln(x^2+1)$: derivata $\frac1{x+1}-\frac{2x}{x^2+1}$, per $x>-1$. (c) $e^{x\ln x}(\ln x+1)=x^x(\ln x+1)$. (d) Tre funzioni annidate: $3\sin^2(x^2)\cdot\cos(x^2)\cdot2x=6x\sin^2(x^2)\cos(x^2)$.}
+
+\begin{esercizio}[\liv{2}]
+(a) Con la regola della funzione inversa, ricavare $(\ln y)'=\frac1y$ da $(e^x)'=e^x$, e $(\sqrt y)'=\frac1{2\sqrt y}$ da $(x^2)'=2x$ (per $x>0$). \ (b) Derivare $\arctan(e^x)$ e $\arcsin\sqrt x$ (per $0<x<1$).
+\end{esercizio}
+\risp{(a) Se $y=e^x$, allora $(\ln y)'=\frac1{e^x}=\frac1y$; se $y=x^2$ con $x>0$, allora $(\sqrt y)'=\frac1{2x}=\frac1{2\sqrt y}$. (b) $\frac{e^x}{1+e^{2x}}$; \ $\frac1{\sqrt{1-x}}\cdot\frac1{2\sqrt x}=\frac1{2\sqrt{x(1-x)}}$.}
+
+\begin{esercizio}[\liv{1}]
+Scrivere l'equazione della retta tangente: \ (a) a $y=\ln x$ in $x_0=e$; \ (b) a $y=x^3-2x$ in $x_0=-1$; \ (c) a $y=\tan x$ in $x_0=\frac\pi4$.
+\end{esercizio}
+\risp{(a) $f(e)=1$, $f'(e)=\frac1e$: $y=1+\frac{x-e}e=\frac xe$ (passa per l'origine). (b) $f(-1)=1$, $f'(-1)=3-2=1$: $y=x+2$. (c) $f\bigl(\frac\pi4\bigr)=1$, $f'\bigl(\frac\pi4\bigr)=\frac1{\cos^2(\pi/4)}=2$: $y=1+2\bigl(x-\frac\pi4\bigr)$.}
+
+\begin{esercizio}[\liv{2}]
+Con l'approssimazione lineare stimare $\sqrt{4{,}1}$, $\ln(1{,}02)$ ed $e^{0{,}03}$, e confrontare con la calcolatrice.
+\end{esercizio}
+\risp{$\sqrt{4+h}\approx2+\frac h4$: $\sqrt{4{,}1}\approx2{,}025$ (calcolatrice $2{,}02485$). $\ln(1+h)\approx h$: $\ln1{,}02\approx0{,}02$ (calcolatrice $0{,}01980$). $e^h\approx1+h$: $e^{0{,}03}\approx1{,}03$ (calcolatrice $1{,}03045$). L'errore è dell'ordine di $h^2$.}
+
+\begin{esercizio}[\liv{2}]
+Il raggio di una sfera è misurato in $r=5$ cm, con un errore di $0{,}1$ cm. Stimare con l'approssimazione lineare l'errore sul volume $V=\frac43\pi r^3$, assoluto e relativo.
+\end{esercizio}
+\risp{$\Delta V\approx V'(r)\,\Delta r=4\pi r^2\cdot0{,}1=10\pi\approx31{,}4$ cm$^3$, su un volume di circa $523{,}6$ cm$^3$: errore relativo $\approx6\%$, cioè tre volte l'errore relativo sul raggio ($2\%$), perché $V$ è proporzionale a $r^3$.}
+
+\begin{esercizio}[\liv{3}]
+Con gli sviluppi al primo ordine calcolare: \ (a) $\displaystyle\lim_{x\to0}\frac{e^{2x}-1-\sin x}x$; \ (b) $\displaystyle\lim_{x\to0}\frac{\sqrt{1+2x}-\cos x}x$; \ (c) $\displaystyle\lim_{x\to0}\frac{(1+x)^5-1}{\sin3x}$.
+\end{esercizio}
+\risp{(a) $e^{2x}=1+2x+o(x)$, $\sin x=x+o(x)$: il numeratore è $x+o(x)$, limite $1$. (b) $\sqrt{1+2x}=1+x+o(x)$, $\cos x=1+o(x)$: limite $1$. (c) $\frac{5x+o(x)}{3x+o(x)}\to\frac53$.}
+
+%-------------------------------------------------------------------
+\section{Massimi, minimi e ottimizzazione (L20)}
+
+\begin{esercizio}[\liv{1}]
+Trovare massimo e minimo assoluti con il metodo dei candidati: \ (a) $x^3-3x^2+1$ su $[-1,3]$; \ (b) $x+\dfrac4x$ su $[1,4]$; \ (c) $|x^2-1|$ su $[-2,2]$.
+\end{esercizio}
+\risp{(a) $f'=3x^2-6x$, critici $0$ e $2$; $f(-1)=-3$, $f(0)=1$, $f(2)=-3$, $f(3)=1$: massimo $1$ in $0$ e in $3$, minimo $-3$ in $-1$ e in $2$. (b) $f'=1-\frac4{x^2}$, critico $2$; $f(1)=5$, $f(2)=4$, $f(4)=5$: massimo $5$ in $1$ e $4$, minimo $4$ in $2$. (c) Candidati: estremi $\pm2$ (valore $3$), punti di non derivabilità $\pm1$ (valore $0$), punto critico $0$ (valore $1$): massimo $3$, minimo $0$.}
+
+\begin{esercizio}[\liv{2}]
+Una funzione derivabile su $[0,4]$ ha il massimo in $x=4$, e la sua derivata sinistra in $4$ vale $3$. Questo contraddice il teorema di Fermat? E se il massimo fosse in $x=2$, con $f'(2)=3$?
+\end{esercizio}
+\risp{Nel primo caso no: Fermat vale per i punti \emph{interni}, e $4$ è un estremo dell'intervallo. Nel secondo caso sì: in un punto interno di massimo in cui $f$ è derivabile deve essere $f'=0$; quindi una tale funzione non esiste.}
+
+\begin{esercizio}[\liv{2}]
+Fra i rettangoli inscritti in un semicerchio di raggio $R$, con un lato sul diametro, trovare quello di area massima.
+\end{esercizio}
+\risp{Con il lato sul diametro lungo $2x$ e l'altezza $\sqrt{R^2-x^2}$: $A=2x\sqrt{R^2-x^2}$ per $0\le x\le R$. Conviene il quadrato $A^2=4x^2(R^2-x^2)$, con derivata $8xR^2-16x^3$, nulla in $x=\frac R{\sqrt2}$; agli estremi l'area è $0$. Il rettangolo ha lati $\sqrt2\,R$ e $\frac R{\sqrt2}$, e area $R^2$.}
+
+\begin{esercizio}[\liv{2}]
+Un recinto rettangolare di $200$ m$^2$ ha un lato lungo un muro, dove la rete non serve. Quali dimensioni rendono minima la rete? Quanta rete servirebbe per un recinto a semicerchio della stessa area, con il diametro sul muro?
+\end{esercizio}
+\risp{Con $x$ i lati perpendicolari al muro: rete $L(x)=2x+\frac{200}x$ per $x>0$, che tende a $+\infty$ agli estremi; $L'=2-\frac{200}{x^2}=0$ per $x=10$: recinto $10\times20$ m, $40$ m di rete. Semicerchio: $\frac12\pi r^2=200$, $r\approx11{,}28$ m, rete $\pi r\approx35{,}4$ m. È il problema di Didone (\S20.6).}
+
+\begin{esercizio}[\liv{3}]
+Tre villaggi sono ai vertici di un triangolo equilatero di lato $6$ km. Dove conviene mettere il punto di raccordo della rete di strade più corta? Quanto è lunga la rete? Confrontarla con la rete fatta da due lati del triangolo.
+\end{esercizio}
+\risp{Per la regola dei $120^\circ$ il raccordo è il centro del triangolo, che vede ogni lato sotto un angolo di $120^\circ$. Dista $\frac6{\sqrt3}=2\sqrt3$ km da ciascun vertice: la rete è lunga $6\sqrt3\approx10{,}39$ km, contro i $12$ km di due lati.}
+
+\begin{esercizio}[\liv{1}]
+Con una corda lunga $60$ m si recinta (a) un quadrato, (b) un esagono regolare, (c) un cerchio. Calcolare le tre aree.
+\end{esercizio}
+\risp{(a) $15^2=225$ m$^2$. (b) Sei triangoli equilateri di lato $10$: $6\cdot\frac{\sqrt3}4\cdot100\approx259{,}8$ m$^2$. (c) $\frac{60^2}{4\pi}\approx286{,}5$ m$^2$. Il cerchio vince, come dice la disuguaglianza isoperimetrica.}
+
+%-------------------------------------------------------------------
+\section{Lezione 21: esercitazione in vista della prima prova}
+
+Sono gli esercizi del fascicolo dell'esercitazione del 9 novembre (capitolo 21 degli appunti). Ogni soluzione si chiude con un breve riepilogo della teoria che serve (\emph{In breve}).
+
+\subsection*{Calcolo combinatorio}
+\begin{esercizio}[\liv{1}]
+(a) In quanti modi si possono disporre $5$ libri diversi su uno scaffale? (b) Quante ``parole'' di $4$ lettere (anche prive di senso) si possono scrivere con le $21$ lettere dell'alfabeto italiano? E quante senza lettere ripetute? (c) In un'aiuola ci sono $10$ piante, e se ne scelgono $3$ da campionare: in quanti modi?
+\end{esercizio}
+\risp{(a) Permutazioni: $5!=120$. (b) Disposizioni con ripetizione: $21^4=194\,481$; senza ripetizione: $21\cdot20\cdot19\cdot18=143\,640$. (c) L'ordine non conta: $\binom{10}3=\frac{10\cdot9\cdot8}{3!}=120$. \textit{In breve:} \emph{Permutazioni} di $n$ oggetti: $n!$. \emph{Disposizioni} di $k$ oggetti scelti fra $n$ (l'ordine conta): $n^k$ con ripetizione, $n(n-1)\cdots(n-k+1)$ senza. \emph{Combinazioni} (l'ordine non conta): $\binom nk=\frac{n!}{k!\,(n-k)!}$.}
+
+\begin{esercizio}[\liv{2}]
+(a) Un test ha $10$ domande vero/falso. Quanti sono i modi di rispondere a tutte? In quanti modi si possono dare esattamente $7$ risposte giuste? (b) Calcolare il coefficiente di $x^3$ nello sviluppo di $(2+x)^5$. (c) Da un gruppo di $6$ biologi e $4$ geologi si forma una commissione di $3$ persone. Quante commissioni contengono almeno un geologo?
+\end{esercizio}
+\risp{(a) $2^{10}=1024$; per scegliere quali $7$ domande sono giuste: $\binom{10}7=120$. (b) Binomio di Newton: il termine con $x^3$ è $\binom53\,2^2x^3$, e il coefficiente è $10\cdot4=40$. (c) Conviene contare il complementare: tutte le commissioni sono $\binom{10}3=120$, quelle di soli biologi $\binom63=20$; quindi $120-20=100$. \textit{In breve:} $n$ scelte fra due possibilità: $2^n$; scegliere \emph{quali} $k$ fra $n$: $\binom nk$. Binomio di Newton: $(a+b)^n=\sum_{k=0}^n\binom nk a^{n-k}b^k$. ``Almeno uno'': conviene contare il complementare (tutti meno ``nessuno'').}
+
+
+\subsection*{Percentuali e progressioni}
+\begin{esercizio}[\liv{1}]
+Una popolazione di $2000$ individui aumenta del $10\%$ il primo anno, diminuisce del $10\%$ il secondo, aumenta del $20\%$ il terzo. (a) Quanti individui ci sono dopo tre anni? (b) Qual è la variazione percentuale complessiva? (c) Quale tasso annuo costante darebbe lo stesso risultato in tre anni?
+\end{esercizio}
+\risp{(a) $2000\cdot1{,}1\cdot0{,}9\cdot1{,}2=2376$. (b) $\frac{2376}{2000}=1{,}188$: $+18{,}8\%$ (non $+20\%$: le variazioni si moltiplicano, non si sommano). (c) $(1+p)^3=1{,}188$, quindi $1+p=\sqrt[3]{1{,}188}\approx1{,}059$: circa $5{,}9\%$ all'anno. \textit{In breve:} Aumentare del $p\%$ vuol dire moltiplicare per $1+\frac p{100}$, diminuire del $p\%$ per $1-\frac p{100}$: le variazioni successive si \emph{moltiplicano}, non si sommano. Un tasso costante $p$ per $n$ periodi dà il fattore $(1+p)^n$.}
+
+\begin{esercizio}[\liv{1}]
+Un prezzo viene scontato del $20\%$ e poi aumentato del $20\%$. (a) Il prezzo finale è maggiore, minore o uguale a quello iniziale, e di quanto per cento? (b) Di quanto per cento si sarebbe dovuto aumentare il prezzo scontato per tornare a quello iniziale?
+\end{esercizio}
+\risp{(a) $0{,}8\cdot1{,}2=0{,}96$: il prezzo è diminuito del $4\%$. (b) Serve $0{,}8\,(1+p)=1$, cioè $1+p=1{,}25$: un aumento del $25\%$. \textit{In breve:} $(1-p)(1+p)=1-p^2<1$: uno sconto e un aumento della stessa percentuale non si compensano. Per annullare il fattore $f$ serve il fattore $\frac1f$.}
+
+\begin{esercizio}[\liv{2}]
+(a) Calcolare $1+2+4+\dots+2^{10}$. (b) Un paziente assume ogni giorno, alla stessa ora, una dose di $100$ mg di un farmaco; in un giorno l'organismo ne elimina il $40\%$, cioè ne resta il $60\%$. Mostrare che subito dopo la $n$-esima dose la quantità nell'organismo è
+\[
+Q_n=100\,\bigl(1+0{,}6+0{,}6^2+\dots+0{,}6^{n-1}\bigr)\ \text{mg},
+\]
+e calcolarla con la formula della somma geometrica. Quanto vale dopo $5$ dosi? A che cosa tende per $n\to\infty$?
+\end{esercizio}
+\risp{(a) È una somma geometrica di ragione $2$ con $11$ termini: $\frac{2^{11}-1}{2-1}=2047$. (b) Dopo la prima dose: $100$; prima della seconda ne resta $60$, e con la seconda dose $100+60$; prima della terza ne resta $0{,}6(100+60)=60+36$, e con la terza $100+60+36=100(1+0{,}6+0{,}6^2)$; e così via. Per la formula, $Q_n=100\cdot\frac{1-0{,}6^n}{1-0{,}6}=250\,(1-0{,}6^n)$. Dopo $5$ dosi: $250\,(1-0{,}07776)\approx230{,}6$ mg. Poiché $0{,}6^n\to0$, $Q_n\to250$ mg: la quantità si stabilizza. \textit{In breve:} Somma geometrica: $1+q+q^2+\dots+q^{n-1}=\frac{1-q^n}{1-q}$ per $q\ne1$. Se $|q|<1$, allora $q^n\to0$ e la somma tende a $\frac1{1-q}$.}
+
+
+\subsection*{Disequazioni}
+\begin{esercizio}[\liv{1}]
+Risolvere: \ (a) $\dfrac{x^2-5x+6}{x-1}\le0$; \ (b) $|2x-3|<x$; \ (c) $\sqrt{x+3}>x-3$.
+\end{esercizio}
+\risp{(a) Numeratore $(x-2)(x-3)$, denominatore $x-1$; tabella dei segni: $x<1$ oppure $2\le x\le3$. (b) Serve $x>0$; poi $-x<2x-3<x$, cioè $x>1$ e $x<3$: $1<x<3$. (c) Dominio $x\ge-3$. Se $x<3$ il secondo membro è negativo e la disequazione è vera: $-3\le x<3$. Se $x\ge3$ si eleva al quadrato: $x+3>x^2-6x+9$, cioè $x^2-7x+6<0$, $1<x<6$: quindi $3\le x<6$. In tutto: $-3\le x<6$. \textit{In breve:} \emph{Fratte}: tutto a un membro, segno di numeratore e denominatore, tabella dei segni; il denominatore non si annulla. \emph{Modulo}: $|A|<B\iff-B<A<B$. \emph{Irrazionali}: $\sqrt A>B$ se $B<0$ e $A\ge0$, oppure se $B\ge0$ e $A>B^2$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere: \ (a) $4^x-3\cdot2^x-4>0$; \ (b) $\log_2(x-1)+\log_2(x+1)\le3$; \ (c) $(\ln x)^2-\ln x-2\ge0$.
+\end{esercizio}
+\risp{(a) Con $t=2^x>0$: $t^2-3t-4=(t-4)(t+1)>0$; poiché $t+1>0$, serve $t>4$, cioè $x>2$. (b) Dominio $x>1$; $\log_2(x^2-1)\le3$, cioè $x^2-1\le8$, $|x|\le3$: con il dominio, $1<x\le3$. (c) Con $t=\ln x$ ($x>0$): $(t-2)(t+1)\ge0$, cioè $t\le-1$ oppure $t\ge2$: $0<x\le\frac1e$ oppure $x\ge e^2$. \textit{In breve:} \emph{Esponenziali}: con $t=a^x>0$ si passa a una disequazione algebrica; poi si torna a $x$ ricordando che $a^x$ è crescente se $a>1$. \emph{Logaritmi}: prima il dominio (argomenti $>0$), poi $\log_aA+\log_aB=\log_a(AB)$, e $\log_a$ crescente se $a>1$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere in $[0,2\pi]$: \ (a) $2\sin x-1\ge0$; \ (b) $2\cos^2x-\cos x-1<0$. \ Risolvere in $\bigl]-\frac\pi2,\frac\pi2\bigr[$: \ (c) $\tan x>1$.
+\end{esercizio}
+\risp{(a) $\sin x\ge\frac12$: $\frac\pi6\le x\le\frac{5\pi}6$. (b) Con $t=\cos x$: $(2t+1)(t-1)<0$, cioè $-\frac12<\cos x<1$: $0<x<\frac{2\pi}3$ oppure $\frac{4\pi}3<x<2\pi$ (si escludono $0$ e $2\pi$, dove $\cos x=1$). (c) $\frac\pi4<x<\frac\pi2$. \textit{In breve:} Si risolve l'equazione associata nell'intervallo dato e si legge il segno sulla circonferenza goniometrica (o sul grafico). Con $t=\sin x$ o $t=\cos x$ si passa a una disequazione algebrica, ricordando che $-1\le t\le1$. $\tan x$ è crescente in $\bigl]-\frac\pi2,\frac\pi2\bigr[$.}
+
+
+\subsection*{Campi di esistenza}
+\begin{esercizio}[\liv{1}]
+Determinare il dominio di: \ (a) $\sqrt{\dfrac{x-1}{x+2}}$; \ (b) $\ln(4-x^2)$; \ (c) $\dfrac1{e^x-1}$; \ (d) $\arcsin(2x-1)$.
+\end{esercizio}
+\risp{(a) $\frac{x-1}{x+2}\ge0$: $x<-2$ oppure $x\ge1$. (b) $4-x^2>0$: $-2<x<2$. (c) $e^x\ne1$: $x\ne0$. (d) $-1\le2x-1\le1$: $0\le x\le1$. \textit{In breve:} Le condizioni di esistenza, da mettere a sistema: radice di indice pari, radicando $\ge0$; logaritmo, argomento $>0$; denominatore $\ne0$; $\arcsin$ e $\arccos$, argomento fra $-1$ e $1$.}
+
+\begin{esercizio}[\liv{2}]
+Determinare il dominio di: \ (a) $\sqrt{\ln(x-2)}$; \ (b) $\ln(\sin x)$ in $[0,2\pi]$; \ (c) $\sqrt{2-|x-1|}$; \ (d) $\dfrac1{\sqrt{x^2-3x}}+\ln(5-x)$; \ (e) $\arccos(\ln x)$.
+\end{esercizio}
+\risp{(a) $x>2$ e $\ln(x-2)\ge0$, cioè $x-2\ge1$: $x\ge3$. (b) $\sin x>0$: $0<x<\pi$. (c) $|x-1|\le2$: $-1\le x\le3$. (d) $x^2-3x>0$ ($x<0$ oppure $x>3$) e $x<5$: $x<0$ oppure $3<x<5$. (e) $x>0$ e $-1\le\ln x\le1$: $\frac1e\le x\le e$. \textit{In breve:} In una composizione ogni funzione impone le sue condizioni, anche su ciò che sta dentro: in $\sqrt{\ln(x-2)}$ servono $x-2>0$ (logaritmo) e $\ln(x-2)\ge0$ (radice). $\ln t\ge0\iff t\ge1$; $\sin x>0$ in $]0,\pi[$.}
+
+
+\subsection*{Limiti di successioni}
+\begin{esercizio}[\liv{1}]
+Calcolare: \ (a) $\dfrac{3n^2-n}{1-2n^2}$; \ (b) $\sqrt{n^2+n}-n$; \ (c) $\dfrac{2^n+n^3}{3^n}$; \ (d) $n\sin\dfrac2n$; \ (e) $\Bigl(1+\dfrac3n\Bigr)^n$.
+\end{esercizio}
+\risp{(a) $-\frac32$ (stesso grado: rapporto dei coefficienti direttivi). (b) Razionalizzando, $\frac n{\sqrt{n^2+n}+n}=\frac1{\sqrt{1+1/n}+1}\to\frac12$. (c) $\bigl(\frac23\bigr)^n+\frac{n^3}{3^n}\to0$ (gerarchia). (d) $2\cdot\frac{\sin(2/n)}{2/n}\to2$. (e) $\Bigl[\bigl(1+\frac1{n/3}\bigr)^{n/3}\Bigr]^3\to e^3$. \textit{In breve:} Quoziente di polinomi: si raccoglie la potenza più alta. $\infty-\infty$ con le radici: si razionalizza. Gerarchia: $n^\alpha\ll b^n$ ($b>1$). Limiti notevoli con $a_n\to0$: $\frac{\sin a_n}{a_n}\to1$; e $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$ con $a_n\to\pm\infty$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare: \ (a) $\Bigl(\dfrac{n-1}{n+1}\Bigr)^n$; \ (b) $n\bigl(e^{1/n}-1\bigr)$; \ (c) $n^2\Bigl(1-\cos\dfrac1n\Bigr)$; \ (d) $\dfrac{(\ln n)^2}{\sqrt n}$; \ (e) $\dfrac{n^2+2^n}{n!}$.
+\end{esercizio}
+\risp{(a) $\frac{n-1}{n+1}=1-\frac2{n+1}=1+\frac1{a_n}$ con $a_n=-\frac{n+1}2\to-\infty$; l'esponente è $n=a_n\cdot\frac{-2n}{n+1}$, con $\frac{-2n}{n+1}\to-2$: il limite è $e^{-2}$. (b) Con $a_n=\frac1n\to0$: $\frac{e^{a_n}-1}{a_n}\to1$. (c) $\frac{1-\cos a_n}{a_n^2}\to\frac12$, con $a_n=\frac1n$. (d) $0$ (gerarchia: ogni potenza di $n$ batte ogni potenza del logaritmo). (e) $0$: il fattoriale batte sia le potenze sia gli esponenziali. \textit{In breve:} La forma $1^\infty$ si riconduce a $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$. Con $a_n\to0$: $\frac{e^{a_n}-1}{a_n}\to1$, $\frac{1-\cos a_n}{a_n^2}\to\frac12$. Gerarchia: $\ln n\ll n^\alpha\ll b^n\ll n!$.}
+
+
+\subsection*{Limiti di funzioni}
+\begin{esercizio}[\liv{1}]
+Calcolare: \ (a) $\lim\limits_{x\to2}\dfrac{x^2-4}{x^2-3x+2}$; \ (b) $\lim\limits_{x\to+\infty}\dfrac{2x^3+1}{x^3-x}$; \ (c) $\lim\limits_{x\to0}\dfrac{\sin3x}{2x}$; \ (d) $\lim\limits_{x\to0}\dfrac{e^{2x}-1}{\sin x}$; \ (e) $\lim\limits_{x\to0}\dfrac{\ln(1+3x)}x$; \ (f) $\lim\limits_{x\to+\infty}x\,e^{-x}$.
+\end{esercizio}
+\risp{(a) $\frac{(x-2)(x+2)}{(x-2)(x-1)}=\frac{x+2}{x-1}\to4$. (b) $2$. (c) $\frac32\cdot\frac{\sin3x}{3x}\to\frac32$. (d) $\frac{e^{2x}-1}{2x}\cdot\frac x{\sin x}\cdot2\to2$. (e) $3\cdot\frac{\ln(1+3x)}{3x}\to3$. (f) $\frac x{e^x}\to0$ (gerarchia). \textit{In breve:} $\frac00$ con polinomi: si scompone e si semplifica il fattore che si annulla. Limiti notevoli per $x\to0$: $\frac{\sin x}x$, $\frac{e^x-1}x$, $\frac{\ln(1+x)}x\to1$; per $x\to+\infty$ l'esponenziale batte ogni potenza.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare: \ (a) $\lim\limits_{x\to0}\dfrac{1-\cos2x}{x\tan x}$; \ (b) $\lim\limits_{x\to+\infty}\Bigl(1-\dfrac2x\Bigr)^x$; \ (c) $\lim\limits_{x\to0^+}x\ln x$; \ (d) $\lim\limits_{x\to1}\dfrac{\ln x}{x^2-1}$; \ (e) $\lim\limits_{x\to+\infty}x\bigl(\ln(x+1)-\ln x\bigr)$; \ (f) $\lim\limits_{x\to0}\dfrac{\sqrt{1+x}-1}{e^x-1}$.
+\end{esercizio}
+\risp{(a) $4\cdot\frac{1-\cos2x}{(2x)^2}\cdot\frac x{\tan x}\to4\cdot\frac12\cdot1=2$. (b) Con $t=-\frac x2\to-\infty$: $\bigl(1+\frac1t\bigr)^{-2t}\to e^{-2}$. (c) Con $t=\frac1x\to+\infty$: $-\frac{\ln t}t\to0$. (d) Con $t=x-1\to0$: $\frac{\ln(1+t)}t\cdot\frac1{x+1}\to1\cdot\frac12=\frac12$. (e) $x\ln\bigl(1+\frac1x\bigr)$; con $t=\frac1x\to0^+$: $\frac{\ln(1+t)}t\to1$. (f) $\frac{(1+x)^{1/2}-1}x\cdot\frac x{e^x-1}\to\frac12\cdot1=\frac12$. \textit{In breve:} \emph{Cambio di variabile}: si pone $t=g(x)$, si dice dove va $t$, e ci si riconduce a un limite notevole. Utili: $\bigl(1+\frac ax\bigr)^x\to e^a$ per $x\to\pm\infty$; $x\ln x\to0$ per $x\to0^+$; $\frac{(1+x)^\alpha-1}x\to\alpha$ per $x\to0$.}
+
+\begin{esercizio}[\liv{2}]
+(a) Trovare tutti gli asintoti di $f(x)=\dfrac{x^2+1}{x-1}$. (b) Calcolare i limiti destro e sinistro di $e^{1/x}$ in $0$, e classificare il punto di discontinuità. (c) Per quali $a$ e $b$ la funzione che vale $ax+b$ per $x<0$ e $e^{2x}$ per $x\ge0$ è continua in $0$? Per quali è anche derivabile in $0$?
+\end{esercizio}
+\risp{(a) Verticale $x=1$ (limiti $\pm\infty$); obliquo: $m=\lim\frac{f(x)}x=1$, $q=\lim\bigl(f(x)-x\bigr)=\lim\frac{x+1}{x-1}=1$: $y=x+1$, da entrambe le parti. (b) Per $x\to0^+$, $\frac1x\to+\infty$ e $e^{1/x}\to+\infty$; per $x\to0^-$, $e^{1/x}\to0$: discontinuità di seconda specie. (c) Continuità: $b=e^0=1$. Derivabilità: la derivata sinistra è $a$, la destra è $2e^0=2$: serve $a=2$ (e $b=1$). \textit{In breve:} Asintoto verticale: un limite laterale infinito. Obliquo: $m=\lim\frac{f(x)}x$, $q=\lim\bigl(f(x)-mx\bigr)$, entrambi finiti. Seconda specie: un limite laterale infinito o inesistente. Continua in $x_0$: limiti laterali uguali a $f(x_0)$; derivabile: derivate laterali uguali (e continuità).}
+
+
+\subsection*{Calcolo di derivate}
+\begin{esercizio}[\liv{1}]
+Derivare: \ (a) $x^3-4x+2$; \ (b) $x^2\sin x$; \ (c) $\dfrac{x-1}{x+1}$; \ (d) $e^{3x}$; \ (e) $\ln(x^2+1)$; \ (f) $\sqrt{4-x^2}$; \ (g) $\sin^2x$; \ (h) $x\,e^{-x}$.
+\end{esercizio}
+\risp{(a) $3x^2-4$; (b) $2x\sin x+x^2\cos x$; (c) $\frac{(x+1)-(x-1)}{(x+1)^2}=\frac2{(x+1)^2}$; (d) $3e^{3x}$; (e) $\frac{2x}{x^2+1}$; (f) $-\frac x{\sqrt{4-x^2}}$, per $|x|<2$; (g) $2\sin x\cos x$; (h) $e^{-x}-x\,e^{-x}=(1-x)\,e^{-x}$. \textit{In breve:} $(fg)'=f'g+fg'$; \ $\bigl(\frac fg\bigr)'=\frac{f'g-fg'}{g^2}$; \ composta: $\bigl(g(f(x))\bigr)'=g'\bigl(f(x)\bigr)\,f'(x)$. Tabella: $(e^x)'=e^x$, $(\ln x)'=\frac1x$, $(\sqrt x)'=\frac1{2\sqrt x}$, $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$.}
+
+\begin{esercizio}[\liv{2}]
+Derivare: \ (a) $e^{x^2}\cos x$; \ (b) $\ln(\sin x)$; \ (c) $(x^2+1)^{10}$; \ (d) $\tan(x^2)$; \ (e) $\sqrt x\,\ln x$; \ (f) $\ln\dfrac{1+x}{1-x}$.
+\end{esercizio}
+\risp{(a) $e^{x^2}(2x\cos x-\sin x)$; (b) $\frac{\cos x}{\sin x}$, dove $\sin x>0$; (c) $20x\,(x^2+1)^9$; (d) $\frac{2x}{\cos^2(x^2)}=2x\bigl(1+\tan^2(x^2)\bigr)$ (attenzione: non è $\tan^2x$); (e) $\frac{\ln x}{2\sqrt x}+\frac{\sqrt x}x=\frac{\ln x+2}{2\sqrt x}$, per $x>0$; (f) scrivendo $\ln(1+x)-\ln(1-x)$: $\frac1{1+x}+\frac1{1-x}=\frac2{1-x^2}$, per $|x|<1$. \textit{In breve:} Più funzioni annidate: si deriva dall'esterno verso l'interno, moltiplicando le derivate. Prima di derivare conviene semplificare con le proprietà del logaritmo. $(\tan u)'=\frac{u'}{\cos^2u}=u'(1+\tan^2u)$.}
+
+\begin{esercizio}[\liv{2}]
+Scrivere l'equazione della retta tangente: \ (a) a $y=\ln(1+x)$ in $x_0=0$; \ (b) a $y=x^2e^x$ in $x_0=1$; \ (c) a $y=e^{-x^2}$ in $x_0=1$.
+\end{esercizio}
+\risp{(a) $f(0)=0$, $f'(0)=1$: $y=x$. (b) $f(1)=e$, $f'(x)=(x^2+2x)\,e^x$, $f'(1)=3e$: $y=e+3e(x-1)$. (c) $f(1)=\frac1e$, $f'(x)=-2x\,e^{-x^2}$, $f'(1)=-\frac2e$: $y=\frac1e-\frac2e\,(x-1)$, cioè $y=\frac{3-2x}e$. \textit{In breve:} Retta tangente al grafico di $f$ in $x_0$: $y=f(x_0)+f'(x_0)(x-x_0)$. Servono due numeri: il valore $f(x_0)$ e la pendenza $f'(x_0)$.}
+
+\stampasoluzioni

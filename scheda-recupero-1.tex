@@ -1,0 +1,295 @@
+% !TEX root =esercizi.tex
+% ---------------------------------------------------------------------
+% Scheda di recupero R1: argomenti della prima prova (11/11), con gli
+% errori più frequenti emersi nella correzione. Esercizi nuovi: non sono
+% presi dalla prova né dal fascicolo dell'esercitazione del 9/11.
+% Tutti i risultati sono stati verificati con sympy.
+% Le schede di recupero stanno in fondo a esercizi.tex, dopo le schede
+% settimanali; la numerazione R1, R2, ... non interferisce con le altre.
+% ---------------------------------------------------------------------
+\renewcommand{\thechapter}{R1}
+\chapter{Recupero della prima prova}
+\renewcommand{\thesection}{\arabic{section}}
+
+\begin{vuoto}[Come usare questa scheda]{}
+La scheda riprende gli argomenti della prima prova (11 novembre) seguendo l'ordine dei quesiti. Ogni sezione si apre con un promemoria e con \textbf{l'errore da evitare}, cioè l'errore che nella correzione si è visto più spesso. Gli esercizi sono nuovi e vanno in ordine di difficoltà: \liv{1} di base, \liv{2} standard, \liv{3} più impegnativo.
+
+Il consiglio è di svolgere ogni esercizio per iscritto, \emph{giustificando i passaggi}, e di confrontarvi con le soluzioni solo alla fine. Nella prova un risultato giusto ottenuto con un ragionamento sbagliato vale come esercizio sbagliato.
+\end{vuoto}
+
+%-------------------------------------------------------------------
+\section{Calcolo combinatorio: conta l'ordine?}
+
+\begin{vuoto}[Promemoria]{}
+Si scelgono $k$ oggetti distinti fra $n$. Se \textbf{conta l'ordine} (primo, secondo, terzo; parole; podi; cariche diverse) si contano le disposizioni $D_{n,k}=n(n-1)\cdots(n-k+1)$. Se \textbf{non conta l'ordine} (gruppi, commissioni, campioni) si contano le combinazioni $\binom nk=\dfrac{D_{n,k}}{k!}$.
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Usare $\binom nk$ quando l'ordine conta. Prima di calcolare chiedetevi: \emph{se scambio due degli oggetti scelti, ottengo un caso diverso?} Se sì, l'ordine conta.}
+
+\begin{esercizio}[\liv{1}]
+Dite se conta l'ordine e calcolate. \ (a) In un consiglio di $9$ persone si eleggono presidente, vicepresidente e segretario. \ (b) Fra le stesse $9$ persone si sceglie una commissione di $3$ membri. \ (c) Quante parole di $4$ lettere tutte diverse si formano con le lettere A, B, C, D, E, F? \ (d) Fra $11$ campioni d'acqua se ne scelgono $4$ da mandare in laboratorio.
+\end{esercizio}
+\risp{(a) Conta l'ordine (le cariche sono diverse): $D_{9,3}=9\cdot8\cdot7=504$. (b) Non conta: $\binom93=\frac{504}{3!}=84$. (c) Conta: $D_{6,4}=6\cdot5\cdot4\cdot3=360$. (d) Non conta: $\binom{11}4=330$.}
+
+\begin{esercizio}[\liv{2}]
+In un'area protetta ci sono $12$ stazioni di monitoraggio, $4$ delle quali vicino al fiume. Se ne ispezionano $5$. In quanti modi si possono scegliere: \ (a) in tutto; \ (b) con esattamente $2$ stazioni vicino al fiume; \ (c) con almeno una stazione vicino al fiume?
+\end{esercizio}
+\risp{(a) $\binom{12}5=792$. (b) Si scelgono $2$ stazioni fra le $4$ vicino al fiume e $3$ fra le altre $8$: $\binom42\binom83=6\cdot56=336$. (c) Conviene il complementare: le scelte \emph{senza} stazioni vicino al fiume sono $\binom85=56$, quindi $792-56=736$.}
+
+\begin{esercizio}[\liv{2}]
+Un'escursione tocca $3$ rifugi scelti fra $8$. (a) Quanti percorsi diversi ci sono, se conta l'ordine in cui si visitano? \ (b) Quante scelte dei rifugi ci sono, se conta solo quali si visitano? \ (c) Spiegate perché il primo numero è $6$ volte il secondo.
+\end{esercizio}
+\risp{(a) $D_{8,3}=336$. (b) $\binom83=56$. (c) Ogni scelta di $3$ rifugi si può percorrere in $3!=6$ ordini diversi: $336=56\cdot6$.}
+
+%-------------------------------------------------------------------
+\section{Progressioni geometriche}
+
+\begin{vuoto}[Promemoria]{}
+Se ogni termine è il precedente moltiplicato per $q$: $a_n=a_1\,q^{\,n-1}$, \quad $a_1+a_2+\dots+a_n=a_1\,\dfrac{q^n-1}{q-1}$ \ (con $q\ne1$).
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Sbagliare l'esponente di una unità: il primo termine è $a_1=a_1q^0$, quindi l'$n$-esimo è $a_1q^{\,n-1}$. Controllate sempre la formula su $n=1$ e $n=2$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolate la somma $3+6+12+\dots+384$. Quanti sono gli addendi?
+\end{esercizio}
+\risp{$q=2$ e $384=3\cdot2^7$, quindi l'ultimo termine è $a_8$: gli addendi sono $8$. Somma: $3\cdot\frac{2^8-1}{2-1}=3\cdot255=765$.}
+
+\begin{esercizio}[\liv{2}]
+Una coltura di batteri triplica ogni ora; alla fine della prima ora ci sono $600$ batteri. \ (a) Quanti batteri ci sono alla fine della sesta ora? \ (b) Alla fine di quale ora si superano per la prima volta $10^6$ batteri?
+\end{esercizio}
+\risp{$a_n=600\cdot3^{\,n-1}$. (a) $a_6=600\cdot3^5=145\,800$. (b) Serve $3^{\,n-1}>\frac{10^6}{600}\approx1666{,}7$, cioè $n-1>\frac{\log1666{,}7}{\log3}\approx6{,}76$: la prima ora intera è $n=8$ (controllo: $a_7=437\,400$, $a_8=1\,312\,200$).}
+
+%-------------------------------------------------------------------
+\section{Disequazioni esponenziali e logaritmiche: il verso}
+
+\begin{vuoto}[Promemoria]{}
+Se la base è $a>1$, le funzioni $a^x$ e $\log_a x$ sono crescenti e \textbf{il verso si conserva}. Se la base è $0<a<1$, sono decrescenti e \textbf{il verso si inverte}. Per i logaritmi, prima di tutto le condizioni di esistenza: gli argomenti devono essere positivi.
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Con base minore di $1$ si dimentica di invertire il verso. Lo stesso errore si fa dividendo per un logaritmo negativo, per esempio $\log0{,}9<0$.}
+
+\begin{esercizio}[\liv{1}]
+Risolvete: \ (a) $\Bigl(\dfrac13\Bigr)^{x-1}>9$; \qquad (b) $0{,}5^{\,2x}\le0{,}125$; \qquad (c) $2^{x^2}<16$.
+\end{esercizio}
+\risp{(a) $9=\bigl(\frac13\bigr)^{-2}$ e la base è minore di $1$: $x-1<-2$, cioè $x<-1$. (b) $0{,}125=0{,}5^3$, base minore di $1$: $2x\ge3$, cioè $x\ge\frac32$. (c) $16=2^4$, base maggiore di $1$: $x^2<4$, cioè $-2<x<2$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvete: \ (a) $\log_{1/2}(x-3)\ge-2$; \qquad (b) $\log_3(2x+1)<2$;\\ (c) $\log x+\log(x-2)<\log3$.
+\end{esercizio}
+\risp{(a) Esistenza: $x>3$. Poiché $-2=\log_{1/2}4$ e la base è minore di $1$: $x-3\le4$. Soluzione: $3<x\le7$. (b) Esistenza: $x>-\frac12$; $2x+1<9$, cioè $x<4$. Soluzione: $-\frac12<x<4$. (c) Esistenza: $x>2$. La disequazione diventa $\log\bigl(x(x-2)\bigr)<\log3$, cioè $x^2-2x-3<0$, $-1<x<3$. Con l'esistenza: $2<x<3$.}
+
+\begin{esercizio}[\liv{2}]
+La massa di una sostanza radioattiva, in grammi, è $m(t)=80\cdot0{,}9^{\,t}$ dopo $t$ anni. Dopo quanti anni interi la massa scende per la prima volta sotto $20$ grammi? Attenzione al verso quando dividete per $\log0{,}9$.
+\end{esercizio}
+\risp{$0{,}9^{\,t}<\frac14$. Passando ai logaritmi: $t\log0{,}9<\log\frac14$. Poiché $\log0{,}9<0$, dividendo il verso si inverte: $t>\frac{\log(1/4)}{\log0{,}9}\approx13{,}16$. Quindi dopo $14$ anni.}
+
+%-------------------------------------------------------------------
+\section{Disequazioni fratte: niente denominatori «mandati via»}
+
+\begin{vuoto}[Promemoria]{}
+Si porta tutto a primo membro, si fa il denominatore comune e si studia il \textbf{segno} di $\dfrac{N(x)}{D(x)}$: segno di $N$, segno di $D$, tabella dei segni. Gli zeri di $D$ sono sempre esclusi; gli zeri di $N$ sono inclusi solo con $\le$ o $\ge$.
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Moltiplicare entrambi i membri per il denominatore. Non se ne conosce il segno, quindi non si sa se il verso resta o si inverte. Altri due errori frequenti: studiare solo il segno dei denominatori, e includere un estremo in cui il denominatore si annulla.}
+
+\begin{esercizio}[\liv{1}]
+Risolvete: \ (a) $\dfrac{x+3}{x-2}\ge2$; \qquad (b) $\dfrac3x<\dfrac1{x+4}$.
+\end{esercizio}
+\risp{(a) $\frac{x+3-2(x-2)}{x-2}=\frac{7-x}{x-2}\ge0$: il numeratore è positivo o nullo per $x\le7$, il denominatore è positivo per $x>2$. Soluzione: $2<x\le7$. (b) $\frac{3(x+4)-x}{x(x+4)}=\frac{2(x+6)}{x(x+4)}<0$. Gli zeri sono $-6$, $-4$, $0$; dalla tabella dei segni: $x<-6$ oppure $-4<x<0$.}
+
+\begin{esercizio}[\liv{2}]
+Uno studente risolve $\dfrac1{x-1}\ge2$ così: «moltiplico per $x-1$: $1\ge2x-2$, quindi $x\le\frac32$». Mostrate con un valore di $x$ che la conclusione è sbagliata, trovate l'errore e risolvete correttamente.
+\end{esercizio}
+\risp{Per $x=0$ la conclusione dello studente è soddisfatta, ma $\frac1{0-1}=-1<2$. L'errore: per $x<1$ il fattore $x-1$ è negativo e il verso si inverte. Correttamente: $\frac{1-2(x-1)}{x-1}=\frac{3-2x}{x-1}\ge0$, quindi $1<x\le\frac32$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvete $\dfrac{x^2-4}{x^2-6x+5}\le0$.
+\end{esercizio}
+\risp{$\frac{(x-2)(x+2)}{(x-1)(x-5)}\le0$. Zeri del numeratore: $\pm2$, inclusi; zeri del denominatore: $1$ e $5$, esclusi. Dalla tabella dei segni: $-2\le x<1$ oppure $2\le x<5$.}
+
+%-------------------------------------------------------------------
+\section{Disequazioni irrazionali: i due sistemi}
+
+\begin{vuoto}[Promemoria]{}
+\[
+\sqrt{A(x)}<B(x)\iff\begin{cases}A(x)\ge0\\ B(x)>0\\ A(x)<B(x)^2\end{cases}
+\]
+\[
+\sqrt{A(x)}>B(x)\iff\begin{cases}B(x)<0\\ A(x)\ge0\end{cases}\ \text{oppure}\ \begin{cases}B(x)\ge0\\ A(x)>B(x)^2\end{cases}
+\]
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Elevare al quadrato senza condizioni, oppure, nel caso $\sqrt A>B$, dimenticare il primo sistema: quando $B<0$ la disequazione è vera ovunque la radice esiste.}
+
+\begin{esercizio}[\liv{1}]
+Risolvete: \ (a) $\sqrt{x+5}<x-1$; \qquad (b) $\sqrt{2x+6}\ge x+1$.
+\end{esercizio}
+\risp{(a) $x\ge-5$, $x>1$, $x+5<x^2-2x+1$, cioè $x^2-3x-4>0$: $x<-1$ oppure $x>4$. Mettendo insieme: $x>4$. (b) Primo sistema: $x+1<0$ e $2x+6\ge0$, cioè $-3\le x<-1$. Secondo sistema: $x\ge-1$ e $2x+6\ge x^2+2x+1$, cioè $x^2\le5$: $-1\le x\le\sqrt5$. Unione: $-3\le x\le\sqrt5$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvete $\sqrt{x^2-16}>x-2$.
+\end{esercizio}
+\risp{Primo sistema: $x-2<0$ e $x^2\ge16$, cioè $x\le-4$. Secondo sistema: $x\ge2$ e $x^2-16>x^2-4x+4$, cioè $x>5$. Soluzione: $x\le-4$ oppure $x>5$. Chi dimentica il primo sistema perde tutta la semiretta $x\le-4$.}
+
+%-------------------------------------------------------------------
+\section{Disequazioni trigonometriche e domini}
+
+\begin{vuoto}[Promemoria]{}
+$\sin^2x\ge a$ (con $0\le a\le1$) equivale a $|\sin x|\ge\sqrt a$, cioè $\sin x\ge\sqrt a$ \emph{oppure} $\sin x\le-\sqrt a$; analogamente per il coseno. Per i domini si scrivono \emph{tutte} le condizioni, una per ogni «pezzo» della funzione, e poi si mettono a sistema.
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errori da evitare.} (1) Da $\sin^2x\ge a$ passare a $\sin x\ge\sqrt a$, perdendo i valori negativi. (2) Nei domini con $\arcsin$ o $\arccos$, imporre la condizione $-1\le\cdot\le1$ alla somma intera invece che al solo argomento.}
+
+\begin{esercizio}[\liv{1}]
+Risolvete $2\sin^2x-1\le0$ nell'intervallo $[0,2\pi]$.
+\end{esercizio}
+\risp{$\sin^2x\le\frac12$, cioè $|\sin x|\le\frac{\sqrt2}2$: $-\frac{\sqrt2}2\le\sin x\le\frac{\sqrt2}2$. In $[0,2\pi]$: $0\le x\le\frac\pi4$, \ $\frac{3\pi}4\le x\le\frac{5\pi}4$, \ $\frac{7\pi}4\le x\le2\pi$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvete $\cos^2x-\cos x\ge0$ nell'intervallo $[0,2\pi]$. Attenzione ai punti isolati.
+\end{esercizio}
+\risp{$\cos x\,(\cos x-1)\ge0$. Poiché $\cos x-1\le0$ sempre, serve $\cos x\le0$ oppure $\cos x=1$. Soluzione: $\frac\pi2\le x\le\frac{3\pi}2$, più i punti isolati $x=0$ e $x=2\pi$.}
+
+\begin{esercizio}[\liv{2}]
+Determinate il dominio di:\\ (a) $f(x)=\log\dfrac{x-1}{4-x}+\sqrt x$; \qquad (b) $g(x)=\arcsin\dfrac{x+1}3+\dfrac1{x^2-4}$.
+\end{esercizio}
+\risp{(a) $\frac{x-1}{4-x}>0$, cioè $1<x<4$, e $x\ge0$: dominio $1<x<4$. (b) Per l'arcoseno, solo sul suo argomento: $-1\le\frac{x+1}3\le1$, cioè $-4\le x\le2$. Per la frazione: $x\ne\pm2$. Dominio: $-4\le x<-2$ oppure $-2<x<2$.}
+
+%-------------------------------------------------------------------
+\section{Limiti di successioni e la forma $1^\infty$}
+
+\begin{vuoto}[Promemoria]{}
+$1^\infty$ è una \textbf{forma indeterminata}. Se $a_n\to0$ e $b_n\to+\infty$, allora $(1+a_n)^{b_n}=\Bigl[(1+a_n)^{1/a_n}\Bigr]^{a_nb_n}$ e la quantità fra parentesi quadre tende a $e$: \textbf{decide il limite di $a_nb_n$}. Se $a_nb_n\to\ell$ il limite è $e^\ell$; se $a_nb_n\to+\infty$ è $+\infty$; se $a_nb_n\to0$ è $1$.
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Scrivere «$1^\infty=1$» oppure «$1^\infty=\infty$». Anche $\infty\cdot0$ è una forma indeterminata, e non vale automaticamente $0$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolate i limiti per $n\to+\infty$ e osservate che sono tutti della forma $1^\infty$: \ (a) $\Bigl(1-\dfrac1{2n}\Bigr)^n$; \ (b) $\Bigl(1+\dfrac1{n^3}\Bigr)^{n^2}$; \ (c) $\Bigl(1+\dfrac1{\sqrt n}\Bigr)^n$.
+\end{esercizio}
+\risp{(a) $a_nb_n=-\frac1{2n}\cdot n=-\frac12$: limite $e^{-1/2}=\frac1{\sqrt e}$. (b) $a_nb_n=\frac{n^2}{n^3}=\frac1n\to0$: limite $e^0=1$. (c) $a_nb_n=\frac n{\sqrt n}=\sqrt n\to+\infty$: limite $+\infty$. La stessa forma $1^\infty$ dà tre risultati diversi.}
+
+\begin{esercizio}[\liv{2}]
+Calcolate $\displaystyle\lim_{n\to+\infty}\Bigl(\frac{n+3}{n+1}\Bigr)^{2n}$.
+\end{esercizio}
+\risp{$\frac{n+3}{n+1}=1+\frac2{n+1}$, quindi $a_n=\frac2{n+1}$, $b_n=2n$ e $a_nb_n=\frac{4n}{n+1}\to4$. Limite: $e^4$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolate: \ (a) $\displaystyle\lim_{n\to+\infty}n\log\Bigl(1+\frac2n\Bigr)$; \qquad (b) $\displaystyle\lim_{n\to+\infty}\sqrt n\,\bigl(e^{1/n}-1\bigr)$. Entrambi sono della forma $\infty\cdot0$: i risultati sono uguali?
+\end{esercizio}
+\risp{(a) $n\log\bigl(1+\frac2n\bigr)=2\cdot\frac{\log(1+2/n)}{2/n}\to2\cdot1=2$. (b) $\sqrt n\,(e^{1/n}-1)=\frac{e^{1/n}-1}{1/n}\cdot\frac1{\sqrt n}\to1\cdot0=0$. Sono diversi: $\infty\cdot0$ è indeterminata.}
+
+%-------------------------------------------------------------------
+\section{Limiti notevoli}
+
+\begin{vuoto}[Promemoria]{}
+Se $t(x)\to0$: \quad $\dfrac{\sin t}t\to1$, \quad $\dfrac{1-\cos t}{t^2}\to\dfrac12$, \quad $\dfrac{e^t-1}t\to1$, \quad $\dfrac{\log(1+t)}t\to1$,\\[2pt]
+$\dfrac{(1+t)^\alpha-1}t\to\alpha$.\\[2pt]
+L'argomento $t$ può essere \emph{qualsiasi} espressione che tende a $0$, per esempio $5x$, $x^2$ o $\frac1x$ per $x\to+\infty$. Al denominatore deve comparire la \emph{stessa} $t$: se manca, la si fa comparire moltiplicando e dividendo.
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Sostituire direttamente il valore limite in una forma $\frac00$ o $\infty\cdot0$ e concludere «$=0$». Una forma indeterminata va trasformata, non «calcolata».}
+
+\begin{esercizio}[\liv{1}]
+Calcolate per $x\to0$: \ (a) $\dfrac{\sin5x}{2x}$; \qquad (b) $\dfrac{e^{3x}-1}{\sin x}$; \qquad (c) $\dfrac{\log(1+x^2)}{1-\cos x}$.
+\end{esercizio}
+\risp{(a) $\frac52\cdot\frac{\sin5x}{5x}\to\frac52$. (b) $3\cdot\frac{e^{3x}-1}{3x}\cdot\frac x{\sin x}\to3$. (c) $\frac{\log(1+x^2)}{x^2}\cdot\frac{x^2}{1-\cos x}\to1\cdot2=2$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolate: \ (a) $\displaystyle\lim_{x\to0}\frac{\sqrt[3]{1+x}-1}{\sin2x}$; \quad (b) $\displaystyle\lim_{x\to+\infty}x\sin\frac2x$; \quad (c) $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x\sin2x}$.
+\end{esercizio}
+\risp{(a) $\frac{(1+x)^{1/3}-1}x\cdot\frac{2x}{\sin2x}\cdot\frac12\to\frac13\cdot1\cdot\frac12=\frac16$. (b) Con $t=\frac2x\to0$: $x\sin\frac2x=2\cdot\frac{\sin t}t\to2$. (c) $\frac{1-\cos x}{x^2}\cdot\frac{2x}{\sin2x}\cdot\frac12\to\frac12\cdot1\cdot\frac12=\frac14$.}
+
+\begin{esercizio}[\liv{2}]
+Trovate l'errore e correggete. \ (a) «$\displaystyle\lim_{x\to0}\frac{e^{2x}-1}x=\frac{e^0-1}0=\frac00=0$.» \quad (b) «$\displaystyle\lim_{x\to+\infty}x\sin\frac1x=\infty\cdot\sin0=\infty\cdot0=0$.»
+\end{esercizio}
+\risp{In entrambi i casi si è «calcolata» una forma indeterminata. (a) $2\cdot\frac{e^{2x}-1}{2x}\to2$. (b) Con $t=\frac1x\to0^+$: $\frac{\sin t}t\to1$.}
+
+%-------------------------------------------------------------------
+\section{Retta tangente con una condizione}
+
+\begin{vuoto}[Promemoria]{}
+La retta tangente al grafico di $f$ nel punto di ascissa $x_0$ è $y=f(x_0)+f'(x_0)(x-x_0)$. Se il punto non è dato, ma è data una condizione sulla pendenza (per esempio «parallela a $y=mx+q$», oppure «orizzontale», cioè $m=0$), si procede così:
+\begin{enumerate}
+\item si calcola $f'(x)$;
+\item si risolve $f'(x_0)=m$, trovando $x_0$;
+\item si calcola $f(x_0)$ e si scrive la retta.
+\end{enumerate}
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Mettere a sistema la curva con la retta data. La retta data serve solo per la pendenza: la tangente cercata le è parallela e quindi non la incontra. Senza la derivata l'esercizio non si può impostare.}
+
+\begin{esercizio}[\liv{1}]
+Scrivete la retta tangente al grafico di $f(x)=x^2-3x$ nel punto di ascissa $x_0=2$.
+\end{esercizio}
+\risp{$f(2)=-2$, $f'(x)=2x-3$, $f'(2)=1$: $y=-2+(x-2)$, cioè $y=x-4$.}
+
+\begin{esercizio}[\liv{2}]
+Scrivete la retta tangente al grafico di $f(x)=e^{2x}$ parallela alla retta $y=4x+1$.
+\end{esercizio}
+\risp{$f'(x)=2e^{2x}=4$ dà $e^{2x_0}=2$, cioè $x_0=\frac{\log2}2$, e $f(x_0)=2$. Tangente: $y=2+4\bigl(x-\frac{\log2}2\bigr)$, cioè $y=4x+2-2\log2$.}
+
+\begin{esercizio}[\liv{2}]
+Scrivete la retta tangente al grafico di $f(x)=\sqrt{x+1}$ parallela alla retta $y=\dfrac x6$.
+\end{esercizio}
+\risp{$f'(x)=\frac1{2\sqrt{x+1}}=\frac16$ dà $\sqrt{x_0+1}=3$, cioè $x_0=8$, e $f(8)=3$. Tangente: $y=3+\frac16(x-8)$, cioè $y=\frac x6+\frac53$.}
+
+\begin{esercizio}[\liv{2}]
+In quale punto il grafico di $f(x)=x\,e^{-x}$ ha la retta tangente orizzontale? Scrivetene l'equazione.
+\end{esercizio}
+\risp{$f'(x)=e^{-x}-xe^{-x}=(1-x)e^{-x}=0$ per $x_0=1$; $f(1)=\frac1e$. Tangente orizzontale: $y=\frac1e$, nel punto $\bigl(1,\frac1e\bigr)$.}
+
+%-------------------------------------------------------------------
+\section{Asintoti}
+
+\begin{vuoto}[Promemoria: la procedura completa]{}
+\begin{enumerate}
+\item Dominio.
+\item Limiti ai bordi del dominio, \textbf{destro e sinistro} nei punti esclusi. Un limite infinito dà un asintoto verticale.
+\item Limiti per $x\to+\infty$ e per $x\to-\infty$, \textbf{separatamente}. Un limite finito $\ell$ dà l'asintoto orizzontale $y=\ell$.
+\item Se il limite è infinito, si cerca l'asintoto obliquo $y=mx+q$, con $m=\lim\frac{f(x)}x$ (finito e non nullo) e $q=\lim\bigl(f(x)-mx\bigr)$ (finito).
+\end{enumerate}
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errori da evitare.} Fermarsi a $x\to+\infty$: a $-\infty$ l'asintoto può essere diverso. Calcolare un solo limite laterale. Dichiarare un asintoto verticale in un punto dove il limite è finito.}
+
+\begin{esercizio}[\liv{1}]
+Trovate tutti gli asintoti di $f(x)=\dfrac{2x^2+1}{x-1}$.
+\end{esercizio}
+\risp{Dominio: $x\ne1$. $\lim_{x\to1^\pm}f(x)=\pm\infty$: asintoto verticale $x=1$. Per $x\to\pm\infty$ il limite è $\pm\infty$; $m=\lim\frac{2x^2+1}{x^2-x}=2$, $q=\lim\Bigl(\frac{2x^2+1}{x-1}-2x\Bigr)=\lim\frac{2x+1}{x-1}=2$. Asintoto obliquo $y=2x+2$ sia a $+\infty$ sia a $-\infty$.}
+
+\begin{esercizio}[\liv{2}]
+Sia $f(x)=\dfrac{\log x}{x-1}$. Trovate il dominio e gli asintoti, e dite che tipo di discontinuità c'è in $x=1$.
+\end{esercizio}
+\risp{Dominio: $x>0$, $x\ne1$. Per $x\to0^+$: $\log x\to-\infty$ e $x-1\to-1$, quindi $f\to+\infty$: asintoto verticale $x=0$ (da destra). Per $x\to1$: con $t=x-1\to0$, $\frac{\log(1+t)}t\to1$. Il limite è finito, quindi in $x=1$ c'è una discontinuità eliminabile e \emph{nessun} asintoto. Per $x\to+\infty$: $f\to0$, asintoto orizzontale $y=0$.}
+
+\begin{esercizio}[\liv{3}]
+Trovate gli asintoti di $f(x)=\sqrt{x^2+4x}$, distinguendo $x\to+\infty$ e $x\to-\infty$.
+\end{esercizio}
+\risp{Dominio: $x\le-4$ oppure $x\ge0$; non ci sono asintoti verticali. Ricordate che $\sqrt{x^2}=|x|$. Per $x\to+\infty$: $m=\lim\frac{\sqrt{x^2+4x}}x=1$, $q=\lim\bigl(\sqrt{x^2+4x}-x\bigr)=\lim\frac{4x}{\sqrt{x^2+4x}+x}=2$: asintoto $y=x+2$. Per $x\to-\infty$: $\sqrt{x^2+4x}=|x|\sqrt{1+4/x}=-x\sqrt{1+4/x}$, quindi $m=-1$, e $q=\lim\bigl(\sqrt{x^2+4x}+x\bigr)=\lim\frac{4x}{\sqrt{x^2+4x}-x}=-2$: asintoto $y=-x-2$.}
+
+%-------------------------------------------------------------------
+\section{Continuità e derivabilità con parametri}
+
+\begin{vuoto}[Promemoria]{}
+Sia $f(x)=g(x)$ per $x\le x_0$ e $f(x)=h(x)$ per $x>x_0$, con $g$ e $h$ derivabili.
+\begin{itemize}
+\item \textbf{Continuità} in $x_0$: $g(x_0)=\lim_{x\to x_0^+}h(x)$.
+\item \textbf{Derivabilità} in $x_0$: \emph{serve la continuità}, e in più $g'(x_0)=\lim_{x\to x_0^+}h'(x)$, cioè derivata sinistra uguale a derivata destra.
+\end{itemize}
+Si ottengono due equazioni nei due parametri.
+\end{vuoto}
+\boxr{\emergencystretch=1.5em \textbf{Errore da evitare.} Imporre solo l'uguaglianza delle derivate, dimenticando la continuità: una funzione discontinua non è mai derivabile.}
+
+\begin{esercizio}[\liv{1}]
+Sia $f(x)=ax+b$ per $x<0$ e $f(x)=e^{2x}$ per $x\ge0$. Per quali $a$, $b$ la funzione $f$ è continua in $0$? E derivabile?
+\end{esercizio}
+\risp{Continuità: $\lim_{x\to0^-}(ax+b)=b$ deve valere $e^0=1$, quindi $b=1$ (con $a$ qualsiasi). Derivabilità: inoltre $a=(e^{2x})'\big|_{x=0}=2$. Quindi $a=2$, $b=1$.}
+
+\begin{esercizio}[\liv{2}]
+Sia $f(x)=x^2+a$ per $x\le1$ e $f(x)=b\log x+3$ per $x>1$. Trovate $a$ e $b$ in modo che $f$ sia derivabile in $x=1$.
+\end{esercizio}
+\risp{Continuità: $1+a=b\log1+3=3$, quindi $a=2$. Derivate: a sinistra $2x\big|_{x=1}=2$, a destra $\frac bx\big|_{x=1}=b$. Quindi $b=2$.}
+
+\begin{esercizio}[\liv{2}]
+Sia $f(x)=x^2$ per $x\le1$ e $f(x)=ax$ per $x>1$. Esiste un valore di $a$ per cui $f$ è derivabile in $x=1$?
+\end{esercizio}
+\risp{La continuità richiede $1=a$. Con $a=1$ la derivata sinistra è $2$ e quella destra è $1$: sono diverse. Quindi non esiste nessun valore di $a$: per $a=1$ la funzione è continua ma non derivabile, per $a\ne1$ non è nemmeno continua.}
+
+\begin{esercizio}[\liv{3}]
+Sia $f(x)=a\sin x+b$ per $x\le0$ e $f(x)=\sqrt{x+4}$ per $x>0$. (a) Per quali $a$, $b$ la funzione $f$ è continua in $0$? \ (b) Per quali è derivabile? \ (c) Per quali è continua ma non derivabile?
+\end{esercizio}
+\risp{(a) $f(0)=b$ e $\lim_{x\to0^+}\sqrt{x+4}=2$: $b=2$, con $a$ qualsiasi. (b) Derivata sinistra $a\cos0=a$, derivata destra $\frac1{2\sqrt{x+4}}\big|_{x=0}=\frac14$: $a=\frac14$, $b=2$. (c) $b=2$ e $a\ne\frac14$.}
+
+\stampasoluzioni

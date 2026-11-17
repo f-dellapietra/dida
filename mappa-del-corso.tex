@@ -1,0 +1,1011 @@
+% Mappa di tutto il corso (a.a. 2026/27) --- file autonomo, sul modello di mappa-prima-prova.tex.
+% Versione orizzontale a tre colonne. Compilare con pdflatex (due passaggi).
+%
+% COME SI AGGIORNA dopo ogni lezione
+%  1. \fatte (qui sotto) e' il numero dell'ultima fermata percorsa sulla linea della prima pagina.
+%     Le fermate sono numerate in ordine: L1..L21 = 1..21, prima prova = 22, L22..L36 = 23..37 (L36 = esercitazione del 18/12),
+%     seconda prova = 38. Dopo L22 si mette 23, dopo L23 si mette 24, e cosi' via.
+%  2. Il blocco della lezione svolta passa da \begin{bloccop} (tratteggiato, "in programma")
+%     a \begin{blocco} (pieno), e se ne rivede il contenuto sugli appunti.
+%  3. Nell'elenco delle dimostrazioni, la voce passa da \prog a \fatta.
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[landscape,top=1.0cm,bottom=1.1cm,left=1.1cm,right=1.1cm,footskip=0.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage[sfdefault,lining,scaled=1.06]{AlegreyaSans}
+\usepackage{newtxsf}
+\usepackage{multicol,array,booktabs,enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usepackage{flowfram}  % colonne vere dalla pagina 3: i riquadri si spezzano a fine colonna
+
+\newcommand{\fatte}{23}   % ultima fermata percorsa: 23 = L22 (16/11)
+
+% ---------------------------------------------------------------- caratteri
+\newcommand{\hf}{\fontfamily{Montserrat-LF}\selectfont}          % titoli
+\newcommand{\hfb}{\fontfamily{Montserrat-LF}\fontseries{eb}\selectfont}
+
+% ---------------------------------------------------------------- colori (uno per area)
+\definecolor{fond}{HTML}{1F6FB2}  % fondamenti
+\definecolor{alge}{HTML}{2E8B57}  % algebra
+\definecolor{funz}{HTML}{E07B00}  % funzioni
+\definecolor{trig}{HTML}{7B4FA0}  % trigonometria
+\definecolor{succ}{HTML}{C0392B}  % successioni e limiti
+\definecolor{cont}{HTML}{138D90}  % continuita'
+\definecolor{deri}{HTML}{B0306A}  % calcolo differenziale
+\definecolor{inte}{HTML}{B9770E}  % calcolo integrale
+\definecolor{line}{HTML}{2C3E50}  % vettori, matrici, sistemi
+\definecolor{prob}{HTML}{6B7A00}  % probabilita' e statistica
+\definecolor{inchiostro}{HTML}{22313F}
+\colorlet{bcol}{fond}
+
+\newcommand{\R}{\mathbb R}\newcommand{\N}{\mathbb N}\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+
+% ---------------------------------------------------------------- elementi
+% etichetta colorata
+\newcommand{\pill}[1]{\tikz[baseline=(p.base)]\node[fill=bcol!15,text=bcol!80!black,rounded corners=2pt,
+  inner xsep=3pt,inner ysep=1.6pt,font=\hf\fontseries{sb}\selectfont\scriptsize](p){#1};}
+% voce: etichetta a sinistra, contenuto con rientro sospeso
+\newlength{\vocew}\setlength{\vocew}{1.95cm}
+\newlength{\pw}
+\newcommand{\voce}[2]{\par\settowidth{\pw}{\pill{#1}}%
+  \ifdim\pw>\vocew
+    \noindent\pill{#1}\par\nopagebreak\noindent\hangindent=\vocew\hangafter=0 \begingroup\let\\\newline#2\par\endgroup
+  \else
+    \noindent\hangindent=\vocew\hangafter=1\makebox[\vocew][l]{\pill{#1}}\begingroup\let\\\newline#2\par\endgroup
+  \fi}
+% parola chiave
+\newcommand{\kw}[1]{\textcolor{bcol!85!black}{\bfseries #1}}
+% riquadro per le formule
+\newcommand{\formula}[1]{\begin{tcolorbox}[enhanced,colback=bcol!7,colframe=bcol!7,boxrule=0pt,arc=3pt,
+  left=3pt,right=3pt,top=2pt,bottom=2pt,halign=center,before skip=3pt,after skip=4pt]#1\end{tcolorbox}}
+% attenzione
+\newcommand{\occhio}[1]{\begin{tcolorbox}[enhanced,colback=yellow!16,colframe=orange!85!black,boxrule=0pt,
+  leftrule=2.6pt,arc=0pt,outer arc=0pt,left=4pt,right=3pt,top=2pt,bottom=2pt,before skip=5pt,after skip=1pt,
+  fontupper=\small]\textcolor{orange!85!black}{\faExclamationTriangle}\enspace #1\end{tcolorbox}}
+% dimostrazione svolta (o prevista) a lezione
+\newcommand{\dimo}{\tikz[baseline=(d.base)]\node[fill=red!75!black,text=white,rounded corners=2pt,inner xsep=2.5pt,
+  inner ysep=1.2pt,font=\hf\fontseries{b}\selectfont\tiny](d){\faStar\,DIM};}
+% enunciato senza dimostrazione
+\newcommand{\sd}{\tikz[baseline=(d.base)]\node[draw=gray,text=gray,rounded corners=2pt,inner xsep=2pt,
+  inner ysep=1pt,font=\hf\fontseries{b}\selectfont\tiny](d){s.d.};}
+% gettone (per catene e gerarchie)
+\newcommand{\chip}[2][15]{\tikz[baseline=(c.base)]\node[fill=bcol!#1,text=inchiostro,rounded corners=3pt,inner xsep=3pt,inner ysep=2pt](c){#2};}
+% clessidra: in programma
+\newcommand{\clessidra}{\faHourglassHalf}
+\newcommand{\bp}[1]{\textcolor{inchiostro!65}{#1}}
+
+% riquadro di un blocco svolto: {colore}{numero}{titolo}{lezioni}
+\newtcolorbox{blocco}[5][]{enhanced,breakable,colback=#2!3,colframe=#2,boxrule=0.8pt,arc=5pt,
+  left=5pt,right=5pt,top=4pt,bottom=4pt,before skip=4pt,after skip=7pt,
+  title={\tikz[baseline=(n.base)]\node[circle,fill=white,text=#2,inner sep=1.2pt,minimum size=15pt,font=\hfb\small](n){#3};%
+    \enspace{\hfb\large #4}\hfill{\hf\fontseries{sb}\selectfont\scriptsize\faBookOpen\ #5}},
+  colbacktitle=#2,coltitle=white,toptitle=2pt,bottomtitle=2pt,
+  before upper={\colorlet{bcol}{#2}\raggedright},#1}
+% riquadro di un blocco in programma: bordo tratteggiato, fondo bianco, clessidra
+\newtcolorbox{bloccop}[5][]{enhanced,breakable,colback=white,colframe=#2,boxrule=0pt,arc=5pt,
+  borderline={0.9pt}{0pt}{#2!80,dash pattern=on 4pt off 2.5pt},
+  left=5pt,right=5pt,top=4pt,bottom=4pt,before skip=4pt,after skip=7pt,
+  title={\tikz[baseline=(n.base)]\node[circle,fill=white,text=#2,inner sep=1.2pt,minimum size=15pt,font=\hfb\small](n){#3};%
+    \enspace{\hfb\large #4}\hfill{\hf\fontseries{sb}\selectfont\scriptsize\clessidra\ #5}},
+  colbacktitle=#2!78,coltitle=white,toptitle=2pt,bottomtitle=2pt,
+  before upper={\colorlet{bcol}{#2}\raggedright},#1}
+
+% voci dell'elenco delle dimostrazioni
+\newcommand{\fatta}[2]{\item #1 \hfill\textcolor{bcol}{#2}}
+\newcommand{\prog}[2]{\item \textcolor{inchiostro!70}{#1} \hfill\textcolor{bcol!70}{\clessidra\,#2}}
+
+\setlength{\parindent}{0pt}\setlength{\parskip}{2.6pt}
+\thickmuskip=4mu plus 1.5mu\relax\medmuskip=3mu plus 1mu minus 1mu\relax
+\setlength{\columnsep}{0.45cm}
+% pagine 1-2 a tutta larghezza; dalla pagina 3 tre colonne (con multicols i riquadri non si spezzano a fine colonna)
+\newflowframe[1,2]{\textwidth}{\textheight}{0pt}{0pt}[intera]
+\Ncolumn[>2]{3}
+\renewcommand{\arraystretch}{1.15}
+\setlist{nosep,leftmargin=1.2em}
+\pagestyle{plain}
+\color{inchiostro}
+
+\begin{document}
+
+%======================================================================= COPERTINA
+\begin{tcolorbox}[enhanced,colback=fond!80!black,colframe=fond!80!black,arc=6pt,left=12pt,right=12pt,top=6pt,bottom=6pt,
+  coltext=white,
+  overlay={\foreach \c/\x in {fond/0,alge/1,funz/2,trig/3,succ/4,cont/5,deri/6,inte/7,line/8,prob/9}
+     \fill[\c!70!white] ([xshift=-\x*0.9cm-0.9cm,yshift=8pt]frame.north east) rectangle ++(0.8cm,-0.55cm);}]
+{\hfb\fontsize{26}{30}\selectfont Mappa del corso}\par\smallskip
+{\hf\large Istituzioni di Matematica \textperiodcentered\ Scienze per la Natura e per l'Ambiente \textperiodcentered\ a.a.\ 2026/27}\par\smallskip
+{\large\faCalendar*[regular]\enspace 21 settembre -- 18 dicembre 2026\qquad\faRoute\enspace 36 lezioni, due prove in itinere: dagli insiemi alla probabilità e ai dati}
+\end{tcolorbox}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm,
+  staz/.style={circle,draw=#1,line width=2.4pt,fill=white,minimum size=0.8cm,inner sep=0pt,font=\hfb\scriptsize,text=#1!85!black},
+  stazp/.style={circle,draw=#1!45,line width=2pt,fill=white,minimum size=0.8cm,inner sep=0pt,font=\hfb\scriptsize,text=#1!60},
+  lab/.style={align=center,font=\footnotesize,text width=2.45cm,anchor=north}]
+\def\dx{2.56}\def\dy{2.85}
+% fermate: numero/sigla/colore/data/testo  (numero = posizione sulla linea; vedi in testa al file)
+\def\fermate{1/L1/fond/21/9/{Insiemi e\\linguaggio},2/L2/fond/25/9/{Induzione e\\combinatoria},3/L3/fond/28/9/{I numeri\\reali},
+  4/L4/alge/30/9/{Primo\\grado},5/L5/alge/2/10/{Secondo\\grado},6/L6/alge/5/10/{Completezza,\\potenze, radici},
+  7/L7/alge/7/10/{Logaritmi,\\piano, retta},8/L8/funz/9/10/{Funzioni},9/L9/funz/12/10/{Potenze, esp.,\\logaritmi},
+  10/L10/funz/14/10/{Esponenziali;\\trigonometria},11/L11/trig/16/10/{Trigonometria,\\campi di esistenza},
+  12/L12/succ/19/10/{Successioni},13/L13/succ/21/10/{Limiti di\\successioni},14/L14/succ/23/10/{Calcolo dei\\limiti},
+  15/L15/succ/26/10/{Monotone,\\il numero $e$},16/L16/succ/28/10/{Limiti di\\funzioni},17/L17/cont/30/10/{Continuità,\\teorema degli zeri},
+  18/L18/deri/2/11/{La\\derivata},19/L19/deri/4/11/{Regole di\\derivazione},20/L20/deri/6/11/{Fermat,\\ottimizzazione},
+  21/L21/inchiostro/9/11/{Esercitazione},
+  23/L22/deri/16/11/{Rolle, Lagrange,\\monotonia},24/L23/deri/18/11/{De l'Hôpital,\\studio di funzione},25/L24/deri/20/11/{$o$ piccoli,\\Taylor},
+  26/L25/inte/23/11/{Integrale e\\teorema fond.},27/L26/inte/25/11/{Primitive,\\integrazione},
+  28/L27/line/27/11/{Vettori},29/L28/line/30/11/{Prodotto\\scalare},30/L29/line/2/12/{Rette e piani\\nello spazio},
+  31/L30/line/4/12/{Matrici},32/L31/line/9/12/{Sistemi\\lineari},33/L32/prob/11/12/{Probabilità},
+  34/L33/prob/14/12/{Condizionata,\\Bayes},35/L34/prob/16/12/{Variabili\\aleatorie},36/L35/prob/{recupero}//{Statistica},
+  37/L36/inchiostro/18/12/{Esercitazione}}
+% colori delle fermate (per i tratti di linea)
+\foreach \k/\s/\c/\g/\m/\t in \fermate {\expandafter\xdef\csname fc\k\endcsname{\c}}
+\expandafter\xdef\csname fc22\endcsname{deri}\expandafter\xdef\csname fc38\endcsname{prob}
+% posizioni: quattro righe da dieci fermate, a serpentina
+\foreach \k in {1,...,38} {
+  \pgfmathtruncatemacro{\r}{(\k-1)/10}
+  \pgfmathtruncatemacro{\c}{\k-1-10*\r}
+  \pgfmathsetmacro{\xx}{ifthenelse(mod(\r,2)==0,\c,9-\c)*\dx}
+  \coordinate (N\k) at (\xx,{-\r*\dy});}
+% linea: piena fino a \fatte, tratteggiata dopo
+\foreach \k in {1,...,37} {
+  \pgfmathtruncatemacro{\j}{\k+1}
+  \edef\cc{\csname fc\j\endcsname}
+  \ifnum\j>\fatte \edef\stile{line width=4pt,\cc!35,dash pattern=on 7pt off 4pt}\else\edef\stile{line width=5pt,\cc!75}\fi
+  \ifnum\k=10 \expandafter\draw\expandafter[\stile] (N\k) to[out=0,in=0,looseness=1.6] (N\j);
+  \else\ifnum\k=20 \expandafter\draw\expandafter[\stile] (N\k) to[out=180,in=180,looseness=1.6] (N\j);
+  \else\ifnum\k=30 \expandafter\draw\expandafter[\stile] (N\k) to[out=0,in=0,looseness=1.6] (N\j);
+  \else \expandafter\draw\expandafter[\stile] (N\k)--(N\j);\fi\fi\fi}
+% fermate ed etichette
+\foreach \k/\s/\c/\g/\m/\t in \fermate {
+  \ifnum\k>\fatte
+    \node[stazp=\c] at (N\k) {\s};
+    \node[lab,text=inchiostro!65] at ($(N\k)+(0,-0.5)$) {\textcolor{\c!55}{\hf\fontseries{b}\selectfont\g\ifx\m\empty\else/\m\fi}\\[-1pt]\t};
+  \else
+    \node[staz=\c] at (N\k) {\s};
+    \node[lab] at ($(N\k)+(0,-0.5)$) {\textcolor{\c!85!black}{\hf\fontseries{b}\selectfont\g\ifx\m\empty\else/\m\fi}\\[-1pt]\t};
+  \fi}
+% le due prove
+\node[star,star points=7,star point ratio=0.55,fill=deri,minimum size=1.0cm,inner sep=0pt,text=white,font=\large] at (N22) {\faPen};
+\node[lab,text=deri!85!black] at ($(N22)+(0,-0.74)$) {\hf\fontseries{b}\selectfont 11/11\\ PRIMA PROVA};
+\ifnum38>\fatte
+\node[star,star points=7,star point ratio=0.55,draw=prob!60,line width=1.6pt,fill=white,minimum size=1.0cm,inner sep=0pt,text=prob!70,font=\large] at (N38) {\faPen};
+\node[lab,text=prob!70] at ($(N38)+(0,-0.74)$) {\hf\fontseries{b}\selectfont 21--23/12\\ SECONDA PROVA};
+\else
+\node[star,star points=7,star point ratio=0.55,fill=prob,minimum size=1.0cm,inner sep=0pt,text=white,font=\large] at (N38) {\faPen};
+\node[lab,text=prob!85!black] at ($(N38)+(0,-0.74)$) {\hf\fontseries{b}\selectfont 21--23/12\\ SECONDA PROVA};
+\fi
+% siamo qui
+\ifnum\fatte<38
+\pgfmathtruncatemacro{\dopo}{\fatte+1}
+\path (N\fatte) -- (N\dopo) coordinate[pos=0.5] (qui);
+\node[fill=inchiostro,text=white,rounded corners=2pt,inner sep=2pt,font=\hf\fontseries{b}\selectfont\scriptsize] (sq) at ($(qui)+(0,0.72)$) {\faMapMarker*\ SIAMO QUI};
+\draw[inchiostro,thick,-{Stealth[length=4pt]}] (sq.south)--($(qui)+(0,0.12)$);
+\fi
+\end{tikzpicture}
+\end{center}
+
+\vspace{-4pt}
+\begin{center}\small
+\begin{tikzpicture}[ar/.style={fill=#1,text=white,rounded corners=2pt,inner xsep=3pt,inner ysep=2.2pt,font=\hf\fontseries{sb}\selectfont\scriptsize}]
+\node[ar=fond] (a1) {Fondamenti};
+\node[ar=alge,right=2pt of a1] (a2) {Algebra};
+\node[ar=funz,right=2pt of a2] (a3) {Funzioni};
+\node[ar=trig,right=2pt of a3] (a4) {Trigonometria};
+\node[ar=succ,right=2pt of a4] (a5) {Successioni e limiti};
+\node[ar=cont,right=2pt of a5] (a6) {Continuità};
+\node[ar=deri,right=2pt of a6] (a7) {Calcolo differenziale};
+\node[ar=inte,right=2pt of a7] (a8) {Calcolo integrale};
+\node[ar=line,right=2pt of a8] (a9) {Vettori e matrici};
+\node[ar=prob,right=2pt of a9] (a10) {Probabilità e dati};
+\node[right=8pt of a10,font=\scriptsize,inner sep=0pt] {\tikz\draw[fond,line width=2.4pt] (0,0) circle (4pt);\ svolta\quad
+  \tikz\draw[fond!45,line width=2pt] (0,0) circle (4pt);\ in programma};
+\end{tikzpicture}
+\end{center}
+
+%----------------------------------------------------------------------- lista di controllo
+\begin{tcolorbox}[enhanced,colback=white,colframe=alge!80!black,colbacktitle=alge!80!black,boxrule=0.8pt,arc=5pt,
+  left=6pt,right=6pt,top=2pt,bottom=3pt,fontupper=\footnotesize,fonttitle=\hfb,coltitle=white,toptitle=1pt,bottomtitle=1pt,
+  title={\faCheck\enspace Lista di controllo del corso},before skip=2pt]
+\begin{multicols}{4}
+\raggedright
+\begin{itemize}[label={\textcolor{alge!80!black}{\faSquare[regular]}},leftmargin=1.4em,itemsep=0.5pt]
+\item So scegliere fra disposizioni e combinazioni, e usare il complementare.
+\item So risolvere disequazioni di ogni tipo e scrivere un campo di esistenza.
+\item So riconoscere una forma indeterminata e scegliere lo strumento.
+\item So trovare gli asintoti e classificare le discontinuità.
+\item So derivare, composta compresa, e scrivere la retta tangente.
+\item So trovare gli estremi su un intervallo e impostare un'ottimizzazione.
+\end{itemize}
+\begin{itemize}[label={\textcolor{alge!55}{\faSquare[regular]}},leftmargin=1.4em,itemsep=0.5pt]
+\item \textcolor{inchiostro!70}{So studiare una funzione e disegnarne il grafico.} \textcolor{deri!70}{\clessidra}
+\item \textcolor{inchiostro!70}{So usare uno sviluppo di Taylor in un limite.} \textcolor{deri!70}{\clessidra}
+\item \textcolor{inchiostro!70}{So calcolare integrali (anche per parti e per sostituzione) e aree.} \textcolor{inte!70}{\clessidra}
+\item \textcolor{inchiostro!70}{So usare de l'Hôpital solo sulle forme indeterminate.} \textcolor{deri!70}{\clessidra}
+\item \textcolor{inchiostro!70}{So usare il prodotto scalare e scrivere rette e piani.} \textcolor{line!70}{\clessidra}
+\item \textcolor{inchiostro!70}{So calcolare un determinante e risolvere un sistema con Gauss.} \textcolor{line!70}{\clessidra}
+\item \textcolor{inchiostro!70}{So calcolare una probabilità condizionata e usare Bayes.} \textcolor{prob!70}{\clessidra}
+\item \textcolor{inchiostro!70}{So calcolare media e varianza: binomiale e dati.} \textcolor{prob!70}{\clessidra}
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\newpage
+%======================================================================= SECONDA PAGINA
+\begin{tcbraster}[raster columns=3,raster equal height,raster column skip=0.45cm,
+  enhanced,colback=white,boxrule=0.8pt,arc=5pt,left=6pt,right=6pt,top=3pt,bottom=4pt,fontupper=\small,
+  fonttitle=\hfb,coltitle=white,toptitle=1pt,bottomtitle=1pt]
+\begin{tcolorbox}[colframe=fond,colbacktitle=fond,title={\faCompass\enspace Come si usa}]
+\colorlet{bcol}{fond}
+\textbf{Un colore per area}, un riquadro numerato per blocco di argomenti; in alto a destra le lezioni (= capitoli degli appunti).\\[2pt]
+\textbf{Riquadro pieno}: blocco svolto. \textbf{Riquadro tratteggiato} \clessidra: blocco \emph{in programma}, con la data prevista; contenuti e date sono provvisori e si aggiornano lezione per lezione.\\[2pt]
+\pill{etichetta} che cosa contiene la riga: definizione, formula, metodo, esempio.\\[1pt]
+\dimo\ dimostrazione fatta (o prevista) a lezione: va saputa ripetere. \ \sd\ enunciato senza dimostrazione.\\[1pt]
+\textcolor{orange!85!black}{\faExclamationTriangle}\ errori frequenti.\\[2pt]
+Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesempio}? Sai fare un \kw{esercizio}?
+\end{tcolorbox}
+\begin{tcolorbox}[colframe=succ!75!black,colbacktitle=succ!75!black,title={\faStar\enspace Le dimostrazioni: già fatte}]
+\colorlet{bcol}{succ}
+\begin{enumerate}[label={\hfb\textcolor{succ!80!black}{\arabic*}},leftmargin=1.5em,itemsep=0.6pt]
+\fatta{Somma di Gauss e somma geometrica (induzione)}{L2}
+\fatta{$\sqrt2$ non è razionale}{L3}
+\fatta{$\frac{\sin a_n}{a_n}\to1$ (aree di triangoli e settore)}{L13}
+\fatta{Monotona e limitata $\Rightarrow$ convergente}{L15}
+\fatta{$\bigl(1+\frac1n\bigr)^n$ crescente e limitata: il numero $e$}{L15}
+\fatta{Catena dei limiti notevoli: $e$, $\log$, $\exp$, potenza}{L16}
+\fatta{Teorema degli zeri (bisezione)}{L17}
+\fatta{Derivabile $\Rightarrow$ continua}{L18}
+\fatta{Derivate elementari dai limiti notevoli}{L18}
+\fatta{Regole: somma, prodotto, quoziente, composta}{L19}
+\fatta{Teorema di Fermat}{L20}
+\fatta{Teorema di Rolle}{L22}
+\fatta{Teorema di Lagrange}{L22}
+\fatta{$f'=0$ su un intervallo $\Rightarrow$ $f$ costante}{L22}
+\fatta{Monotonia $\iff$ segno di $f'$: $f$ crescente $\iff f'\ge0$}{L22}
+\end{enumerate}
+\end{tcolorbox}
+\begin{tcolorbox}[colframe=succ!75!black,colbacktitle=succ!75!black,title={\faStar\enspace Le dimostrazioni: in programma}]
+\colorlet{bcol}{succ}
+\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=16]
+\prog{Retta e parabola di miglior approssimazione}{L24}
+\prog{Teorema della media integrale}{L25}
+\prog{Teorema fondamentale del calcolo}{L25}
+\prog{$\int_a^bf=F(b)-F(a)$}{L25}
+\prog{Integrazione per parti e per sostituzione}{L26}
+\prog{$u\cdot v=|u|\,|v|\cos\theta$}{L28}
+\prog{$|\det|$ = area del parallelogramma}{L30}
+\prog{Le mosse di Gauss non cambiano le soluzioni}{L31}
+\prog{$P(A\cup B)$ dagli assiomi}{L32}
+\prog{Probabilità totale e formula di Bayes}{L33}
+\prog{Linearità della media; binomiale}{L34}
+\prog{$\sum(x_i-\bar x)=0$}{L35}
+\end{enumerate}
+\end{tcolorbox}
+\end{tcbraster}
+
+\begin{tcbraster}[raster columns=2,raster equal height,raster column skip=0.45cm,raster width=\linewidth,
+  raster column 1/.style={add to width=2.2cm},raster column 2/.style={add to width=-2.2cm},
+  enhanced,colback=white,boxrule=0.8pt,arc=5pt,left=6pt,right=6pt,top=3pt,bottom=4pt,fontupper=\small,
+  fonttitle=\hfb,coltitle=white,toptitle=1pt,bottomtitle=1pt,before skip=6pt]
+\begin{tcolorbox}[colframe=alge,colbacktitle=alge,title={\faThLarge\enspace I 28 blocchi}]
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}>{\hfb}r@{\enspace}l@{\qquad}>{\hfb}r@{\enspace}l@{\qquad}>{\hfb}r@{\enspace}l@{}}
+\textcolor{fond}{1} & Insiemi e linguaggio & \textcolor{succ}{11} & Limiti di successioni & \textcolor{inte}{20} & \bp{Teorema fondamentale \clessidra}\\
+\textcolor{fond}{2} & Induzione, combinatoria & \textcolor{succ}{12} & Limiti di funzioni & \textcolor{inte}{21} & \bp{Metodi di integrazione \clessidra}\\
+\textcolor{fond}{3} & I numeri reali & \textcolor{cont}{13} & Continuità & \textcolor{line}{22} & \bp{Vettori \clessidra}\\
+\textcolor{alge}{4} & Equazioni, disequazioni & \textcolor{deri}{14} & La derivata & \textcolor{line}{23} & \bp{Rette e piani \clessidra}\\
+\textcolor{alge}{5} & Potenze e radici & \textcolor{deri}{15} & Estremi, ottimizzazione & \textcolor{line}{24} & \bp{Matrici \clessidra}\\
+\textcolor{alge}{6} & Percentuali, log, retta & \textcolor{deri}{16} & Rolle e Lagrange & \textcolor{line}{25} & \bp{Sistemi lineari \clessidra}\\
+\textcolor{funz}{7} & Funzioni & \textcolor{deri}{17} & \bp{Studio di funzione \clessidra} & \textcolor{prob}{26} & \bp{Probabilità \clessidra}\\
+\textcolor{funz}{8} & Esponenziali, logaritmi & \textcolor{deri}{18} & \bp{$o$ piccoli, Taylor \clessidra} & \textcolor{prob}{27} & \bp{Variabili aleatorie \clessidra}\\
+\textcolor{trig}{9} & Trigonometria, domini & \textcolor{inte}{19} & \bp{L'integrale \clessidra} & \textcolor{prob}{28} & \bp{Statistica \clessidra}\\
+\textcolor{succ}{10} & Successioni & & & &
+\end{tabular}
+\end{tcolorbox}
+\begin{tcolorbox}[colframe=deri,colbacktitle=deri,title={\faPen\enspace Le due prove in itinere}]
+\colorlet{bcol}{deri}
+\textbf{Prima prova} \textcolor{deri}{\faCheck}\ \ mercoledì 11 novembre: blocchi 1--14 (L1--L18 e la derivata della funzione composta). Parte A, 6 quesiti a sola risposta (11 punti); Parte B, 6 esercizi con svolgimento (21 punti). Sufficienza da 18; con 16 e 17 si è ammessi con riserva.\\[2pt]
+Per ripassare: gli svolgimenti di ogni fila e la scheda di recupero R1.\\[4pt]
+\colorlet{bcol}{prob}
+\textbf{Seconda prova} \textcolor{prob}{\clessidra}\ \ fra il 21 e il 23 dicembre (data da fissare): blocchi 16--28 (L22--L35). Venerdì 18 dicembre, nell'ultima lezione (L36), un'esercitazione con un fascicolo di esercizi, come per la prima prova.
+\end{tcolorbox}
+\end{tcbraster}
+
+%----------------------------------------------------------------------- come si collegano
+\begin{tcolorbox}[enhanced,colback=white,colframe=inchiostro!80,colbacktitle=inchiostro!80,boxrule=0.8pt,arc=5pt,
+  left=4pt,right=4pt,top=2pt,bottom=2pt,fonttitle=\hfb,coltitle=white,toptitle=1pt,bottomtitle=1pt,before skip=6pt,
+  title={\faProjectDiagram\enspace Come si collegano: le idee che tornano}]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,
+  ar/.style={fill=#1,text=white,rounded corners=3pt,inner xsep=5pt,inner ysep=3pt,font=\hf\fontseries{sb}\selectfont\footnotesize,align=center},
+  fr/.style={-{Stealth[length=5pt]},thick,inchiostro!55},
+  et/.style={font=\scriptsize,text=inchiostro!85,fill=white,inner sep=1pt,align=center}]
+\node[ar=fond] (F) at (0,0) {Fondamenti\\\scriptsize insiemi, contare};
+\node[ar=alge] (A) at (4.3,0) {Algebra\\\scriptsize (dis)equazioni, retta};
+\node[ar=funz] (U) at (8.6,0) {Funzioni\\\scriptsize esponenziali, log};
+\node[ar=trig] (T) at (8.6,-1.95) {Trigonometria};
+\node[ar=succ] (S) at (12.9,0) {Successioni\\\scriptsize e limiti};
+\node[ar=cont] (C) at (17.2,0) {Continuità};
+\node[ar=deri] (D) at (21.5,0) {Calcolo\\\scriptsize differenziale};
+\node[ar=inte] (I) at (21.5,-1.95) {Calcolo\\\scriptsize integrale};
+\node[ar=line] (V) at (4.3,-1.95) {Vettori\\\scriptsize matrici, sistemi};
+\node[ar=prob] (P) at (12.9,-1.95) {Probabilità\\\scriptsize e dati};
+\draw[fr] (F)--(A); \draw[fr] (A)--(U); \draw[fr] (U)--(S); \draw[fr] (S)--(C); \draw[fr] (C)--(D);
+\draw[fr] (D)--node[et,right]{Lagrange $\Rightarrow$\\formula fondamentale}(I);
+\draw[fr] (A)--node[et,left]{retta, piano,\\sistemi}(V);
+\draw[fr] (T)--node[et,above]{coseno: angolo\\fra vettori}(V);
+\draw[fr] (I)--node[et,above]{densità:\\probabilità = area}(P);
+\draw[fr] (F.south) |- node[et,pos=0.75,below]{eventi = insiemi; il calcolo combinatorio per contare i casi} ($(P.south)+(0,-0.55)$) -- (P.south);
+\draw[fr] (U)--(T);
+\end{tikzpicture}
+\end{tcolorbox}
+
+\newpage
+%======================================================================= BLOCCHI
+
+%----------------------------------------------------------------------- 1
+\begin{blocco}{fond}{1}{Insiemi e linguaggio}{L1}
+\voce{Simboli}{$x\in A$ \textperiodcentered\ $A\subseteq B$ \textperiodcentered\ $A=B\iff A\subseteq B$ e $B\subseteq A$ \textperiodcentered\ $\emptyset$ \textperiodcentered\ $\mathcal P(A)$, insieme delle parti ($2^n$ elementi)}
+\voce{Operazioni}{unione, intersezione, differenza, complementare:}
+\begin{center}
+\begin{tikzpicture}[scale=0.92]
+\def\r{0.42}
+\foreach \k/\t in {0/{$A\cup B$},1/{$A\cap B$},2/{$A\setminus B$},3/{$A^c$}}
+  \node[font=\small] at (\k*2.05+0.35,-0.78) {\t};
+% unione
+\fill[bcol!40] (0.13,0) circle (\r) (0.57,0) circle (\r);
+\draw[bcol] (0.13,0) circle (\r) (0.57,0) circle (\r);
+% intersezione
+\begin{scope}[xshift=2.05cm]
+\begin{scope}\clip (0.13,0) circle (\r); \fill[bcol!40] (0.57,0) circle (\r);\end{scope}
+\draw[bcol] (0.13,0) circle (\r) (0.57,0) circle (\r);
+\end{scope}
+% differenza
+\begin{scope}[xshift=4.1cm]
+\fill[bcol!40] (0.13,0) circle (\r); \fill[white] (0.57,0) circle (\r);
+\draw[bcol] (0.13,0) circle (\r) (0.57,0) circle (\r);
+\end{scope}
+% complementare
+\begin{scope}[xshift=6.15cm]
+\fill[bcol!40] (-0.35,-0.52) rectangle (1.05,0.52); \fill[white] (0.35,0) circle (\r);
+\draw[bcol] (-0.35,-0.52) rectangle (1.05,0.52) (0.35,0) circle (\r);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\voce{Coppie}{$(a,b)$ \textperiodcentered\ prodotto cartesiano $A\times B$ \textperiodcentered\ partizione}
+\voce{Contare}{$|A\cup B|=|A|+|B|-|A\cap B|$ \ (inclusione-esclusione)\\
+$|A\cup B|=|A|+|B|$ se $A\cap B=\emptyset$ \textperiodcentered\ $|A\times B|=|A|\cdot|B|$}
+\occhio{$(a,b)\ne(b,a)$ ma $\{a,b\}=\{b,a\}$. \ $x\in A\iff\{x\}\subseteq A$.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 2
+\begin{blocco}{fond}{2}{Induzione e combinatoria}{L2}
+\voce{Induzione}{\kw{base} $P(1)$ vera \ $+$ \ \kw{passo} $P(n)\Rightarrow P(n+1)$ per ogni $n$ \ $\Longrightarrow$ \ $P(n)$ vera per ogni $n\ge1$}
+\formula{$\displaystyle1+2+\dots+n=\frac{n(n+1)}2$ \ \dimo\\[2pt]
+$\displaystyle1+q+\dots+q^n=\frac{1-q^{n+1}}{1-q}$ \ ($q\ne1$) \ \dimo}
+\voce{Progressioni}{aritmetica $a_n=a_1+(n-1)d$, \ somma $n\cdot\frac{a_1+a_n}2$\\
+geometrica $a_n=a_1q^{n-1}$ \textperiodcentered\ $\sum_{k=1}^na_k$ e proprietà}
+\voce{Medie}{$\sqrt{ab}\le\frac{a+b}2$ \ per $a,b\ge0$}
+\voce{Principi}{\kw{moltiplicazione}: scelte successive con $n_1,\dots,n_k$ possibilità $\to$ $n_1\cdots n_k$ esiti\\
+\kw{cassetti}: $n+1$ oggetti in $n$ cassetti $\to$ un cassetto ne ha almeno due}
+\voce{Contare}{$k$ oggetti scelti fra $n$:}
+\begin{center}
+\begin{tikzpicture}[
+  q/.style={draw=bcol,fill=bcol!10,rounded corners=3pt,font=\hf\fontseries{sb}\selectfont\scriptsize,inner sep=3pt},
+  r/.style={fill=bcol,text=white,rounded corners=3pt,font=\small,align=center,inner sep=2.5pt},
+  a/.style={-{Stealth[length=5pt]},thick,bcol!70},
+  sl/.style={font=\hf\fontseries{b}\selectfont\tiny,text=bcol!85!black,fill=bcol!3,inner sep=1pt}]
+\node[q] (o) at (0,0) {L'ORDINE CONTA?};
+\node[q] (r) at (-1.95,-1.05) {RIPETIZIONI?};
+\node[r] (c) at (2.1,-1.25) {combinazioni\\$\displaystyle\binom nk=\frac{n!}{k!\,(n-k)!}$};
+\node[r] (d1) at (-3.05,-2.35) {disp.\ con rip.\\$n^k$};
+\node[r] (d2) at (-0.55,-2.35) {disp.\ semplici\\$\frac{n!}{(n-k)!}$};
+\draw[a] (o)--node[sl]{sì}(r); \draw[a] (o)--node[sl]{no}(c);
+\draw[a] (r)--node[sl]{sì}(d1); \draw[a] (r)--node[sl]{no}(d2);
+\node[font=\footnotesize,align=left,anchor=west] at (0.55,-2.35) {$k=n$: \kw{permutazioni} $n!$};
+\end{tikzpicture}
+\end{center}
+\voce{Binomiali}{$\binom nk=\binom n{n-k}$ \textperiodcentered\ Tartaglia $\binom nk=\binom{n-1}{k-1}+\binom{n-1}k$ \textperiodcentered\ $\sum_k\binom nk=2^n$ (sottoinsiemi)}
+\formula{\kw{Newton:} \ $\displaystyle(a+b)^n=\sum_{k=0}^n\binom nk a^{n-k}b^k$\qquad
+\begin{tikzpicture}[baseline={([yshift=-0.6ex]current bounding box.center)},font=\scriptsize,x=0.27cm,y=0.3cm]
+\foreach \n/\row in {0/{1},1/{1,1},2/{1,2,1},3/{1,3,3,1},4/{1,4,6,4,1}}
+  \foreach \v [count=\k from 0] in \row
+    \node[text=bcol!85!black] at ({2*\k-\n},{-\n}) {\v};
+\end{tikzpicture}}
+\occhio{Prima di contare: \emph{l'ordine conta? ci sono ripetizioni?} ``Almeno uno'': conviene il complementare. Nel passo induttivo $n$ è \emph{qualunque}: verificare qualche caso non basta.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 3
+\begin{blocco}{fond}{3}{I numeri reali}{L3, L6}
+\voce{Insiemi}{$\N\subset\Z\subset\Q\subset\R$ \textperiodcentered\ $\Q$: decimali finiti o periodici \textperiodcentered\ $\sqrt2\notin\Q$ \dimo}
+\voce{Intervalli}{$[a,b]$, $]a,b[$, $[a,b[$, $]a,b]$ \textperiodcentered\ semirette $[a,+\infty[$, $]-\infty,b[$, \dots}
+\voce{Modulo}{$|x|=x$ se $x\ge0$, \ $-x$ se $x<0$ \textperiodcentered\ distanza $|x-y|$\\
+$|x|<r\iff-r<x<r$ \textperiodcentered\ $|x|>r\iff x<-r$ o $x>r$\\
+triangolare: $|x+y|\le|x|+|y|$}
+\voce{Sup e inf}{\kw{maggiorante}, insieme \kw{limitato}; $\sup A$ = il più piccolo dei maggioranti; \kw{massimo} = $\sup$ che sta in $A$ (idem $\inf$, minimo)}
+\formula{$S=\sup A\iff$\\ \textcircled{\scriptsize1} $a\le S$ $\forall a\in A$\\ \textcircled{\scriptsize2} $\forall\varepsilon>0$ $\exists a\in A$: $a>S-\varepsilon$}
+\voce{Completezza}{ogni $A\ne\emptyset$ limitato superiormente ha $\sup$ in $\R$\\
+in $\Q$ è falso: $\{q\in\Q:q^2<2\}$ \textperiodcentered\ proprietà di Archimede}
+\occhio{Il $\sup$ può non essere un massimo: $A=\{1-\frac1n\}$ ha $\sup A=1\notin A$. \ $\sqrt{x^2}=|x|$, non $x$.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 4
+\begin{blocco}{alge}{4}{Equazioni e disequazioni}{L4, L5, L9}
+\voce{Regole}{$+$ stessa quantità: ok \textperiodcentered\ $\times$ numero $>0$: verso invariato \textperiodcentered\ $\times$ numero $<0$: \kw{verso invertito}}
+\voce{Fratte}{tutto a un membro \ $\to$ \ segno di ogni fattore \ $\to$ \kw{tabella dei segni}; \ denominatori $\ne0$}
+\voce{Sistemi}{si \kw{intersecano} le soluzioni (unione per ``oppure'')}
+\voce{Modulo}{$|A|=k\iff A=\pm k$ ($k\ge0$) \textperiodcentered\ $|A|<k\iff-k<A<k$\\
+$|A|>k\iff A<-k$ o $A>k$ \textperiodcentered\ in generale: casi $A\ge0$, $A<0$}
+\voce{2º grado}{$\Delta=b^2-4ac$, \ $x_{1,2}=\frac{-b\pm\sqrt\Delta}{2a}$ \textperiodcentered\ $ax^2+bx+c=a(x-x_1)(x-x_2)$ \textperiodcentered\ biquadratiche: $t=x^2$}
+\voce{Segno}{del trinomio con $a>0$ (per $a<0$ si scambiano i segni):}
+\begin{center}
+\begin{tikzpicture}[x=0.95cm,y=0.95cm]
+\foreach \k/\q/\t/\s in {0/-0.45/{$\Delta>0$}/{$+\ \ -\ \ +$},1/0/{$\Delta=0$}/{$+$ tranne $x_1$},2/0.3/{$\Delta<0$}/{sempre $+$}} {
+  \begin{scope}[xshift=\k*2.85cm]
+  \draw[gray!60,-{Stealth[length=3pt]}] (-1.15,0)--(1.2,0);
+  \draw[bcol,very thick,domain=-1:1,samples=30] plot (\x,{0.95*\x*\x+\q});
+  \node[font=\small] at (0,-0.75) {\t};
+  \node[font=\footnotesize,text=bcol!85!black] at (0,1.25) {\s};
+  \end{scope}}
+\fill[bcol] (-0.69,0) circle (1.4pt) (0.69,0) circle (1.4pt) (2.85,0) circle (1.4pt);
+\end{tikzpicture}
+\end{center}
+\voce{Irrazionali}{}
+\formula{$\sqrt A=B\iff\begin{cases}B\ge0\\A=B^2\end{cases}$\qquad
+$\sqrt A<B\iff\begin{cases}A\ge0\\B>0\\A<B^2\end{cases}$\\[4pt]
+$\sqrt A>B\iff\begin{cases}B<0\\A\ge0\end{cases}\ \text{oppure}\ \begin{cases}B\ge0\\A>B^2\end{cases}$}
+\occhio{Non si moltiplica per un denominatore di segno ignoto. Si eleva al quadrato solo se i due membri sono $\ge0$. Le soluzioni si confrontano con le condizioni di esistenza.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 5
+\begin{blocco}{alge}{5}{Potenze e radici}{L6}
+\voce{Potenze}{$a^0=1$, $a^{-n}=\frac1{a^n}$ \textperiodcentered\ $a^ma^n=a^{m+n}$ \textperiodcentered\ $\frac{a^m}{a^n}=a^{m-n}$ \textperiodcentered\ $(a^m)^n=a^{mn}$ \textperiodcentered\ $(ab)^n=a^nb^n$}
+\voce{Radici}{$\sqrt[n]a$: $n$ dispari, per ogni $a$; \ $n$ pari, solo $a\ge0$, ed è $\ge0$\\
+$a^{m/n}=\sqrt[n]{a^m}$ ($a>0$) \textperiodcentered\ esponente reale: $3^{\sqrt2}=\sup\{3^q: q\in\Q,\ q<\sqrt2\}$}
+\voce{$x^n\gtrless a$}{$n$ pari o dispari: $x^2<4\iff-2<x<2$; \ $x^3<8\iff x<2$}
+\voce{Notazione}{$a\cdot10^k$, $1\le a<10$ \textperiodcentered\ cifre significative \textperiodcentered\ ordini di grandezza}
+\end{blocco}
+
+%----------------------------------------------------------------------- 6
+\begin{blocco}{alge}{6}{Percentuali, logaritmi, retta}{L7}
+\voce{Percentuali}{aumento del $p$: \kw{fattore} $1+p$ \textperiodcentered\ variazioni successive: i fattori si \kw{moltiplicano}, $(1+p_1)(1+p_2)-1$\\
+tasso costante: $N_n=N_0(1+p)^n$ \textperiodcentered\ tasso medio: $1+\bar p=\sqrt[n]{N_n/N_0}$}
+\voce{Logaritmo}{$a>0$, $a\ne1$, $b>0$: \ $\log_ab=c\iff a^c=b$}
+\formula{$\log_a(xy)=\log_ax+\log_ay$\qquad $\log_a\frac xy=\log_ax-\log_ay$\\[1pt]
+$\log_ax^k=k\log_ax$\qquad $\log_ax=\dfrac{\log x}{\log a}$}
+\voce{Usi}{equazioni esponenziali; tempo di raddoppio; cifre di $N$: $\lfloor\log_{10}N\rfloor+1$}
+\voce{Piano}{distanza $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ \textperiodcentered\ punto medio \textperiodcentered\ circonferenza $(x-a)^2+(y-b)^2=r^2$ \textperiodcentered\ regioni}
+\voce{Retta}{$y=mx+q$ \textperiodcentered\ $ax+by+c=0$ \textperiodcentered\ $m=\frac{y_2-y_1}{x_2-x_1}$\\
+per $(x_0,y_0)$: $y-y_0=m(x-x_0)$ \textperiodcentered\ parallele: $m=m'$ \textperiodcentered\ perpendicolari: $mm'=-1$\\
+modelli lineari e affini; lettura grafica di (dis)equazioni}
+\occhio{$\log(x+y)\ne\log x+\log y$. \ $+10\%$ e poi $-10\%$ danno $1{,}1\cdot0{,}9=0{,}99$: $-1\%$.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 7
+\begin{blocco}{funz}{7}{Funzioni}{L8, L9}
+\voce{Definizione}{$f:A\to B$ \textperiodcentered\ dominio, codominio, \kw{immagine} $f(A)$, controimmagine $f^{-1}(C)$, grafico}
+\voce{Tipi}{\kw{iniettiva} (punti diversi $\to$ valori diversi) \textperiodcentered\ \kw{suriettiva} ($f(A)=B$) \textperiodcentered\ \kw{biiettiva}\\
+funzioni da $n$ elementi in $m$ elementi: $m^n$}
+\voce{Proprietà}{zeri, segno, monotonia, massimi e minimi \textperiodcentered\ pari $f(-x)=f(x)$ \textperiodcentered\ dispari $f(-x)=-f(x)$ \textperiodcentered\ periodica $f(x+T)=f(x)$ \textperiodcentered\ a tratti}
+\voce{Composta}{$(g\circ f)(x)=g(f(x))$, con il suo dominio}
+\voce{Inversa}{$f^{-1}$ di una biiettiva: grafico simmetrico rispetto a $y=x$}
+\voce{$x^\alpha$}{per $0<x<1$ l'esponente maggiore dà il valore più piccolo; per $x>1$ il più grande}
+\voce{Grafici}{trasformazioni:}
+\begin{center}\footnotesize
+\begin{tabular}{@{}>{$}l<{$}@{\ \ }l@{\qquad}>{$}l<{$}@{\ \ }l@{}}
+f(x)+k & su di $k$ & -f(x) & simm.\ asse $x$\\
+f(x-h) & a \kw{destra} di $h$ & f(-x) & simm.\ asse $y$\\
+c\,f(x) & dilat.\ verticale & |f(x)| & ribalta le parti $<0$\\
+f(cx) & dilat.\ orizzontale & f(|x|) & ribalta la parte $x\ge0$
+\end{tabular}
+\end{center}
+\occhio{$f(x-h)$ trasla a destra, non a sinistra. \ $f^{-1}(x)$ (inversa) non è $\frac1{f(x)}$.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 8
+\begin{blocco}{funz}{8}{Esponenziali e logaritmi}{L9, L10}
+\begin{center}
+\begin{tikzpicture}[x=0.55cm,y=0.5cm]
+\draw[gray!55,-{Stealth[length=3pt]}] (-3,0)--(4.4,0) node[right,font=\scriptsize]{$x$};
+\draw[gray!55,-{Stealth[length=3pt]}] (0,-2.4)--(0,3.6);
+\draw[gray!60,dashed] (-2.3,-2.3)--(3.5,3.5) node[above,font=\scriptsize]{$y=x$};
+\draw[bcol,very thick,domain=-3:1.25,samples=40] plot (\x,{exp(\x)}) node[right,font=\scriptsize]{$e^x$};
+\draw[bcol!50!black,very thick,domain=0.09:4.2,samples=60] plot (\x,{ln(\x)}) node[right,font=\scriptsize]{$\log x$};
+\draw[cont,thick,domain=-1.8:3.2,samples=40] plot (\x,{pow(0.5,\x)});
+\node[cont,font=\scriptsize] at (-2.3,2.6) {$(\frac12)^x$};
+\fill (0,1) circle (1.5pt) (1,0) circle (1.5pt);
+\node[font=\tiny,anchor=north west] at (0,1) {$(0,1)$};
+\node[font=\tiny,anchor=north] at (1.2,0) {$(1,0)$};
+\end{tikzpicture}
+\end{center}
+\voce{$a^x$}{$a>0$, $a\ne1$: definita su $\R$, $>0$, immagine $]0,+\infty[$; \ crescente se $a>1$, decrescente se $0<a<1$}
+\voce{$\log_ax$}{inversa di $a^x$: definita per $x>0$; $\log_a1=0$; stessa monotonia di $a^x$}
+\voce{Bernoulli}{$(1+x)^n\ge1+nx$ \ per $x\ge-1$}
+\voce{Modelli}{$N(t)=N_0a^t=N_0e^{kt}$, $k=\log a$ \textperiodcentered\ raddoppio $T=\frac{\log2}k$ \textperiodcentered\ dimezzamento $\frac{\log2}{|k|}$ \textperiodcentered\ regola del $70$: $T\approx\frac{70}{p\,\%}$}
+\voce{Disequaz.}{$a^{f}>a^{g}\iff f>g$ se $a>1$, \ $f<g$ se $0<a<1$; \ per i logaritmi lo stesso, \kw{dopo} aver imposto argomenti $>0$}
+\end{blocco}
+
+%----------------------------------------------------------------------- 9
+\begin{blocco}{trig}{9}{Trigonometria e domini}{L10, L11}
+\voce{Radianti}{$180^\circ=\pi$ \textperiodcentered\ arco $=r\theta$ \textperiodcentered\ calcolatrice in RAD}
+\begin{minipage}[c]{0.35\linewidth}\centering
+\begin{tikzpicture}[scale=1.05]
+\draw[gray!55,-{Stealth[length=3pt]}] (-1.15,0)--(1.25,0);
+\draw[gray!55,-{Stealth[length=3pt]}] (0,-1.15)--(0,1.3);
+\draw[bcol!60] (0,0) circle (1);
+\draw[gray] (0,0)--(1,1.19);
+\draw[funz,very thick] (1,0)--(1,1.19) node[right,font=\scriptsize]{$\tan$};
+\draw[cont,very thick] (0,0)--(0.643,0) node[midway,below,font=\scriptsize]{$\cos$};
+\draw[succ,very thick] (0.643,0)--(0.643,0.766) node[midway,left,font=\scriptsize]{$\sin$};
+\fill[bcol] (0.643,0.766) circle (1.4pt);
+\draw[bcol] (0.28,0) arc (0:50:0.28) node[right,font=\tiny,xshift=1pt]{$x$};
+\end{tikzpicture}
+\end{minipage}%
+\begin{minipage}[c]{0.62\linewidth}\centering\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}>{$}c<{$}|*5{>{$}c<{$}}@{}}
+x & 0 & \frac\pi6 & \frac\pi4 & \frac\pi3 & \frac\pi2\\ \hline
+\sin & 0 & \frac12 & \frac{\sqrt2}2 & \frac{\sqrt3}2 & 1\\
+\cos & 1 & \frac{\sqrt3}2 & \frac{\sqrt2}2 & \frac12 & 0\\
+\tan & 0 & \frac{\sqrt3}3 & 1 & \sqrt3 & \text{---}
+\end{tabular}
+\end{minipage}
+\voce{Base}{$\sin^2x+\cos^2x=1$ \textperiodcentered\ $\tan x=\frac{\sin x}{\cos x}$, $x\ne\frac\pi2+k\pi$\\
+periodi: $2\pi$ ($\sin$, $\cos$), $\pi$ ($\tan$) \textperiodcentered\ $\sin$, $\tan$ dispari; $\cos$ pari}
+\voce{Simmetrie}{$\sin(\pi-x)=\sin x$ \textperiodcentered\ $\cos(\pi-x)=-\cos x$ \textperiodcentered\ $\sin(x+\pi)=-\sin x$ \textperiodcentered\ $\cos(x+\pi)=-\cos x$}
+\formula{$\sin(a\pm b)=\sin a\cos b\pm\cos a\sin b$\\
+$\cos(a\pm b)=\cos a\cos b\mp\sin a\sin b$\\
+$\sin2x=2\sin x\cos x$\\
+$\cos2x=\cos^2x-\sin^2x=1-2\sin^2x$}
+\voce{Equazioni}{$\sin x=k$: $x=\arcsin k+2k\pi$ o $\pi-\arcsin k+2k\pi$\\
+$\cos x=k$: $x=\pm\arccos k+2k\pi$ \textperiodcentered\ $\tan x=k$: $x=\arctan k+k\pi$\\
+disequazioni: sulla circonferenza o sul grafico}
+\voce{Inverse}{$\arcsin:[-1,1]\to[-\frac\pi2,\frac\pi2]$ \textperiodcentered\ $\arccos:[-1,1]\to[0,\pi]$\\
+$\arctan:\R\to\,]-\frac\pi2,\frac\pi2[$}
+\voce{Modelli}{$m+A\sin(\omega t+\varphi)$: media $m$, ampiezza $A$, periodo $\frac{2\pi}\omega$}
+\voce{Domini}{le condizioni si mettono \kw{a sistema}:}
+\begin{center}\small
+\begin{tabular}{@{}l@{\quad$\to$\quad}l@{}}
+frazione $A/B$ & $B\ne0$\\
+radice di indice pari & radicando $\ge0$\\
+logaritmo $\log_aA$ & $A>0$ \ (base $a>0$, $a\ne1$)\\
+$\tan A$ & $A\ne\frac\pi2+k\pi$\\
+$\arcsin A$, $\arccos A$ & $-1\le A\le1$\\
+$f(x)^{g(x)}$ & $f(x)>0$
+\end{tabular}
+\end{center}
+\occhio{$\arcsin(\sin x)=x$ solo per $x\in[-\frac\pi2,\frac\pi2]$. Nelle equazioni non vanno perse le soluzioni periodiche ($+2k\pi$, $+k\pi$).}
+\end{blocco}
+
+%----------------------------------------------------------------------- 10
+\begin{blocco}{succ}{10}{Successioni}{L12}
+\voce{Definizione}{funzione $n\mapsto a_n$ da $\N$ in $\R$: per elenco, formula esplicita, \kw{ricorrenza}; grafico per punti}
+\voce{Esempi}{aritmetiche e geometriche (blocco 2)\\
+\kw{Fibonacci}: $F_1=F_2=1$, $F_{n+1}=F_n+F_{n-1}$; \ $\frac{F_{n+1}}{F_n}\to\varphi=\frac{1+\sqrt5}2\approx1{,}618$, \ $\varphi^2=\varphi+1$\\
+sezione aurea ($\frac1\varphi\approx0{,}618$), rettangolo aureo}
+\voce{Divergenti}{$\log n$, \ $n^\alpha$ ($\alpha>0$), \ $a^n$ ($a>1$), \ $n!$, \ $n^n$}
+\end{blocco}
+
+%----------------------------------------------------------------------- 11
+\begin{blocco}{succ}{11}{Limiti di successioni}{L13, L14, L15}
+\formula{$a_n\to\ell$: \ $\forall\varepsilon>0\ \exists N:\ |a_n-\ell|<\varepsilon\ \ \forall n\ge N$\\[1pt]
+$a_n\to+\infty$: \ $\forall M\ \exists N:\ a_n>M\ \ \forall n\ge N$}
+\voce{Tipi}{convergenti, divergenti, irregolari ($(-1)^n$)}
+\voce{Teoremi}{unicità \textperiodcentered\ convergente $\Rightarrow$ limitata \textperiodcentered\ \kw{permanenza del segno} ($\ell>0\Rightarrow a_n>0$ da un certo $n$; $a_n\ge0\Rightarrow\ell\ge0$) \textperiodcentered\ \kw{carabinieri}: $a_n\le b_n\le c_n$, $a_n,c_n\to\ell\Rightarrow b_n\to\ell$}
+\voce{Monotone}{monotona e limitata $\Rightarrow$ converge \dimo\ (completezza); monotona $\Rightarrow$ ha limite}
+\voce{Il numero $e$}{$\bigl(1+\frac1n\bigr)^n$ crescente e limitata \dimo, \ $e=\lim\bigl(1+\frac1n\bigr)^n\approx2{,}718$\\
+$\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$ ($a_n\to\pm\infty$) \textperiodcentered\ $\bigl(1+\frac xn\bigr)^n\to e^x$}
+\voce{Infinito}{$\ell\pm\infty=\pm\infty$ \textperiodcentered\ $\ell\cdot\infty=\infty$ ($\ell\ne0$, regola dei segni) \textperiodcentered\ $\frac\ell\infty=0$ \textperiodcentered\ $\frac\ell{0^\pm}=\pm\infty$ ($\ell>0$) \textperiodcentered\ $+\infty+\infty=+\infty$ \textperiodcentered\ $\infty\cdot\infty=\infty$}
+\voce{Forme ind.}{\chip{$+\infty-\infty$}\,\chip{$0\cdot\infty$}\,\chip{$\frac\infty\infty$}\,\chip{$\frac00$}\,\chip[25]{$1^\infty$}\,\chip[25]{$0^0$}\,\chip[25]{$\infty^0$}}
+\voce{Gerarchia}{($\alpha>0$, $a>1$; ciascuno diviso il successivo $\to0$)}
+\begin{center}
+\chip[8]{\small$\log n$}\,$\ll$\,\chip[16]{$n^\alpha$}\,$\ll$\,\chip[26]{\large$a^n$}\,$\ll$\,\chip[36]{\large$n!$}\,$\ll$\,\chip[48]{\Large$n^n$}
+\end{center}
+\voce{Polinomi}{$\frac{P}{Q}$ di gradi $p$, $q$: \ $p=q$ $\to$ rapporto dei coefficienti direttivi; \ $p<q$ $\to0$; \ $p>q$ $\to\pm\infty$}
+\voce{Esponenziali}{$a_n^{b_n}=e^{b_n\log a_n}$: si studia $b_n\log a_n$ \textperiodcentered\ $c_n\to c\Rightarrow e^{c_n}\to e^c$ \textperiodcentered\ $a_n\to a>0\Rightarrow\log a_n\to\log a$\\
+determinate: $0^{+\infty}=0$, $(+\infty)^{+\infty}=+\infty$ \textperiodcentered\ $\sqrt[n]a\to1$, $\sqrt[n]n\to1$}
+\voce{Trigonom.}{$a_n\to0$, $a_n\ne0$: \ $\frac{\sin a_n}{a_n}\to1$ \dimo \textperiodcentered\ $\frac{\tan a_n}{a_n}\to1$ \textperiodcentered\ $\frac{1-\cos a_n}{a_n^2}\to\frac12$}
+\voce{Strumenti}{raccogliere il termine dominante \textperiodcentered\ razionalizzare \textperiodcentered\ gerarchia \textperiodcentered\ limiti notevoli}
+\occhio{$1^\infty$ non vale $1$: $\bigl(1+\frac1n\bigr)^n\to e$. Prima di un limite notevole si fa comparire la quantità giusta: $n\sin\frac3n=3\cdot\frac{\sin(3/n)}{3/n}\to3$.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 12
+\begin{blocco}{succ}{12}{Limiti di funzioni}{L16}
+\voce{Definizione}{$\lim\limits_{x\to x_0}f(x)=\ell$ se per \kw{ogni} $x_n\to x_0$ ($x_n$ nel dominio, $x_n\ne x_0$) si ha $f(x_n)\to\ell$; $x_0$, $\ell$ finiti o infiniti; $f(x_0)$ non conta}
+\voce{$\varepsilon$-$\delta$}{$\forall\varepsilon>0\ \exists\delta>0$: $0<|x-x_0|<\delta\Rightarrow|f(x)-\ell|<\varepsilon$ \ (equivalente)}
+\voce{Non esiste}{due successioni $x_n\to x_0$ con limiti di $f$ diversi: $\sin\frac1x$, $\frac{|x|}x$ in $0$}
+\voce{Regole}{tutte quelle delle successioni (confronto, algebra, forme, gerarchia: $\log x\ll x^\alpha\ll a^x$)}
+\voce{Notevoli}{per $x\to0$ (tranne l'ultimo):}
+\formula{\renewcommand{\arraystretch}{2.1}%
+\begin{tabular}{@{}>{$\displaystyle}l<{$}@{\qquad}>{$\displaystyle}l<{$}@{}}
+\frac{\sin x}x\to1 & \frac{\log(1+x)}x\to1\\
+\frac{\tan x}x\to1 & \frac{e^x-1}x\to1\\
+\frac{1-\cos x}{x^2}\to\frac12 & \frac{(1+x)^\alpha-1}x\to\alpha\\
+(1+x)^{1/x}\to e & \Bigl(1+\frac1x\Bigr)^x\to e\ \ (x\to\pm\infty)
+\end{tabular}}
+\voce{Catena}{\dimo\ ciascuno dal precedente:}
+\begin{center}
+\begin{tikzpicture}[ch/.style={fill=bcol!14,rounded corners=3pt,inner sep=3pt},a/.style={-{Stealth[length=5pt]},thick,bcol}]
+\node[ch] (a) at (0,0) {$(1+t)^{1/t}\to e$};
+\node[ch] (b) at (3.9,0) {$\frac{\log(1+t)}t\to1$};
+\node[ch] (c) at (0,-0.95) {$\frac{e^t-1}t\to1$};
+\node[ch] (d) at (3.9,-0.95) {$\frac{(1+t)^\alpha-1}t\to\alpha$};
+\draw[a] (a)--(b); \draw[a] (b.south west)--(c.north east); \draw[a] (c)--(d);
+\end{tikzpicture}
+\end{center}
+\voce{Cambio var.}{$g(x)\to t_0$ ($g\ne t_0$) e $F(t)\to L$ $\Rightarrow$ $F(g(x))\to L$\\
+``pongo $t=\dots$; per $x\to x_0$, $t\to\dots$''\\
+$x\sin\frac1x\to1$ ($x\to+\infty$, $t=\frac1x$) \textperiodcentered\ $x\log x\to0$ ($x\to0^+$) \textperiodcentered\ $\frac{\sin x}{x-\pi}\to-1$ ($t=x-\pi$)}
+\voce{Metodo}{come si calcola un limite:}
+\begin{center}
+\begin{tikzpicture}[st/.style={draw=bcol,fill=bcol!8,rounded corners=3pt,align=center,font=\footnotesize,inner sep=2.5pt,text width=#1},
+  st/.default=7.6cm,a/.style={-{Stealth[length=4pt]},thick,bcol!70}]
+\node[st] (s1) at (0,0) {\textcircled{\scriptsize1}\ \textbf{sostituisco}: se viene un numero o una forma determinata, ho finito};
+\node[st] (s2) at (0,-0.85) {\textcircled{\scriptsize2}\ \textbf{forma indeterminata}: quale?};
+\node[st=2.35cm] (f1) at (-2.62,-2.05) {$\frac\infty\infty$, \ $\infty-\infty$\\ dominante, razionalizzo, gerarchia};
+\node[st=2.35cm] (f2) at (0,-2.05) {$\frac00$, \ $0\cdot\infty$\\ scompongo; notevole con cambio di variabile};
+\node[st=2.35cm] (f3) at (2.62,-2.05) {$1^\infty$, \ $0^0$, \ $\infty^0$\\ $f^g=e^{g\log f}$; \ $\bigl(1+\frac1a\bigr)^a\to e$};
+\draw[a] (s1)--(s2); \draw[a] (s2.south)--(f1.north); \draw[a] (s2)--(f2); \draw[a] (s2.south)--(f3.north);
+\end{tikzpicture}
+\end{center}
+\occhio{$\frac{\sin x}x\to1$ per $x\to0$; per $x\to+\infty$ tende a $0$ ($\bigl|\frac{\sin x}x\bigr|\le\frac1x$). Dire sempre dove va la nuova variabile.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 13
+\begin{blocco}{cont}{13}{Continuità e zeri}{L17, L18}
+\voce{Laterali}{$x_n>x_0$ (destro), $x_n<x_0$ (sinistro); il limite esiste $\iff$ i laterali esistono e sono uguali}
+\voce{Asintoti}{\kw{verticale} $x=x_0$: un limite laterale è $\pm\infty$\\
+\kw{orizzontale} $y=\ell$: $f(x)\to\ell$ per $x\to\pm\infty$\\
+\kw{obliquo} $y=mx+q$: $m=\lim\frac{f(x)}x\ne0$, \ $q=\lim\bigl(f(x)-mx\bigr)$, finiti}
+\voce{Continuità}{in $x_0$: $\lim\limits_{x\to x_0}f(x)=f(x_0)$\\
+elementari: continue nel loro \kw{insieme di definizione}; somme, prodotti, quozienti, composte di continue sono continue $\to$ nel dominio il limite si calcola \kw{sostituendo}}
+\voce{Discontinuità}{punti vicino ai quali $f$ è definita, in cui non è continua (anche se lì non è definita):}
+\begin{center}
+\begin{tikzpicture}[x=0.55cm,y=0.55cm]
+\foreach \k/\t/\e in {0/eliminabile/{$\frac{\sin x}x$ in $0$},1/{salto (1ª specie)}/{$\lfloor x\rfloor$, $\frac{|x|}x$},2/{2ª specie}/{$\frac1x$, $\sin\frac1x$ in $0$}} {
+  \begin{scope}[xshift=\k*2.75cm]
+  \draw[gray!55,-{Stealth[length=3pt]}] (-2,0)--(2.2,0); \draw[gray!55,-{Stealth[length=3pt]}] (0,-1.6)--(0,2);
+  \node[font=\scriptsize\bfseries,text=bcol!85!black] at (0,-2.1) {\t};
+  \node[font=\scriptsize] at (0,-2.75) {\e};
+  \end{scope}}
+% eliminabile
+\draw[bcol,very thick] (-1.9,0.35)--(-0.06,1) (0.06,1.04)--(1.9,1.65);
+\draw[bcol,thick,fill=white] (0,1.02) circle (2.2pt);
+% salto
+\begin{scope}[xshift=2.75cm]
+\draw[bcol,very thick] (-1.9,-0.6)--(0,-0.6); \draw[bcol,very thick] (0,0.9)--(1.9,0.9);
+\fill[bcol] (0,0.9) circle (2.2pt); \draw[bcol,thick,fill=white] (0,-0.6) circle (2.2pt);
+\end{scope}
+% seconda specie
+\begin{scope}[xshift=5.5cm]
+\draw[bcol,very thick,domain=0.36:2,samples=30] plot (\x,{0.6/\x});
+\draw[bcol,very thick,domain=-2:-0.4,samples=30] plot (\x,{0.6/\x});
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\voce{Parametri}{funzioni a tratti: si sceglie il parametro che rende uguali limite e valore}
+\voce{Zeri}{\dimo\ $f$ continua in $[a,b]$, $f(a)f(b)<0$ $\Rightarrow$ $\exists c\in\,]a,b[$: $f(c)=0$\\
+\kw{bisezione}: dopo $n$ passi l'intervallo è lungo $(b-a)/2^n$; il punto medio dista dallo zero al più $(b-a)/2^{n+1}$}
+\voce{Intermedi}{$f$ continua in $[a,b]$ assume ogni valore fra $f(a)$ e $f(b)$ \ ($g=f-y$)}
+\voce{Weierstrass}{$f$ continua in $[a,b]$ chiuso e limitato $\Rightarrow$ ha massimo e minimo\\
+ipotesi necessarie: $x$ su $]0,1[$, \ $\frac1x$ su $]0,1]$, \ una discontinua su $[0,1]$}
+\occhio{$\frac1x$ è continua nel suo insieme di definizione \emph{e} ha in $0$ una discontinuità di 2ª specie: nessuna contraddizione. Gli zeri: esistenza, non unicità; senza continuità è falso ($\frac1x$ su $[-1,1]$).}
+\end{blocco}
+
+%----------------------------------------------------------------------- 14
+\begin{blocco}{deri}{14}{La derivata}{L18, L19}
+\begin{center}
+\begin{tikzpicture}[x=0.95cm,y=0.95cm]
+\draw[gray!55,-{Stealth[length=3pt]}] (-0.3,0)--(5.4,0) node[right,font=\scriptsize]{$x$};
+\draw[gray!55,-{Stealth[length=3pt]}] (0,-0.3)--(0,3.1);
+\draw[bcol,very thick,domain=0.2:4.9,samples=50] plot (\x,{0.12*\x*\x+0.25});
+\draw[cont,thick,dashed,domain=0.6:5.2] plot (\x,{0.43+0.6*(\x-1.5)+0.12*1.5*1.5+0.25-0.43}) node[right,font=\scriptsize]{secante};
+\draw[succ,thick,domain=0.2:4.6] plot (\x,{0.12*1.5*1.5+0.25+0.36*(\x-1.5)}) node[right,font=\scriptsize]{tangente};
+\fill (1.5,0.52) circle (1.6pt) node[above left,font=\scriptsize]{$P$};
+\fill (3.5,1.72) circle (1.6pt) node[above left,font=\scriptsize]{$Q$};
+\draw[gray,densely dotted] (1.5,0.52)--(3.5,0.52)--(3.5,1.72);
+\node[font=\tiny,below] at (2.5,0.52) {$h$};
+\node[font=\tiny,right] at (3.5,1.12) {$f(x_0+h)-f(x_0)$};
+\draw[gray,densely dotted] (1.5,0)--(1.5,0.52); \node[font=\tiny,below] at (1.5,0) {$x_0$};
+\end{tikzpicture}
+\end{center}
+\voce{Rapporto}{$\dfrac{f(x_0+h)-f(x_0)}h$: variazione media; pendenza della \kw{secante}; unità: [$f$]/[$x$]}
+\formula{$f'(x_0)=\displaystyle\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}h$ \ (finito)\\[2pt]
+\kw{tangente:} \ $y=f(x_0)+f'(x_0)(x-x_0)$}
+\voce{Significato}{geometrico: pendenza della tangente \textperiodcentered\ fisico: tasso di variazione istantaneo (velocità, velocità di crescita)}
+\voce{Laterali}{derivata destra e sinistra \textperiodcentered\ \kw{punto angoloso}: $|x|$ in $0$ ($+1$ e $-1$)}
+\voce{Continuità}{derivabile $\Rightarrow$ continua \dimo; non viceversa ($|x|$ in $0$)}
+\voce{Elementari}{dai limiti notevoli \dimo:}
+\begin{center}
+\renewcommand{\arraystretch}{1.55}
+\begin{tabular}{@{}>{$}l<{$}>{$}l<{$}@{\qquad}>{$}l<{$}>{$}l<{$}@{}}
+\toprule
+f & f' & f & f'\\ \midrule
+c & 0 & \sin x & \cos x\\
+x^\alpha & \alpha x^{\alpha-1} & \cos x & -\sin x\\
+e^x & e^x & \tan x & \dfrac1{\cos^2x}=1+\tan^2x\\
+a^x & a^x\log a & \log x & \dfrac1x\\
+ & & \log_ax & \dfrac1{x\log a}\\ \bottomrule
+\end{tabular}
+\end{center}
+\formula{\kw{Regole di derivazione} \dimo\\[2pt]
+$(f+g)'=f'+g'$\qquad $(cf)'=cf'$\\[2pt]
+$(fg)'=f'g+fg'$\qquad $\Bigl(\dfrac fg\Bigr)'=\dfrac{f'g-fg'}{g^2}$ \ ($g\ne0$)}
+\formula{\kw{Composta:}\ \ $\bigl(g(f(x))\bigr)'=g'\bigl(f(x)\bigr)\cdot f'(x)$\\[2pt]
+Leibniz: \ $\dfrac{dy}{dx}=\dfrac{dy}{du}\cdot\dfrac{du}{dx}$}
+\voce{Come}{derivo l'\kw{esterna} lasciando fermo il suo argomento, poi moltiplico per la derivata dell'\kw{interna}: $(\sin3x)'=3\cos3x$, \ $\bigl(\log(1+x^2)\bigr)'=\frac{2x}{1+x^2}$, \ $(e^{-3x})'=-3e^{-3x}$}
+\voce{Inversa}{$(f^{-1})'(y_0)=\dfrac1{f'(x_0)}$, \ $y_0=f(x_0)$, $f'(x_0)\ne0$ (argomento geometrico)\\
+$(\arctan x)'=\frac1{1+x^2}$ \textperiodcentered\ $(\arcsin x)'=\frac1{\sqrt{1-x^2}}$ \textperiodcentered\ $(\arccos x)'=-\frac1{\sqrt{1-x^2}}$}
+\voce{Lineare}{\kw{approssimazione lineare}: $f(x_0+h)\approx f(x_0)+f'(x_0)\,h$; \ errore piccolo rispetto a $h$\\
+propagazione degli errori: $\Delta f\approx f'(x_0)\,\Delta x$}
+\voce{Dominio}{prima di derivare si scrive il dominio di $f$; quello di $f'$ può essere più piccolo: $\sqrt x$ non è derivabile in $0$}
+\occhio{$(fg)'\ne f'g'$: $(x\cdot x)'=2x\ne1$. \ Valore $\ne$ velocità (unità diverse). \ Nella tangente c'è il \emph{numero} $f'(x_0)$. \ Non dimenticare l'interna: $(\sin x^2)'=2x\cos x^2$.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 15
+\begin{blocco}{deri}{15}{Estremi e ottimizzazione}{L20}
+\voce{Estremi}{$x_0$ punto di \kw{massimo assoluto}: $f(x)\le f(x_0)$ per ogni $x$ del dominio; \kw{locale}: solo vicino a $x_0$ (idem per il minimo)\\
+\kw{punto critico}: $f'(x_0)=0$}
+\formula{\kw{Fermat} \dimo\ \ $x_0$ \emph{interno}, estremo locale,\\ $f$ derivabile in $x_0$ \ $\Longrightarrow$ \ $f'(x_0)=0$}
+\voce{Candidati}{$f$ continua su $[a,b]$ (il massimo e il minimo esistono per Weierstrass): si confrontano i valori in}
+\begin{center}
+\chip{estremi $a$, $b$}\ \chip{punti critici}\ \chip{punti di non derivabilità}
+\end{center}
+\voce{Aperti}{$f$ continua su $]a,b[$ (anche illimitato) e $f\to+\infty$ ai due estremi $\Rightarrow$ $f$ ha minimo; se c'è un solo punto critico, è quello}
+\voce{Problemi}{\textcircled{\scriptsize1} incognita e unità \textcircled{\scriptsize2} \kw{funzione obiettivo} \textcircled{\scriptsize3} vincolo, quindi \kw{intervallo ammissibile} \textcircled{\scriptsize4} candidati e confronto \textcircled{\scriptsize5} risposta nel contesto}
+\voce{Esempi}{rettangolo di perimetro dato: area massima per il quadrato \textperiodcentered\ rapporto superficie/volume\\
+\kw{Fermat dei tre punti}: nel punto di minimo di $PA+PB+PC$ i tre segmenti formano angoli di $120^\circ$ (lamine di sapone)}
+\voce{Lettura}{Didone e la disuguaglianza isoperimetrica: $4\pi A\le L^2$, uguaglianza solo per il cerchio}
+\occhio{Un punto critico è solo un candidato: $x^3$ ha $f'(0)=0$ senza estremo. Fermat vale nei punti \emph{interni}: $x$ su $[0,1]$ ha massimo in $1$ con $f'(1)=1$. $|x|$ ha minimo in $0$ dove non è derivabile. Non dimenticare gli estremi dell'intervallo.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 16
+\begin{blocco}{deri}{16}{Rolle e Lagrange}{L22}
+\begin{center}
+\begin{tikzpicture}[x=0.95cm,y=0.95cm]
+\draw[gray!55,-{Stealth[length=3pt]}] (-0.2,0)--(5.2,0) node[right,font=\scriptsize]{$x$};
+\draw[gray!55,-{Stealth[length=3pt]}] (0,-0.2)--(0,3.1);
+\draw[bcol,very thick,domain=0.5:4.5,samples=50] plot (\x,{0.3+1.1*sqrt(\x)});
+\draw[cont,thick,dashed] (0.5,1.078)--(4.5,2.633) node[right,font=\scriptsize]{corda};
+\draw[succ,thick,domain=0.2:4.3] plot (\x,{1.856+0.389*(\x-2)}) node[above,font=\scriptsize]{tangente in $c$};
+\fill (0.5,1.078) circle (1.5pt) (4.5,2.633) circle (1.5pt) (2,1.856) circle (1.6pt);
+\foreach \p/\t in {0.5/a,2/c,4.5/b} \draw[gray,densely dotted] (\p,0) node[below,font=\scriptsize]{$\t$}--(\p,{0.3+1.1*sqrt(\p)});
+\end{tikzpicture}
+\end{center}
+\formula{$f$ continua su $[a,b]$, derivabile in $]a,b[$\\[2pt]
+\kw{Rolle} \dimo\ \ $f(a)=f(b)$ $\Rightarrow$ $\exists c\in\,]a,b[$: \ $f'(c)=0$\\[2pt]
+\kw{Lagrange} \dimo\ \ $\exists c\in\,]a,b[$: \ $f'(c)=\dfrac{f(b)-f(a)}{b-a}$}
+\voce{Significato}{c'è un punto con tangente \kw{parallela alla corda}; il Tutor autostradale: se la velocità media supera il limite, in qualche istante lo supera anche la velocità istantanea}
+\voce{Conseguenze}{\dimo\ su un \kw{intervallo}: $f'=0$ $\Rightarrow$ $f$ costante \textperiodcentered\ \kw{monotonia} $\iff$ segno di $f'$: $f$ crescente $\iff$ $f'\ge0$, decrescente $\iff$ $f'\le0$ \textperiodcentered\ $f'>0$ $\Rightarrow$ strettamente crescente, non viceversa ($x^3$)}
+\voce{Estremi}{$f'$ passa da $+$ a $-$: massimo locale; \ da $-$ a $+$: minimo locale \ (tabella del segno di $f'$)}
+\voce{Disuguagl.}{si studia la differenza: $e^x\ge1+x$ \textperiodcentered\ $\log(1+x)\le x$ ($x>-1$) \textperiodcentered\ $e^\pi>\pi^e$}
+\voce{Soluzioni}{quante soluzioni ha $f(x)=0$? monotonia (al più una per intervallo) $+$ teorema degli zeri (almeno una)}
+\occhio{Serve un intervallo: $\frac1x$ ha $f'<0$ ma non è decrescente su $\R\setminus\{0\}$. $x^3$ è strettamente crescente con $f'(0)=0$. Lagrange dice che $c$ esiste, non dove sia.}
+\end{blocco}
+
+%----------------------------------------------------------------------- 17
+\begin{bloccop}{deri}{17}{Studio di funzione}{L23 \textperiodcentered\ 18/11}
+\voce{Convessa}{il grafico sta \kw{sotto le corde} \textperiodcentered\ (solo cenni) criterio: $f$ convessa $\iff$ $f''\ge0$ \sd}
+\voce{Flesso}{punto in cui cambia la convessità; si cerca dove $f''$ \kw{cambia segno}}
+\formula{\kw{de l'Hôpital} \sd\ \ forma $\frac00$ o $\frac\infty\infty$:\\[2pt]
+se $\dfrac{f'(x)}{g'(x)}\to L$ \ allora \ $\dfrac{f(x)}{g(x)}\to L$}
+\voce{Studio}{\textcircled{\scriptsize1} dominio, simmetrie \textcircled{\scriptsize2} segno, zeri \textcircled{\scriptsize3} limiti, asintoti \textcircled{\scriptsize4} $f'$: monotonia, estremi \textcircled{\scriptsize5} $f''$: convessità, flessi \textcircled{\scriptsize6} grafico coerente con tutto}
+\voce{Non deriv.}{\kw{angoloso} (derivate laterali finite e diverse: $|x|$) \textperiodcentered\ \kw{cuspide} ($\pm\infty$ opposte: $\sqrt{|x|}$) \textperiodcentered\ \kw{flesso a tangente verticale} ($\sqrt[3]x$)}
+\occhio{$f''(x_0)=0$ non basta per un flesso: $x^4$. Un flesso non è un punto stazionario ($\sin x$ in $0$). De l'Hôpital solo per forme indeterminate, derivando numeratore e denominatore \emph{separatamente}. Il grafico può attraversare un asintoto.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 18
+\begin{bloccop}{deri}{18}{$o$ piccoli e Taylor}{L24 \textperiodcentered\ 20/11}
+\voce{$o$ piccolo}{$f=o(g)$ per $x\to x_0$ se $\dfrac fg\to0$: $f$ è trascurabile rispetto a $g$ (definizione e primo ordine già visti in L19)}
+\voce{Regole}{$o(x^n)\pm o(x^n)=o(x^n)$ \textperiodcentered\ $x^m\cdot o(x^n)=o(x^{m+n})$ \textperiodcentered\ $o(x^m)=o(x^n)$ se $m>n$ \ (per $x\to0$)}
+\formula{\kw{Taylor} con il resto di Peano \sd\\[3pt]
+$f(x)=\displaystyle\sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+o\bigl((x-x_0)^n\bigr)$}
+\voce{Migliore}{retta con errore $o(x-x_0)$: è la tangente \dimo\ \textperiodcentered\ parabola con errore $o\bigl((x-x_0)^2\bigr)$: coefficiente $\frac{f''(x_0)}2$ \dimo\ (un de l'Hôpital) \textperiodcentered\ e così via}
+\voce{Mac Laurin}{per $x\to0$:}
+\formula{\renewcommand{\arraystretch}{1.45}%
+\begin{tabular}{@{}>{$}l<{$}@{}}
+e^x=1+x+\frac{x^2}2+\dots+\frac{x^n}{n!}+o(x^n)\\
+\sin x=x-\frac{x^3}6+o(x^4)\qquad \cos x=1-\frac{x^2}2+\frac{x^4}{24}+o(x^5)\\
+\log(1+x)=x-\frac{x^2}2+\frac{x^3}3+o(x^3)\\
+(1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}2x^2+o(x^2)
+\end{tabular}}
+\voce{Limiti}{si sviluppa fino al primo termine che non si cancella: $\dfrac{x-\sin x}{x^3}=\dfrac{\frac{x^3}6+o(x^4)}{x^3}\to\dfrac16$}
+\voce{Estremi}{$f'(x_0)=0$ e $f''(x_0)>0$: minimo locale; \ $f''(x_0)<0$: massimo locale}
+\occhio{$o(x)-o(x)$ non è $0$: è ancora $o(x)$. Si arresta lo sviluppo all'ordine giusto: troppo presto restano solo $o(\cdot)$, e il limite non si legge.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 19
+\begin{bloccop}{inte}{19}{L'integrale}{L25 \textperiodcentered\ 23/11}
+\voce{Riemann}{$[a,b]$ diviso in $n$ parti di ampiezza $\Delta x=\frac{b-a}n$; \ somma $S_n=\sum_i f(\xi_i)\,\Delta x$ con $\xi_i$ nell'$i$-esima parte}
+\begin{center}
+\begin{tikzpicture}[x=0.95cm,y=1.1cm]
+\foreach \i in {0,...,5} {
+  \pgfmathsetmacro{\xa}{0.3+0.75*\i}
+  \pgfmathsetmacro{\h}{0.5+0.9*\xa-0.15*\xa*\xa}
+  \filldraw[fill=bcol!18,draw=bcol!60] (\xa,0) rectangle ++(0.75,\h);}
+\draw[gray!55,-{Stealth[length=3pt]}] (-0.2,0)--(5.4,0) node[right,font=\scriptsize]{$x$};
+\draw[gray!55,-{Stealth[length=3pt]}] (0,-0.2)--(0,2.3);
+\draw[bcol,very thick,domain=0.3:4.8,samples=50] plot (\x,{0.5+0.9*\x-0.15*\x*\x});
+\node[font=\scriptsize,below] at (0.3,0) {$a$}; \node[font=\scriptsize,below] at (4.8,0) {$b$};
+\node[font=\scriptsize,text=bcol!85!black] at (2.6,0.5) {$f(\xi_i)\,\Delta x$};
+\end{tikzpicture}
+\end{center}
+\formula{$\displaystyle\int_a^bf(x)\,dx=\lim_{n\to\infty}S_n$\\[2pt] il limite esiste se $f$ è continua \sd}
+\voce{Significato}{\kw{area con segno} \textperiodcentered\ \kw{accumulazione}: quantità totale $=\int$ tasso; \ distanza $=\int_{t_1}^{t_2}v(t)\,dt$; precipitazione cumulata}
+\voce{Proprietà}{linearità \textperiodcentered\ $\int_a^b=\int_a^c+\int_c^b$ \textperiodcentered\ $f\le g\Rightarrow\int_a^bf\le\int_a^bg$ \textperiodcentered\ $m(b-a)\le\int_a^bf\le M(b-a)$ \textperiodcentered\ $\int_b^a=-\int_a^b$}
+\formula{\kw{media integrale} \dimo\ \ $f$ continua su $[a,b]$ $\Rightarrow$\\
+$\exists c\in[a,b]$: \ $\displaystyle\int_a^bf(x)\,dx=f(c)\,(b-a)$\\[2pt]
+valore medio: \ $\dfrac1{b-a}\displaystyle\int_a^bf(x)\,dx$}
+\occhio{L'integrale è un'area \emph{con segno}: $\int_{-1}^1x\,dx=0$. Per l'area geometrica si integra $|f|$, spezzando l'intervallo dove $f$ cambia segno.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 20
+\begin{bloccop}{inte}{20}{Teorema fondamentale}{L25, L26}
+\voce{Integrale}{\kw{funzione integrale}: $F(x)=\displaystyle\int_a^xf(t)\,dt$ (area accumulata fino a $x$)}
+\formula{\kw{Teorema fondamentale} \dimo\\ $f$ continua $\Rightarrow$ $F'(x)=f(x)$\\[4pt]
+\kw{Formula fondamentale} \dimo\\ $G'=f$ $\Rightarrow$ $\displaystyle\int_a^bf(x)\,dx=G(b)-G(a)$}
+\voce{Primitive}{$G$ è una \kw{primitiva} di $f$ se $G'=f$; su un intervallo due primitive differiscono per una costante (Lagrange) \textperiodcentered\ $\int f(x)\,dx=G(x)+c$}
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{}>{$}l<{$}>{$}l<{$}@{\qquad}>{$}l<{$}>{$}l<{$}@{}}
+\toprule
+f & \int f & f & \int f\\ \midrule
+x^\alpha\ (\alpha\ne-1) & \frac{x^{\alpha+1}}{\alpha+1} & \sin x & -\cos x\\
+\frac1x & \log|x| & \cos x & \sin x\\
+e^x & e^x & \frac1{\cos^2x} & \tan x\\
+a^x & \frac{a^x}{\log a} & \frac1{1+x^2} & \arctan x\\ \bottomrule
+\end{tabular}
+\end{center}
+\voce{Quasi imm.}{$\displaystyle\int g'\bigl(f(x)\bigr)f'(x)\,dx=g\bigl(f(x)\bigr)+c$: \ $\int\frac{f'}f=\log|f|$ \textperiodcentered\ $\int f'e^f=e^f$ \textperiodcentered\ $\int f'\cos f=\sin f$}
+\voce{Aree}{fra il grafico e l'asse $x$: $\int_a^b|f(x)|\,dx$}
+\occhio{La costante additiva non si dimentica. $\int\frac1x\,dx=\log|x|+c$, su intervalli che non contengono $0$. Si controlla sempre derivando il risultato.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 21
+\begin{bloccop}{inte}{21}{Metodi di integrazione}{L26 \textperiodcentered\ 25/11}
+\formula{\kw{per parti} \dimo\\[2pt] $\displaystyle\int f(x)\,g'(x)\,dx=f(x)\,g(x)-\int f'(x)\,g(x)\,dx$}
+\voce{Esempi}{$\int x\,e^x\,dx=(x-1)e^x+c$ \textperiodcentered\ $\int\log x\,dx=x\log x-x+c$ \ ($f=\log x$, $g'=1$)}
+\formula{\kw{per sostituzione} \dimo\ \ $x=\varphi(t)$:\\[2pt]
+$\displaystyle\int_\alpha^\beta g\bigl(\varphi(t)\bigr)\varphi'(t)\,dt=\int_{\varphi(\alpha)}^{\varphi(\beta)}g(x)\,dx$}
+\voce{Esempio}{$\displaystyle\int_0^1 2x\,e^{x^2}dx$, \ $u=x^2$: \ $\displaystyle\int_0^1e^u\,du=e-1$}
+\voce{Fra grafici}{area fra $f\ge g$ su $[a,b]$: $\int_a^b\bigl(f(x)-g(x)\bigr)dx$; gli estremi sono spesso le intersezioni}
+\voce{Cenno}{l'equazione differenziale $y'=ky$ (Malthus) ha le soluzioni $y=Ce^{kt}$; con $y(0)=y_0$: \ $y=y_0e^{kt}$}
+\occhio{Nella sostituzione cambiano anche gli estremi di integrazione (oppure si torna alla variabile iniziale). Per parti: si deriva il fattore che si semplifica.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 22
+\begin{bloccop}{line}{22}{Vettori}{L27, L28 \textperiodcentered\ dal 27/11}
+\voce{Vettore}{direzione, verso, modulo; non dipende dal punto di applicazione \textperiodcentered\ componenti $v=(v_1,v_2,v_3)$ \textperiodcentered\ base canonica $e_1,e_2,e_3$}
+\voce{Operazioni}{somma (parallelogramma) e prodotto per un numero, componente per componente \textperiodcentered\ \kw{combinazione lineare} $\lambda u+\mu v$}
+\begin{center}
+\begin{tikzpicture}[x=0.9cm,y=0.9cm,v/.style={-{Stealth[length=6pt]},very thick}]
+\draw[v,bcol] (0,0)--(2.6,0.5) node[midway,below,font=\scriptsize]{$u$};
+\draw[v,succ] (0,0)--(0.9,1.6) node[midway,left,font=\scriptsize]{$v$};
+\draw[gray,dashed] (2.6,0.5)--(3.5,2.1) (0.9,1.6)--(3.5,2.1);
+\draw[v,deri] (0,0)--(3.5,2.1) node[above right,font=\scriptsize]{$u+v$};
+\draw[gray] (0.55,0.106) arc (10.9:60.6:0.56); \node[font=\scriptsize] at (0.62,0.5) {$\theta$};
+\begin{scope}[xshift=4.9cm]
+\draw[v,bcol] (0,0)--(2.4,0) node[below,font=\scriptsize]{$u$};
+\draw[v,succ] (0,0)--(1.5,1.5) node[above,font=\scriptsize]{$v$};
+\draw[gray,densely dotted] (1.5,1.5)--(1.5,0);
+\draw[very thick,cont] (0,0)--(1.5,0); \node[font=\scriptsize,text=cont,below] at (0.75,0) {proiezione};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\voce{Modulo}{$|v|=\sqrt{v_1^2+v_2^2+v_3^2}$ \textperiodcentered\ distanza fra $P$ e $Q$: $|P-Q|$}
+\voce{Dipendenza}{due vettori sono linearmente dipendenti se sono paralleli; tre nello spazio se stanno in un piano}
+\formula{$u\cdot v=u_1v_1+u_2v_2+u_3v_3$\\[2pt]
+$u\cdot v=|u|\,|v|\cos\theta$ \dimo\ \ (teorema del coseno)\\[2pt]
+$u\perp v\iff u\cdot v=0$}
+\voce{Proiezione}{di $v$ sulla direzione di $u$: \ $\dfrac{u\cdot v}{|u|^2}\,u$; \ componente tangenziale e normale}
+\voce{Retta}{per $P_0$ con direzione $v$: \ $P=P_0+t\,v$, \ $t\in\R$ (equazione vettoriale e parametrica)}
+\occhio{$u\cdot v=0$ non vuol dire $u=0$ o $v=0$: i vettori possono essere ortogonali. Il prodotto scalare è un \emph{numero}, non un vettore.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 23
+\begin{bloccop}{line}{23}{Rette e piani}{L29 \textperiodcentered\ 2/12}
+\voce{Retta}{$P=P_0+t\,v$: \ $x=x_0+tv_1$, \ $y=y_0+tv_2$, \ $z=z_0+tv_3$; \ $v$ \kw{vettore direttore}}
+\formula{\kw{piano}: \ $ax+by+cz+d=0$, \quad normale $n=(a,b,c)$\\[2pt]
+per $P_0$ con normale $n$: \ $n\cdot(P-P_0)=0$}
+\voce{Posizioni}{piani paralleli: normali parallele \textperiodcentered\ perpendicolari: $n\cdot n'=0$\\
+rette: incidenti, parallele, \kw{sghembe}}
+\voce{Intersez.}{retta-piano: si sostituiscono le parametriche nell'equazione del piano (un punto, nessuno, la retta intera)\\
+piano-piano: una retta, oppure piani paralleli \ (sistemi lineari, blocco 25)}
+\formula{distanza di $P_0$ dal piano: \ $\dfrac{|ax_0+by_0+cz_0+d|}{\sqrt{a^2+b^2+c^2}}$}
+\occhio{Nello spazio due rette possono non incontrarsi senza essere parallele (sghembe). Una sola equazione cartesiana nello spazio è un piano, non una retta.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 24
+\begin{bloccop}{line}{24}{Matrici}{L30 \textperiodcentered\ 4/12}
+\voce{Matrici}{tabella $m\times n$ \textperiodcentered\ quadrata, diagonale, identità $I$, trasposta $A^T$ \textperiodcentered\ somma e prodotto per un numero, elemento per elemento}
+\formula{prodotto \kw{righe per colonne}\\[2pt]
+$(m\times n)\cdot(n\times p)=m\times p$ \qquad $(AB)_{ij}=\sum_k a_{ik}b_{kj}$\\[2pt]
+in generale $AB\ne BA$}
+\voce{$A\,x$}{combinazione lineare delle colonne di $A$ con coefficienti le componenti di $x$}
+\voce{Nel piano}{trasformazioni lineari:}
+\begin{center}\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}c@{\quad}c@{\quad}c@{\quad}c@{}}
+$\begin{pmatrix}a&0\\0&b\end{pmatrix}$ & $\begin{pmatrix}1&0\\0&-1\end{pmatrix}$ & $\begin{pmatrix}1&0\\0&0\end{pmatrix}$ & $\begin{pmatrix}\cos\alpha&-\sin\alpha\\ \sin\alpha&\cos\alpha\end{pmatrix}$\\
+dilatazione & riflessione & proiezione & rotazione
+\end{tabular}
+\end{center}
+\formula{$\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc$ \qquad $|\det|$ = fattore di area \dimo\\[3pt]
+$\det A\ne0$: \ $A^{-1}=\dfrac1{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$}
+\voce{$3\times3$}{determinante solo come cenno, per i sistemi lineari \sd}
+\occhio{$\det A=0$ $\iff$ $A$ non invertibile $\iff$ colonne linearmente dipendenti. Il prodotto di matrici non è commutativo.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 25
+\begin{bloccop}{line}{25}{Sistemi lineari}{L31 \textperiodcentered\ 9/12}
+\voce{Scrittura}{$A\,x=b$ \textperiodcentered\ matrice dei coefficienti $A$, matrice completa $(A\,|\,b)$}
+\voce{Gauss}{mosse sulle righe: scambiarle, moltiplicarne una per un numero $\ne0$, sommarle un multiplo di un'altra; \ non cambiano le soluzioni \dimo\ \textperiodcentered\ si arriva alla \kw{forma a scala}}
+\begin{center}\small
+$\left(\begin{array}{ccc|c}1&2&-1&3\\0&1&4&2\\0&0&0&c\end{array}\right)$\qquad
+\begin{tabular}{@{}l@{}}$c\ne0$: \kw{impossibile}\\$c=0$: \kw{infinite} (un parametro)\end{tabular}
+\end{center}
+\voce{Esiti}{\kw{determinato} (una soluzione), \kw{indeterminato} (infinite, con parametri), \kw{impossibile}}
+\voce{Quadrati}{$\det A\ne0$ $\iff$ una sola soluzione, $x=A^{-1}b$}
+\voce{Geometria}{due equazioni in $x,y$: due rette (incidenti, parallele, coincidenti) \textperiodcentered\ in $x,y,z$: piani che si intersecano}
+\voce{Modelli}{miscele, bilanci di massa, flussi fra compartimenti: si controllano segno e unità delle soluzioni}
+\occhio{$\det A=0$ non vuol dire sistema impossibile: può essere indeterminato. Una soluzione negativa può essere matematicamente giusta e fisicamente inaccettabile.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 26
+\begin{bloccop}{prob}{26}{Probabilità}{L32, L33 \textperiodcentered\ dal 11/12}
+\voce{Eventi}{spazio campionario $\Omega$; eventi = sottoinsiemi (blocco 1): contrario $A^c$, \ ``$A$ o $B$'' $=A\cup B$, \ ``$A$ e $B$'' $=A\cap B$, \ incompatibili: $A\cap B=\emptyset$}
+\formula{assiomi: \ $P(A)\ge0$, \ $P(\Omega)=1$, \ additività\\[3pt]
+$P(A\cup B)=P(A)+P(B)-P(A\cap B)$ \ \dimo\\[3pt]
+$P(A^c)=1-P(A)$}
+\voce{Equiprob.}{$P(A)=\dfrac{\text{casi favorevoli}}{\text{casi possibili}}$, contando con il blocco 2 (con o senza reimmissione)}
+\formula{$P(A\,|\,B)=\dfrac{P(A\cap B)}{P(B)}$ \qquad $P(A\cap B)=P(B)\,P(A\,|\,B)$\\[3pt]
+\kw{indipendenti}: \ $P(A\cap B)=P(A)\,P(B)$\\[3pt]
+\kw{probabilità totale} \dimo\ \ $P(A)=\sum_iP(A\,|\,B_i)\,P(B_i)$\\[3pt]
+\kw{Bayes} \dimo\ \ $P(B\,|\,A)=\dfrac{P(A\,|\,B)\,P(B)}{P(A)}$}
+\voce{Test}{prevalenza $1\%$, sensibilità $99\%$, specificità $95\%$:}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=0.55cm,font=\scriptsize,n/.style={fill=bcol!12,rounded corners=2pt,inner sep=2pt}]
+\node[n] (o) at (0,0) {};
+\node[n] (m) at (1.6,1) {malato}; \node[n] (s) at (1.6,-1) {sano};
+\node[n] (mp) at (3.6,1.5) {$+$}; \node[n] (mn) at (3.6,0.5) {$-$};
+\node[n] (sp) at (3.6,-0.5) {$+$}; \node[n] (sn) at (3.6,-1.5) {$-$};
+\draw (o)--node[above,sloped]{$0{,}01$}(m); \draw (o)--node[below,sloped]{$0{,}99$}(s);
+\draw (m)--node[above]{$0{,}99$}(mp); \draw (m)--(mn); \draw (s)--node[above]{$0{,}05$}(sp); \draw (s)--(sn);
+\node[anchor=west,align=left] at (4.0,0.5) {$P(\text{malato}\,|\,+)=\dfrac{0{,}0099}{0{,}0099+0{,}0495}$\\[3pt]$\approx0{,}17$};
+\end{tikzpicture}
+\end{center}
+\occhio{Incompatibili $\ne$ indipendenti. $P(A\,|\,B)\ne P(B\,|\,A)$: con una prevalenza bassa, la maggior parte dei positivi è sana. L'equiprobabilità è un'ipotesi del modello, non un fatto.}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 27
+\begin{bloccop}{prob}{27}{Variabili aleatorie}{L34 \textperiodcentered\ 16/12}
+\voce{Distribuz.}{valori $x_i$ con probabilità $p_i$, \ $\sum_ip_i=1$ \textperiodcentered\ funzione di ripartizione $F(x)=P(X\le x)$}
+\formula{$\mu=E[X]=\sum_ix_i\,p_i$\\[3pt] $E[aX+b]=a\,E[X]+b$ \ \dimo\\[3pt]
+$\mathrm{Var}\,X=E\bigl[(X-\mu)^2\bigr]=E[X^2]-\mu^2$\\[3pt]
+$\sigma=\sqrt{\mathrm{Var}\,X}$ \qquad $\mathrm{Var}(aX+b)=a^2\,\mathrm{Var}\,X$}
+\voce{Bernoulli}{$P(X=1)=p$, $P(X=0)=1-p$: \ $E=p$, \ $\mathrm{Var}=p(1-p)$}
+\formula{\kw{binomiale} \dimo\ \ $n$ prove indipendenti con la stessa $p$:\\[2pt]
+$P(X=k)=\dbinom nk\,p^k(1-p)^{n-k}$ \qquad $E=np$, \ $\mathrm{Var}=np(1-p)$}
+\voce{Continue}{cenno: \kw{densità}, probabilità come area (blocco 19) \textperiodcentered\ normale di media $\mu$ e deviazione $\sigma$: regola $68$--$95$--$99{,}7$}
+\occhio{La binomiale richiede prove indipendenti e $p$ costante: va verificato nel contesto (germinazione, sopravvivenza, conteggi su campioni).}
+\end{bloccop}
+
+%----------------------------------------------------------------------- 28
+\begin{bloccop}{prob}{28}{Statistica}{L35 \textperiodcentered\ recupero}
+\voce{Dati}{popolazione, campione, unità statistica, carattere \textperiodcentered\ qualitativo o quantitativo (discreto, continuo)}
+\voce{Frequenze}{assolute, relative, cumulate \textperiodcentered\ istogramma, box plot; il grafico si sceglie in base al tipo di dato}
+\formula{media $\bar x=\dfrac1n\sum_ix_i$ \qquad $\sum_i(x_i-\bar x)=0$ \dimo\\[2pt]
+varianza $\dfrac1n\sum_i(x_i-\bar x)^2$ \qquad deviazione standard}
+\voce{Posizione}{media, mediana, moda, quartili e quantili}
+\voce{Dispersione}{campo di variazione, intervallo interquartile, varianza, deviazione standard}
+\voce{Inferenza}{cenni: dal campione alla popolazione, problemi di campionamento, intervallo di confidenza (l'idea)}
+\occhio{La media risente dei valori anomali, la mediana no. Descrivere il campione non basta per concludere sulla popolazione.}
+\end{bloccop}
+
+\end{document}

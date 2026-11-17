@@ -1,0 +1,398 @@
+% !TEX root =esercizi.tex
+% ---------------------------------------------------------------------
+% Scheda 3: Lezioni 7--9 (senza errori di misura, per scelta del docente). In L9 sono state svolte potenze, trasformazioni
+% dei grafici, disequazioni irrazionali, funzioni esponenziali e logaritmiche
+% e prime disequazioni. Ruffini, funzioni razionali e leggi di scala
+% non sono stati svolti: restano negli appunti,
+% ma per scelta del docente non ci sono esercizi su questi argomenti.
+% ---------------------------------------------------------------------
+\chapter{Lezioni 7--9 (7--12 ottobre 2026)}
+
+\begin{vuoto}[Argomenti svolti]{}
+\begin{itemize}
+\item[\bul] \textbf{Lezione 7 --- Variazioni, logaritmi, piano cartesiano, retta}. Composizione di variazioni percentuali e tasso di incremento. Logaritmi: definizione, proprietà, equazioni esponenziali e logaritmiche, tempo di raddoppio, numero di cifre. Piano cartesiano, distanza e punto medio, circonferenza, regioni del piano. La retta: forme esplicita e implicita, coefficiente angolare; lettura grafica di equazioni e disequazioni. Modelli lineari e affini.
+\item[\bul] \textbf{Lezione 8 --- Il concetto di funzione}. Funzione come sottoinsieme di $A\times B$; dominio, codominio, immagine, controimmagine; funzioni iniettive, suriettive, biiettive, e loro conteggio. Zeri, segno, monotonia, massimi e minimi; funzioni pari, dispari, periodiche, definite a tratti. Funzioni composte; funzione inversa.
+\item[\bul] \textbf{Lezione 9 --- Potenze, disequazioni irrazionali, esponenziali e logaritmi}. Confronto fra potenze; $x^\alpha$ con $\alpha$ reale. Trasformazioni dei grafici: traslazioni, dilatazioni, simmetrie, valori assoluti. Equazioni e disequazioni irrazionali $\sqrt{A(x)}\gtrless B(x)$. Funzioni esponenziali e logaritmiche: grafici, monotonia, il logaritmo come funzione inversa. Prime disequazioni esponenziali e logaritmiche.
+\end{itemize}
+\end{vuoto}
+
+Il livello di difficoltà è indicato con \liv{1} (esercizio di base), \liv{2} (esercizio standard), \liv{3} (esercizio più impegnativo).
+
+%-------------------------------------------------------------------
+\section{Percentuali}
+
+\begin{esercizio}[\liv{2}]
+Una popolazione cresce del $10\,\%$ all'anno per tre anni consecutivi. Qual \`e l'aumento percentuale complessivo?
+\end{esercizio}
+\risp{$1{,}1^{3}-1=33{,}1\,\%$ (non $30\,\%$).}
+
+\begin{esercizio}[\liv{2}]
+Un suolo contiene $0{,}2$ ppm (in massa) di mercurio. Quanti grammi di mercurio sono contenuti in $5$ t di suolo?
+\end{esercizio}
+\risp{$0{,}2\cdot10^{-6}\cdot5\cdot10^{6}$ g $=1$ g.}
+
+\begin{esercizio}[\liv{2}]
+Si vogliono preparare $400$ g di soluzione al $5\,\%$ m/m di cloruro di sodio. Quanti grammi di sale e quanti di acqua servono? Qual \`e la concentrazione se si aggiungono $100$ g di acqua?
+\end{esercizio}
+\risp{$20$ g di sale e $380$ g di acqua; $\frac{20}{500}=4\,\%$.}
+
+\begin{esercizio}[\liv{3}]
+Una specie aumenta del $50\,\%$ in un anno e diminuisce del $50\,\%$ l'anno successivo; un'altra diminuisce prima del $50\,\%$ e poi aumenta del $50\,\%$. Quale delle due si trova in una situazione migliore? Provare che un aumento del $p\,\%$ seguito da una diminuzione del $p\,\%$ produce sempre una diminuzione, e calcolarla.
+\end{esercizio}
+\risp{La stessa: in entrambi i casi il fattore \`e $1{,}5\cdot0{,}5=0{,}75$. In generale $(1+r)(1-r)-1=-r^{2}<0$ per $r\ne0$: si ha una diminuzione del $\frac{p^{2}}{100}\,\%$ (per $p=50$: del $25\,\%$).}
+
+%-------------------------------------------------------------------
+\section{Logaritmi}
+
+\begin{esercizio}[\liv{1}]
+Calcolare: \ $\log_2 16$; \ $\log_3 27$; \ $\log_{10}1000$; \ $\log_{10}0{,}01$; \ $\log_5 1$; \ $\log_7 7$.
+\end{esercizio}
+\risp{$4$; \ $3$; \ $3$; \ $-2$; \ $0$; \ $1$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolare: \ $\log_2\frac18$; \ $\log_9 3$; \ $\log_{1/3}9$; \ $2^{\log_2 5}$; \ $\log_{10}4+\log_{10}25$; \ $\log_3 18-\log_3 2$.
+\end{esercizio}
+\risp{$-3$; \ $\frac12$; \ $-2$; \ $5$; \ $\log_{10}100=2$; \ $\log_3 9=2$.}
+
+\begin{esercizio}[\liv{1}]
+Risolvere: \ $2^x=32$; \ $3^x=\frac19$; \ $10^x=0{,}001$; \ $5^x=7$; \ $\log_2x=5$; \ $\log_{10}x=-2$.
+\end{esercizio}
+\risp{$5$; \ $-2$; \ $-3$; \ $x=\log_57$; \ $x=32$; \ $x=0{,}01$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere: \ $2\cdot3^x+1=19$; \ $4^{x-1}=8$; \ $7^{2x}=5$; \ $\log_3(2x-1)=2$; \ $\log_2x+\log_2(x-2)=3$.
+\end{esercizio}
+\risp{$3^x=9$, $x=2$; \ $2^{2x-2}=2^3$, $x=\frac52$; \ $x=\frac12\log_75$; \ $2x-1=9$, $x=5$; \ con $x>2$: $x(x-2)=8$, $x=4$ ($x=-2$ non rispetta la condizione).}
+
+\begin{esercizio}[\liv{2}]
+Quante cifre ha $2^{64}$, il numero (meno uno) dei chicchi della scacchiera? E $7^{20}$? ($\log_{10}2\approx0{,}3010$, $\log_{10}7\approx0{,}8451$.)
+\end{esercizio}
+\risp{$64\cdot0{,}3010\approx19{,}26$: $20$ cifre. $20\cdot0{,}8451\approx16{,}90$: $17$ cifre.}
+
+\begin{esercizio}[\liv{3}]
+Una coltura batterica raddoppia ogni $3$ ore. Dopo quanto tempo è diventata $1000$ volte più numerosa? E se invece cresce del $25\%$ ogni ora?
+\end{esercizio}
+\risp{$2^{t/3}=1000$: $t=3\log_21000=\frac{9}{\log_{10}2}\approx29{,}9$ ore. Con $1{,}25^t=1000$: $t=\frac{3}{\log_{10}1{,}25}\approx31{,}0$ ore.}
+
+%-------------------------------------------------------------------
+\section{Piano cartesiano e retta}
+
+\begin{esercizio}[\liv{1}]
+Dati $A=(1,-2)$ e $B=(4,2)$, calcolare la distanza $AB$, il punto medio del segmento $AB$ e l'equazione della retta per $A$ e $B$, in forma esplicita e implicita.
+\end{esercizio}
+\risp{$AB=\sqrt{3^2+4^2}=5$; punto medio $(\frac52,0)$; $m=\frac43$, $y=\frac43x-\frac{10}3$, cioè $4x-3y-10=0$.}
+
+\begin{esercizio}[\liv{1}]
+Scrivere l'equazione della retta per $P=(2,1)$ parallela alla retta $3x+y-4=0$, e quella della retta per $P$ perpendicolare a essa.
+\end{esercizio}
+\risp{La retta data ha $m=-3$. Parallela: $y=-3x+7$. Perpendicolare: $m=\frac13$, $y=\frac13x+\frac13$.}
+
+\begin{esercizio}[\liv{2}]
+Riconoscere che $x^2+y^2-4x+6y-3=0$ è una circonferenza e trovarne centro e raggio. Il punto $(5,1)$ è interno o esterno?
+\end{esercizio}
+\risp{Completando i quadrati, $(x-2)^2+(y+3)^2=16$: centro $(2,-3)$, raggio $4$. La distanza di $(5,1)$ dal centro è $\sqrt{9+16}=5>4$: il punto è esterno.}
+
+\begin{esercizio}[\liv{2}]
+Disegnare la regione del piano descritta dal sistema $y\le2x+1$, $y\ge0$, $x\le2$, e calcolarne l'area.
+\end{esercizio}
+\risp{È il triangolo di vertici $(-\frac12,0)$, $(2,0)$, $(2,5)$; area $\frac12\cdot\frac52\cdot5=\frac{25}4$.}
+
+\begin{esercizio}[\liv{2}]
+L'acqua gela a $0\,^\circ$C, cioè $32\,^\circ$F, e bolle a $100\,^\circ$C, cioè $212\,^\circ$F. Sapendo che il legame fra le due scale è affine, scrivere $F$ in funzione di $C$, dire che cosa rappresenta il coefficiente angolare (con la sua unità di misura) e trovare la temperatura che ha lo stesso valore nelle due scale. Si tratta di una proporzionalità diretta?
+\end{esercizio}
+\risp{$F=1{,}8\,C+32$; il coefficiente angolare è $1{,}8\ ^\circ\mathrm F$ per $^\circ$C: un grado Celsius corrisponde a $1{,}8$ gradi Fahrenheit. $C=1{,}8C+32$ dà $C=-40$. Non è una proporzionalità diretta, perché $q=32\ne0$: raddoppiare i gradi Celsius non raddoppia i Fahrenheit.}
+
+\begin{esercizio}[\liv{3}]
+Per quali valori di $k$ la retta $y=kx$ interseca la circonferenza di centro $(4,0)$ e raggio $2$?
+\end{esercizio}
+\risp{Sostituendo in $(x-4)^2+y^2=4$: $(1+k^2)x^2-8x+12=0$, che ha soluzioni reali se e solo se $\frac\Delta4=16-12(1+k^2)\ge0$, cioè $k^2\le\frac13$: $-\frac{1}{\sqrt3}\le k\le\frac1{\sqrt3}$. Per $k=\pm\frac1{\sqrt3}$ la retta è tangente.}
+
+%-------------------------------------------------------------------
+\section{Funzioni}
+
+\begin{esercizio}[\liv{1}]
+Determinare il dominio di
+\[
+f(x)=\frac{\sqrt{x-2}}{x-5},\qquad g(x)=\frac1{x^2-4x+3},\qquad h(x)=\sqrt{4-x^2},\qquad k(x)=\sqrt{x^2-x-6}.
+\]
+\end{esercizio}
+\risp{$f$: $[2,5[\,\cup\,]5,+\infty[$; \ $g$: $\R\setminus\{1,3\}$; \ $h$: $[-2,2]$; \ $k$: $]-\infty,-2]\cup[3,+\infty[$.}
+
+\begin{esercizio}[\liv{1}]
+Quante sono le funzioni da $A=\{a,b,c\}$ in $B=\{1,2\}$? Quante sono suriettive? Quante iniettive? E da $B$ in $A$?
+\end{esercizio}
+\risp{Da $A$ in $B$: $2^3=8$ funzioni, di cui $8-2=6$ suriettive (si tolgono le due costanti) e nessuna iniettiva. Da $B$ in $A$: $3^2=9$ funzioni, di cui $3\cdot2=6$ iniettive e nessuna suriettiva.}
+
+\begin{esercizio}[\liv{2}]
+Sia $f(x)=x^2-2x$, $x\in\R$. (a) Determinare l'immagine di $f$. (b) Determinare le controimmagini $f^{-1}(\{3\})$ e $f^{-1}([0,3])$. (c) $f$ è iniettiva? (d) Su quale semiretta $f$ è strettamente crescente? Scrivere l'inversa della restrizione di $f$ a quella semiretta.
+\end{esercizio}
+\risp{(a) $f(x)=(x-1)^2-1$: immagine $[-1,+\infty[$. (b) $x^2-2x=3$: $\{-1,3\}$; $0\le x^2-2x\le3$: $[-1,0]\cup[2,3]$. (c) No: $f(-1)=f(3)$. (d) Su $[1,+\infty[$; da $y=(x-1)^2-1$ con $x\ge1$ si ricava $x=1+\sqrt{y+1}$, quindi l'inversa è $y\mapsto1+\sqrt{1+y}$, definita su $[-1,+\infty[$.}
+
+\begin{esercizio}[\liv{2}]
+Dire quali delle seguenti funzioni sono pari, quali dispari, quali né pari né dispari:
+\[
+x^3-x,\qquad x^2+|x|,\qquad x^2+x,\qquad \frac{x^2+1}{x},\qquad |x-1| .
+\]
+\end{esercizio}
+\risp{Dispari; pari; né l'una né l'altra ($f(1)=2$, $f(-1)=0$); dispari; né l'una né l'altra ($f(1)=0$, $f(-1)=2$).}
+
+\begin{esercizio}[\liv{2}]
+Siano $f(x)=x^2$ e $g(x)=\sqrt{x-1}$. Scrivere $g\circ f$ e $f\circ g$, con i rispettivi domini.
+\end{esercizio}
+\risp{$(g\circ f)(x)=\sqrt{x^2-1}$, definita per $x\le-1$ oppure $x\ge1$. $(f\circ g)(x)=(\sqrt{x-1})^2=x-1$, ma definita solo per $x\ge1$: non è la funzione $x-1$ su tutto $\R$.}
+
+\begin{esercizio}[\liv{3}]
+Sia $f(x)=\dfrac{x}{1+|x|}$, $x\in\R$. (a) Dimostrare che $f$ è dispari. (b) Scrivendo $f(x)=1-\frac1{1+x}$ per $x\ge0$, dimostrare che $f$ è strettamente crescente su $[0,+\infty[$, e dedurre che lo è su tutto $\R$. (c) Determinare l'immagine, il suo estremo superiore e inferiore; sono massimo e minimo? (d) Scrivere l'inversa.
+\end{esercizio}
+\risp{(a) $f(-x)=\frac{-x}{1+|x|}=-f(x)$. (b) Se $0\le x_1<x_2$, allora $1+x_1<1+x_2$, $\frac1{1+x_1}>\frac1{1+x_2}$ e $f(x_1)<f(x_2)$; per la disparità $f$ è strettamente crescente anche su $]-\infty,0]$, e i valori sono negativi a sinistra di $0$ e positivi a destra, quindi lo è su $\R$. (c) Su $[0,+\infty[$ l'immagine è $[0,1[$ (per $y\in[0,1[$ si risolve $1-\frac1{1+x}=y$ con $x=\frac{y}{1-y}$); per disparità l'immagine è $]-1,1[$, con $\sup=1$ e $\inf=-1$, che non sono massimo né minimo. (d) $f^{-1}(y)=\dfrac{y}{1-|y|}$, per $y\in\,]-1,1[$.}
+
+%-------------------------------------------------------------------
+\section{Funzioni potenza}
+
+\begin{esercizio}[\liv{1}]
+Ordinare, senza calcolatrice, i numeri $x^{-1}$, $x^{1/3}$, $x^{3/2}$, $x^2$ per $x=\frac12$ e per $x=2$.
+\end{esercizio}
+\risp{Per $x=\frac12$: $x^2<x^{3/2}<x^{1/3}<x^{-1}$ (cioè $0{,}25<0{,}35<0{,}79<2$). Per $x=2$: $x^{-1}<x^{1/3}<x^{3/2}<x^2$ (cioè $0{,}5<1{,}26<2{,}83<4$). Per $x<1$ vince l'esponente minore, per $x>1$ il maggiore.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere, ricordando il dominio di ciascuna potenza: \ $x^{3/2}\le8$; \ $x^{-2}>4$; \ $x^{1/3}>2$ (con $x>0$); \ $x^{-1/2}\ge3$.
+\end{esercizio}
+\risp{$[0,4]$; \ $x^2<\frac14$ con $x\ne0$: $]-\frac12,0[\,\cup\,]0,\frac12[$; \ $x>8$; \ $x>0$ e $\sqrt x\le\frac13$: $]0,\frac19]$.}
+
+%-------------------------------------------------------------------
+\section{Equazioni e disequazioni irrazionali}
+
+\begin{vuoto}[Promemoria]{}
+Con $A=A(x)$ e $B=B(x)$:
+\[
+\sqrt A\ge B\iff\begin{cases}B<0\\ A\ge0\end{cases}\ \text{oppure}\ \begin{cases}B\ge0\\ A\ge B^2\end{cases}
+\qquad\qquad
+\sqrt A\le B\iff\begin{cases}A\ge0\\ B\ge0\\ A\le B^2.\end{cases}
+\]
+Con le disuguaglianze strette si procede allo stesso modo. Elevare al quadrato è lecito solo quando i due membri sono non negativi.
+\end{vuoto}
+
+\begin{esercizio}[\liv{1}]
+Risolvere: \ $\sqrt{x-1}=3$; \ $\sqrt{2x+3}=x$; \ $\sqrt{x+5}=x-1$.
+\end{esercizio}
+\risp{$x=10$; \ con $x\ge0$: $x^2-2x-3=0$, $x=3$ ($x=-1$ va scartata); \ con $x\ge1$: $x^2-3x-4=0$, $x=4$ ($x=-1$ va scartata).}
+
+\begin{esercizio}[\liv{1}]
+Risolvere: \ $\sqrt{x+2}<3$; \ $\sqrt{3-x}\ge2$; \ $\sqrt{x^2-1}>0$; \ $\sqrt{x-4}\ge-1$.
+\end{esercizio}
+\risp{$0\le x+2<9$: $[-2,7[$; \ $3-x\ge4$: $x\le-1$; \ $x^2-1>0$: $x<-1$ oppure $x>1$; \ il secondo membro è negativo, quindi basta la condizione di esistenza: $x\ge4$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere: \ $\sqrt{x+3}\le x+1$; \ $\sqrt{x^2-3x}<x-1$.
+\end{esercizio}
+\risp{Prima: $x\ge-3$, $x\ge-1$ e $x+3\le x^2+2x+1$, cioè $x^2+x-2\ge0$ ($x\le-2$ o $x\ge1$): $[1,+\infty[$. \ Seconda: $x\le0$ o $x\ge3$; $x>1$; $x^2-3x<x^2-2x+1$, cioè $x>-1$: $[3,+\infty[$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere: \ $\sqrt{x^2-4}\ge x-1$; \ $\sqrt{5-x}>x+1$.
+\end{esercizio}
+\risp{Prima. Sistema con $x-1<0$: $x<1$ e $x^2\ge4$, cioè $x\le-2$. Sistema con $x-1\ge0$: $x^2-4\ge x^2-2x+1$, cioè $x\ge\frac52$. Soluzione: $]-\infty,-2]\cup[\frac52,+\infty[$. \ Seconda. Sistema con $x+1<0$: $x<-1$ (e $x\le5$). Sistema con $x+1\ge0$: $5-x>x^2+2x+1$, cioè $x^2+3x-4<0$, $-4<x<1$, quindi $-1\le x<1$. Soluzione: $]-\infty,1[$.}
+
+\begin{esercizio}[\liv{2}]
+In acque basse la velocità di propagazione di un'onda è $v=\sqrt{gh}$, dove $h$ è la profondità e $g\approx9{,}8$ m/s$^2$. Per quali profondità la velocità è almeno $5$ m/s? Verificare che la formula è dimensionalmente corretta.
+\end{esercizio}
+\risp{$gh\ge25$: $h\ge\frac{25}{9{,}8}\approx2{,}6$ m. $gh$ ha dimensioni $LT^{-2}\cdot L=L^2T^{-2}$, e la sua radice $LT^{-1}$ è una velocità.}
+
+\begin{esercizio}[\liv{3}]
+Risolvere $\sqrt{2x-x^2}\ge x-1$, e interpretare il risultato graficamente, riconoscendo nel grafico di $\sqrt{2x-x^2}$ una semicirconferenza.
+\end{esercizio}
+\risp{Condizione: $0\le x\le2$. Sistema con $x<1$: $0\le x<1$. Sistema con $x\ge1$: $2x-x^2\ge x^2-2x+1$, cioè $2x^2-4x+1\le0$, $1-\frac{\sqrt2}2\le x\le1+\frac{\sqrt2}2$, quindi $1\le x\le1+\frac{\sqrt2}2$. Soluzione: $[0,1+\frac{\sqrt2}2]$. Graficamente: $y=\sqrt{2x-x^2}$ è la semicirconferenza superiore di $(x-1)^2+y^2=1$, e la retta $y=x-1$ la incontra nel punto di ascissa $1+\frac{\sqrt2}2$ (a $45^\circ$ dal centro); a sinistra di quel punto la semicirconferenza sta sopra la retta.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere, scrivendo le condizioni necessarie:
+\[
+\sqrt{x+3}=x-3,\qquad \sqrt{2x+1}\le3,\qquad \sqrt{x^2-x-2}>x-3 .
+\]
+\end{esercizio}
+\risp{Prima: $x\ge3$ e $x+3=(x-3)^2$, cioè $x^2-7x+6=0$: $x=6$ (la soluzione $x=1$ va scartata). Seconda: $0\le2x+1\le9$: $[-\frac12,4]$. Terza: primo sistema $x^2-x-2\ge0$ e $x<3$, cioè $x\le-1$ oppure $2\le x<3$; secondo sistema $x\ge3$ e $x^2-x-2>(x-3)^2$, cioè $x>\frac{11}5$, quindi $x\ge3$. Unendo: $]-\infty,-1]\cup[2,+\infty[$.}
+
+\begin{esercizio}[\liv{3}]
+Risolvere $\sqrt{x}+\sqrt{x-3}>3$ e $\dfrac{|x-1|-3}{\sqrt x-1}>0$.
+\end{esercizio}
+\risp{Prima: condizione $x\ge3$; si scrive $\sqrt{x-3}>3-\sqrt x$: se $3-\sqrt x<0$ (cioè $x>9$) è vera; altrimenti si eleva: $x-3>9-6\sqrt x+x$, cioè $\sqrt x>2$, $x>4$. Soluzione: $x>4$. Seconda: condizioni $x\ge0$, $x\ne1$. Numeratore positivo per $x>4$ (con $x\ge0$), denominatore positivo per $x>1$. Caso $(+/+)$: $x>4$; caso $(-/-)$: $0\le x<1$. Soluzione: $[0,1[\,\cup\,]4,+\infty[$.}
+
+%-------------------------------------------------------------------
+\section{Funzioni esponenziali e logaritmiche}
+
+\begin{esercizio}[\liv{1}]
+Disegnare i grafici di $2^x$, $(\frac13)^x$, $\log_3x$, $\log_{1/2}x$, indicando dominio, immagine, monotonia e i punti di coordinate intere più evidenti.
+\end{esercizio}
+\risp{$2^x$: $\R$, $]0,+\infty[$, crescente, per $(0,1)$ e $(1,2)$. $(\frac13)^x$: $\R$, $]0,+\infty[$, decrescente, per $(0,1)$ e $(-1,3)$. $\log_3x$: $]0,+\infty[$, $\R$, crescente, per $(1,0)$ e $(3,1)$. $\log_{1/2}x$: $]0,+\infty[$, $\R$, decrescente, per $(1,0)$ e $(2,-1)$.}
+
+\begin{esercizio}[\liv{1}]
+Determinare il dominio di: \ $\log_2(x-3)$; \ $\ln(x^2-1)$; \ $\log_{10}\dfrac{x-1}{x+2}$; \ $\sqrt{2^x-4}$; \ $\dfrac1{\ln x}$.
+\end{esercizio}
+\risp{$x>3$; \ $x<-1$ oppure $x>1$; \ $x<-2$ oppure $x>1$; \ $2^x\ge4$, cioè $x\ge2$; \ $x>0$ e $x\ne1$.}
+
+\begin{esercizio}[\liv{2}]
+Senza calcolatrice: (a) stabilire il segno di $\log_20{,}7$, $\log_{0{,}3}0{,}2$, $\log_{1/2}5$, $\log_75$; (b) stabilire quale è maggiore fra $2^{\sqrt3}$ e $2^{1{,}7}$, e fra $0{,}4^{-1}$ e $0{,}4^{-2}$.
+\end{esercizio}
+\risp{(a) Negativo, positivo, negativo, positivo: con base maggiore di $1$ il logaritmo è positivo se e solo se l'argomento è maggiore di $1$; con base minore di $1$ il contrario. (b) $\sqrt3>1{,}7$ (perché $3>2{,}89$) e la base è maggiore di $1$: $2^{\sqrt3}>2^{1{,}7}$. La base $0{,}4$ è minore di $1$ e $-2<-1$: $0{,}4^{-2}>0{,}4^{-1}$ (infatti $6{,}25>2{,}5$).}
+
+\begin{esercizio}[\liv{2}]
+Sia $f(x)=\ln(x^2+1)$. Determinare dominio, segno e simmetrie. Su quali intervalli è crescente? Qual è il minimo? (Suggerimento: $f$ è composta di $x^2+1$ e di $\ln$.)
+\end{esercizio}
+\risp{Dominio $\R$; $f(x)\ge0$, con $f(x)=0$ solo per $x=0$; pari. Su $[0,+\infty[$ la funzione $x^2+1$ è strettamente crescente e $\ln$ anche, quindi la composta è strettamente crescente; per parità è strettamente decrescente su $]-\infty,0]$. Il minimo è $0$, in $x=0$; l'immagine è $[0,+\infty[$.}
+
+%-------------------------------------------------------------------
+\section{Trasformazioni dei grafici}
+
+\begin{esercizio}[\liv{1}]
+A partire dal grafico di $x^2$ disegnare i grafici di
+\[
+(x-3)^2,\qquad x^2-4,\qquad (x+1)^2+2,\qquad 1-x^2,\qquad 2x^2 ,
+\]
+indicando per ciascuno il vertice e l'immagine.
+\end{esercizio}
+\risp{Traslato a destra di $3$: vertice $(3,0)$, immagine $[0,+\infty[$. \ Traslato in basso di $4$: $(0,-4)$, $[-4,+\infty[$. \ A sinistra di $1$ e in alto di $2$: $(-1,2)$, $[2,+\infty[$. \ Simmetrico rispetto all'asse $x$ e traslato in alto di $1$: $(0,1)$, $]-\infty,1]$. \ Dilatato in verticale di un fattore $2$: $(0,0)$, $[0,+\infty[$.}
+
+\begin{esercizio}[\liv{1}]
+A partire dal grafico di $\sqrt x$ disegnare i grafici di $\sqrt{x+4}$, $\sqrt x-2$, $-\sqrt x$, $\sqrt{-x}$, $\sqrt{3-x}$, indicando dominio e immagine.
+\end{esercizio}
+\risp{$\sqrt{x+4}$: $[-4,+\infty[$, $[0,+\infty[$. \ $\sqrt x-2$: $[0,+\infty[$, $[-2,+\infty[$. \ $-\sqrt x$: $[0,+\infty[$, $]-\infty,0]$. \ $\sqrt{-x}$: $]-\infty,0]$, $[0,+\infty[$. \ $\sqrt{3-x}=\sqrt{-(x-3)}$: il grafico di $\sqrt{-x}$ traslato a destra di $3$; dominio $]-\infty,3]$, immagine $[0,+\infty[$.}
+
+\begin{esercizio}[\liv{2}]
+Disegnare i grafici di $|x^2-4|$, \ $x^2-4|x|$, \ $\bigl||x|-2\bigr|$, e dire per ciascuno se è pari.
+\end{esercizio}
+\risp{$|x^2-4|$: la parabola $x^2-4$ con l'arco fra $-2$ e $2$ ribaltato sopra l'asse; pari. \ $x^2-4|x|$ è $f(|x|)$ con $f(x)=x^2-4x=(x-2)^2-4$: si disegna la parte con $x\ge0$ (vertice $(2,-4)$) e la si ripete simmetricamente; pari. \ $|x|-2$ è una ``V'' con vertice $(0,-2)$; il valore assoluto ribalta la parte fra $-2$ e $2$: una ``W'' con zeri in $\pm2$ e massimo relativo $2$ in $0$; pari.}
+
+\begin{esercizio}[\liv{2}]
+A partire dai grafici di $2^x$ e $\ln x$ disegnare i grafici di
+\[
+2^{|x|},\qquad |2^x-2|,\qquad \ln(-x),\qquad \ln(x+1)-1,\qquad |\ln x| ,
+\]
+indicando dominio, immagine ed eventuali asintoti.
+\end{esercizio}
+\risp{$2^{|x|}$: $\R$, $[1,+\infty[$, pari, minimo in $0$. \ $|2^x-2|$: $\R$, $[0,+\infty[$, zero in $x=1$, asintoto orizzontale $y=2$ a sinistra. \ $\ln(-x)$: $]-\infty,0[$, $\R$, simmetrico di $\ln x$ rispetto all'asse $y$. \ $\ln(x+1)-1$: $]-1,+\infty[$, $\R$, asintoto verticale $x=-1$, zero in $x=e-1$. \ $|\ln x|$: $]0,+\infty[$, $[0,+\infty[$, zero in $x=1$.}
+
+\begin{esercizio}[\liv{3}]
+(a) Scrivere $x^2-6x+5$ nella forma $(x-h)^2+k$ e disegnare il grafico di $|x^2-6x+5|$. (b) Quante soluzioni ha l'equazione $|x^2-6x+5|=3$? Leggerlo dal grafico e poi verificarlo risolvendo l'equazione.
+\end{esercizio}
+\risp{(a) $(x-3)^2-4$: parabola di vertice $(3,-4)$ e zeri $1$ e $5$; l'arco fra $1$ e $5$ si ribalta, con massimo relativo $4$ in $x=3$. (b) La retta $y=3$ sta sotto il massimo relativo $4$, quindi taglia il grafico in $4$ punti. Infatti $(x-3)^2-4=3$ dà $x=3\pm\sqrt7$, e $(x-3)^2-4=-3$ dà $x=2$ e $x=4$.}
+
+\begin{esercizio}[\liv{3}]
+Al variare di $k\in\R$, quante soluzioni ha l'equazione $|x^2-4|=k$? (Ragionare sul grafico del primo membro e sulla retta orizzontale $y=k$.)
+\end{esercizio}
+\risp{Nessuna per $k<0$; due ($x=\pm2$) per $k=0$; quattro per $0<k<4$; tre per $k=4$ ($x=0$ e $x=\pm2\sqrt2$); due per $k>4$.}
+
+%-------------------------------------------------------------------
+\section{Disequazioni esponenziali e logaritmiche}
+
+\begin{esercizio}[\liv{1}]
+Risolvere: \ $2^x>16$; \ $3^{x-1}\le\frac19$; \ $(\frac12)^x<8$; \ $10^x\ge0{,}01$; \ $e^x>0$; \ $5^x<0$.
+\end{esercizio}
+\risp{$x>4$; \ $x-1\le-2$: $x\le-1$; \ $(\frac12)^x<(\frac12)^{-3}$, base minore di $1$: $x>-3$; \ $x\ge-2$; \ ogni $x\in\R$; \ nessuna soluzione.}
+
+\begin{esercizio}[\liv{1}]
+Risolvere: \ $\log_2x>3$; \ $\log_3x\le-1$; \ $\log_{1/2}x\ge2$; \ $\ln x<0$.
+\end{esercizio}
+\risp{$x>8$; \ $0<x\le\frac13$; \ base minore di $1$: $0<x\le\frac14$; \ $0<x<1$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere: \ $2^{x^2-3x}<\frac14$; \ $0{,}5^{2x+1}>0{,}5^{x-2}$; \ $4^x-2^{x+1}-8\ge0$.
+\end{esercizio}
+\risp{$x^2-3x<-2$: $1<x<2$; \ base minore di $1$: $2x+1<x-2$, $x<-3$; \ con $t=2^x>0$: $t^2-2t-8\ge0$, cioè $t\ge4$ (la soluzione $t\le-2$ è incompatibile con $t>0$): $x\ge2$.}
+
+\begin{esercizio}[\liv{2}]
+Risolvere, scrivendo prima le condizioni di esistenza:
+\begin{gather*}
+\log_2(3x-1)\le3,\qquad \log_{1/3}(x-1)>-2,\\
+\ln(x^2-3)>0,\qquad \log_{10}(x+1)+\log_{10}(x-1)<\log_{10}3 .
+\end{gather*}
+\end{esercizio}
+\risp{$x>\frac13$ e $3x-1\le8$: $]\frac13,3]$; \ $x>1$ e, con base minore di $1$, $x-1<9$: $]1,10[$; \ $x^2-3>1$, cioè $x<-2$ oppure $x>2$ (la condizione $x^2>3$ è compresa); \ $x>1$ e $x^2-1<3$: $]1,2[$.}
+
+\begin{esercizio}[\liv{3}]
+Risolvere: \ $(\ln x)^2-\ln x-2<0$; \ $2^x>3^{x-1}$.
+\end{esercizio}
+\risp{Con $t=\ln x$ ($x>0$): $t^2-t-2<0$, cioè $-1<t<2$: $e^{-1}<x<e^2$. \ Prendendo $\ln$ (base maggiore di $1$, verso conservato): $x\ln2>(x-1)\ln3$, cioè $x(\ln3-\ln2)<\ln3$: $x<\dfrac{\ln3}{\ln\frac32}\approx2{,}71$. (Verifica: per $x=2$, $4>3$; per $x=3$, $8<9$.)}
+
+%-------------------------------------------------------------------
+\section{Misure e ordini di grandezza}
+
+Esercizi su argomenti di L6 non ancora svolti a lezione: unità di misura e omogeneità dimensionale, ordini di grandezza.
+
+\begin{esercizio}[\liv{1}]
+Convertire: $3{,}2$ km in m; $450$ mL in L; $2{,}5$ h in s; $72$ km/h in m/s; $1{,}5$ m$^{2}$ in cm$^{2}$; $0{,}8$ m$^{3}$ in L.
+\end{esercizio}
+\risp{$3200$ m; $0{,}45$ L; $9000$ s; $20$ m/s; $15\,000$ cm$^{2}$; $800$ L.}
+
+\begin{esercizio}[\liv{1}]
+La densit\`a dell'acqua di mare \`e circa $1{,}03$ g/cm$^{3}$. Esprimerla in kg/m$^{3}$.
+\end{esercizio}
+\risp{$1030$ kg/m$^{3}$.}
+
+\begin{esercizio}[\liv{2}]
+Su un bacino di $25$ km$^{2}$ cadono $12$ mm di pioggia. Quanti metri cubi d'acqua sono caduti sul bacino?
+\end{esercizio}
+\risp{$0{,}012\ \text{m}\cdot25\cdot10^{6}\ \text{m}^{2}=3\cdot10^{5}$ m$^{3}$.}
+
+\begin{esercizio}[\liv{2}]
+Un fiume ha una portata di $3{,}6$ m$^{3}$/s. Quanti litri d'acqua passano in un'ora?
+\end{esercizio}
+\risp{$3{,}6\cdot3600=12\,960$ m$^{3}\approx1{,}30\cdot10^{7}$ L.}
+
+\begin{esercizio}[\liv{2}]
+La resa di un campo di frumento \`e di $5{,}2$ t/ha. Esprimerla in kg/m$^{2}$ ($1$ ha $=10^{4}$ m$^{2}$).
+\end{esercizio}
+\risp{$0{,}52$ kg/m$^{2}$.}
+
+\begin{esercizio}[\liv{2}]
+Siano $v$ una velocit\`a, $a$ un'accelerazione, $t$ un tempo, $m$ una massa, $s$ e $h$ lunghezze, $A$ un'area, $g$ l'accelerazione di gravit\`a, $Q$ una portata volumetrica. Quali delle seguenti formule sono dimensionalmente corrette?
+\begin{gather*}
+v=at,\qquad s=vt^{2},\qquad Q=Av,\\
+h=\frac{v^{2}}{2g},\qquad s=\frac{m\,v}{t}.
+\end{gather*}
+\end{esercizio}
+\risp{Sono corrette la prima, la terza e la quarta.}
+
+\begin{esercizio}[\liv{2}]
+Nella formula $x=x_{0}+v\,t+k\,t^{2}$, dove $x$, $x_{0}$ sono lunghezze, $v$ una velocit\`a e $t$ un tempo, quali dimensioni deve avere $k$?
+\end{esercizio}
+\risp{$LT^{-2}$.}
+
+\begin{esercizio}[\liv{2}]
+In un lago la concentrazione di ossigeno disciolto \`e $8$ mg/L. Esprimerla in mol/L, sapendo che la massa molare di O$_{2}$ \`e $32$ g/mol.
+\end{esercizio}
+\risp{$\frac{8\cdot10^{-3}}{32}=2{,}5\cdot10^{-4}$ mol/L.}
+
+\begin{esercizio}[\liv{2}]
+Il corpo umano contiene circa $3{,}7\cdot10^{13}$ cellule. Assumendo una massa media di $1$ ng per cellula, stimare la massa complessiva delle cellule. Il risultato \`e plausibile?
+\end{esercizio}
+\risp{$3{,}7\cdot10^{13}\cdot10^{-9}$ g $=3{,}7\cdot10^{4}$ g $=37$ kg: lo stesso ordine di grandezza della massa di una persona.}
+
+\begin{esercizio}[\liv{3}]
+Una citt\`a ha $10^{6}$ abitanti, ciascuno dei quali consuma in media $200$ litri d'acqua al giorno. Stimare il consumo annuo della citt\`a in litri e in metri cubi, e confrontarlo con il volume di un lago di $5$ km$^{2}$ di superficie e $20$ m di profondit\`a media.
+\end{esercizio}
+\risp{$2\cdot10^{2}\cdot10^{6}\cdot365\approx7{,}3\cdot10^{10}$ L $=7{,}3\cdot10^{7}$ m$^{3}$; il lago contiene $5\cdot10^{6}\cdot20=10^{8}$ m$^{3}$: il consumo annuo \`e circa il $73\,\%$ del volume del lago.}
+
+%-------------------------------------------------------------------
+\section{Problemi di riepilogo}
+
+\begin{esercizio}[\liv{2}]
+Un lago ha un volume di $2{,}4\cdot10^{7}$ m$^{3}$ e un inquinante vi \`e presente con concentrazione media di $0{,}05$ mg/L. Quanti chilogrammi di inquinante contiene il lago? Se la concentrazione diminuisce del $20\,\%$ all'anno, quale sar\`a la concentrazione dopo tre anni, e di quanto sar\`a diminuita in percentuale?
+\end{esercizio}
+\risp{$0{,}05\ \text{mg/L}\cdot2{,}4\cdot10^{10}$ L $=1{,}2\cdot10^{9}$ mg $=1{,}2\cdot10^{3}$ kg. Dopo tre anni: $0{,}05\cdot0{,}8^{3}=0{,}0256$ mg/L, con una diminuzione del $48{,}8\,\%$.}
+
+\begin{esercizio}[\liv{2}]
+Ogni anno si degrada il $30\,\%$ della quantità di un pesticida presente nel suolo. Dopo quanti anni ne resta meno del $10\,\%$ della quantità iniziale?
+\end{esercizio}
+\risp{$0{,}7^n<0{,}1$: $n>\dfrac{\ln0{,}1}{\ln0{,}7}\approx6{,}46$, cioè dopo $7$ anni.}
+
+\begin{esercizio}[\liv{2}]
+Una coltura batterica segue il modello $N(t)=500\cdot2^{t/4}$, con $t$ in ore. Qual è il tempo di raddoppio? Dopo quanto tempo la coltura supera i $10^5$ individui?
+\end{esercizio}
+\risp{$4$ ore. $2^{t/4}>200$: $t>4\log_2200\approx30{,}6$ ore.}
+
+\begin{esercizio}[\liv{3}]
+Due modelli per la stessa popolazione, con $t$ in anni: $A(t)=1000+150\,t$ e $B(t)=1000\cdot1{,}1^t$. Che tipo di crescita descrive ciascuno? Quale prevede la popolazione maggiore dopo $5$ anni? Dopo quanti anni interi il modello $B$ supera il modello $A$? (L'equazione $A(t)=B(t)$ non si risolve con i metodi del corso: procedere per tentativi, aiutandosi con un grafico.)
+\end{esercizio}
+\risp{$A$ è affine (aumento assoluto costante di $150$ individui all'anno), $B$ esponenziale (aumento relativo costante del $10\,\%$). Dopo $5$ anni $A=1750$, $B\approx1611$. Si ha $B(8)\approx2144<A(8)=2200$ e $B(9)\approx2358>A(9)=2350$: dal nono anno $B$ supera $A$, e da lì in poi la differenza cresce sempre.}
+
+%-------------------------------------------------------------------
+\stampasoluzioni
+
