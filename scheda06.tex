@@ -10,7 +10,7 @@
 
 \begin{vuoto}[Argomenti svolti]{}
 \begin{itemize}
-\item[\bul] \textbf{Lezione 16 --- Limiti di funzioni}. Definizione di limite con le successioni; legame con la definizione con $\varepsilon$ e $\delta$. La catena dei limiti notevoli: da $\frac{\sin a_n}{a_n}$ e dal numero $e$ fino a $\ln(1+a_n)$, $e^{a_n}$, $(1+a_n)^\alpha$. Regole di calcolo, forme indeterminate, gerarchia e limiti notevoli per le funzioni; il cambio di variabile.
+\item[\bul] \textbf{Lezione 16 --- Limiti di funzioni}. Definizione di limite con le successioni; legame con la definizione con $\varepsilon$ e $\delta$. La catena dei limiti notevoli: da $\frac{\sin a_n}{a_n}$ e dal numero $e$ fino a $\log(1+a_n)$, $e^{a_n}$, $(1+a_n)^\alpha$. Regole di calcolo, forme indeterminate, gerarchia e limiti notevoli per le funzioni; il cambio di variabile.
 \item[\bul] \textbf{Lezione 17 --- Continuità e teorema degli zeri}. Limiti destro e sinistro; non esistenza del limite. Asintoti verticali, orizzontali, obliqui. Funzioni continue; punti di discontinuità e loro classificazione. Teorema degli zeri con il metodo di bisezione; teorema dei valori intermedi; teorema di Weierstrass.
 \item[\bul] \textbf{Lezione 18 --- La derivata}. Rapporto incrementale e derivata; retta tangente; significato fisico. Derivata destra e sinistra, punto angoloso; derivabilità e continuità. Derivate delle funzioni elementari con i limiti notevoli. Regole della somma, del prodotto e del quoziente; tabella delle derivate.
 \end{itemize}
@@ -22,11 +22,11 @@ Il livello di difficoltà è indicato con \liv{1} (esercizio di base), \liv{2} (
 Per $x\to0$:
 \begin{gather*}
 \frac{\sin x}x\to1,\qquad \frac{\tan x}x\to1,\qquad \frac{1-\cos x}{x^2}\to\frac12,\\
-\frac{\ln(1+x)}x\to1,\qquad \frac{e^x-1}x\to1,\qquad \frac{(1+x)^\alpha-1}x\to\alpha,\qquad (1+x)^{1/x}\to e;
+\frac{\log(1+x)}x\to1,\qquad \frac{e^x-1}x\to1,\qquad \frac{(1+x)^\alpha-1}x\to\alpha,\qquad (1+x)^{1/x}\to e;
 \end{gather*}
 per $x\to\pm\infty$: $\bigl(1+\frac1x\bigr)^x\to e$. \emph{Cambio di variabile}: si pone $t=g(x)$, si dice dove va $t$, e si riscrive tutto con $t$.
 
-Derivate: $(x^\alpha)'=\alpha x^{\alpha-1}$, $(e^x)'=e^x$, $(a^x)'=a^x\ln a$, $(\ln x)'=\frac1x$, $(\log_ax)'=\frac1{x\ln a}$, $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$, $(\tan x)'=\frac1{\cos^2x}$. Regole: $(f+g)'=f'+g'$, $(fg)'=f'g+fg'$, $\bigl(\frac fg\bigr)'=\frac{f'g-fg'}{g^2}$.
+Derivate: $(x^\alpha)'=\alpha x^{\alpha-1}$, $(e^x)'=e^x$, $(a^x)'=a^x\log a$, $(\log x)'=\frac1x$, $(\log_ax)'=\frac1{x\log a}$, $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$, $(\tan x)'=\frac1{\cos^2x}$. Regole: $(f+g)'=f'+g'$, $(fg)'=f'g+fg'$, $\bigl(\frac fg\bigr)'=\frac{f'g-fg'}{g^2}$.
 \end{vuoto}
 
 %-------------------------------------------------------------------
@@ -62,11 +62,11 @@ Calcolare:
 \begin{esercizio}[\liv{2}]
 Calcolare con la gerarchia degli infiniti:
 \begin{gather*}
-\text{(a) }\lim_{x\to+\infty}\frac{e^x+x^{100}}{e^x-\ln x};\qquad \text{(b) }\lim_{x\to+\infty}\frac{\ln(x^3+1)}{\ln x};\qquad \text{(c) }\lim_{x\to0^+}x^2\ln x;\\
-\text{(d) }\lim_{x\to+\infty}\frac{(\ln x)^{10}}{x^{0{,}1}};\qquad \text{(e) }\lim_{x\to+\infty}x^{1/\ln x}.
+\text{(a) }\lim_{x\to+\infty}\frac{e^x+x^{100}}{e^x-\log x};\qquad \text{(b) }\lim_{x\to+\infty}\frac{\log(x^3+1)}{\log x};\qquad \text{(c) }\lim_{x\to0^+}x^2\log x;\\
+\text{(d) }\lim_{x\to+\infty}\frac{(\log x)^{10}}{x^{0{,}1}};\qquad \text{(e) }\lim_{x\to+\infty}x^{1/\log x}.
 \end{gather*}
 \end{esercizio}
-\risp{(a) Si divide per $e^x$: $\frac{1+x^{100}/e^x}{1-\ln x/e^x}\to1$; (b) $\ln(x^3+1)=3\ln x+\ln\bigl(1+\frac1{x^3}\bigr)$, quindi il quoziente tende a $3$; (c) con $t=\frac1x\to+\infty$: $-\frac{\ln t}{t^2}\to0$; (d) $0$: ogni potenza di $x$, anche piccola, batte ogni potenza del logaritmo; (e) $x^{1/\ln x}=e^{\ln x/\ln x}=e$ per ogni $x>1$.}
+\risp{(a) Si divide per $e^x$: $\frac{1+x^{100}/e^x}{1-\log x/e^x}\to1$; (b) $\log(x^3+1)=3\log x+\log\bigl(1+\frac1{x^3}\bigr)$, quindi il quoziente tende a $3$; (c) con $t=\frac1x\to+\infty$: $-\frac{\log t}{t^2}\to0$; (d) $0$: ogni potenza di $x$, anche piccola, batte ogni potenza del logaritmo; (e) $x^{1/\log x}=e^{\log x/\log x}=e$ per ogni $x>1$.}
 
 %-------------------------------------------------------------------
 \section{Limiti notevoli e cambio di variabile}
@@ -74,7 +74,7 @@ Calcolare con la gerarchia degli infiniti:
 \begin{esercizio}[\liv{1}]
 Calcolare con i limiti notevoli:
 \begin{gather*}
-\text{(a) }\lim_{x\to0}\frac{\sin4x}{3x};\qquad \text{(b) }\lim_{x\to0}\frac{1-\cos2x}{x^2};\qquad \text{(c) }\lim_{x\to0}\frac{\tan5x}x;\qquad \text{(d) }\lim_{x\to0}\frac{\ln(1+4x)}x;\\
+\text{(a) }\lim_{x\to0}\frac{\sin4x}{3x};\qquad \text{(b) }\lim_{x\to0}\frac{1-\cos2x}{x^2};\qquad \text{(c) }\lim_{x\to0}\frac{\tan5x}x;\qquad \text{(d) }\lim_{x\to0}\frac{\log(1+4x)}x;\\
 \text{(e) }\lim_{x\to0}\frac{e^{2x}-1}{3x};\qquad \text{(f) }\lim_{x\to0}\frac{\sqrt{1+x}-1}x;\\ \text{(g) }\lim_{x\to0}(1-3x)^{1/x};\qquad \text{(h) }\lim_{x\to+\infty}\Bigl(1+\frac1{2x}\Bigr)^x.
 \end{gather*}
 \end{esercizio}
@@ -83,19 +83,19 @@ Calcolare con i limiti notevoli:
 \begin{esercizio}[\liv{2}]
 Calcolare con un cambio di variabile, dicendo ogni volta dove va la nuova variabile:
 \begin{gather*}
-\text{(a) }\lim_{x\to+\infty}x\tan\frac1x;\qquad \text{(b) }\lim_{x\to\pi}\frac{1+\cos x}{(x-\pi)^2};\qquad \text{(c) }\lim_{x\to1}\frac{x^3-1}{\ln x};\\
-\text{(d) }\lim_{x\to0^+}x\ln^2x;\qquad \text{(e) }\lim_{x\to2}\frac{2^x-4}{x-2};\qquad \text{(f) }\lim_{x\to+\infty}x\bigl(2^{1/x}-1\bigr).
+\text{(a) }\lim_{x\to+\infty}x\tan\frac1x;\qquad \text{(b) }\lim_{x\to\pi}\frac{1+\cos x}{(x-\pi)^2};\qquad \text{(c) }\lim_{x\to1}\frac{x^3-1}{\log x};\\
+\text{(d) }\lim_{x\to0^+}x\log^2x;\qquad \text{(e) }\lim_{x\to2}\frac{2^x-4}{x-2};\qquad \text{(f) }\lim_{x\to+\infty}x\bigl(2^{1/x}-1\bigr).
 \end{gather*}
 \end{esercizio}
-\risp{(a) $t=\frac1x\to0^+$: $\frac{\tan t}t\to1$; (b) $t=x-\pi\to0$, $\cos x=-\cos t$: $\frac{1-\cos t}{t^2}\to\frac12$; (c) $t=x-1\to0$: $\frac{(1+t)^3-1}t\cdot\frac t{\ln(1+t)}\to3\cdot1=3$; (d) $t=\frac1x\to+\infty$: $\frac{(\ln t)^2}t\to0$; (e) $t=x-2\to0$: $\frac{4(2^t-1)}t=4\ln2\cdot\frac{e^{t\ln2}-1}{t\ln2}\to4\ln2$; (f) $t=\frac1x\to0^+$: $\frac{2^t-1}t\to\ln2$.}
+\risp{(a) $t=\frac1x\to0^+$: $\frac{\tan t}t\to1$; (b) $t=x-\pi\to0$, $\cos x=-\cos t$: $\frac{1-\cos t}{t^2}\to\frac12$; (c) $t=x-1\to0$: $\frac{(1+t)^3-1}t\cdot\frac t{\log(1+t)}\to3\cdot1=3$; (d) $t=\frac1x\to+\infty$: $\frac{(\log t)^2}t\to0$; (e) $t=x-2\to0$: $\frac{4(2^t-1)}t=4\log2\cdot\frac{e^{t\log2}-1}{t\log2}\to4\log2$; (f) $t=\frac1x\to0^+$: $\frac{2^t-1}t\to\log2$.}
 
 \begin{esercizio}[\liv{3}]
 Calcolare:
 \[
-\text{(a) }\lim_{x\to0}\frac{e^{\sin3x}-1}{\ln(1+x)};\qquad \text{(b) }\lim_{x\to0^+}(\sin x)^x;\qquad \text{(c) }\lim_{x\to0}(\cos x)^{1/x^2};\qquad \text{(d) }\lim_{x\to+\infty}\Bigl(\cos\frac1x\Bigr)^{x^2}.
+\text{(a) }\lim_{x\to0}\frac{e^{\sin3x}-1}{\log(1+x)};\qquad \text{(b) }\lim_{x\to0^+}(\sin x)^x;\qquad \text{(c) }\lim_{x\to0}(\cos x)^{1/x^2};\qquad \text{(d) }\lim_{x\to+\infty}\Bigl(\cos\frac1x\Bigr)^{x^2}.
 \]
 \end{esercizio}
-\risp{(a) $\frac{e^{\sin3x}-1}{\sin3x}\cdot\frac{\sin3x}{3x}\cdot3\cdot\frac x{\ln(1+x)}\to1\cdot1\cdot3\cdot1=3$ (con $t=\sin3x\to0$ nel primo fattore). (b) $(\sin x)^x=e^{x\ln\sin x}$, e $x\ln\sin x=x\ln x+x\ln\frac{\sin x}x\to0+0$: il limite è $1$. (c) Con $a=\cos x-1\to0$: $(\cos x)^{1/x^2}=\bigl[(1+a)^{1/a}\bigr]^{a/x^2}$, e $\frac a{x^2}\to-\frac12$: il limite è $e^{-1/2}$. (d) Con $t=\frac1x\to0^+$ diventa (c): $e^{-1/2}$.}
+\risp{(a) $\frac{e^{\sin3x}-1}{\sin3x}\cdot\frac{\sin3x}{3x}\cdot3\cdot\frac x{\log(1+x)}\to1\cdot1\cdot3\cdot1=3$ (con $t=\sin3x\to0$ nel primo fattore). (b) $(\sin x)^x=e^{x\log\sin x}$, e $x\log\sin x=x\log x+x\log\frac{\sin x}x\to0+0$: il limite è $1$. (c) Con $a=\cos x-1\to0$: $(\cos x)^{1/x^2}=\bigl[(1+a)^{1/a}\bigr]^{a/x^2}$, e $\frac a{x^2}\to-\frac12$: il limite è $e^{-1/2}$. (d) Con $t=\frac1x\to0^+$ diventa (c): $e^{-1/2}$.}
 
 %-------------------------------------------------------------------
 \section{Limiti destro e sinistro, asintoti}
@@ -108,10 +108,13 @@ Calcolare i limiti destro e sinistro e dire se il limite esiste: \ (a) $\dfrac1{
 \begin{esercizio}[\liv{2}]
 Determinare tutti gli asintoti di:
 \[
-\text{(a) }\frac{x^2+x}{x-1};\qquad \text{(b) }\frac{2x^2-1}{x^2+1};\qquad \text{(c) }\sqrt{x^2+1};\qquad \text{(d) }x\,e^{1/x};\qquad \text{(e) }\ln(x^2-4);\qquad \text{(f) }\frac{x^3}{x^2-4}.
+\text{(a) }\frac{x^2+x}{x-1};\qquad \text{(b) }\frac{2x^2-1}{x^2+1};\qquad \text{(c) }\sqrt{x^2+1};
+\]
+\[
+\text{(d) }x\,e^{1/x};\qquad \text{(e) }\log(x^2-4);\qquad \text{(f) }\frac{x^3}{x^2-4}.
 \]
 \end{esercizio}
-\risp{(a) Verticale $x=1$; obliquo $y=x+2$ da entrambe le parti ($m=1$, $q=\lim\frac{2x}{x-1}=2$). (b) Orizzontale $y=2$; nessun verticale. (c) Obliqui: $y=x$ per $x\to+\infty$ e $y=-x$ per $x\to-\infty$ (per esempio $\sqrt{x^2+1}-x=\frac1{\sqrt{x^2+1}+x}\to0$). (d) Verticale $x=0$ da destra ($t=\frac1x\to+\infty$: $\frac{e^t}t\to+\infty$; da sinistra il limite è $0$); obliquo $y=x+1$ da entrambe le parti: $m=\lim e^{1/x}=1$, $q=\lim x\bigl(e^{1/x}-1\bigr)=1$ con $t=\frac1x\to0$. (e) Dominio $|x|>2$; verticali $x=\pm2$ (il limite è $-\infty$); nessun orizzontale né obliquo ($\frac{\ln(x^2-4)}x\to0$ ma $\ln(x^2-4)\to+\infty$). (f) Verticali $x=\pm2$; obliquo $y=x$ ($\frac{x^3}{x^2-4}-x=\frac{4x}{x^2-4}\to0$).}
+\risp{(a) Verticale $x=1$; obliquo $y=x+2$ da entrambe le parti ($m=1$, $q=\lim\frac{2x}{x-1}=2$). (b) Orizzontale $y=2$; nessun verticale. (c) Obliqui: $y=x$ per $x\to+\infty$ e $y=-x$ per $x\to-\infty$ (per esempio $\sqrt{x^2+1}-x=\frac1{\sqrt{x^2+1}+x}\to0$). (d) Verticale $x=0$ da destra ($t=\frac1x\to+\infty$: $\frac{e^t}t\to+\infty$; da sinistra il limite è $0$); obliquo $y=x+1$ da entrambe le parti: $m=\lim e^{1/x}=1$, $q=\lim x\bigl(e^{1/x}-1\bigr)=1$ con $t=\frac1x\to0$. (e) Dominio $|x|>2$; verticali $x=\pm2$ (il limite è $-\infty$); nessun orizzontale né obliquo ($\frac{\log(x^2-4)}x\to0$ ma $\log(x^2-4)\to+\infty$). (f) Verticali $x=\pm2$; obliquo $y=x$ ($\frac{x^3}{x^2-4}-x=\frac{4x}{x^2-4}\to0$).}
 
 %-------------------------------------------------------------------
 \section{Continuità e punti di discontinuità}
@@ -128,7 +131,7 @@ Determinare il parametro in modo che la funzione sia continua nel suo insieme di
 Trovare e classificare i punti di discontinuità (eliminabile, di salto, di seconda specie):
 \begin{gather*}
 \text{(a) }\frac{x^2-4}{x-2};\qquad \text{(b) }\frac{\sin x}{|x|};\qquad \text{(c) }e^{1/x};\qquad \text{(d) }\frac{1-\cos x}{x^2};\\
-\text{(e) }\frac x{x^2-1};\qquad \text{(f) }x\sin\frac1x;\qquad \text{(g) }\ln|x|;\qquad \text{(h) }\lfloor x\rfloor+\lfloor-x\rfloor.
+\text{(e) }\frac x{x^2-1};\qquad \text{(f) }x\sin\frac1x;\qquad \text{(g) }\log|x|;\qquad \text{(h) }\lfloor x\rfloor+\lfloor-x\rfloor.
 \end{gather*}
 \end{esercizio}
 \risp{(a) $2$, eliminabile (limite $4$). (b) $0$, di salto (limiti destro e sinistro $1$ e $-1$). (c) $0$, di seconda specie (limite destro $+\infty$). (d) $0$, eliminabile (limite $\frac12$). (e) $\pm1$, di seconda specie. (f) $0$, eliminabile: $|x\sin\frac1x|\le|x|\to0$. (g) $0$, di seconda specie (limite $-\infty$). (h) La funzione vale $0$ negli interi e $-1$ altrove: ogni intero è una discontinuità eliminabile (il limite è $-1$, il valore è $0$).}
@@ -137,9 +140,9 @@ Trovare e classificare i punti di discontinuità (eliminabile, di salto, di seco
 \section{Zeri, valori intermedi, Weierstrass}
 
 \begin{esercizio}[\liv{1}]
-Dimostrare che ogni equazione ha almeno una soluzione nell'intervallo indicato: \ (a) $x^3+2x-5=0$ in $[1,2]$; \ (b) $\ln x=2-x$ in $[1,2]$; \ (c) $2^x=3x$ in $[0,1]$.
+Dimostrare che ogni equazione ha almeno una soluzione nell'intervallo indicato: \ (a) $x^3+2x-5=0$ in $[1,2]$; \ (b) $\log x=2-x$ in $[1,2]$; \ (c) $2^x=3x$ in $[0,1]$.
 \end{esercizio}
-\risp{Si applica il teorema degli zeri a una funzione continua: (a) $f(1)=-2<0$, $f(2)=7>0$; (b) $g(x)=\ln x+x-2$: $g(1)=-1$, $g(2)=\ln2>0$; (c) $h(x)=2^x-3x$: $h(0)=1$, $h(1)=-1$.}
+\risp{Si applica il teorema degli zeri a una funzione continua: (a) $f(1)=-2<0$, $f(2)=7>0$; (b) $g(x)=\log x+x-2$: $g(1)=-1$, $g(2)=\log2>0$; (c) $h(x)=2^x-3x$: $h(0)=1$, $h(1)=-1$.}
 
 \begin{esercizio}[\liv{2}]
 Per l'equazione (a) dell'esercizio precedente, eseguire quattro passi del metodo di bisezione. Quanto dista al più dallo zero il punto medio dell'ultimo intervallo? Quanti passi servono per un errore minore di $10^{-3}$?
@@ -170,17 +173,17 @@ Dire se la funzione è derivabile nel punto indicato, calcolando derivata destra
 \begin{esercizio}[\liv{1}]
 Derivare con le regole:
 \begin{gather*}
-\text{(a) }5x^4-3x^2+2x;\qquad \text{(b) }x^3e^x;\qquad \text{(c) }x^2\ln x;\qquad \text{(d) }\frac{x+1}{x^2+1};\\
-\text{(e) }\sin x\cos x;\qquad \text{(f) }\frac{e^x}{1+e^x};\qquad \text{(g) }\sqrt x\,\ln x;\qquad \text{(h) }x^{2/3};\\
-\text{(i) }x\cdot3^x;\qquad \text{(j) }\tan x-x;\qquad \text{(k) }\frac{\ln x}{x^2};\qquad \text{(l) }\frac x{\sin x}.
+\text{(a) }5x^4-3x^2+2x;\qquad \text{(b) }x^3e^x;\qquad \text{(c) }x^2\log x;\qquad \text{(d) }\frac{x+1}{x^2+1};\\
+\text{(e) }\sin x\cos x;\qquad \text{(f) }\frac{e^x}{1+e^x};\qquad \text{(g) }\sqrt x\,\log x;\qquad \text{(h) }x^{2/3};\\
+\text{(i) }x\cdot3^x;\qquad \text{(j) }\tan x-x;\qquad \text{(k) }\frac{\log x}{x^2};\qquad \text{(l) }\frac x{\sin x}.
 \end{gather*}
 \end{esercizio}
-\risp{(a) $20x^3-6x+2$; (b) $(x^3+3x^2)\,e^x$; (c) $2x\ln x+x$; (d) $\frac{1-2x-x^2}{(x^2+1)^2}$; (e) $\cos^2x-\sin^2x$; (f) $\frac{e^x}{(1+e^x)^2}$; (g) $\frac{\ln x}{2\sqrt x}+\frac{\sqrt x}x=\frac{\ln x+2}{2\sqrt x}$; (h) $\frac23x^{-1/3}$; (i) $3^x(1+x\ln3)$; (j) $\frac1{\cos^2x}-1=\tan^2x$; (k) $\frac{1-2\ln x}{x^3}$; (l) $\frac{\sin x-x\cos x}{\sin^2x}$.}
+\risp{(a) $20x^3-6x+2$; (b) $(x^3+3x^2)\,e^x$; (c) $2x\log x+x$; (d) $\frac{1-2x-x^2}{(x^2+1)^2}$; (e) $\cos^2x-\sin^2x$; (f) $\frac{e^x}{(1+e^x)^2}$; (g) $\frac{\log x}{2\sqrt x}+\frac{\sqrt x}x=\frac{\log x+2}{2\sqrt x}$; (h) $\frac23x^{-1/3}$; (i) $3^x(1+x\log3)$; (j) $\frac1{\cos^2x}-1=\tan^2x$; (k) $\frac{1-2\log x}{x^3}$; (l) $\frac{\sin x-x\cos x}{\sin^2x}$.}
 
 \begin{esercizio}[\liv{2}]
-(a) Scrivere l'equazione della retta tangente: a $y=x^3-2x$ in $x_0=1$; a $y=e^x$ in $x_0=1$; a $y=\ln x$ in $x_0=e$; a $y=\sin x$ in $x_0=\pi$. (b) Trovare i punti in cui la tangente è orizzontale: $x^3-3x$; $x\,e^x$; $\dfrac{\ln x}x$; $x^2e^x$.
+(a) Scrivere l'equazione della retta tangente: a $y=x^3-2x$ in $x_0=1$; a $y=e^x$ in $x_0=1$; a $y=\log x$ in $x_0=e$; a $y=\sin x$ in $x_0=\pi$. (b) Trovare i punti in cui la tangente è orizzontale: $x^3-3x$; $x\,e^x$; $\dfrac{\log x}x$; $x^2e^x$.
 \end{esercizio}
-\risp{(a) $y=x-2$; \ $y=ex$; \ $y=\frac xe$; \ $y=-(x-\pi)$. (b) $3x^2-3=0$: $x=\pm1$; \ $(1+x)e^x=0$: $x=-1$; \ $\frac{1-\ln x}{x^2}=0$: $x=e$; \ $(x^2+2x)e^x=0$: $x=0$ e $x=-2$.}
+\risp{(a) $y=x-2$; \ $y=ex$; \ $y=\frac xe$; \ $y=-(x-\pi)$. (b) $3x^2-3=0$: $x=\pm1$; \ $(1+x)e^x=0$: $x=-1$; \ $\frac{1-\log x}{x^2}=0$: $x=e$; \ $(x^2+2x)e^x=0$: $x=0$ e $x=-2$.}
 
 \begin{esercizio}[\liv{2}]
 Un corpo si muove lungo una retta con legge oraria $s(t)=t^3-6t^2+9t$ (metri, secondi). Calcolare la velocità $v(t)=s'(t)$. In quali istanti il corpo è fermo? In quali intervalli di tempo torna indietro?

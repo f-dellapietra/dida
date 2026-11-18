@@ -21,36 +21,36 @@ Il livello di difficoltà è indicato con \liv{1} (esercizio di base), \liv{2} (
 \begin{vuoto}[Promemoria: regole di derivazione]{}
 $(f+g)'=f'+g'$, \quad $(fg)'=f'g+fg'$, \quad $\Bigl(\dfrac fg\Bigr)'=\dfrac{f'g-fg'}{g^2}$, \quad $\bigl(g(f(x))\bigr)'=g'\bigl(f(x)\bigr)\,f'(x)$.\\[2pt]
 Inversa: $(f^{-1})'(y_0)=\dfrac1{f'(x_0)}$ con $y_0=f(x_0)$. \quad $(\arctan x)'=\dfrac1{1+x^2}$, \ $(\arcsin x)'=\dfrac1{\sqrt{1-x^2}}$, \ $(\arccos x)'=-\dfrac1{\sqrt{1-x^2}}$.\\[2pt]
-Approssimazione lineare: $f(x_0+h)\approx f(x_0)+f'(x_0)\,h$; \ per $x\to0$: $e^x=1+x+o(x)$, $\sin x=x+o(x)$, $\ln(1+x)=x+o(x)$, $(1+x)^\alpha=1+\alpha x+o(x)$.
+Approssimazione lineare: $f(x_0+h)\approx f(x_0)+f'(x_0)\,h$; \ per $x\to0$: $e^x=1+x+o(x)$, $\sin x=x+o(x)$, $\log(1+x)=x+o(x)$, $(1+x)^\alpha=1+\alpha x+o(x)$.
 \end{vuoto}
 
 %-------------------------------------------------------------------
 \section{Regole di derivazione e funzione composta (L19)}
 
 \begin{esercizio}[\liv{1}]
-Derivare: \ (a) $x^3\sin x$; \ (b) $\dfrac{x^2+1}{x-1}$; \ (c) $e^{-x^2}$; \ (d) $\ln(\cos x)$; \ (e) $(3x-2)^7$; \ (f) $\sqrt{x^2+9}$.
+Derivare: \ (a) $x^3\sin x$; \ (b) $\dfrac{x^2+1}{x-1}$; \ (c) $e^{-x^2}$; \ (d) $\log(\cos x)$; \ (e) $(3x-2)^7$; \ (f) $\sqrt{x^2+9}$.
 \end{esercizio}
 \risp{(a) $3x^2\sin x+x^3\cos x$. (b) $\frac{2x(x-1)-(x^2+1)}{(x-1)^2}=\frac{x^2-2x-1}{(x-1)^2}$. (c) $-2x\,e^{-x^2}$. (d) $\frac{-\sin x}{\cos x}=-\tan x$, dove $\cos x>0$. (e) $21(3x-2)^6$. (f) $\frac x{\sqrt{x^2+9}}$.}
 
 \begin{esercizio}[\liv{2}]
-Derivare: \ (a) $e^x\sin2x$; \ (b) $\ln\dfrac{x+1}{x^2+1}$; \ (c) $x^x$ per $x>0$ (si scriva $x^x=e^{x\ln x}$); \ (d) $\sin^3(x^2)$.
+Derivare: \ (a) $e^x\sin2x$; \ (b) $\log\dfrac{x+1}{x^2+1}$; \ (c) $x^x$ per $x>0$ (si scriva $x^x=e^{x\log x}$); \ (d) $\sin^3(x^2)$.
 \end{esercizio}
-\risp{(a) $e^x(\sin2x+2\cos2x)$. (b) Con le proprietà del logaritmo, $\ln(x+1)-\ln(x^2+1)$: derivata $\frac1{x+1}-\frac{2x}{x^2+1}$, per $x>-1$. (c) $e^{x\ln x}(\ln x+1)=x^x(\ln x+1)$. (d) Tre funzioni annidate: $3\sin^2(x^2)\cdot\cos(x^2)\cdot2x=6x\sin^2(x^2)\cos(x^2)$.}
+\risp{(a) $e^x(\sin2x+2\cos2x)$. (b) Con le proprietà del logaritmo, $\log(x+1)-\log(x^2+1)$: derivata $\frac1{x+1}-\frac{2x}{x^2+1}$, per $x>-1$. (c) $e^{x\log x}(\log x+1)=x^x(\log x+1)$. (d) Tre funzioni annidate: $3\sin^2(x^2)\cdot\cos(x^2)\cdot2x=6x\sin^2(x^2)\cos(x^2)$.}
 
 \begin{esercizio}[\liv{2}]
-(a) Con la regola della funzione inversa, ricavare $(\ln y)'=\frac1y$ da $(e^x)'=e^x$, e $(\sqrt y)'=\frac1{2\sqrt y}$ da $(x^2)'=2x$ (per $x>0$). \ (b) Derivare $\arctan(e^x)$ e $\arcsin\sqrt x$ (per $0<x<1$).
+(a) Con la regola della funzione inversa, ricavare $(\log y)'=\frac1y$ da $(e^x)'=e^x$, e $(\sqrt y)'=\frac1{2\sqrt y}$ da $(x^2)'=2x$ (per $x>0$). \ (b) Derivare $\arctan(e^x)$ e $\arcsin\sqrt x$ (per $0<x<1$).
 \end{esercizio}
-\risp{(a) Se $y=e^x$, allora $(\ln y)'=\frac1{e^x}=\frac1y$; se $y=x^2$ con $x>0$, allora $(\sqrt y)'=\frac1{2x}=\frac1{2\sqrt y}$. (b) $\frac{e^x}{1+e^{2x}}$; \ $\frac1{\sqrt{1-x}}\cdot\frac1{2\sqrt x}=\frac1{2\sqrt{x(1-x)}}$.}
+\risp{(a) Se $y=e^x$, allora $(\log y)'=\frac1{e^x}=\frac1y$; se $y=x^2$ con $x>0$, allora $(\sqrt y)'=\frac1{2x}=\frac1{2\sqrt y}$. (b) $\frac{e^x}{1+e^{2x}}$; \ $\frac1{\sqrt{1-x}}\cdot\frac1{2\sqrt x}=\frac1{2\sqrt{x(1-x)}}$.}
 
 \begin{esercizio}[\liv{1}]
-Scrivere l'equazione della retta tangente: \ (a) a $y=\ln x$ in $x_0=e$; \ (b) a $y=x^3-2x$ in $x_0=-1$; \ (c) a $y=\tan x$ in $x_0=\frac\pi4$.
+Scrivere l'equazione della retta tangente: \ (a) a $y=\log x$ in $x_0=e$; \ (b) a $y=x^3-2x$ in $x_0=-1$; \ (c) a $y=\tan x$ in $x_0=\frac\pi4$.
 \end{esercizio}
 \risp{(a) $f(e)=1$, $f'(e)=\frac1e$: $y=1+\frac{x-e}e=\frac xe$ (passa per l'origine). (b) $f(-1)=1$, $f'(-1)=3-2=1$: $y=x+2$. (c) $f\bigl(\frac\pi4\bigr)=1$, $f'\bigl(\frac\pi4\bigr)=\frac1{\cos^2(\pi/4)}=2$: $y=1+2\bigl(x-\frac\pi4\bigr)$.}
 
 \begin{esercizio}[\liv{2}]
-Con l'approssimazione lineare stimare $\sqrt{4{,}1}$, $\ln(1{,}02)$ ed $e^{0{,}03}$, e confrontare con la calcolatrice.
+Con l'approssimazione lineare stimare $\sqrt{4{,}1}$, $\log(1{,}02)$ ed $e^{0{,}03}$, e confrontare con la calcolatrice.
 \end{esercizio}
-\risp{$\sqrt{4+h}\approx2+\frac h4$: $\sqrt{4{,}1}\approx2{,}025$ (calcolatrice $2{,}02485$). $\ln(1+h)\approx h$: $\ln1{,}02\approx0{,}02$ (calcolatrice $0{,}01980$). $e^h\approx1+h$: $e^{0{,}03}\approx1{,}03$ (calcolatrice $1{,}03045$). L'errore è dell'ordine di $h^2$.}
+\risp{$\sqrt{4+h}\approx2+\frac h4$: $\sqrt{4{,}1}\approx2{,}025$ (calcolatrice $2{,}02485$). $\log(1+h)\approx h$: $\log1{,}02\approx0{,}02$ (calcolatrice $0{,}01980$). $e^h\approx1+h$: $e^{0{,}03}\approx1{,}03$ (calcolatrice $1{,}03045$). L'errore è dell'ordine di $h^2$.}
 
 \begin{esercizio}[\liv{2}]
 Il raggio di una sfera è misurato in $r=5$ cm, con un errore di $0{,}1$ cm. Stimare con l'approssimazione lineare l'errore sul volume $V=\frac43\pi r^3$, assoluto e relativo.
@@ -140,9 +140,9 @@ Risolvere: \ (a) $\dfrac{x^2-5x+6}{x-1}\le0$; \ (b) $|2x-3|<x$; \ (c) $\sqrt{x+3
 \risp{(a) Numeratore $(x-2)(x-3)$, denominatore $x-1$; tabella dei segni: $x<1$ oppure $2\le x\le3$. (b) Serve $x>0$; poi $-x<2x-3<x$, cioè $x>1$ e $x<3$: $1<x<3$. (c) Dominio $x\ge-3$. Se $x<3$ il secondo membro è negativo e la disequazione è vera: $-3\le x<3$. Se $x\ge3$ si eleva al quadrato: $x+3>x^2-6x+9$, cioè $x^2-7x+6<0$, $1<x<6$: quindi $3\le x<6$. In tutto: $-3\le x<6$. \textit{In breve:} \emph{Fratte}: tutto a un membro, segno di numeratore e denominatore, tabella dei segni; il denominatore non si annulla. \emph{Modulo}: $|A|<B\iff-B<A<B$. \emph{Irrazionali}: $\sqrt A>B$ se $B<0$ e $A\ge0$, oppure se $B\ge0$ e $A>B^2$.}
 
 \begin{esercizio}[\liv{2}]
-Risolvere: \ (a) $4^x-3\cdot2^x-4>0$; \ (b) $\log_2(x-1)+\log_2(x+1)\le3$; \ (c) $(\ln x)^2-\ln x-2\ge0$.
+Risolvere: \ (a) $4^x-3\cdot2^x-4>0$; \ (b) $\log_2(x-1)+\log_2(x+1)\le3$; \ (c) $(\log x)^2-\log x-2\ge0$.
 \end{esercizio}
-\risp{(a) Con $t=2^x>0$: $t^2-3t-4=(t-4)(t+1)>0$; poiché $t+1>0$, serve $t>4$, cioè $x>2$. (b) Dominio $x>1$; $\log_2(x^2-1)\le3$, cioè $x^2-1\le8$, $|x|\le3$: con il dominio, $1<x\le3$. (c) Con $t=\ln x$ ($x>0$): $(t-2)(t+1)\ge0$, cioè $t\le-1$ oppure $t\ge2$: $0<x\le\frac1e$ oppure $x\ge e^2$. \textit{In breve:} \emph{Esponenziali}: con $t=a^x>0$ si passa a una disequazione algebrica; poi si torna a $x$ ricordando che $a^x$ è crescente se $a>1$. \emph{Logaritmi}: prima il dominio (argomenti $>0$), poi $\log_aA+\log_aB=\log_a(AB)$, e $\log_a$ crescente se $a>1$.}
+\risp{(a) Con $t=2^x>0$: $t^2-3t-4=(t-4)(t+1)>0$; poiché $t+1>0$, serve $t>4$, cioè $x>2$. (b) Dominio $x>1$; $\log_2(x^2-1)\le3$, cioè $x^2-1\le8$, $|x|\le3$: con il dominio, $1<x\le3$. (c) Con $t=\log x$ ($x>0$): $(t-2)(t+1)\ge0$, cioè $t\le-1$ oppure $t\ge2$: $0<x\le\frac1e$ oppure $x\ge e^2$. \textit{In breve:} \emph{Esponenziali}: con $t=a^x>0$ si passa a una disequazione algebrica; poi si torna a $x$ ricordando che $a^x$ è crescente se $a>1$. \emph{Logaritmi}: prima il dominio (argomenti $>0$), poi $\log_aA+\log_aB=\log_a(AB)$, e $\log_a$ crescente se $a>1$.}
 
 \begin{esercizio}[\liv{2}]
 Risolvere in $[0,2\pi]$: \ (a) $2\sin x-1\ge0$; \ (b) $2\cos^2x-\cos x-1<0$. \ Risolvere in $\bigl]-\frac\pi2,\frac\pi2\bigr[$: \ (c) $\tan x>1$.
@@ -152,14 +152,14 @@ Risolvere in $[0,2\pi]$: \ (a) $2\sin x-1\ge0$; \ (b) $2\cos^2x-\cos x-1<0$. \ R
 
 \subsection*{Campi di esistenza}
 \begin{esercizio}[\liv{1}]
-Determinare il dominio di: \ (a) $\sqrt{\dfrac{x-1}{x+2}}$; \ (b) $\ln(4-x^2)$; \ (c) $\dfrac1{e^x-1}$; \ (d) $\arcsin(2x-1)$.
+Determinare il dominio di: \ (a) $\sqrt{\dfrac{x-1}{x+2}}$; \ (b) $\log(4-x^2)$; \ (c) $\dfrac1{e^x-1}$; \ (d) $\arcsin(2x-1)$.
 \end{esercizio}
 \risp{(a) $\frac{x-1}{x+2}\ge0$: $x<-2$ oppure $x\ge1$. (b) $4-x^2>0$: $-2<x<2$. (c) $e^x\ne1$: $x\ne0$. (d) $-1\le2x-1\le1$: $0\le x\le1$. \textit{In breve:} Le condizioni di esistenza, da mettere a sistema: radice di indice pari, radicando $\ge0$; logaritmo, argomento $>0$; denominatore $\ne0$; $\arcsin$ e $\arccos$, argomento fra $-1$ e $1$.}
 
 \begin{esercizio}[\liv{2}]
-Determinare il dominio di: \ (a) $\sqrt{\ln(x-2)}$; \ (b) $\ln(\sin x)$ in $[0,2\pi]$; \ (c) $\sqrt{2-|x-1|}$; \ (d) $\dfrac1{\sqrt{x^2-3x}}+\ln(5-x)$; \ (e) $\arccos(\ln x)$.
+Determinare il dominio di: \ (a) $\sqrt{\log(x-2)}$; \ (b) $\log(\sin x)$ in $[0,2\pi]$; \ (c) $\sqrt{2-|x-1|}$; \ (d) $\dfrac1{\sqrt{x^2-3x}}+\log(5-x)$; \ (e) $\arccos(\log x)$.
 \end{esercizio}
-\risp{(a) $x>2$ e $\ln(x-2)\ge0$, cioè $x-2\ge1$: $x\ge3$. (b) $\sin x>0$: $0<x<\pi$. (c) $|x-1|\le2$: $-1\le x\le3$. (d) $x^2-3x>0$ ($x<0$ oppure $x>3$) e $x<5$: $x<0$ oppure $3<x<5$. (e) $x>0$ e $-1\le\ln x\le1$: $\frac1e\le x\le e$. \textit{In breve:} In una composizione ogni funzione impone le sue condizioni, anche su ciò che sta dentro: in $\sqrt{\ln(x-2)}$ servono $x-2>0$ (logaritmo) e $\ln(x-2)\ge0$ (radice). $\ln t\ge0\iff t\ge1$; $\sin x>0$ in $]0,\pi[$.}
+\risp{(a) $x>2$ e $\log(x-2)\ge0$, cioè $x-2\ge1$: $x\ge3$. (b) $\sin x>0$: $0<x<\pi$. (c) $|x-1|\le2$: $-1\le x\le3$. (d) $x^2-3x>0$ ($x<0$ oppure $x>3$) e $x<5$: $x<0$ oppure $3<x<5$. (e) $x>0$ e $-1\le\log x\le1$: $\frac1e\le x\le e$. \textit{In breve:} In una composizione ogni funzione impone le sue condizioni, anche su ciò che sta dentro: in $\sqrt{\log(x-2)}$ servono $x-2>0$ (logaritmo) e $\log(x-2)\ge0$ (radice). $\log t\ge0\iff t\ge1$; $\sin x>0$ in $]0,\pi[$.}
 
 
 \subsection*{Limiti di successioni}
@@ -169,21 +169,21 @@ Calcolare: \ (a) $\dfrac{3n^2-n}{1-2n^2}$; \ (b) $\sqrt{n^2+n}-n$; \ (c) $\dfrac
 \risp{(a) $-\frac32$ (stesso grado: rapporto dei coefficienti direttivi). (b) Razionalizzando, $\frac n{\sqrt{n^2+n}+n}=\frac1{\sqrt{1+1/n}+1}\to\frac12$. (c) $\bigl(\frac23\bigr)^n+\frac{n^3}{3^n}\to0$ (gerarchia). (d) $2\cdot\frac{\sin(2/n)}{2/n}\to2$. (e) $\Bigl[\bigl(1+\frac1{n/3}\bigr)^{n/3}\Bigr]^3\to e^3$. \textit{In breve:} Quoziente di polinomi: si raccoglie la potenza più alta. $\infty-\infty$ con le radici: si razionalizza. Gerarchia: $n^\alpha\ll b^n$ ($b>1$). Limiti notevoli con $a_n\to0$: $\frac{\sin a_n}{a_n}\to1$; e $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$ con $a_n\to\pm\infty$.}
 
 \begin{esercizio}[\liv{2}]
-Calcolare: \ (a) $\Bigl(\dfrac{n-1}{n+1}\Bigr)^n$; \ (b) $n\bigl(e^{1/n}-1\bigr)$; \ (c) $n^2\Bigl(1-\cos\dfrac1n\Bigr)$; \ (d) $\dfrac{(\ln n)^2}{\sqrt n}$; \ (e) $\dfrac{n^2+2^n}{n!}$.
+Calcolare: \ (a) $\Bigl(\dfrac{n-1}{n+1}\Bigr)^n$; \ (b) $n\bigl(e^{1/n}-1\bigr)$; \ (c) $n^2\Bigl(1-\cos\dfrac1n\Bigr)$; \ (d) $\dfrac{(\log n)^2}{\sqrt n}$; \ (e) $\dfrac{n^2+2^n}{n!}$.
 \end{esercizio}
-\risp{(a) $\frac{n-1}{n+1}=1-\frac2{n+1}=1+\frac1{a_n}$ con $a_n=-\frac{n+1}2\to-\infty$; l'esponente è $n=a_n\cdot\frac{-2n}{n+1}$, con $\frac{-2n}{n+1}\to-2$: il limite è $e^{-2}$. (b) Con $a_n=\frac1n\to0$: $\frac{e^{a_n}-1}{a_n}\to1$. (c) $\frac{1-\cos a_n}{a_n^2}\to\frac12$, con $a_n=\frac1n$. (d) $0$ (gerarchia: ogni potenza di $n$ batte ogni potenza del logaritmo). (e) $0$: il fattoriale batte sia le potenze sia gli esponenziali. \textit{In breve:} La forma $1^\infty$ si riconduce a $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$. Con $a_n\to0$: $\frac{e^{a_n}-1}{a_n}\to1$, $\frac{1-\cos a_n}{a_n^2}\to\frac12$. Gerarchia: $\ln n\ll n^\alpha\ll b^n\ll n!$.}
+\risp{(a) $\frac{n-1}{n+1}=1-\frac2{n+1}=1+\frac1{a_n}$ con $a_n=-\frac{n+1}2\to-\infty$; l'esponente è $n=a_n\cdot\frac{-2n}{n+1}$, con $\frac{-2n}{n+1}\to-2$: il limite è $e^{-2}$. (b) Con $a_n=\frac1n\to0$: $\frac{e^{a_n}-1}{a_n}\to1$. (c) $\frac{1-\cos a_n}{a_n^2}\to\frac12$, con $a_n=\frac1n$. (d) $0$ (gerarchia: ogni potenza di $n$ batte ogni potenza del logaritmo). (e) $0$: il fattoriale batte sia le potenze sia gli esponenziali. \textit{In breve:} La forma $1^\infty$ si riconduce a $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$. Con $a_n\to0$: $\frac{e^{a_n}-1}{a_n}\to1$, $\frac{1-\cos a_n}{a_n^2}\to\frac12$. Gerarchia: $\log n\ll n^\alpha\ll b^n\ll n!$.}
 
 
 \subsection*{Limiti di funzioni}
 \begin{esercizio}[\liv{1}]
-Calcolare: \ (a) $\lim\limits_{x\to2}\dfrac{x^2-4}{x^2-3x+2}$; \ (b) $\lim\limits_{x\to+\infty}\dfrac{2x^3+1}{x^3-x}$; \ (c) $\lim\limits_{x\to0}\dfrac{\sin3x}{2x}$; \ (d) $\lim\limits_{x\to0}\dfrac{e^{2x}-1}{\sin x}$; \ (e) $\lim\limits_{x\to0}\dfrac{\ln(1+3x)}x$; \ (f) $\lim\limits_{x\to+\infty}x\,e^{-x}$.
+Calcolare: \ (a) $\lim\limits_{x\to2}\dfrac{x^2-4}{x^2-3x+2}$; \ (b) $\lim\limits_{x\to+\infty}\dfrac{2x^3+1}{x^3-x}$; \ (c) $\lim\limits_{x\to0}\dfrac{\sin3x}{2x}$; \ (d) $\lim\limits_{x\to0}\dfrac{e^{2x}-1}{\sin x}$; \ (e) $\lim\limits_{x\to0}\dfrac{\log(1+3x)}x$; \ (f) $\lim\limits_{x\to+\infty}x\,e^{-x}$.
 \end{esercizio}
-\risp{(a) $\frac{(x-2)(x+2)}{(x-2)(x-1)}=\frac{x+2}{x-1}\to4$. (b) $2$. (c) $\frac32\cdot\frac{\sin3x}{3x}\to\frac32$. (d) $\frac{e^{2x}-1}{2x}\cdot\frac x{\sin x}\cdot2\to2$. (e) $3\cdot\frac{\ln(1+3x)}{3x}\to3$. (f) $\frac x{e^x}\to0$ (gerarchia). \textit{In breve:} $\frac00$ con polinomi: si scompone e si semplifica il fattore che si annulla. Limiti notevoli per $x\to0$: $\frac{\sin x}x$, $\frac{e^x-1}x$, $\frac{\ln(1+x)}x\to1$; per $x\to+\infty$ l'esponenziale batte ogni potenza.}
+\risp{(a) $\frac{(x-2)(x+2)}{(x-2)(x-1)}=\frac{x+2}{x-1}\to4$. (b) $2$. (c) $\frac32\cdot\frac{\sin3x}{3x}\to\frac32$. (d) $\frac{e^{2x}-1}{2x}\cdot\frac x{\sin x}\cdot2\to2$. (e) $3\cdot\frac{\log(1+3x)}{3x}\to3$. (f) $\frac x{e^x}\to0$ (gerarchia). \textit{In breve:} $\frac00$ con polinomi: si scompone e si semplifica il fattore che si annulla. Limiti notevoli per $x\to0$: $\frac{\sin x}x$, $\frac{e^x-1}x$, $\frac{\log(1+x)}x\to1$; per $x\to+\infty$ l'esponenziale batte ogni potenza.}
 
 \begin{esercizio}[\liv{2}]
-Calcolare: \ (a) $\lim\limits_{x\to0}\dfrac{1-\cos2x}{x\tan x}$; \ (b) $\lim\limits_{x\to+\infty}\Bigl(1-\dfrac2x\Bigr)^x$; \ (c) $\lim\limits_{x\to0^+}x\ln x$; \ (d) $\lim\limits_{x\to1}\dfrac{\ln x}{x^2-1}$; \ (e) $\lim\limits_{x\to+\infty}x\bigl(\ln(x+1)-\ln x\bigr)$; \ (f) $\lim\limits_{x\to0}\dfrac{\sqrt{1+x}-1}{e^x-1}$.
+Calcolare: \ (a) $\lim\limits_{x\to0}\dfrac{1-\cos2x}{x\tan x}$; \ (b) $\lim\limits_{x\to+\infty}\Bigl(1-\dfrac2x\Bigr)^x$; \ (c) $\lim\limits_{x\to0^+}x\log x$; \ (d) $\lim\limits_{x\to1}\dfrac{\log x}{x^2-1}$; \ (e) $\lim\limits_{x\to+\infty}x\bigl(\log(x+1)-\log x\bigr)$; \ (f) $\lim\limits_{x\to0}\dfrac{\sqrt{1+x}-1}{e^x-1}$.
 \end{esercizio}
-\risp{(a) $4\cdot\frac{1-\cos2x}{(2x)^2}\cdot\frac x{\tan x}\to4\cdot\frac12\cdot1=2$. (b) Con $t=-\frac x2\to-\infty$: $\bigl(1+\frac1t\bigr)^{-2t}\to e^{-2}$. (c) Con $t=\frac1x\to+\infty$: $-\frac{\ln t}t\to0$. (d) Con $t=x-1\to0$: $\frac{\ln(1+t)}t\cdot\frac1{x+1}\to1\cdot\frac12=\frac12$. (e) $x\ln\bigl(1+\frac1x\bigr)$; con $t=\frac1x\to0^+$: $\frac{\ln(1+t)}t\to1$. (f) $\frac{(1+x)^{1/2}-1}x\cdot\frac x{e^x-1}\to\frac12\cdot1=\frac12$. \textit{In breve:} \emph{Cambio di variabile}: si pone $t=g(x)$, si dice dove va $t$, e ci si riconduce a un limite notevole. Utili: $\bigl(1+\frac ax\bigr)^x\to e^a$ per $x\to\pm\infty$; $x\ln x\to0$ per $x\to0^+$; $\frac{(1+x)^\alpha-1}x\to\alpha$ per $x\to0$.}
+\risp{(a) $4\cdot\frac{1-\cos2x}{(2x)^2}\cdot\frac x{\tan x}\to4\cdot\frac12\cdot1=2$. (b) Con $t=-\frac x2\to-\infty$: $\bigl(1+\frac1t\bigr)^{-2t}\to e^{-2}$. (c) Con $t=\frac1x\to+\infty$: $-\frac{\log t}t\to0$. (d) Con $t=x-1\to0$: $\frac{\log(1+t)}t\cdot\frac1{x+1}\to1\cdot\frac12=\frac12$. (e) $x\log\bigl(1+\frac1x\bigr)$; con $t=\frac1x\to0^+$: $\frac{\log(1+t)}t\to1$. (f) $\frac{(1+x)^{1/2}-1}x\cdot\frac x{e^x-1}\to\frac12\cdot1=\frac12$. \textit{In breve:} \emph{Cambio di variabile}: si pone $t=g(x)$, si dice dove va $t$, e ci si riconduce a un limite notevole. Utili: $\bigl(1+\frac ax\bigr)^x\to e^a$ per $x\to\pm\infty$; $x\log x\to0$ per $x\to0^+$; $\frac{(1+x)^\alpha-1}x\to\alpha$ per $x\to0$.}
 
 \begin{esercizio}[\liv{2}]
 (a) Trovare tutti gli asintoti di $f(x)=\dfrac{x^2+1}{x-1}$. (b) Calcolare i limiti destro e sinistro di $e^{1/x}$ in $0$, e classificare il punto di discontinuità. (c) Per quali $a$ e $b$ la funzione che vale $ax+b$ per $x<0$ e $e^{2x}$ per $x\ge0$ è continua in $0$? Per quali è anche derivabile in $0$?
@@ -193,17 +193,17 @@ Calcolare: \ (a) $\lim\limits_{x\to0}\dfrac{1-\cos2x}{x\tan x}$; \ (b) $\lim\lim
 
 \subsection*{Calcolo di derivate}
 \begin{esercizio}[\liv{1}]
-Derivare: \ (a) $x^3-4x+2$; \ (b) $x^2\sin x$; \ (c) $\dfrac{x-1}{x+1}$; \ (d) $e^{3x}$; \ (e) $\ln(x^2+1)$; \ (f) $\sqrt{4-x^2}$; \ (g) $\sin^2x$; \ (h) $x\,e^{-x}$.
+Derivare: \ (a) $x^3-4x+2$; \ (b) $x^2\sin x$; \ (c) $\dfrac{x-1}{x+1}$; \ (d) $e^{3x}$; \ (e) $\log(x^2+1)$; \ (f) $\sqrt{4-x^2}$; \ (g) $\sin^2x$; \ (h) $x\,e^{-x}$.
 \end{esercizio}
-\risp{(a) $3x^2-4$; (b) $2x\sin x+x^2\cos x$; (c) $\frac{(x+1)-(x-1)}{(x+1)^2}=\frac2{(x+1)^2}$; (d) $3e^{3x}$; (e) $\frac{2x}{x^2+1}$; (f) $-\frac x{\sqrt{4-x^2}}$, per $|x|<2$; (g) $2\sin x\cos x$; (h) $e^{-x}-x\,e^{-x}=(1-x)\,e^{-x}$. \textit{In breve:} $(fg)'=f'g+fg'$; \ $\bigl(\frac fg\bigr)'=\frac{f'g-fg'}{g^2}$; \ composta: $\bigl(g(f(x))\bigr)'=g'\bigl(f(x)\bigr)\,f'(x)$. Tabella: $(e^x)'=e^x$, $(\ln x)'=\frac1x$, $(\sqrt x)'=\frac1{2\sqrt x}$, $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$.}
+\risp{(a) $3x^2-4$; (b) $2x\sin x+x^2\cos x$; (c) $\frac{(x+1)-(x-1)}{(x+1)^2}=\frac2{(x+1)^2}$; (d) $3e^{3x}$; (e) $\frac{2x}{x^2+1}$; (f) $-\frac x{\sqrt{4-x^2}}$, per $|x|<2$; (g) $2\sin x\cos x$; (h) $e^{-x}-x\,e^{-x}=(1-x)\,e^{-x}$. \textit{In breve:} $(fg)'=f'g+fg'$; \ $\bigl(\frac fg\bigr)'=\frac{f'g-fg'}{g^2}$; \ composta: $\bigl(g(f(x))\bigr)'=g'\bigl(f(x)\bigr)\,f'(x)$. Tabella: $(e^x)'=e^x$, $(\log x)'=\frac1x$, $(\sqrt x)'=\frac1{2\sqrt x}$, $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$.}
 
 \begin{esercizio}[\liv{2}]
-Derivare: \ (a) $e^{x^2}\cos x$; \ (b) $\ln(\sin x)$; \ (c) $(x^2+1)^{10}$; \ (d) $\tan(x^2)$; \ (e) $\sqrt x\,\ln x$; \ (f) $\ln\dfrac{1+x}{1-x}$.
+Derivare: \ (a) $e^{x^2}\cos x$; \ (b) $\log(\sin x)$; \ (c) $(x^2+1)^{10}$; \ (d) $\tan(x^2)$; \ (e) $\sqrt x\,\log x$; \ (f) $\log\dfrac{1+x}{1-x}$.
 \end{esercizio}
-\risp{(a) $e^{x^2}(2x\cos x-\sin x)$; (b) $\frac{\cos x}{\sin x}$, dove $\sin x>0$; (c) $20x\,(x^2+1)^9$; (d) $\frac{2x}{\cos^2(x^2)}=2x\bigl(1+\tan^2(x^2)\bigr)$ (attenzione: non è $\tan^2x$); (e) $\frac{\ln x}{2\sqrt x}+\frac{\sqrt x}x=\frac{\ln x+2}{2\sqrt x}$, per $x>0$; (f) scrivendo $\ln(1+x)-\ln(1-x)$: $\frac1{1+x}+\frac1{1-x}=\frac2{1-x^2}$, per $|x|<1$. \textit{In breve:} Più funzioni annidate: si deriva dall'esterno verso l'interno, moltiplicando le derivate. Prima di derivare conviene semplificare con le proprietà del logaritmo. $(\tan u)'=\frac{u'}{\cos^2u}=u'(1+\tan^2u)$.}
+\risp{(a) $e^{x^2}(2x\cos x-\sin x)$; (b) $\frac{\cos x}{\sin x}$, dove $\sin x>0$; (c) $20x\,(x^2+1)^9$; (d) $\frac{2x}{\cos^2(x^2)}=2x\bigl(1+\tan^2(x^2)\bigr)$ (attenzione: non è $\tan^2x$); (e) $\frac{\log x}{2\sqrt x}+\frac{\sqrt x}x=\frac{\log x+2}{2\sqrt x}$, per $x>0$; (f) scrivendo $\log(1+x)-\log(1-x)$: $\frac1{1+x}+\frac1{1-x}=\frac2{1-x^2}$, per $|x|<1$. \textit{In breve:} Più funzioni annidate: si deriva dall'esterno verso l'interno, moltiplicando le derivate. Prima di derivare conviene semplificare con le proprietà del logaritmo. $(\tan u)'=\frac{u'}{\cos^2u}=u'(1+\tan^2u)$.}
 
 \begin{esercizio}[\liv{2}]
-Scrivere l'equazione della retta tangente: \ (a) a $y=\ln(1+x)$ in $x_0=0$; \ (b) a $y=x^2e^x$ in $x_0=1$; \ (c) a $y=e^{-x^2}$ in $x_0=1$.
+Scrivere l'equazione della retta tangente: \ (a) a $y=\log(1+x)$ in $x_0=0$; \ (b) a $y=x^2e^x$ in $x_0=1$; \ (c) a $y=e^{-x^2}$ in $x_0=1$.
 \end{esercizio}
 \risp{(a) $f(0)=0$, $f'(0)=1$: $y=x$. (b) $f(1)=e$, $f'(x)=(x^2+2x)\,e^x$, $f'(1)=3e$: $y=e+3e(x-1)$. (c) $f(1)=\frac1e$, $f'(x)=-2x\,e^{-x^2}$, $f'(1)=-\frac2e$: $y=\frac1e-\frac2e\,(x-1)$, cioè $y=\frac{3-2x}e$. \textit{In breve:} Retta tangente al grafico di $f$ in $x_0$: $y=f(x_0)+f'(x_0)(x-x_0)$. Servono due numeri: il valore $f(x_0)$ e la pendenza $f'(x_0)$.}
 

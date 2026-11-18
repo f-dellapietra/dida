@@ -11,7 +11,7 @@
 \begin{itemize}
 \item[\bul] \textbf{Lezione 13 --- Limiti di successioni}. Definizione di limite finito e infinito; successioni convergenti, divergenti, irregolari. Unicità del limite, limitatezza delle successioni convergenti, permanenza del segno. Teorema del confronto. Il limite $\frac{\sin a_n}{a_n}\to1$ per $a_n\to0$ e le sue conseguenze. Algebra dei limiti finiti.
 \item[\bul] \textbf{Lezione 14 --- Il calcolo dei limiti}. Aritmetica dell'infinito. Le forme indeterminate $+\infty-\infty$, $0\cdot\infty$, $\frac\infty\infty$, $\frac00$; quozienti di polinomi, razionalizzazione. Gerarchia degli infiniti.
-\item[\bul] \textbf{Lezione 15 --- Successioni monotone e il numero $e$}. Teorema sulle successioni monotone. Il numero $e$; $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$ per $a_n\to\pm\infty$. Esponenziale e logaritmo lungo le successioni; $a_n^{b_n}=e^{b_n\ln a_n}$; forme determinate e forme indeterminate $1^\infty$, $0^0$, $\infty^0$.
+\item[\bul] \textbf{Lezione 15 --- Successioni monotone e il numero $e$}. Teorema sulle successioni monotone. Il numero $e$; $\bigl(1+\frac1{a_n}\bigr)^{a_n}\to e$ per $a_n\to\pm\infty$. Esponenziale e logaritmo lungo le successioni; $a_n^{b_n}=e^{b_n\log a_n}$; forme determinate e forme indeterminate $1^\infty$, $0^0$, $\infty^0$.
 \end{itemize}
 \end{vuoto}
 
@@ -33,40 +33,43 @@ Per usarli si cerca, dentro l'espressione, la successione $a_n$ giusta, e la si 
 \section{Campi di esistenza}
 
 \begin{esercizio}[\liv{1}]
-Determinare il dominio di: \ $\sqrt{x^2-4x}$; \ $\ln(x^2-x-6)$; \ $\dfrac1{2^x-4}$; \ $\sqrt{3-|x|}$; \ $\log_3(5-x)+\sqrt x$.
+Determinare il dominio di: \ $\sqrt{x^2-4x}$; \ $\log(x^2-x-6)$; \ $\dfrac1{2^x-4}$; \ $\sqrt{3-|x|}$; \ $\log_3(5-x)+\sqrt x$.
 \end{esercizio}
 \risp{$x\le0$ oppure $x\ge4$; \ $x<-2$ oppure $x>3$; \ $x\ne2$; \ $[-3,3]$; \ $x\ge0$ e $x<5$: $[0,5[$.}
 
 \begin{esercizio}[\liv{2}]
 Determinare il dominio di:
 \[
-\sqrt{\frac{x+2}{1-x}},\qquad \ln\frac{x-1}{x^2-4},\qquad \sqrt{\ln(2-x)},\qquad \frac1{\ln(x+3)},\qquad \sqrt{e^{2x}-3e^x+2}.
+\sqrt{\frac{x+2}{1-x}},\qquad \log\frac{x-1}{x^2-4},\qquad \sqrt{\log(2-x)},\qquad \frac1{\log(x+3)},\qquad \sqrt{e^{2x}-3e^x+2}.
 \]
 \end{esercizio}
-\risp{$[-2,1[$; \ $\frac{x-1}{(x-2)(x+2)}>0$: $]-2,1[\,\cup\,]2,+\infty[$; \ $\ln(2-x)\ge0$, cioè $2-x\ge1$: $x\le1$; \ $x>-3$ e $\ln(x+3)\ne0$, cioè $x\ne-2$; \ con $t=e^x>0$: $t^2-3t+2\ge0$, cioè $t\le1$ o $t\ge2$: $x\le0$ oppure $x\ge\ln2$.}
+\risp{$[-2,1[$; \ $\frac{x-1}{(x-2)(x+2)}>0$: $]-2,1[\,\cup\,]2,+\infty[$; \ $\log(2-x)\ge0$, cioè $2-x\ge1$: $x\le1$; \ $x>-3$ e $\log(x+3)\ne0$, cioè $x\ne-2$; \ con $t=e^x>0$: $t^2-3t+2\ge0$, cioè $t\le1$ o $t\ge2$: $x\le0$ oppure $x\ge\log2$.}
 
 \begin{esercizio}[\liv{2}]
-Determinare il dominio di: \ $\sqrt{2\cos x-1}$ (in $[0,2\pi]$); \ $\ln(\sin x)$; \ $\arcsin\dfrac{x-1}2$; \ $\arccos(\ln x)$; \ $\dfrac1{\tan x-1}$; \ $\sqrt{\arcsin x}$.
+Determinare il dominio di: \ $\sqrt{2\cos x-1}$ (in $[0,2\pi]$); \ $\log(\sin x)$; \ $\arcsin\dfrac{x-1}2$; \ $\arccos(\log x)$; \ $\dfrac1{\tan x-1}$; \ $\sqrt{\arcsin x}$.
 \end{esercizio}
-\risp{$\cos x\ge\frac12$: $[0,\frac\pi3]\cup[\frac{5\pi}3,2\pi]$; \ $\sin x>0$: $]2k\pi,\pi+2k\pi[$; \ $-1\le\frac{x-1}2\le1$: $[-1,3]$; \ $-1\le\ln x\le1$: $[\frac1e,e]$; \ $x\ne\frac\pi2+k\pi$ (dove la tangente non esiste) e $x\ne\frac\pi4+k\pi$; \ $\arcsin x\ge0$: $[0,1]$ ($k\in\Z$).}
+\risp{$\cos x\ge\frac12$: $[0,\frac\pi3]\cup[\frac{5\pi}3,2\pi]$; \ $\sin x>0$: $]2k\pi,\pi+2k\pi[$; \ $-1\le\frac{x-1}2\le1$: $[-1,3]$; \ $-1\le\log x\le1$: $[\frac1e,e]$; \ $x\ne\frac\pi2+k\pi$ (dove la tangente non esiste) e $x\ne\frac\pi4+k\pi$; \ $\arcsin x\ge0$: $[0,1]$ ($k\in\Z$).}
 
 \begin{esercizio}[\liv{3}]
 Determinare il dominio di:
 \[
-\sqrt{\log_{1/2}(x^2-2x)},\qquad \ln\bigl(\sqrt{x+1}-x+1\bigr),\qquad \sqrt{\frac{\ln x-1}{x-3}},\qquad \arcsin(2^x-1),\qquad \frac{\sqrt{|x-1|-2}}{\ln x}.
+\sqrt{\log_{1/2}(x^2-2x)},\qquad \log\bigl(\sqrt{x+1}-x+1\bigr),\qquad \sqrt{\frac{\log x-1}{x-3}},
+\]
+\[
+\arcsin(2^x-1),\qquad \frac{\sqrt{|x-1|-2}}{\log x}.
 \]
 \end{esercizio}
 \risp{Primo: $x^2-2x>0$ e, con base minore di $1$, $x^2-2x\le1$; cioè ($x<0$ o $x>2$) e $1-\sqrt2\le x\le1+\sqrt2$: $[1-\sqrt2,0[\,\cup\,]2,1+\sqrt2]$. \ Secondo: $x\ge-1$ e $\sqrt{x+1}>x-1$; vera se $x<1$; per $x\ge1$ si eleva: $x^2-3x<0$, $0<x<3$. Dominio $[-1,3[$. \ Terzo: $x>0$, $x\ne3$, quoziente $\ge0$: il numeratore è $\le0$ per $x\le e$ e il denominatore è negativo per $x<3$; dominio $]0,e]\cup\,]3,+\infty[$. \ Quarto: $0\le2^x\le2$, cioè $x\le1$. \ Quinto: $|x-1|\ge2$ ($x\le-1$ o $x\ge3$), $x>0$, $x\ne1$: $[3,+\infty[$.}
 
 \begin{esercizio}[\liv{3}]
-Determinare il dominio di $f(x)=\ln\bigl(1-\sqrt{1-x^2}\bigr)$.
+Determinare il dominio di $f(x)=\log\bigl(1-\sqrt{1-x^2}\bigr)$.
 \end{esercizio}
 \risp{Serve $1-x^2\ge0$, cioè $|x|\le1$, e $1-\sqrt{1-x^2}>0$, cioè $\sqrt{1-x^2}<1$, cioè $x\ne0$: $[-1,0[\,\cup\,]0,1]$.}
 
 \begin{esercizio}[\liv{2}]
-Determinare dominio e segno di $f(x)=\dfrac{e^x-2}{\ln(x+1)}$.
+Determinare dominio e segno di $f(x)=\dfrac{e^x-2}{\log(x+1)}$.
 \end{esercizio}
-\risp{Dominio: $x>-1$ e $x\ne0$. Il numeratore è positivo per $x>\ln2$, il denominatore per $x>0$. Quindi $f>0$ in $]-1,0[$ e in $]\ln2,+\infty[$, $f<0$ in $]0,\ln2[$, $f=0$ in $x=\ln2$.}
+\risp{Dominio: $x>-1$ e $x\ne0$. Il numeratore è positivo per $x>\log2$, il denominatore per $x>0$. Quindi $f>0$ in $]-1,0[$ e in $]\log2,+\infty[$, $f<0$ in $]0,\log2[$, $f=0$ in $x=\log2$.}
 
 %-------------------------------------------------------------------
 \section{La definizione di limite}
@@ -142,22 +145,22 @@ Calcolare $\lim\bigl(\sqrt[3]{n^3+n^2}-n\bigr)$. (Suggerimento: $a-b=\dfrac{a^3-
 \risp{Con $a=\sqrt[3]{n^3+n^2}$ e $b=n$: $a^3-b^3=n^2$ e $a^2+ab+b^2=n^2\bigl(\sqrt[3]{(1+\frac1n)^2}+\sqrt[3]{1+\frac1n}+1\bigr)$, quindi il limite è $\frac13$.}
 
 \begin{esercizio}[\liv{2}]
-Calcolare: \ $n^2\Bigl(\dfrac1n-\dfrac1{n+1}\Bigr)$; \ $n-\ln n$; \ $2^n-n^{10}$; \ $\ln(n+1)-\ln n$; \ $\ln(2n^2+1)-2\ln n$.
+Calcolare: \ $n^2\Bigl(\dfrac1n-\dfrac1{n+1}\Bigr)$; \ $n-\log n$; \ $2^n-n^{10}$; \ $\log(n+1)-\log n$; \ $\log(2n^2+1)-2\log n$.
 \end{esercizio}
-\risp{$\frac{n^2}{n(n+1)}\to1$; \ $n\bigl(1-\frac{\ln n}n\bigr)\to+\infty$; \ $2^n\bigl(1-\frac{n^{10}}{2^n}\bigr)\to+\infty$; \ $\ln\bigl(1+\frac1n\bigr)\to\ln1=0$; \ $\ln\frac{2n^2+1}{n^2}\to\ln2$.}
+\risp{$\frac{n^2}{n(n+1)}\to1$; \ $n\bigl(1-\frac{\log n}n\bigr)\to+\infty$; \ $2^n\bigl(1-\frac{n^{10}}{2^n}\bigr)\to+\infty$; \ $\log\bigl(1+\frac1n\bigr)\to\log1=0$; \ $\log\frac{2n^2+1}{n^2}\to\log2$.}
 
 %-------------------------------------------------------------------
 \section{Gerarchia degli infiniti}
 
 \begin{esercizio}[\liv{1}]
-Calcolare: \ $\dfrac{n^5+3^n}{2^n+4^n}$; \ $\dfrac{n!+2^n}{n!-n^3}$; \ $\dfrac{(\ln n)^2}{\sqrt n}$; \ $\dfrac{n^n}{n!}$; \ $\dfrac{5^n+n!}{n^n}$; \ $\dfrac{n^2\,2^n}{3^n}$.
+Calcolare: \ $\dfrac{n^5+3^n}{2^n+4^n}$; \ $\dfrac{n!+2^n}{n!-n^3}$; \ $\dfrac{(\log n)^2}{\sqrt n}$; \ $\dfrac{n^n}{n!}$; \ $\dfrac{5^n+n!}{n^n}$; \ $\dfrac{n^2\,2^n}{3^n}$.
 \end{esercizio}
-\risp{Si divide per $4^n$: $\frac{n^5/4^n+(3/4)^n}{(1/2)^n+1}\to0$; \ $1$; \ $\bigl(\frac{\ln n}{n^{1/4}}\bigr)^2\to0$; \ $+\infty$ (reciproco di $\frac{n!}{n^n}\to0^+$); \ $\frac{5^n}{n!}\cdot\frac{n!}{n^n}+\frac{n!}{n^n}\to0$; \ $\frac{n^2}{(3/2)^n}\to0$.}
+\risp{Si divide per $4^n$: $\frac{n^5/4^n+(3/4)^n}{(1/2)^n+1}\to0$; \ $1$; \ $\bigl(\frac{\log n}{n^{1/4}}\bigr)^2\to0$; \ $+\infty$ (reciproco di $\frac{n!}{n^n}\to0^+$); \ $\frac{5^n}{n!}\cdot\frac{n!}{n^n}+\frac{n!}{n^n}\to0$; \ $\frac{n^2}{(3/2)^n}\to0$.}
 
 \begin{esercizio}[\liv{2}]
-Ordinare dalla più lenta alla più veloce, per $n$ grande: \ $n\ln n$, \ $1{,}1^n$, \ $\sqrt n$, \ $n!$, \ $3\ln n$, \ $n^n$, \ $n^2$. Giustificare ogni confronto con un limite.
+Ordinare dalla più lenta alla più veloce, per $n$ grande: \ $n\log n$, \ $1{,}1^n$, \ $\sqrt n$, \ $n!$, \ $3\log n$, \ $n^n$, \ $n^2$. Giustificare ogni confronto con un limite.
 \end{esercizio}
-\risp{$3\ln n\ll\sqrt n\ll n\ln n\ll n^2\ll1{,}1^n\ll n!\ll n^n$. Per esempio $\frac{n\ln n}{n^2}=\frac{\ln n}n\to0$ e $\frac{\sqrt n}{n\ln n}=\frac1{\sqrt n\ln n}\to0$; gli altri sono casi della gerarchia.}
+\risp{$3\log n\ll\sqrt n\ll n\log n\ll n^2\ll1{,}1^n\ll n!\ll n^n$. Per esempio $\frac{n\log n}{n^2}=\frac{\log n}n\to0$ e $\frac{\sqrt n}{n\log n}=\frac1{\sqrt n\log n}\to0$; gli altri sono casi della gerarchia.}
 
 %-------------------------------------------------------------------
 \section{Successioni monotone}
@@ -196,9 +199,9 @@ Calcolare $\lim\Bigl(\cos\dfrac1n\Bigr)^{n^2}$. (Suggerimento: $\cos\frac1n=1+\f
 \risp{$\bigl(\cos\frac1n\bigr)^{n^2}=\bigl(1+\frac1{a_n}\bigr)^{a_n\cdot b_n}$ con $b_n=n^2\bigl(\cos\frac1n-1\bigr)\to-\frac12$: il limite è $e^{-1/2}\approx0{,}607$.}
 
 \begin{esercizio}[\liv{2}]
-Calcolare (forme $0^0$ e $\infty^0$), scrivendo $a_n^{b_n}=e^{b_n\ln a_n}$: \ $\sqrt[n]n$; \ $\sqrt[n]{n^2+3^n}$; \ $\Bigl(\dfrac1n\Bigr)^{1/\ln n}$; \ $(\ln n)^{1/n}$; \ $\sqrt[n]{2^n+5^n}$; \ $\bigl(n^n\bigr)^{1/n^2}$.
+Calcolare (forme $0^0$ e $\infty^0$), scrivendo $a_n^{b_n}=e^{b_n\log a_n}$: \ $\sqrt[n]n$; \ $\sqrt[n]{n^2+3^n}$; \ $\Bigl(\dfrac1n\Bigr)^{1/\log n}$; \ $(\log n)^{1/n}$; \ $\sqrt[n]{2^n+5^n}$; \ $\bigl(n^n\bigr)^{1/n^2}$.
 \end{esercizio}
-\risp{$e^{\frac{\ln n}n}\to e^0=1$; \ $3\sqrt[n]{1+\frac{n^2}{3^n}}\to3$ (o con il confronto: $3^n\le n^2+3^n\le2\cdot3^n$); \ $e^{-\frac{\ln n}{\ln n}}=e^{-1}$: una forma $0^0$ che vale $\frac1e$; \ $e^{\frac{\ln\ln n}n}\to1$; \ $5$; \ $n^{1/n}\to1$.}
+\risp{$e^{\frac{\log n}n}\to e^0=1$; \ $3\sqrt[n]{1+\frac{n^2}{3^n}}\to3$ (o con il confronto: $3^n\le n^2+3^n\le2\cdot3^n$); \ $e^{-\frac{\log n}{\log n}}=e^{-1}$: una forma $0^0$ che vale $\frac1e$; \ $e^{\frac{\log\log n}n}\to1$; \ $5$; \ $n^{1/n}\to1$.}
 
 \begin{esercizio}[\liv{1}]
 Calcolare (forme determinate): \ $\Bigl(\dfrac12+\dfrac1n\Bigr)^n$; \ $\Bigl(2-\dfrac1n\Bigr)^n$; \ $\Bigl(\dfrac1n\Bigr)^n$; \ $\Bigl(3+\dfrac1n\Bigr)^{-n}$; \ $\Bigl(\dfrac{n+1}n\Bigr)^{-n}$. Quale delle cinque è invece una forma indeterminata?
@@ -211,10 +214,10 @@ Calcolare (forme determinate): \ $\Bigl(\dfrac12+\dfrac1n\Bigr)^n$; \ $\Bigl(2-\
 \begin{esercizio}[\liv{2}]
 Calcolare:
 \[
-\frac{n^2\sin(1/n)+\ln n}{n+1};\qquad \frac{3^{n+1}+2^n}{3^n+n^3};\qquad n\bigl(\ln(n+1)-\ln n\bigr);\qquad \sqrt n\bigl(\sqrt{n+1}-\sqrt n\bigr).
+\frac{n^2\sin(1/n)+\log n}{n+1};\qquad \frac{3^{n+1}+2^n}{3^n+n^3};\qquad n\bigl(\log(n+1)-\log n\bigr);\qquad \sqrt n\bigl(\sqrt{n+1}-\sqrt n\bigr).
 \]
 \end{esercizio}
-\risp{$n^2\sin\frac1n=n\cdot\frac{\sin(1/n)}{1/n}$, quindi il quoziente è $\frac{n\cdot\frac{\sin(1/n)}{1/n}+\ln n}{n+1}\to1$; \ $\frac{3+(2/3)^n}{1+n^3/3^n}\to3$; \ $\ln\bigl(1+\frac1n\bigr)^n\to\ln e=1$; \ $\frac{\sqrt n}{\sqrt{n+1}+\sqrt n}\to\frac12$.}
+\risp{$n^2\sin\frac1n=n\cdot\frac{\sin(1/n)}{1/n}$, quindi il quoziente è $\frac{n\cdot\frac{\sin(1/n)}{1/n}+\log n}{n+1}\to1$; \ $\frac{3+(2/3)^n}{1+n^3/3^n}\to3$; \ $\log\bigl(1+\frac1n\bigr)^n\to\log e=1$; \ $\frac{\sqrt n}{\sqrt{n+1}+\sqrt n}\to\frac12$.}
 
 \begin{esercizio}[\liv{3}]
 Al variare del parametro $a>0$, calcolare $\lim\dfrac{a^n+n^2}{2^n+n}$.
@@ -224,7 +227,7 @@ Al variare del parametro $a>0$, calcolare $\lim\dfrac{a^n+n^2}{2^n+n}$.
 \begin{esercizio}[\liv{3}]
 Vero o falso? Motivare. (a) Se $a_n\to1$ e $b_n\to+\infty$, allora $a_n^{b_n}\to1$. (b) Se $a_n\to\frac12$ e $b_n\to+\infty$, allora $a_n^{b_n}\to0$. (c) Se $\frac{a_n}{b_n}\to1$ e $b_n\to+\infty$, allora $a_n-b_n\to0$. (d) Se $a_n\to0$, allora $\frac{\sin a_n}{a_n}\to1$.
 \end{esercizio}
-\risp{(a) Falso: $(1+\frac1n)^n\to e$. (b) Vero: è una forma determinata ($b_n\ln a_n\to-\infty$). (c) Falso: $a_n=n+1$, $b_n=n$, la differenza è $1$; con $a_n=n+\sqrt n$ diverge. (d) Falso così come è scritto: serve $a_n\ne0$ (altrimenti il quoziente non è definito), ma con $a_n\ne0$ è vero.}
+\risp{(a) Falso: $(1+\frac1n)^n\to e$. (b) Vero: è una forma determinata ($b_n\log a_n\to-\infty$). (c) Falso: $a_n=n+1$, $b_n=n$, la differenza è $1$; con $a_n=n+\sqrt n$ diverge. (d) Falso così come è scritto: serve $a_n\ne0$ (altrimenti il quoziente non è definito), ma con $a_n\ne0$ è vero.}
 
 %-------------------------------------------------------------------
 \stampasoluzioni

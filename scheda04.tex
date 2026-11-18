@@ -30,17 +30,17 @@ Lo iodio-131, usato in medicina nucleare, ha un tempo di dimezzamento di circa $
 \begin{esercizio}[\liv{2}]
 Una popolazione cresce del $3\,\%$ all'anno. Calcolare il tempo di raddoppio esatto e quello dato dalla regola del $70$. Scrivere il modello nella forma $N_0e^{kt}$: quanto vale il tasso istantaneo $k$?
 \end{esercizio}
-\risp{$T=\dfrac{\ln2}{\ln1{,}03}\approx23{,}4$ anni; regola del $70$: $\frac{70}3\approx23{,}3$ anni. $k=\ln1{,}03\approx0{,}0296$, cioè circa $2{,}96\,\%$, un po' meno del $3\,\%$.}
+\risp{$T=\dfrac{\log2}{\log1{,}03}\approx23{,}4$ anni; regola del $70$: $\frac{70}3\approx23{,}3$ anni. $k=\log1{,}03\approx0{,}0296$, cioè circa $2{,}96\,\%$, un po' meno del $3\,\%$.}
 
 \begin{esercizio}[\liv{2}]
 Il carbonio-14 ha tempo di dimezzamento di $5730$ anni. Un reperto contiene il $40\,\%$ del carbonio-14 che conteneva in origine. Quanti anni ha?
 \end{esercizio}
-\risp{$2^{-t/5730}=0{,}4$: $t=5730\log_2\frac1{0{,}4}=5730\,\dfrac{\ln2{,}5}{\ln2}\approx7{,}6\cdot10^3$ anni.}
+\risp{$2^{-t/5730}=0{,}4$: $t=5730\log_2\frac1{0{,}4}=5730\,\dfrac{\log2{,}5}{\log2}\approx7{,}6\cdot10^3$ anni.}
 
 \begin{esercizio}[\liv{2}]
 Scrivere $N(t)=200\cdot0{,}85^{t}$ nella forma $N_0e^{kt}$. Si tratta di crescita o di decadimento? Qual è il tempo di dimezzamento?
 \end{esercizio}
-\risp{$k=\ln0{,}85\approx-0{,}163$: decadimento, $N(t)=200\,e^{-0{,}163\,t}$. Il tempo di dimezzamento è $\dfrac{\ln2}{-\ln0{,}85}\approx4{,}27$.}
+\risp{$k=\log0{,}85\approx-0{,}163$: decadimento, $N(t)=200\,e^{-0{,}163\,t}$. Il tempo di dimezzamento è $\dfrac{\log2}{-\log0{,}85}\approx4{,}27$.}
 
 \begin{esercizio}[\liv{2}]
 Il pH di una soluzione è $-\log_{10}[\mathrm H^+]$, con la concentrazione in mol/L. Calcolare il pH di una soluzione con $[\mathrm H^+]=3{,}2\cdot10^{-5}$ mol/L. Quante volte è più grande la concentrazione di ioni idrogeno in una soluzione a pH $4$ rispetto a una a pH $6$?
@@ -185,32 +185,32 @@ Per determinare il dominio di una funzione composta si scrivono, e si mettono a 
 \end{vuoto}
 
 \begin{esercizio}[\liv{1}]
-Determinare il dominio di: \ $\sqrt{x^2-5x+6}$; \ $\ln(4-x^2)$; \ $\dfrac1{e^x-1}$; \ $\sqrt{\ln x}$; \ $\dfrac{x+1}{\sqrt{9-x^2}}$.
+Determinare il dominio di: \ $\sqrt{x^2-5x+6}$; \ $\log(4-x^2)$; \ $\dfrac1{e^x-1}$; \ $\sqrt{\log x}$; \ $\dfrac{x+1}{\sqrt{9-x^2}}$.
 \end{esercizio}
-\risp{$x\le2$ oppure $x\ge3$; \ $]-2,2[$; \ $x\ne0$; \ $\ln x\ge0$: $x\ge1$; \ $9-x^2>0$: $]-3,3[$.}
+\risp{$x\le2$ oppure $x\ge3$; \ $]-2,2[$; \ $x\ne0$; \ $\log x\ge0$: $x\ge1$; \ $9-x^2>0$: $]-3,3[$.}
 
 \begin{esercizio}[\liv{2}]
-Determinare il dominio di: \ $\sqrt{\dfrac{x-1}{x+3}}$; \ $\ln(|x|-2)$; \ $\sqrt{1-\log_2x}$; \ $\log_{1/3}(x^2-x)$; \ $\dfrac{\sqrt{2^x-8}}{x-5}$.
+Determinare il dominio di: \ $\sqrt{\dfrac{x-1}{x+3}}$; \ $\log(|x|-2)$; \ $\sqrt{1-\log_2x}$; \ $\log_{1/3}(x^2-x)$; \ $\dfrac{\sqrt{2^x-8}}{x-5}$.
 \end{esercizio}
 \risp{$x<-3$ oppure $x\ge1$; \ $|x|>2$: $x<-2$ oppure $x>2$; \ $x>0$ e $\log_2x\le1$: $]0,2]$; \ $x^2-x>0$: $x<0$ oppure $x>1$; \ $2^x\ge8$ e $x\ne5$: $[3,5[\,\cup\,]5,+\infty[$.}
 
 \begin{esercizio}[\liv{2}]
 Determinare il dominio di:
 \[
-\sqrt{\ln(x-2)},\qquad \ln(\ln x),\qquad \sqrt{\log_{1/2}(x+1)},\qquad \frac1{\sqrt{x+4}-2},\qquad \sqrt{4^x-3\cdot2^x+2}.
+\sqrt{\log(x-2)},\qquad \log(\log x),\qquad \sqrt{\log_{1/2}(x+1)},\qquad \frac1{\sqrt{x+4}-2},\qquad \sqrt{4^x-3\cdot2^x+2}.
 \]
 \end{esercizio}
-\risp{$x>2$ e $\ln(x-2)\ge0$, cioè $x-2\ge1$: $[3,+\infty[$; \ $x>0$ e $\ln x>0$: $x>1$; \ $x>-1$ e, con base minore di $1$, $x+1\le1$: $]-1,0]$; \ $x\ge-4$ e $\sqrt{x+4}\ne2$, cioè $x\ne0$: $[-4,0[\,\cup\,]0,+\infty[$; \ con $t=2^x>0$: $t^2-3t+2\ge0$, cioè $t\le1$ o $t\ge2$: $x\le0$ oppure $x\ge1$.}
+\risp{$x>2$ e $\log(x-2)\ge0$, cioè $x-2\ge1$: $[3,+\infty[$; \ $x>0$ e $\log x>0$: $x>1$; \ $x>-1$ e, con base minore di $1$, $x+1\le1$: $]-1,0]$; \ $x\ge-4$ e $\sqrt{x+4}\ne2$, cioè $x\ne0$: $[-4,0[\,\cup\,]0,+\infty[$; \ con $t=2^x>0$: $t^2-3t+2\ge0$, cioè $t\le1$ o $t\ge2$: $x\le0$ oppure $x\ge1$.}
 
 \begin{esercizio}[\liv{2}]
-Determinare il dominio di: \ $\sqrt{\sin x}$; \ $\ln(\cos x)$; \ $\dfrac1{2\sin x-1}$; \ $\sqrt{1-2\cos x}$ (in $[0,2\pi]$); \ $\arcsin(\ln x)$.
+Determinare il dominio di: \ $\sqrt{\sin x}$; \ $\log(\cos x)$; \ $\dfrac1{2\sin x-1}$; \ $\sqrt{1-2\cos x}$ (in $[0,2\pi]$); \ $\arcsin(\log x)$.
 \end{esercizio}
-\risp{$\sin x\ge0$: $[2k\pi,\pi+2k\pi]$; \ $\cos x>0$: $]-\frac\pi2+2k\pi,\frac\pi2+2k\pi[$; \ $\sin x\ne\frac12$: $x\ne\frac\pi6+2k\pi$ e $x\ne\frac{5\pi}6+2k\pi$; \ $\cos x\le\frac12$: $[\frac\pi3,\frac{5\pi}3]$; \ $x>0$ e $-1\le\ln x\le1$: $[\frac1e,e]$ ($k\in\Z$).}
+\risp{$\sin x\ge0$: $[2k\pi,\pi+2k\pi]$; \ $\cos x>0$: $]-\frac\pi2+2k\pi,\frac\pi2+2k\pi[$; \ $\sin x\ne\frac12$: $x\ne\frac\pi6+2k\pi$ e $x\ne\frac{5\pi}6+2k\pi$; \ $\cos x\le\frac12$: $[\frac\pi3,\frac{5\pi}3]$; \ $x>0$ e $-1\le\log x\le1$: $[\frac1e,e]$ ($k\in\Z$).}
 
 \begin{esercizio}[\liv{3}]
-Determinare il dominio di: \ $\sqrt{(2-x)\ln x}$; \ $\sqrt{\sqrt{x+3}-x-1}$; \ $\ln\dfrac{x^2-4}{x-1}$; \ $\sqrt{\arctan x-\frac\pi4}$.
+Determinare il dominio di: \ $\sqrt{(2-x)\log x}$; \ $\sqrt{\sqrt{x+3}-x-1}$; \ $\log\dfrac{x^2-4}{x-1}$; \ $\sqrt{\arctan x-\frac\pi4}$.
 \end{esercizio}
-\risp{Prima: $x>0$ e $(2-x)\ln x\ge0$; i due fattori hanno lo stesso segno (o uno è nullo) solo per $1\le x\le2$: $[1,2]$. \ Seconda: $x\ge-3$ e $\sqrt{x+3}\ge x+1$; se $x<-1$ è vera; se $x\ge-1$ si eleva al quadrato: $x^2+x-2\le0$, $-2\le x\le1$. Soluzione $[-3,1]$. \ Terza: $\frac{(x-2)(x+2)}{x-1}>0$: $]-2,1[\,\cup\,]2,+\infty[$. \ Quarta: $\arctan x\ge\frac\pi4$: $x\ge1$.}
+\risp{Prima: $x>0$ e $(2-x)\log x\ge0$; i due fattori hanno lo stesso segno (o uno è nullo) solo per $1\le x\le2$: $[1,2]$. \ Seconda: $x\ge-3$ e $\sqrt{x+3}\ge x+1$; se $x<-1$ è vera; se $x\ge-1$ si eleva al quadrato: $x^2+x-2\le0$, $-2\le x\le1$. Soluzione $[-3,1]$. \ Terza: $\frac{(x-2)(x+2)}{x-1}>0$: $]-2,1[\,\cup\,]2,+\infty[$. \ Quarta: $\arctan x\ge\frac\pi4$: $x\ge1$.}
 
 \begin{esercizio}[\liv{3}]
 Determinare il dominio di $f(x)=\sqrt{\log_{1/2}(x^2-3x+3)}$.
@@ -241,9 +241,9 @@ Un segmento di $10$ cm è diviso in sezione aurea: quanto sono lunghe le due par
 \risp{La parte maggiore è $\frac{10}\varphi\approx6{,}18$ cm, la minore $\frac{10}{\varphi^2}\approx3{,}82$ cm. Il lato maggiore è $5\varphi\approx8{,}09$ cm. $\varphi^2\approx2{,}618=\varphi+1$; $\frac1\varphi\approx0{,}618=\varphi-1$.}
 
 \begin{esercizio}[\liv{2}]
-Ordinare le successioni $n^3$, $2^n$, $\ln n$, $n!$, $\sqrt n$, $3^n$, $n^n$ calcolandone i valori per $n=10$. L'ordine trovato è quello ``per $n$ grande''? Confrontare $n^3$ e $2^n$ per $n=9$ e $n=10$.
+Ordinare le successioni $n^3$, $2^n$, $\log n$, $n!$, $\sqrt n$, $3^n$, $n^n$ calcolandone i valori per $n=10$. L'ordine trovato è quello ``per $n$ grande''? Confrontare $n^3$ e $2^n$ per $n=9$ e $n=10$.
 \end{esercizio}
-\risp{Per $n=10$: $\ln n\approx2{,}3<\sqrt n\approx3{,}2<n^3=1000<2^n=1024<3^n=59\,049<n!\approx3{,}6\cdot10^6<n^n=10^{10}$. È l'ordine per $n$ grande, ma per $n=9$ si ha ancora $n^3=729>2^n=512$: il sorpasso di $2^n$ su $n^3$ avviene proprio a $n=10$.}
+\risp{Per $n=10$: $\log n\approx2{,}3<\sqrt n\approx3{,}2<n^3=1000<2^n=1024<3^n=59\,049<n!\approx3{,}6\cdot10^6<n^n=10^{10}$. È l'ordine per $n$ grande, ma per $n=9$ si ha ancora $n^3=729>2^n=512$: il sorpasso di $2^n$ su $n^3$ avviene proprio a $n=10$.}
 
 \begin{esercizio}[\liv{3}]
 Sia $a_1=a_2=1$ e $a_{n+1}=a_n+2a_{n-1}$. (a) Scrivere i primi dieci termini e i rapporti $r_n=a_{n+1}/a_n$. (b) Mostrare che $r_n=1+\dfrac2{r_{n-1}}$, e trovare il candidato per il numero a cui si avvicinano i rapporti, come per Fibonacci.
