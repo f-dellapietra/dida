@@ -6,7 +6,8 @@
 %     Le fermate sono numerate in ordine: L1..L21 = 1..21, prima prova = 22, L22..L36 = 23..37 (L36 = esercitazione del 18/12),
 %     seconda prova = 38. Dopo L22 si mette 23, dopo L23 si mette 24, e cosi' via.
 %  2. Il blocco della lezione svolta passa da \begin{bloccop} (tratteggiato, "in programma")
-%     a \begin{blocco} (pieno), e se ne rivede il contenuto sugli appunti.
+%     a \begin{blocco} (pieno), e se ne rivede il contenuto sugli appunti. Nell'elenco dei 28 blocchi
+%     (seconda pagina) la voce perde \bp{...} e la clessidra.
 %  3. Nell'elenco delle dimostrazioni, la voce passa da \prog a \fatta.
 \documentclass[10pt,a4paper,landscape]{article}
 \usepackage[T1]{fontenc}
@@ -24,7 +25,7 @@
 \usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
 \usepackage{flowfram}  % colonne vere dalla pagina 3: i riquadri si spezzano a fine colonna
 
-\newcommand{\fatte}{23}   % ultima fermata percorsa: 23 = L22 (16/11)
+\newcommand{\fatte}{24}   % ultima fermata percorsa: 24 = L23 (18/11)
 
 % ---------------------------------------------------------------- caratteri
 \newcommand{\hf}{\fontfamily{Montserrat-LF}\selectfont}          % titoli
@@ -222,12 +223,12 @@
 \item So trovare gli asintoti e classificare le discontinuità.
 \item So derivare, composta compresa, e scrivere la retta tangente.
 \item So trovare gli estremi su un intervallo e impostare un'ottimizzazione.
+\item So usare de l'Hôpital solo sulle forme indeterminate.
+\item So studiare una funzione e disegnarne il grafico.
 \end{itemize}
 \begin{itemize}[label={\textcolor{alge!55}{\faSquare[regular]}},leftmargin=1.4em,itemsep=0.5pt]
-\item \textcolor{inchiostro!70}{So studiare una funzione e disegnarne il grafico.} \textcolor{deri!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So usare uno sviluppo di Taylor in un limite.} \textcolor{deri!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So calcolare integrali (anche per parti e per sostituzione) e aree.} \textcolor{inte!70}{\clessidra}
-\item \textcolor{inchiostro!70}{So usare de l'Hôpital solo sulle forme indeterminate.} \textcolor{deri!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So usare il prodotto scalare e scrivere rette e piani.} \textcolor{line!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So calcolare un determinante e risolvere un sistema con Gauss.} \textcolor{line!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So calcolare una probabilità condizionata e usare Bayes.} \textcolor{prob!70}{\clessidra}
@@ -268,11 +269,12 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \fatta{Teorema di Lagrange}{L22}
 \fatta{$f'=0$ su un intervallo $\Rightarrow$ $f$ costante}{L22}
 \fatta{Monotonia $\iff$ segno di $f'$: $f$ crescente $\iff f'\ge0$}{L22}
+\fatta{De l'Hôpital nel caso $f(x_0)=g(x_0)=0$}{L23}
 \end{enumerate}
 \end{tcolorbox}
 \begin{tcolorbox}[colframe=succ!75!black,colbacktitle=succ!75!black,title={\faStar\enspace Le dimostrazioni: in programma}]
 \colorlet{bcol}{succ}
-\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=16]
+\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=17]
 \prog{Retta e parabola di miglior approssimazione}{L24}
 \prog{Teorema della media integrale}{L25}
 \prog{Teorema fondamentale del calcolo}{L25}
@@ -302,7 +304,7 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \textcolor{alge}{4} & Equazioni, disequazioni & \textcolor{deri}{14} & La derivata & \textcolor{line}{23} & \bp{Rette e piani \clessidra}\\
 \textcolor{alge}{5} & Potenze e radici & \textcolor{deri}{15} & Estremi, ottimizzazione & \textcolor{line}{24} & \bp{Matrici \clessidra}\\
 \textcolor{alge}{6} & Percentuali, log, retta & \textcolor{deri}{16} & Rolle e Lagrange & \textcolor{line}{25} & \bp{Sistemi lineari \clessidra}\\
-\textcolor{funz}{7} & Funzioni & \textcolor{deri}{17} & \bp{Studio di funzione \clessidra} & \textcolor{prob}{26} & \bp{Probabilità \clessidra}\\
+\textcolor{funz}{7} & Funzioni & \textcolor{deri}{17} & Studio di funzione & \textcolor{prob}{26} & \bp{Probabilità \clessidra}\\
 \textcolor{funz}{8} & Esponenziali, logaritmi & \textcolor{deri}{18} & \bp{$o$ piccoli, Taylor \clessidra} & \textcolor{prob}{27} & \bp{Variabili aleatorie \clessidra}\\
 \textcolor{trig}{9} & Trigonometria, domini & \textcolor{inte}{19} & \bp{L'integrale \clessidra} & \textcolor{prob}{28} & \bp{Statistica \clessidra}\\
 \textcolor{succ}{10} & Successioni & & & &
@@ -790,15 +792,17 @@ propagazione degli errori: $\Delta f\approx f'(x_0)\,\Delta x$}
 \end{blocco}
 
 %----------------------------------------------------------------------- 17
-\begin{bloccop}{deri}{17}{Studio di funzione}{L23 \textperiodcentered\ 18/11}
-\voce{Convessa}{il grafico sta \kw{sotto le corde} \textperiodcentered\ (solo cenni) criterio: $f$ convessa $\iff$ $f''\ge0$ \sd}
+\begin{blocco}{deri}{17}{Studio di funzione}{L23}
+\formula{\kw{de l'Hôpital} \ forma $\frac00$ o $\frac\infty\infty$:\\[2pt]
+se $\dfrac{f'(x)}{g'(x)}\to L$ \ allora \ $\dfrac{f(x)}{g(x)}\to L$\\[2pt]
+\dimo\ se $f(x_0)=g(x_0)=0$, $f',g'$ continue, $g'(x_0)\ne0$}
+\voce{Esempi}{$\frac{\sin x-x}{x^3}\to-\frac16$ \textperiodcentered\ $\frac{\log x}{x^\alpha}\to0$ \textperiodcentered\ $\frac{e^x}{x^2}\to+\infty$ (due volte)}
+\voce{Non serve}{$\frac{2x+\sin x}{3x-\cos x}\to\frac23$, ma $\frac{f'}{g'}$ non ha limite \textperiodcentered\ $\frac{e^{-1/x^2}}x$ in $0$: derivando peggiora}
+\voce{Convessa}{il grafico sta \kw{sotto le corde} \textperiodcentered\ criterio: $f$ convessa $\iff$ $f''\ge0$ \sd}
 \voce{Flesso}{punto in cui cambia la convessità; si cerca dove $f''$ \kw{cambia segno}}
-\formula{\kw{de l'Hôpital} \sd\ \ forma $\frac00$ o $\frac\infty\infty$:\\[2pt]
-se $\dfrac{f'(x)}{g'(x)}\to L$ \ allora \ $\dfrac{f(x)}{g(x)}\to L$}
-\voce{Studio}{\textcircled{\scriptsize1} dominio, simmetrie \textcircled{\scriptsize2} segno, zeri \textcircled{\scriptsize3} limiti, asintoti \textcircled{\scriptsize4} $f'$: monotonia, estremi \textcircled{\scriptsize5} $f''$: convessità, flessi \textcircled{\scriptsize6} grafico coerente con tutto}
-\voce{Non deriv.}{\kw{angoloso} (derivate laterali finite e diverse: $|x|$) \textperiodcentered\ \kw{cuspide} ($\pm\infty$ opposte: $\sqrt{|x|}$) \textperiodcentered\ \kw{flesso a tangente verticale} ($\sqrt[3]x$)}
-\occhio{$f''(x_0)=0$ non basta per un flesso: $x^4$. Un flesso non è un punto stazionario ($\sin x$ in $0$). De l'Hôpital solo per forme indeterminate, derivando numeratore e denominatore \emph{separatamente}. Il grafico può attraversare un asintoto.}
-\end{bloccop}
+\voce{Studio}{\textcircled{\scriptsize1} dominio, simmetrie \textcircled{\scriptsize2} segno, zeri \textcircled{\scriptsize3} limiti, asintoti \textcircled{\scriptsize4} $f'$: monotonia, estremi \textcircled{\scriptsize5} $f''$: convessità, flessi \textcircled{\scriptsize6} grafico coerente con tutto \textperiodcentered\ esempi: $\frac{x^2+1}{x-1}$, $\frac{\log x}x$}
+\occhio{$f''(x_0)=0$ non basta per un flesso: $x^4$. Un flesso non è un punto stazionario ($\sin x$ in $0$). De l'Hôpital solo per forme indeterminate, derivando numeratore e denominatore \emph{separatamente}.}
+\end{blocco}
 
 %----------------------------------------------------------------------- 18
 \begin{bloccop}{deri}{18}{$o$ piccoli e Taylor}{L24 \textperiodcentered\ 20/11}
