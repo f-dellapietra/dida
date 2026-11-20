@@ -25,7 +25,7 @@
 \usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
 \usepackage{flowfram}  % colonne vere dalla pagina 3: i riquadri si spezzano a fine colonna
 
-\newcommand{\fatte}{24}   % ultima fermata percorsa: 24 = L23 (18/11)
+\newcommand{\fatte}{25}   % ultima fermata percorsa: 25 = L24 (20/11)
 
 % ---------------------------------------------------------------- caratteri
 \newcommand{\hf}{\fontfamily{Montserrat-LF}\selectfont}          % titoli
@@ -225,9 +225,9 @@
 \item So trovare gli estremi su un intervallo e impostare un'ottimizzazione.
 \item So usare de l'Hôpital solo sulle forme indeterminate.
 \item So studiare una funzione e disegnarne il grafico.
+\item So usare uno sviluppo di Taylor in un limite.
 \end{itemize}
 \begin{itemize}[label={\textcolor{alge!55}{\faSquare[regular]}},leftmargin=1.4em,itemsep=0.5pt]
-\item \textcolor{inchiostro!70}{So usare uno sviluppo di Taylor in un limite.} \textcolor{deri!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So calcolare integrali (anche per parti e per sostituzione) e aree.} \textcolor{inte!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So usare il prodotto scalare e scrivere rette e piani.} \textcolor{line!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So calcolare un determinante e risolvere un sistema con Gauss.} \textcolor{line!70}{\clessidra}
@@ -270,12 +270,12 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \fatta{$f'=0$ su un intervallo $\Rightarrow$ $f$ costante}{L22}
 \fatta{Monotonia $\iff$ segno di $f'$: $f$ crescente $\iff f'\ge0$}{L22}
 \fatta{De l'Hôpital nel caso $f(x_0)=g(x_0)=0$}{L23}
+\fatta{Retta e parabola di miglior approssimazione}{L24}
 \end{enumerate}
 \end{tcolorbox}
 \begin{tcolorbox}[colframe=succ!75!black,colbacktitle=succ!75!black,title={\faStar\enspace Le dimostrazioni: in programma}]
 \colorlet{bcol}{succ}
-\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=17]
-\prog{Retta e parabola di miglior approssimazione}{L24}
+\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=18]
 \prog{Teorema della media integrale}{L25}
 \prog{Teorema fondamentale del calcolo}{L25}
 \prog{$\int_a^bf=F(b)-F(a)$}{L25}
@@ -305,7 +305,7 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \textcolor{alge}{5} & Potenze e radici & \textcolor{deri}{15} & Estremi, ottimizzazione & \textcolor{line}{24} & \bp{Matrici \clessidra}\\
 \textcolor{alge}{6} & Percentuali, log, retta & \textcolor{deri}{16} & Rolle e Lagrange & \textcolor{line}{25} & \bp{Sistemi lineari \clessidra}\\
 \textcolor{funz}{7} & Funzioni & \textcolor{deri}{17} & Studio di funzione & \textcolor{prob}{26} & \bp{Probabilità \clessidra}\\
-\textcolor{funz}{8} & Esponenziali, logaritmi & \textcolor{deri}{18} & \bp{$o$ piccoli, Taylor \clessidra} & \textcolor{prob}{27} & \bp{Variabili aleatorie \clessidra}\\
+\textcolor{funz}{8} & Esponenziali, logaritmi & \textcolor{deri}{18} & $o$ piccoli, Taylor & \textcolor{prob}{27} & \bp{Variabili aleatorie \clessidra}\\
 \textcolor{trig}{9} & Trigonometria, domini & \textcolor{inte}{19} & \bp{L'integrale \clessidra} & \textcolor{prob}{28} & \bp{Statistica \clessidra}\\
 \textcolor{succ}{10} & Successioni & & & &
 \end{tabular}
@@ -805,10 +805,11 @@ se $\dfrac{f'(x)}{g'(x)}\to L$ \ allora \ $\dfrac{f(x)}{g(x)}\to L$\\[2pt]
 \end{blocco}
 
 %----------------------------------------------------------------------- 18
-\begin{bloccop}{deri}{18}{$o$ piccoli e Taylor}{L24 \textperiodcentered\ 20/11}
+\begin{blocco}{deri}{18}{$o$ piccoli e Taylor}{L24}
 \voce{$o$ piccolo}{$f=o(g)$ per $x\to x_0$ se $\dfrac fg\to0$: $f$ è trascurabile rispetto a $g$ (definizione e primo ordine già visti in L19)}
+\voce{Infinitesimi}{$f\sim g$ (equivalenti) se $\dfrac fg\to1$ \textperiodcentered\ \kw{sostituzione}: in prodotti e quozienti si sostituisce un infinitesimo con uno equivalente \textperiodcentered\ \kw{cancellazione}: $f+o(f)\sim f$}
 \voce{Regole}{$o(x^n)\pm o(x^n)=o(x^n)$ \textperiodcentered\ $x^m\cdot o(x^n)=o(x^{m+n})$ \textperiodcentered\ $o(x^m)=o(x^n)$ se $m>n$ \ (per $x\to0$)}
-\formula{\kw{Taylor} con il resto di Peano \sd\\[3pt]
+\formula{\kw{Taylor} con il resto di Peano (ordine $n$) \sd\\[3pt]
 $f(x)=\displaystyle\sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+o\bigl((x-x_0)^n\bigr)$}
 \voce{Migliore}{retta con errore $o(x-x_0)$: è la tangente \dimo\ \textperiodcentered\ parabola con errore $o\bigl((x-x_0)^2\bigr)$: coefficiente $\frac{f''(x_0)}2$ \dimo\ (un de l'Hôpital) \textperiodcentered\ e così via}
 \voce{Mac Laurin}{per $x\to0$:}
@@ -822,7 +823,7 @@ e^x=1+x+\frac{x^2}2+\dots+\frac{x^n}{n!}+o(x^n)\\
 \voce{Limiti}{si sviluppa fino al primo termine che non si cancella: $\dfrac{x-\sin x}{x^3}=\dfrac{\frac{x^3}6+o(x^4)}{x^3}\to\dfrac16$}
 \voce{Estremi}{$f'(x_0)=0$ e $f''(x_0)>0$: minimo locale; \ $f''(x_0)<0$: massimo locale}
 \occhio{$o(x)-o(x)$ non è $0$: è ancora $o(x)$. Si arresta lo sviluppo all'ordine giusto: troppo presto restano solo $o(\cdot)$, e il limite non si legge.}
-\end{bloccop}
+\end{blocco}
 
 %----------------------------------------------------------------------- 19
 \begin{bloccop}{inte}{19}{L'integrale}{L25 \textperiodcentered\ 23/11}

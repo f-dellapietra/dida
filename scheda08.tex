@@ -1,0 +1,246 @@
+% !TEX root =esercizi.tex
+% ---------------------------------------------------------------------
+% Scheda 8: Lezioni 22--24 (Rolle, Lagrange e monotonia; de l'Hopital,
+% convessita' e studio di funzione; infinitesimi, o piccoli e formula
+% di Taylor). Esercizi nuovi, diversi da quelli degli appunti; tutti i
+% risultati sono verificati con sympy.
+% ---------------------------------------------------------------------
+\chapter{Lezioni 22--24 (16 -- 20 novembre 2026)}
+
+\begin{vuoto}[Argomenti svolti]{}
+\begin{itemize}
+\item[\bul] \textbf{Lezione 22 --- Rolle, Lagrange e monotonia}. Teoremi di Rolle e di Lagrange, con dimostrazione, e loro significato geometrico e fisico (il Tutor). Funzioni con derivata nulla su un intervallo. Monotonia e segno della derivata prima, con dimostrazione; attenzione alla stretta monotonia. Applicazioni: estremi, disuguaglianze, numero di soluzioni di un'equazione.
+\item[\bul] \textbf{Lezione 23 --- De l'Hôpital e studio di funzione}. Teorema di de l'Hôpital, con la dimostrazione nel caso $f(x_0)=g(x_0)=0$; esempi in cui si applica ed esempi in cui non serve. Funzioni convesse e concave (definizione con le corde), criterio $f''\ge0$; punti di flesso. Lo schema dello studio di funzione, con due esempi completi.
+\item[\bul] \textbf{Lezione 24 --- Gli $o$ piccoli e la formula di Taylor}. Infinitesimi e loro confronto; principi di sostituzione e di cancellazione. Formula di Taylor al primo e al secondo ordine (la retta e la parabola di miglior approssimazione), con dimostrazione; formula di ordine $n$ con il resto di Peano. Polinomi di Taylor e sviluppi di Mac Laurin; limiti con gli sviluppi; condizione sufficiente per gli estremi relativi.
+\end{itemize}
+\end{vuoto}
+
+Il livello di difficoltà è indicato con \liv{1} (esercizio di base), \liv{2} (esercizio standard), \liv{3} (esercizio più impegnativo).
+
+\begin{vuoto}[Promemoria]{}
+\textbf{Lagrange}: se $f$ è continua su $[a,b]$ e derivabile in $]a,b[$, esiste $c\in\,]a,b[$ con $f'(c)=\frac{f(b)-f(a)}{b-a}$ (Rolle: il caso $f(a)=f(b)$).
+Su un \emph{intervallo}: $f'\ge0$ $\iff$ $f$ crescente; $f'=0$ $\iff$ $f$ costante.\\[2pt]
+\textbf{De l'Hôpital}: per le forme $\frac00$ e $\frac\infty\infty$, se $\frac{f'}{g'}\to\ell$ allora $\frac fg\to\ell$. Se $\frac{f'}{g'}$ non ha limite, il teorema non dice nulla.\\[2pt]
+\textbf{Convessità}: $f''\ge0$ su un intervallo $\iff$ $f$ convessa; flesso dove $f''$ \emph{cambia segno}.\\[2pt]
+\textbf{Taylor}: $f(x)=\sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+o\bigl((x-x_0)^n\bigr)$. Per $x\to0$:
+\begin{gather*}
+e^x=1+x+\frac{x^2}2+\frac{x^3}6+o(x^3),\qquad \sin x=x-\frac{x^3}6+\frac{x^5}{120}+o(x^6),\\
+\cos x=1-\frac{x^2}2+\frac{x^4}{24}+o(x^5),\qquad \log(1+x)=x-\frac{x^2}2+\frac{x^3}3+o(x^3),\\
+(1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}2x^2+o(x^2).
+\end{gather*}
+\textbf{Estremi}: se $f'(x_0)=0$ e $f''(x_0)>0$, in $x_0$ c'è un minimo locale; se $f''(x_0)<0$, un massimo locale.
+\end{vuoto}
+
+%-------------------------------------------------------------------
+\section{Rolle, Lagrange e monotonia (L22)}
+
+\begin{esercizio}[\liv{1}]
+Verificare le ipotesi del teorema di Lagrange e trovare i punti $c$ della tesi:\\
+(a) $x^2+2x$ su $[0,2]$; \ (b) $x^3-x$ su $[-1,2]$; \ (c) $e^x$ su $[0,1]$; \ (d) $\dfrac1x$ su $[1,3]$.
+\end{esercizio}
+\risp{(a) $\frac{8-0}2=4=2c+2$: $c=1$. (b) $\frac{6-0}3=2=3c^2-1$: $c=\pm1$, e solo $c=1$ sta in $]-1,2[$. (c) $e^c=e-1$: $c=\log(e-1)\approx0{,}54$. (d) $\frac{\frac13-1}2=-\frac13=-\frac1{c^2}$: $c=\sqrt3$.}
+
+\begin{esercizio}[\liv{1}]
+Dire se si può applicare il teorema di Rolle e, in caso affermativo, trovare i punti $c$:\\
+(a) $\sin x$ su $[0,\pi]$; \ (b) $x^2-6x+5$ su $[1,5]$; \ (c) $\sqrt[3]{x^2}$ su $[-1,1]$.
+\end{esercizio}
+\risp{(a) Sì: $\cos c=0$, $c=\frac\pi2$. (b) Sì ($f(1)=f(5)=0$): $2c-6=0$, $c=3$. (c) No: $f$ è continua e $f(-1)=f(1)=1$, ma non è derivabile in $0$ (cuspide); infatti $f'(x)=\frac2{3\sqrt[3]x}$ non si annulla mai, e la tesi è falsa.}
+
+\begin{esercizio}[\liv{1}]
+Alle $8$ la temperatura di un lago è di $12^\circ$C, alle $11$ di $21^\circ$C. Dimostrare che in qualche istante la temperatura è cresciuta con una velocità di esattamente $3^\circ$C all'ora. Quali ipotesi servono sulla funzione $T(t)$?
+\end{esercizio}
+\risp{Per Lagrange esiste $c\in\,]8,11[$ con $T'(c)=\frac{21-12}{11-8}=3$. Serve che $T$ sia continua su $[8,11]$ e derivabile in $]8,11[$: è ragionevole per una temperatura.}
+
+\begin{esercizio}[\liv{2}]
+Trovare gli intervalli di monotonia e gli estremi locali; dire quali sono assoluti:\\
+(a) $x^3-6x^2+9x+1$; \ (b) $x\,e^{-x}$; \ (c) $(x^2-3)\,e^x$; \ (d) $x^2\log x$; \ (e) $\dfrac x{\log x}$; \ (f) $x+2\cos x$ su $[0,2\pi]$.
+\end{esercizio}
+\risp{(a) $f'=3(x-1)(x-3)$: cresce fino a $1$, decresce in $[1,3]$, poi cresce; massimo locale $5$ in $1$, minimo locale $1$ in $3$, non assoluti ($f\to\pm\infty$). (b) $f'=(1-x)e^{-x}$: massimo assoluto $\frac1e$ in $1$; nessun minimo ($f\to-\infty$ per $x\to-\infty$). (c) $f'=(x+3)(x-1)e^x$: massimo locale $6e^{-3}$ in $-3$ (non assoluto, $f\to+\infty$), minimo assoluto $-2e$ in $1$. (d) $x>0$; $f'=x(2\log x+1)$: decresce fino a $e^{-1/2}$, poi cresce; minimo assoluto $-\frac1{2e}$ in $\frac1{\sqrt e}$. (e) $x>0$, $x\ne1$; $f'=\frac{\log x-1}{\log^2x}$: decresce in $]0,1[$ e in $]1,e]$, cresce in $[e,+\infty[$; minimo locale $e$ in $e$, non assoluto (a sinistra di $1$ la funzione è negativa). (f) $f'=1-2\sin x$, nulla in $\frac\pi6$ e $\frac{5\pi}6$: massimo locale $\frac\pi6+\sqrt3\approx2{,}26$, minimo locale $\frac{5\pi}6-\sqrt3\approx0{,}89$, che è il minimo assoluto; il massimo assoluto è $2\pi+2$, in $2\pi$ (estremo dell'intervallo).}
+
+\begin{esercizio}[\liv{2}]
+Dimostrare con la monotonia: \ (a) $e^x\ge1+x+\dfrac{x^2}2$ per $x\ge0$; \ (b) $\arctan x\ge x-\dfrac{x^3}3$ per $x\ge0$;\\ (c) $2\sqrt x>3-\dfrac1x$ per $x>1$.
+\end{esercizio}
+\risp{Si studia la differenza $g$, che vale $0$ nel primo estremo, e si mostra che $g'\ge0$. (a) $g'=e^x-1-x\ge0$ (è la disuguaglianza $e^x\ge1+x$ di L22). (b) $g'=\frac1{1+x^2}-1+x^2=\frac{x^4}{1+x^2}\ge0$. (c) $g=2\sqrt x+\frac1x-3$, $g(1)=0$, $g'=\frac1{\sqrt x}-\frac1{x^2}=\frac{x^{3/2}-1}{x^2}>0$ per $x>1$.}
+
+\begin{esercizio}[\liv{2}]
+(a) Mostrare che l'equazione $x^5+2x+1=0$ ha una sola soluzione reale, e che sta in $]-1,0[$.\\
+(b) Quante soluzioni ha l'equazione $e^x=3x$?\\
+(c) Determinare il numero di soluzioni dell'equazione $x^3-3x=k$ al variare di $k\in\R$.
+\end{esercizio}
+\risp{(a) $f'=5x^4+2>0$: $f$ è strettamente crescente, quindi ha al più uno zero; $f(-1)=-2<0<1=f(0)$, e per il teorema degli zeri lo zero c'è, in $]-1,0[$. (b) $g=e^x-3x$: $g'=e^x-3$, minimo in $\log3$ con $g(\log3)=3-3\log3<0$; $g\to+\infty$ per $x\to\pm\infty$: due soluzioni. (c) $f=x^3-3x$ ha massimo locale $2$ in $-1$ e minimo locale $-2$ in $1$: una soluzione per $|k|>2$, due per $k=\pm2$, tre per $|k|<2$.}
+
+\begin{esercizio}[\liv{3}]
+Dimostrare che $\arctan x+\arctan\dfrac1x=\dfrac\pi2$ per ogni $x>0$. Quanto vale la somma per $x<0$?
+\end{esercizio}
+\risp{La derivata di $f(x)=\arctan x+\arctan\frac1x$ è $\frac1{1+x^2}+\frac1{1+\frac1{x^2}}\cdot\bigl(-\frac1{x^2}\bigr)=\frac1{1+x^2}-\frac1{x^2+1}=0$. Sull'\emph{intervallo} $]0,+\infty[$ la funzione è costante, e vale $f(1)=\frac\pi4+\frac\pi4=\frac\pi2$. Su $]-\infty,0[$ è costante anche lì, ma vale $f(-1)=-\frac\pi2$: il dominio non è un intervallo, e le due costanti sono diverse.}
+
+%-------------------------------------------------------------------
+\section{Il teorema di de l'Hôpital (L23)}
+
+\begin{esercizio}[\liv{1}]
+Calcolare con il teorema di de l'Hôpital, dopo aver controllato che la forma è indeterminata:
+\begin{gather*}
+\text{(a) }\lim_{x\to0}\frac{e^{3x}-1}{\sin x};\qquad \text{(b) }\lim_{x\to1}\frac{x^3-1}{\log x};\qquad \text{(c) }\lim_{x\to+\infty}\frac{\log x}{\sqrt x};\\
+\text{(d) }\lim_{x\to+\infty}\frac{x^3}{e^{2x}};\qquad \text{(e) }\lim_{x\to0}\frac{1-\cos x}{x\sin x};\qquad \text{(f) }\lim_{x\to0^+}x^2\log x.
+\end{gather*}
+\end{esercizio}
+\risp{(a) $\frac{3e^{3x}}{\cos x}\to3$. (b) $\frac{3x^2}{1/x}=3x^3\to3$. (c) $\frac{1/x}{1/(2\sqrt x)}=\frac2{\sqrt x}\to0$. (d) Tre volte: $\frac{3x^2}{2e^{2x}}$, $\frac{6x}{4e^{2x}}$, $\frac6{8e^{2x}}\to0$. (e) $\frac{\sin x}{\sin x+x\cos x}$, ancora $\frac00$; di nuovo: $\frac{\cos x}{2\cos x-x\sin x}\to\frac12$ (più rapido con i limiti notevoli). (f) Forma $0\cdot\infty$: $\frac{\log x}{1/x^2}$, e $\frac{1/x}{-2/x^3}=-\frac{x^2}2\to0$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare:
+\begin{gather*}
+\text{(a) }\lim_{x\to0}\frac{x-\arctan x}{x^3};\qquad \text{(b) }\lim_{x\to0}\frac{e^x-e^{-x}-2x}{x^3};\qquad \text{(c) }\lim_{x\to0^+}x^x;\\
+\text{(d) }\lim_{x\to+\infty}x\Bigl(\frac\pi2-\arctan x\Bigr);\qquad \text{(e) }\lim_{x\to0}\Bigl(\frac1{\sin x}-\frac1x\Bigr).
+\end{gather*}
+\end{esercizio}
+\risp{(a) $\frac{1-\frac1{1+x^2}}{3x^2}=\frac1{3(1+x^2)}\to\frac13$. (b) Tre volte: $\frac{e^x+e^{-x}-2}{3x^2}$, $\frac{e^x-e^{-x}}{6x}$, $\frac{e^x+e^{-x}}6\to\frac13$. (c) $x^x=e^{x\log x}$ e $x\log x\to0$ (de l'Hôpital, come nell'esercizio precedente): il limite è $e^0=1$. (d) Forma $\infty\cdot0$: $\frac{\frac\pi2-\arctan x}{1/x}$, e $\frac{-\frac1{1+x^2}}{-\frac1{x^2}}=\frac{x^2}{1+x^2}\to1$. (e) $\frac{x-\sin x}{x\sin x}$, forma $\frac00$: $\frac{1-\cos x}{\sin x+x\cos x}$, ancora $\frac00$; poi $\frac{\sin x}{2\cos x-x\sin x}\to0$.}
+
+\begin{esercizio}[\liv{2}]
+(a) Calcolare $\displaystyle\lim_{x\to+\infty}\frac{3x-\cos x}{x+\sin x}$, e spiegare perché il teorema di de l'Hôpital non aiuta.\\
+(b) Uno studente scrive $\displaystyle\lim_{x\to0}\frac{\sin x}{x+1}=\lim_{x\to0}\frac{\cos x}1=1$. Dov'è l'errore? Quanto vale il limite?
+\end{esercizio}
+\risp{(a) Raccogliendo $x$: $\frac{3-\frac{\cos x}x}{1+\frac{\sin x}x}\to3$. Il rapporto delle derivate $\frac{3+\sin x}{1+\cos x}$ non ha limite (non è nemmeno definito dove $\cos x=-1$): il teorema non dice nulla. (b) La forma non è indeterminata ($\frac01$): il teorema non si applica, e il limite è $0$.}
+
+%-------------------------------------------------------------------
+\section{Convessità e flessi (L23)}
+
+\begin{esercizio}[\liv{1}]
+Trovare gli intervalli di convessità e concavità e i punti di flesso:\\
+(a) $x^3-6x^2+1$; \ (b) $x^4-4x^3$; \ (c) $x\,e^{-x}$; \ (d) $\arctan x$; \ (e) $\dfrac1{1+x^2}$.
+\end{esercizio}
+\risp{(a) $f''=6(x-2)$: concava per $x<2$, convessa per $x>2$, flesso in $2$. (b) $f''=12x(x-2)$: convessa per $x<0$ e per $x>2$, concava in $]0,2[$; flessi in $0$ e $2$. (c) $f''=(x-2)e^{-x}$: concava per $x<2$, convessa per $x>2$, flesso in $2$. (d) $f''=-\frac{2x}{(1+x^2)^2}$: convessa per $x<0$, concava per $x>0$, flesso in $0$. (e) $f''=\frac{2(3x^2-1)}{(1+x^2)^3}$: convessa per $|x|>\frac1{\sqrt3}$, concava per $|x|<\frac1{\sqrt3}$; flessi in $\pm\frac1{\sqrt3}$.}
+
+\begin{esercizio}[\liv{2}]
+Vero o falso? Giustificare.\\
+(a) Se $f''(x_0)=0$, in $x_0$ c'è un flesso. \ (b) $x^5$ ha un flesso in $0$. \ (c) $|x|$ è convessa su $\R$.\\
+(d) Se $f$ è derivabile due volte su $\R$, con $f''\ge0$ e $f'(0)=0$, allora $0$ è un punto di minimo assoluto.
+\end{esercizio}
+\risp{(a) Falso: $x^4$ ha $f''(0)=0$ ed è convessa su tutto $\R$. (b) Vero: $f''=20x^3$ cambia segno in $0$. (c) Vero, dalla definizione: il grafico non sta mai sopra le corde (il criterio con $f''$ non si può usare, perché $|x|$ non è derivabile in $0$). (d) Vero: $f''\ge0$ vuol dire che $f'$ è crescente, quindi $f'\le0$ per $x<0$ e $f'\ge0$ per $x>0$: $f$ decresce fino a $0$ e poi cresce.}
+
+\begin{esercizio}[\liv{2}]
+Per quali valori di $a\in\R$ la funzione $f(x)=x^4+ax^2$ è convessa su tutto $\R$? Per gli altri valori, dove sono i flessi?
+\end{esercizio}
+\risp{$f''=12x^2+2a$. Se $a\ge0$, $f''\ge0$ ovunque: convessa. Se $a<0$, $f''<0$ per $|x|<\sqrt{-a/6}$: flessi in $\pm\sqrt{-a/6}$.}
+
+%-------------------------------------------------------------------
+\section{Studio di funzione (L23)}
+
+\begin{esercizio}[\liv{2}]
+Studiare le funzioni e disegnarne il grafico:\\
+(a) $x^3-3x^2+4$; \ (b) $\dfrac x{(x-1)^2}$; \ (c) $\dfrac{e^x}x$; \ (d) $x-2\arctan x$.
+\end{esercizio}
+\risp{(a) $f=(x+1)(x-2)^2$: zeri $-1$ e $2$; $f\to\pm\infty$ per $x\to\pm\infty$; $f'=3x(x-2)$: massimo locale $4$ in $0$, minimo locale $0$ in $2$; $f''=6(x-1)$: flesso in $(1,2)$. (b) $x\ne1$; segno di $x$; asintoto verticale $x=1$ ($f\to+\infty$ da entrambi i lati), orizzontale $y=0$; $f'=-\frac{x+1}{(x-1)^3}$: decresce fino a $-1$, cresce in $[-1,1[$, decresce per $x>1$; minimo assoluto $-\frac14$ in $-1$; $f''=\frac{2(x+2)}{(x-1)^4}$: concava per $x<-2$, convessa per $x>-2$ ($x\ne1$), flesso in $\bigl(-2,-\frac29\bigr)$. (c) $x\ne0$; segno di $x$; per $x\to0^\pm$, $f\to\pm\infty$ (asintoto $x=0$); per $x\to-\infty$, $f\to0$ (asintoto $y=0$ a sinistra); per $x\to+\infty$, $f\to+\infty$ senza asintoto obliquo ($\frac{f(x)}x=\frac{e^x}{x^2}\to+\infty$); $f'=\frac{(x-1)e^x}{x^2}$: minimo locale $e$ in $1$; $f''=\frac{(x^2-2x+2)e^x}{x^3}$: concava per $x<0$, convessa per $x>0$, nessun flesso. (d) dispari; $f'=\frac{x^2-1}{x^2+1}$: massimo locale $\frac\pi2-1$ in $-1$, minimo locale $1-\frac\pi2$ in $1$; $f''=\frac{4x}{(1+x^2)^2}$: flesso in $0$; asintoti obliqui $y=x-\pi$ per $x\to+\infty$ e $y=x+\pi$ per $x\to-\infty$; zeri $0$ e $\pm x_0$, con $x_0\in\,]2,3[$ (teorema degli zeri).}
+
+\begin{esercizio}[\liv{3}]
+Studiare $f(x)=x\,e^{1/x}$ (di cui nell'Esercizio 6.10 della Scheda 6 si sono cercati gli asintoti) e disegnarne il grafico.
+\end{esercizio}
+\risp{$x\ne0$; segno di $x$. Per $x\to0^+$, $f\to+\infty$ (asintoto verticale da destra); per $x\to0^-$, $\frac1x\to-\infty$ e $f\to0$. Asintoto obliquo $y=x+1$ a $\pm\infty$ (con $t=\frac1x$: $x\bigl(e^{1/x}-1\bigr)=\frac{e^t-1}t\to1$). $f'=e^{1/x}\bigl(1-\frac1x\bigr)=\frac{(x-1)e^{1/x}}x$: cresce per $x<0$, decresce in $]0,1]$, cresce per $x\ge1$; minimo locale $e$ in $1$. $f''=\frac{e^{1/x}}{x^3}$: concava per $x<0$, convessa per $x>0$, nessun flesso.}
+
+\begin{esercizio}[\liv{3}]
+Quante soluzioni ha l'equazione $\log x=x-2$? Localizzarle fra due numeri.
+\end{esercizio}
+\risp{$g=\log x-x+2$, $x>0$: $g'=\frac1x-1$, massimo in $1$ con $g(1)=1>0$; $g\to-\infty$ per $x\to0^+$ e per $x\to+\infty$. Due soluzioni: una in $]e^{-2},1[$ ($g(e^{-2})=-e^{-2}<0$) e una in $]1,e^2[$ ($g(e^2)=4-e^2<0$).}
+
+%-------------------------------------------------------------------
+\section{Infinitesimi e $o$ piccoli (L24)}
+
+\begin{esercizio}[\liv{1}]
+Trovare l'ordine di infinitesimo per $x\to0$ e un infinitesimo equivalente della forma $c\,x^\alpha$:\\
+(a) $2x^3-x^4$; \ (b) $\sin(x^2)$; \ (c) $\tan x-\sin x$; \ (d) $e^{x^2}-\cos x$; \ (e) $\log(1+3x)-3x$; \ (f) $\sqrt{1+2x}-1-x$.
+\end{esercizio}
+\risp{(a) $2x^3$, ordine $3$. (b) $x^2$, ordine $2$. (c) $\tan x-\sin x=\tan x\,(1-\cos x)\sim x\cdot\frac{x^2}2$: $\frac{x^3}2$, ordine $3$. (d) $\bigl(1+x^2\bigr)-\bigl(1-\frac{x^2}2\bigr)+o(x^2)$: $\frac32x^2$, ordine $2$. (e) $-\frac{(3x)^2}2=-\frac92x^2$, ordine $2$. (f) $(1+2x)^{1/2}=1+x-\frac{(2x)^2}8+o(x^2)$: $-\frac{x^2}2$, ordine $2$.}
+
+\begin{esercizio}[\liv{1}]
+Calcolare con i principi di sostituzione e di cancellazione:
+\begin{gather*}
+\text{(a) }\lim_{x\to0}\frac{\sin2x+x^3}{\tan3x-x^2};\qquad \text{(b) }\lim_{x\to0}\frac{1-\cos x}{x^2+x^3};\qquad \text{(c) }\lim_{x\to0}\frac{e^x-1+4x^2}{\log(1+5x)};\\
+\text{(d) }\lim_{x\to+\infty}\frac{x^3+2^x}{3^x+x^5};\qquad \text{(e) }\lim_{x\to+\infty}\frac{\sqrt x+x}{x+\log x}.
+\end{gather*}
+\end{esercizio}
+\risp{(a) $\frac{2x+o(x)}{3x+o(x)}\to\frac23$. (b) $\frac{\frac{x^2}2+o(x^2)}{x^2+o(x^2)}\to\frac12$. (c) $\frac{x+o(x)}{5x+o(x)}\to\frac15$. (d) Per gli infiniti si cancellano quelli di ordine inferiore: $\frac{2^x}{3^x}=\bigl(\frac23\bigr)^x\to0$. (e) $\frac xx\to1$.}
+
+\begin{esercizio}[\liv{2}]
+Vero o falso, per $x\to0$? Giustificare.\\
+(a) $o(x^3)\cdot o(x^2)=o(x^5)$; \ (b) $x^2+o(x)=o(x)$; \ (c) $\bigl(x+o(x)\bigr)^2=x^2+o(x^2)$;\\
+(d) se $f\sim x$ e $g\sim x$, allora $f-g=o(x)$; \ (e) se $f\sim x$ e $g\sim x$, allora $f-g\sim0$.
+\end{esercizio}
+\risp{(a) Vero. (b) Vero: $x^2=o(x)$, e $o(x)+o(x)=o(x)$. (c) Vero: $x^2+2x\,o(x)+o(x)^2=x^2+o(x^2)$. (d) Vero: $f=x+o(x)$, $g=x+o(x)$, e la differenza è $o(x)$. (e) Falso, anzi non ha senso: ``$\sim0$'' non è definito. Da (d) si sa solo che $f-g$ è trascurabile rispetto a $x$, non il suo ordine: per saperlo servono altri termini dello sviluppo (è il motivo per cui la sostituzione nelle differenze è pericolosa).}
+
+%-------------------------------------------------------------------
+\section{Polinomi di Taylor e limiti (L24)}
+
+\begin{esercizio}[\liv{1}]
+Scrivere il polinomio di Mac Laurin dell'ordine indicato:\\
+(a) $e^{-x}$, ordine $4$; \ (b) $\sin2x$, ordine $5$; \ (c) $\log(1-x)$, ordine $3$; \ (d) $\dfrac1{1-x}$, ordine $4$;\\
+(e) $\cos(x^2)$, ordine $8$; \ (f) $x\,e^x$, ordine $3$.
+\end{esercizio}
+\risp{(a) $1-x+\frac{x^2}2-\frac{x^3}6+\frac{x^4}{24}$. (b) $2x-\frac{(2x)^3}6+\frac{(2x)^5}{120}=2x-\frac43x^3+\frac4{15}x^5$. (c) $-x-\frac{x^2}2-\frac{x^3}3$. (d) $1+x+x^2+x^3+x^4$ (la somma geometrica di L2). (e) $1-\frac{x^4}2+\frac{x^8}{24}$. (f) $x\bigl(1+x+\frac{x^2}2\bigr)=x+x^2+\frac{x^3}2$.}
+
+\begin{esercizio}[\liv{2}]
+Scrivere il polinomio di Taylor con il centro e l'ordine indicati:\\
+(a) $e^x$, centro $1$, ordine $2$; \ (b) $\dfrac1x$, centro $2$, ordine $3$; \ (c) $\sin x$, centro $\frac\pi2$, ordine $4$;\\
+(d) $x^3$, centro $1$, ordine $3$. Che cosa si osserva in (d)?
+\end{esercizio}
+\risp{(a) $e+e(x-1)+\frac e2(x-1)^2$. (b) $\frac12-\frac{x-2}4+\frac{(x-2)^2}8-\frac{(x-2)^3}{16}$. (c) $1-\frac12\bigl(x-\frac\pi2\bigr)^2+\frac1{24}\bigl(x-\frac\pi2\bigr)^4$. (d) $1+3(x-1)+3(x-1)^2+(x-1)^3$: sviluppando si ritrova esattamente $x^3$. Il polinomio di Taylor di ordine $n$ di un polinomio di grado $n$ è il polinomio stesso, scritto in potenze di $x-x_0$.}
+
+\begin{esercizio}[\liv{2}]
+Ricavare dagli sviluppi fondamentali (prodotti e sostituzioni) il polinomio di Mac Laurin:\\
+(a) $e^x\sin x$, ordine $3$; \ (b) $e^{\sin x}$, ordine $3$; \ (c) $\sqrt{1+x^2}$, ordine $4$; \ (d) $\log(\cos x)$, ordine $4$.
+\end{esercizio}
+\risp{(a) $\bigl(1+x+\frac{x^2}2\bigr)\bigl(x-\frac{x^3}6\bigr)$ fino a $x^3$: $x+x^2+\frac{x^3}3$. (b) Con $t=\sin x=x-\frac{x^3}6+o(x^3)$: $1+t+\frac{t^2}2+\frac{t^3}6=1+x+\frac{x^2}2+0\cdot x^3+o(x^3)$. (c) $(1+t)^{1/2}$ con $t=x^2$: $1+\frac{x^2}2-\frac{x^4}8$. (d) $\log(1+t)$ con $t=\cos x-1=-\frac{x^2}2+\frac{x^4}{24}+o(x^5)$: $t-\frac{t^2}2=-\frac{x^2}2+\frac{x^4}{24}-\frac{x^4}8=-\frac{x^2}2-\frac{x^4}{12}$.}
+
+\begin{esercizio}[\liv{2}]
+Calcolare con gli sviluppi di Taylor:
+\begin{gather*}
+\text{(a) }\lim_{x\to0}\frac{e^x-1-x-\frac{x^2}2}{x^3};\qquad \text{(b) }\lim_{x\to0}\frac{\sin x-x+\frac{x^3}6}{x^5};\qquad \text{(c) }\lim_{x\to0}\frac{x-\sin x}{x-\tan x};\\
+\text{(d) }\lim_{x\to0}\frac{\log(1+x)-\sin x}{x^2};\qquad \text{(e) }\lim_{x\to0}\frac{\cos x-1+\frac{x^2}2}{x^2\sin^2x};\qquad \text{(f) }\lim_{x\to0}\frac{e^{x^2}-1-x^2}{(1-\cos x)^2}.
+\end{gather*}
+Per (c) serve $\tan x=x+\frac{x^3}3+o(x^4)$.
+\end{esercizio}
+\risp{(a) $\frac{\frac{x^3}6+o(x^3)}{x^3}\to\frac16$. (b) $\frac{\frac{x^5}{120}+o(x^6)}{x^5}\to\frac1{120}$. (c) $\frac{\frac{x^3}6+o(x^4)}{-\frac{x^3}3+o(x^4)}\to-\frac12$. (d) $\frac{\bigl(x-\frac{x^2}2\bigr)-x+o(x^2)}{x^2}\to-\frac12$. (e) Numeratore $\frac{x^4}{24}+o(x^5)$, denominatore $\sim x^4$: $\frac1{24}$. (f) Numeratore $\frac{x^4}2+o(x^4)$, denominatore $\sim\bigl(\frac{x^2}2\bigr)^2=\frac{x^4}4$: il limite è $2$.}
+
+\begin{esercizio}[\liv{3}]
+Calcolare, con la sostituzione $t=\frac1x$: \ (a) $\displaystyle\lim_{x\to+\infty}x^2\Bigl(1-\cos\frac1x\Bigr)$; \ (b) $\displaystyle\lim_{x\to+\infty}\Bigl(x-x^2\log\Bigl(1+\frac1x\Bigr)\Bigr)$.
+\end{esercizio}
+\risp{(a) $\frac{1-\cos t}{t^2}\to\frac12$. (b) $\frac1t-\frac{\log(1+t)}{t^2}=\frac{t-\log(1+t)}{t^2}=\frac{\frac{t^2}2+o(t^2)}{t^2}\to\frac12$.}
+
+\begin{esercizio}[\liv{3}]
+Determinare $a,b\in\R$ in modo che $\displaystyle\lim_{x\to0}\frac{\log(1+x)-ax-bx^2}{x^3}$ sia finito, e calcolarlo.
+\end{esercizio}
+\risp{Il numeratore è $(1-a)x-\bigl(\frac12+b\bigr)x^2+\frac{x^3}3+o(x^3)$: il limite è finito se e solo se $a=1$ e $b=-\frac12$, e vale $\frac13$.}
+
+\begin{esercizio}[\liv{2}]
+Stimare con un polinomio di Taylor, e confrontare con la calcolatrice:\\
+(a) $e^{-0{,}1}$ con $T_2$; \ (b) $\log1{,}2$ con $T_3$ di $\log(1+x)$; \ (c) $\cos0{,}3$ con $T_2$ e con $T_4$.
+\end{esercizio}
+\risp{(a) $1-0{,}1+0{,}005=0{,}905$, contro $0{,}904837\ldots$ (b) $0{,}2-0{,}02+0{,}002\overline6=0{,}182\overline6$, contro $0{,}182322\ldots$ (c) $T_2$: $1-0{,}045=0{,}955$; $T_4$: $0{,}955+\frac{0{,}0081}{24}=0{,}9553375$, contro $0{,}9553365\ldots$: con due termini in più l'errore passa da $3\cdot10^{-4}$ a $10^{-6}$.}
+
+%-------------------------------------------------------------------
+\section{Estremi con la derivata seconda (L24)}
+
+\begin{esercizio}[\liv{1}]
+Trovare i punti critici e classificarli con il segno di $f''$:\\
+(a) $x^3-3x$; \ (b) $x^2\log x$; \ (c) $x+\dfrac1x$; \ (d) $\sin x+\cos x$ su $]0,2\pi[$.
+\end{esercizio}
+\risp{(a) $f''(\pm1)=\pm6$: minimo locale $-2$ in $1$, massimo locale $2$ in $-1$. (b) $x=e^{-1/2}$, $f''=2\log x+3$ vale $2>0$: minimo, $-\frac1{2e}$. (c) $x=\pm1$, $f''=\frac2{x^3}$: minimo locale $2$ in $1$, massimo locale $-2$ in $-1$ (il massimo locale è minore del minimo locale!). (d) $x=\frac\pi4$, $f''=-\sqrt2<0$: massimo $\sqrt2$; $x=\frac{5\pi}4$, $f''=\sqrt2>0$: minimo $-\sqrt2$.}
+
+\begin{esercizio}[\liv{3}]
+In $x_0=0$ la derivata prima delle funzioni seguenti si annulla. Usando lo sviluppo di Taylor, dire se in $0$ c'è un massimo, un minimo o nessuno dei due:\\
+(a) $x\sin x$; \ (b) $e^x+e^{-x}-x^2$; \ (c) $\sin x-x$.
+\end{esercizio}
+\risp{(a) $x\sin x=x^2+o(x^2)$: vicino a $0$ è positiva, minimo (anche $f''(0)=2>0$). (b) $\bigl(2+x^2+\frac{x^4}{12}\bigr)-x^2+o(x^4)=2+\frac{x^4}{12}+o(x^4)$: minimo, anche se $f''(0)=0$. (c) $\sin x-x=-\frac{x^3}6+o(x^3)$ cambia segno in $0$: né massimo né minimo (flesso a tangente orizzontale).}
+
+%-------------------------------------------------------------------
+\section{Riepilogo}
+
+\begin{esercizio}[\liv{2}]
+Calcolare $\displaystyle\lim_{x\to0}\frac{2^x-3^x}x$ in due modi: con il teorema di de l'Hôpital e con gli sviluppi al primo ordine.
+\end{esercizio}
+\risp{De l'Hôpital: $\frac{2^x\log2-3^x\log3}1\to\log2-\log3=\log\frac23$. Sviluppi: $a^x=e^{x\log a}=1+x\log a+o(x)$, quindi il numeratore è $x(\log2-\log3)+o(x)$, e il limite è $\log\frac23$.}
+
+\begin{esercizio}[\liv{3}]
+Sia $g(x)=\log(1+x)-x+\dfrac{x^2}2$. (a) Dimostrare che $g(x)>0$ per $x>0$. (b) Trovare l'ordine di infinitesimo di $g$ per $x\to0$ e il suo infinitesimo equivalente. (c) Dedurre che $\log(1+x)>x-\dfrac{x^2}2$ per $x>0$.
+\end{esercizio}
+\risp{(a) $g(0)=0$ e $g'=\frac1{1+x}-1+x=\frac{x^2}{1+x}>0$ per $x>0$: $g$ è strettamente crescente su $[0,+\infty[$. (b) Dallo sviluppo di $\log(1+x)$: $g=\frac{x^3}3+o(x^3)$, ordine $3$. (c) È la (a) riscritta.}
+
+\stampasoluzioni
