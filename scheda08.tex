@@ -210,10 +210,11 @@ Determinare $a,b\in\R$ in modo che $\displaystyle\lim_{x\to0}\frac{\log(1+x)-ax-
 \risp{Il numeratore è $(1-a)x-\bigl(\frac12+b\bigr)x^2+\frac{x^3}3+o(x^3)$: il limite è finito se e solo se $a=1$ e $b=-\frac12$, e vale $\frac13$.}
 
 \begin{esercizio}[\liv{2}]
-Stimare con un polinomio di Taylor, e confrontare con la calcolatrice:\\
-(a) $e^{-0{,}1}$ con $T_2$; \ (b) $\log1{,}2$ con $T_3$ di $\log(1+x)$; \ (c) $\cos0{,}3$ con $T_2$ e con $T_4$.
+Stimare con il polinomio di Mac Laurin dell'ordine indicato, e confrontare con la calcolatrice:\\
+(a) $e^{-0{,}1}$, con il polinomio di ordine $2$ di $e^x$; \ (b) $\log1{,}2$, con il polinomio di ordine $3$ di $\log(1+x)$;\\
+(c) $\cos0{,}3$, con il polinomio di ordine $2$ e poi con quello di ordine $4$ di $\cos x$.
 \end{esercizio}
-\risp{(a) $1-0{,}1+0{,}005=0{,}905$, contro $0{,}904837\ldots$ (b) $0{,}2-0{,}02+0{,}002\overline6=0{,}182\overline6$, contro $0{,}182322\ldots$ (c) $T_2$: $1-0{,}045=0{,}955$; $T_4$: $0{,}955+\frac{0{,}0081}{24}=0{,}9553375$, contro $0{,}9553365\ldots$: con due termini in più l'errore passa da $3\cdot10^{-4}$ a $10^{-6}$.}
+\risp{(a) $1-0{,}1+0{,}005=0{,}905$, contro $0{,}904837\ldots$ (b) $0{,}2-0{,}02+0{,}002\overline6=0{,}182\overline6$, contro $0{,}182322\ldots$ (c) Ordine $2$: $1-0{,}045=0{,}955$; ordine $4$: $0{,}955+\frac{0{,}0081}{24}=0{,}9553375$, contro $0{,}9553365\ldots$: con due termini in più l'errore passa da $3\cdot10^{-4}$ a $10^{-6}$.}
 
 %-------------------------------------------------------------------
 \section{Estremi con la derivata seconda (L24)}
