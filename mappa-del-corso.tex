@@ -140,10 +140,10 @@
   18/L18/deri/2/11/{La\\derivata},19/L19/deri/4/11/{Regole di\\derivazione},20/L20/deri/6/11/{Fermat,\\ottimizzazione},
   21/L21/inchiostro/9/11/{Esercitazione},
   23/L22/deri/16/11/{Rolle, Lagrange,\\monotonia},24/L23/deri/18/11/{De l'Hôpital,\\studio di funzione},25/L24/deri/20/11/{$o$ piccoli,\\Taylor},
-  26/L25/inte/23/11/{Integrale e\\teorema fond.},27/L26/inte/25/11/{Primitive,\\integrazione},
-  28/L27/line/27/11/{Vettori},29/L28/line/30/11/{Prodotto\\scalare},30/L29/line/2/12/{Rette e piani\\nello spazio},
-  31/L30/line/4/12/{Matrici},32/L31/line/9/12/{Sistemi\\lineari},33/L32/prob/11/12/{Probabilità},
-  34/L33/prob/14/12/{Condizionata,\\Bayes},35/L34/prob/16/12/{Variabili\\aleatorie},36/L35/prob/{recupero}//{Statistica},
+  26/L25/inte/23/11/{Integrale e\\teorema fond.},27/L26/inte/25/11/{Primitive,\\per parti},
+  28/L27/inte/27/11/{Sostituzione,\\aree; esercizi},29/L28/line/30/11/{Vettori, prodotto\\scalare},30/L29/line/2/12/{Rette e piani\\nello spazio},
+  31/L30/line/4/12/{Matrici},32/L31/line/9/12/{Sistemi\\lineari},33/L32/prob/10/12/{Probabilità\\(online)},
+  34/L33/prob/11/12/{Condizionata,\\Bayes},35/L34/prob/14/12/{Variabili\\aleatorie},36/L35/prob/16/12/{Statistica},
   37/L36/inchiostro/18/12/{Esercitazione}}
 % colori delle fermate (per i tratti di linea)
 \foreach \k/\s/\c/\g/\m/\t in \fermate {\expandafter\xdef\csname fc\k\endcsname{\c}}
@@ -279,7 +279,7 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \begin{tcolorbox}[colframe=succ!75!black,colbacktitle=succ!75!black,title={\faStar\enspace Le dimostrazioni: in programma}]
 \colorlet{bcol}{succ}
 \begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=21]
-\prog{Integrazione per parti e per sostituzione}{L26}
+\prog{Integrazione per parti e per sostituzione}{L26, L27}
 \prog{$u\cdot v=|u|\,|v|\cos\theta$}{L28}
 \prog{$|\det|$ = area del parallelogramma}{L30}
 \prog{Le mosse di Gauss non cambiano le soluzioni}{L31}
@@ -876,7 +876,7 @@ a^x & \frac{a^x}{\log a} & \frac1{1+x^2} & \arctan x\\ \bottomrule
 \end{bloccop}
 
 %----------------------------------------------------------------------- 21
-\begin{bloccop}{inte}{21}{Metodi di integrazione}{L26 \textperiodcentered\ 25/11}
+\begin{bloccop}{inte}{21}{Metodi di integrazione}{L26, L27 \textperiodcentered\ 25--27/11}
 \formula{\kw{per parti} \dimo\\[2pt] $\displaystyle\int f(x)\,g'(x)\,dx=f(x)\,g(x)-\int f'(x)\,g(x)\,dx$}
 \voce{Esempi}{$\int x\,e^x\,dx=(x-1)e^x+c$ \textperiodcentered\ $\int\log x\,dx=x\log x-x+c$ \ ($f=\log x$, $g'=1$)}
 \formula{\kw{per sostituzione} \dimo\ \ $x=\varphi(t)$:\\[2pt]
@@ -888,7 +888,7 @@ $\displaystyle\int_\alpha^\beta g\bigl(\varphi(t)\bigr)\varphi'(t)\,dt=\int_{\va
 \end{bloccop}
 
 %----------------------------------------------------------------------- 22
-\begin{bloccop}{line}{22}{Vettori}{L27, L28 \textperiodcentered\ dal 27/11}
+\begin{bloccop}{line}{22}{Vettori}{L28 \textperiodcentered\ 30/11}
 \voce{Vettore}{direzione, verso, modulo; non dipende dal punto di applicazione \textperiodcentered\ componenti $v=(v_1,v_2,v_3)$ \textperiodcentered\ base canonica $e_1,e_2,e_3$}
 \voce{Operazioni}{somma (parallelogramma) e prodotto per un numero, componente per componente \textperiodcentered\ \kw{combinazione lineare} $\lambda u+\mu v$}
 \begin{center}
@@ -907,11 +907,11 @@ $\displaystyle\int_\alpha^\beta g\bigl(\varphi(t)\bigr)\varphi'(t)\,dt=\int_{\va
 \end{tikzpicture}
 \end{center}
 \voce{Modulo}{$|v|=\sqrt{v_1^2+v_2^2+v_3^2}$ \textperiodcentered\ distanza fra $P$ e $Q$: $|P-Q|$}
-\voce{Dipendenza}{due vettori sono linearmente dipendenti se sono paralleli; tre nello spazio se stanno in un piano}
+\voce{Paralleli}{due vettori sono paralleli (linearmente dipendenti) se uno è multiplo dell'altro}
 \formula{$u\cdot v=u_1v_1+u_2v_2+u_3v_3$\\[2pt]
 $u\cdot v=|u|\,|v|\cos\theta$ \dimo\ \ (teorema del coseno)\\[2pt]
 $u\perp v\iff u\cdot v=0$}
-\voce{Proiezione}{di $v$ sulla direzione di $u$: \ $\dfrac{u\cdot v}{|u|^2}\,u$; \ componente tangenziale e normale}
+\voce{Proiezione}{di $v$ sulla direzione di $u$: \ $\dfrac{u\cdot v}{|u|^2}\,u$ \textperiodcentered\ angolo: $\cos\theta=\dfrac{u\cdot v}{|u|\,|v|}$}
 \voce{Retta}{per $P_0$ con direzione $v$: \ $P=P_0+t\,v$, \ $t\in\R$ (equazione vettoriale e parametrica)}
 \occhio{$u\cdot v=0$ non vuol dire $u=0$ o $v=0$: i vettori possono essere ortogonali. Il prodotto scalare è un \emph{numero}, non un vettore.}
 \end{bloccop}
@@ -966,7 +966,7 @@ $\left(\begin{array}{ccc|c}1&2&-1&3\\0&1&4&2\\0&0&0&c\end{array}\right)$\qquad
 \end{bloccop}
 
 %----------------------------------------------------------------------- 26
-\begin{bloccop}{prob}{26}{Probabilità}{L32, L33 \textperiodcentered\ dal 11/12}
+\begin{bloccop}{prob}{26}{Probabilità}{L32, L33 \textperiodcentered\ dal 10/12}
 \voce{Eventi}{spazio campionario $\Omega$; eventi = sottoinsiemi (blocco 1): contrario $A^c$, \ ``$A$ o $B$'' $=A\cup B$, \ ``$A$ e $B$'' $=A\cap B$, \ incompatibili: $A\cap B=\emptyset$}
 \formula{assiomi: \ $P(A)\ge0$, \ $P(\Omega)=1$, \ additività\\[3pt]
 $P(A\cup B)=P(A)+P(B)-P(A\cap B)$ \ \dimo\\[3pt]
@@ -992,7 +992,7 @@ $P(A^c)=1-P(A)$}
 \end{bloccop}
 
 %----------------------------------------------------------------------- 27
-\begin{bloccop}{prob}{27}{Variabili aleatorie}{L34 \textperiodcentered\ 16/12}
+\begin{bloccop}{prob}{27}{Variabili aleatorie}{L34 \textperiodcentered\ 14/12}
 \voce{Distribuz.}{valori $x_i$ con probabilità $p_i$, \ $\sum_ip_i=1$ \textperiodcentered\ funzione di ripartizione $F(x)=P(X\le x)$}
 \formula{$\mu=E[X]=\sum_ix_i\,p_i$\\[3pt] $E[aX+b]=a\,E[X]+b$ \ \dimo\\[3pt]
 $\mathrm{Var}\,X=E\bigl[(X-\mu)^2\bigr]=E[X^2]-\mu^2$\\[3pt]
@@ -1005,7 +1005,7 @@ $P(X=k)=\dbinom nk\,p^k(1-p)^{n-k}$ \qquad $E=np$, \ $\mathrm{Var}=np(1-p)$}
 \end{bloccop}
 
 %----------------------------------------------------------------------- 28
-\begin{bloccop}{prob}{28}{Statistica}{L35 \textperiodcentered\ recupero}
+\begin{bloccop}{prob}{28}{Statistica}{L35 \textperiodcentered\ 16/12}
 \voce{Dati}{popolazione, campione, unità statistica, carattere \textperiodcentered\ qualitativo o quantitativo (discreto, continuo)}
 \voce{Frequenze}{assolute, relative, cumulate \textperiodcentered\ istogramma, box plot; il grafico si sceglie in base al tipo di dato}
 \formula{media $\bar x=\dfrac1n\sum_ix_i$ \qquad $\sum_i(x_i-\bar x)=0$ \dimo\\[2pt]
