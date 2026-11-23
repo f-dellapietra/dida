@@ -25,7 +25,7 @@
 \usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
 \usepackage{flowfram}  % colonne vere dalla pagina 3: i riquadri si spezzano a fine colonna
 
-\newcommand{\fatte}{25}   % ultima fermata percorsa: 25 = L24 (20/11)
+\newcommand{\fatte}{26}   % ultima fermata percorsa: 26 = L25 (23/11)
 
 % ---------------------------------------------------------------- caratteri
 \newcommand{\hf}{\fontfamily{Montserrat-LF}\selectfont}          % titoli
@@ -271,14 +271,14 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \fatta{Monotonia $\iff$ segno di $f'$: $f$ crescente $\iff f'\ge0$}{L22}
 \fatta{De l'Hôpital nel caso $f(x_0)=g(x_0)=0$}{L23}
 \fatta{Retta e parabola di miglior approssimazione}{L24}
+\fatta{Teoremi della media integrale}{L25}
+\fatta{Teorema fondamentale del calcolo}{L25}
+\fatta{$\int_a^bf=F(b)-F(a)$}{L25}
 \end{enumerate}
 \end{tcolorbox}
 \begin{tcolorbox}[colframe=succ!75!black,colbacktitle=succ!75!black,title={\faStar\enspace Le dimostrazioni: in programma}]
 \colorlet{bcol}{succ}
-\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=18]
-\prog{Teorema della media integrale}{L25}
-\prog{Teorema fondamentale del calcolo}{L25}
-\prog{$\int_a^bf=F(b)-F(a)$}{L25}
+\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=21]
 \prog{Integrazione per parti e per sostituzione}{L26}
 \prog{$u\cdot v=|u|\,|v|\cos\theta$}{L28}
 \prog{$|\det|$ = area del parallelogramma}{L30}
@@ -306,7 +306,7 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \textcolor{alge}{6} & Percentuali, log, retta & \textcolor{deri}{16} & Rolle e Lagrange & \textcolor{line}{25} & \bp{Sistemi lineari \clessidra}\\
 \textcolor{funz}{7} & Funzioni & \textcolor{deri}{17} & Studio di funzione & \textcolor{prob}{26} & \bp{Probabilità \clessidra}\\
 \textcolor{funz}{8} & Esponenziali, logaritmi & \textcolor{deri}{18} & $o$ piccoli, Taylor & \textcolor{prob}{27} & \bp{Variabili aleatorie \clessidra}\\
-\textcolor{trig}{9} & Trigonometria, domini & \textcolor{inte}{19} & \bp{L'integrale \clessidra} & \textcolor{prob}{28} & \bp{Statistica \clessidra}\\
+\textcolor{trig}{9} & Trigonometria, domini & \textcolor{inte}{19} & L'integrale & \textcolor{prob}{28} & \bp{Statistica \clessidra}\\
 \textcolor{succ}{10} & Successioni & & & &
 \end{tabular}
 \end{tcolorbox}
@@ -826,7 +826,7 @@ e^x=1+x+\frac{x^2}2+\dots+\frac{x^n}{n!}+o(x^n)\\
 \end{blocco}
 
 %----------------------------------------------------------------------- 19
-\begin{bloccop}{inte}{19}{L'integrale}{L25 \textperiodcentered\ 23/11}
+\begin{blocco}{inte}{19}{L'integrale}{L25}
 \voce{Somme}{partizione $a=x_0<x_1<\dots<x_n=b$; su $[x_{k-1},x_k]$ minimo $m_k$ e massimo $M_k$ di $f$ \textperiodcentered\ \kw{somma inferiore} $s(P)=\sum m_k\,\Delta x_k$, \kw{superiore} $S(P)=\sum M_k\,\Delta x_k$ \textperiodcentered\ sempre $s(P)\le S(Q)$}
 \begin{center}
 \begin{tikzpicture}[x=0.95cm,y=1.1cm]
@@ -846,11 +846,12 @@ e^x=1+x+\frac{x^2}2+\dots+\frac{x^n}{n!}+o(x^n)\\
 continua a tratti: si sommano gli integrali sui tratti}
 \voce{Significato}{\kw{area con segno} \textperiodcentered\ \kw{accumulazione}: quantità totale $=\int$ tasso; \ distanza $=\int_{t_1}^{t_2}v(t)\,dt$; precipitazione cumulata}
 \voce{Proprietà}{linearità \textperiodcentered\ $\int_a^b=\int_a^c+\int_c^b$ \textperiodcentered\ $f\le g\Rightarrow\int_a^bf\le\int_a^bg$ \textperiodcentered\ $m(b-a)\le\int_a^bf\le M(b-a)$ \textperiodcentered\ $\int_b^a=-\int_a^b$}
-\formula{\kw{media integrale} \dimo\ \ $f$ continua su $[a,b]$ $\Rightarrow$\\
+\formula{\kw{teoremi della media} \dimo\ \ $f$ continua su $[a,b]$ $\Rightarrow$\\
+$\min f\le\dfrac1{b-a}\displaystyle\int_a^bf(x)\,dx\le\max f$, \ e\\
 $\exists c\in[a,b]$: \ $\displaystyle\int_a^bf(x)\,dx=f(c)\,(b-a)$\\[2pt]
 valore medio: \ $\dfrac1{b-a}\displaystyle\int_a^bf(x)\,dx$}
 \occhio{L'integrale è un'area \emph{con segno}: $\int_{-1}^1x\,dx=0$. Per l'area geometrica si integra $|f|$, spezzando l'intervallo dove $f$ cambia segno.}
-\end{bloccop}
+\end{blocco}
 
 %----------------------------------------------------------------------- 20
 \begin{bloccop}{inte}{20}{Teorema fondamentale}{L25, L26}
