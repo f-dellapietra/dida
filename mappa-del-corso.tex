@@ -827,21 +827,23 @@ e^x=1+x+\frac{x^2}2+\dots+\frac{x^n}{n!}+o(x^n)\\
 
 %----------------------------------------------------------------------- 19
 \begin{bloccop}{inte}{19}{L'integrale}{L25 \textperiodcentered\ 23/11}
-\voce{Riemann}{$[a,b]$ diviso in $n$ parti di ampiezza $\Delta x=\frac{b-a}n$; \ somma $S_n=\sum_i f(\xi_i)\,\Delta x$ con $\xi_i$ nell'$i$-esima parte}
+\voce{Somme}{partizione $a=x_0<x_1<\dots<x_n=b$; su $[x_{k-1},x_k]$ minimo $m_k$ e massimo $M_k$ di $f$ \textperiodcentered\ \kw{somma inferiore} $s(P)=\sum m_k\,\Delta x_k$, \kw{superiore} $S(P)=\sum M_k\,\Delta x_k$ \textperiodcentered\ sempre $s(P)\le S(Q)$}
 \begin{center}
 \begin{tikzpicture}[x=0.95cm,y=1.1cm]
 \foreach \i in {0,...,5} {
   \pgfmathsetmacro{\xa}{0.3+0.75*\i}
-  \pgfmathsetmacro{\h}{0.5+0.9*\xa-0.15*\xa*\xa}
+  \pgfmathsetmacro{\xb}{\xa+0.75}
+  \pgfmathsetmacro{\h}{min(0.5+0.9*\xa-0.15*\xa*\xa,0.5+0.9*\xb-0.15*\xb*\xb)}
   \filldraw[fill=bcol!18,draw=bcol!60] (\xa,0) rectangle ++(0.75,\h);}
 \draw[gray!55,-{Stealth[length=3pt]}] (-0.2,0)--(5.4,0) node[right,font=\scriptsize]{$x$};
 \draw[gray!55,-{Stealth[length=3pt]}] (0,-0.2)--(0,2.3);
 \draw[bcol,very thick,domain=0.3:4.8,samples=50] plot (\x,{0.5+0.9*\x-0.15*\x*\x});
 \node[font=\scriptsize,below] at (0.3,0) {$a$}; \node[font=\scriptsize,below] at (4.8,0) {$b$};
-\node[font=\scriptsize,text=bcol!85!black] at (2.6,0.5) {$f(\xi_i)\,\Delta x$};
+\node[font=\scriptsize,text=bcol!85!black] at (2.6,0.5) {$s(P)$};
 \end{tikzpicture}
 \end{center}
-\formula{$\displaystyle\int_a^bf(x)\,dx=\lim_{n\to\infty}S_n$\\[2pt] il limite esiste se $f$ è continua \sd}
+\formula{$f$ continua: \ $\displaystyle\sup_Ps(P)=\inf_PS(P)=\int_a^bf(x)\,dx$ \sd\\[2pt]
+continua a tratti: si sommano gli integrali sui tratti}
 \voce{Significato}{\kw{area con segno} \textperiodcentered\ \kw{accumulazione}: quantità totale $=\int$ tasso; \ distanza $=\int_{t_1}^{t_2}v(t)\,dt$; precipitazione cumulata}
 \voce{Proprietà}{linearità \textperiodcentered\ $\int_a^b=\int_a^c+\int_c^b$ \textperiodcentered\ $f\le g\Rightarrow\int_a^bf\le\int_a^bg$ \textperiodcentered\ $m(b-a)\le\int_a^bf\le M(b-a)$ \textperiodcentered\ $\int_b^a=-\int_a^b$}
 \formula{\kw{media integrale} \dimo\ \ $f$ continua su $[a,b]$ $\Rightarrow$\\
