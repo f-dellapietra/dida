@@ -25,7 +25,7 @@
 \usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
 \usepackage{flowfram}  % colonne vere dalla pagina 3: i riquadri si spezzano a fine colonna
 
-\newcommand{\fatte}{26}   % ultima fermata percorsa: 26 = L25 (23/11)
+\newcommand{\fatte}{27}   % ultima fermata percorsa: 27 = L26 (25/11)
 
 % ---------------------------------------------------------------- caratteri
 \newcommand{\hf}{\fontfamily{Montserrat-LF}\selectfont}          % titoli
@@ -140,8 +140,8 @@
   18/L18/deri/2/11/{La\\derivata},19/L19/deri/4/11/{Regole di\\derivazione},20/L20/deri/6/11/{Fermat,\\ottimizzazione},
   21/L21/inchiostro/9/11/{Esercitazione},
   23/L22/deri/16/11/{Rolle, Lagrange,\\monotonia},24/L23/deri/18/11/{De l'Hôpital,\\studio di funzione},25/L24/deri/20/11/{$o$ piccoli,\\Taylor},
-  26/L25/inte/23/11/{Integrale e\\teorema fond.},27/L26/inte/25/11/{Primitive,\\per parti},
-  28/L27/inte/27/11/{Sostituzione,\\aree; esercizi},29/L28/line/30/11/{Vettori, prodotto\\scalare},30/L29/line/2/12/{Rette e piani\\nello spazio},
+  26/L25/inte/23/11/{Integrale e\\teorema fond.},27/L26/inte/25/11/{Sostituzione,\\per parti},
+  28/L27/inte/27/11/{Razionali,\\aree},29/L28/line/30/11/{Vettori, prodotto\\scalare},30/L29/line/2/12/{Rette e piani\\nello spazio},
   31/L30/line/4/12/{Matrici},32/L31/line/9/12/{Sistemi\\lineari},33/L32/prob/10/12/{Probabilità\\(online)},
   34/L33/prob/11/12/{Condizionata,\\Bayes},35/L34/prob/14/12/{Variabili\\aleatorie},36/L35/prob/16/12/{Statistica},
   37/L36/inchiostro/18/12/{Esercitazione}}
@@ -274,12 +274,12 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \fatta{Teoremi della media integrale}{L25}
 \fatta{Teorema fondamentale del calcolo}{L25}
 \fatta{$\int_a^bf=F(b)-F(a)$}{L25}
+\fatta{Le due formule di sostituzione; per parti}{L26}
 \end{enumerate}
 \end{tcolorbox}
 \begin{tcolorbox}[colframe=succ!75!black,colbacktitle=succ!75!black,title={\faStar\enspace Le dimostrazioni: in programma}]
 \colorlet{bcol}{succ}
-\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=21]
-\prog{Integrazione per parti e per sostituzione}{L26, L27}
+\begin{enumerate}[label={\hfb\textcolor{succ!55}{\arabic*}},leftmargin=1.5em,itemsep=0.3pt,start=22]
 \prog{$u\cdot v=|u|\,|v|\cos\theta$}{L28}
 \prog{$|\det|$ = area del parallelogramma}{L30}
 \prog{Le mosse di Gauss non cambiano le soluzioni}{L31}
@@ -298,8 +298,8 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \begin{tcolorbox}[colframe=alge,colbacktitle=alge,title={\faThLarge\enspace I 28 blocchi}]
 \renewcommand{\arraystretch}{1.08}
 \begin{tabular}{@{}>{\hfb}r@{\enspace}l@{\qquad}>{\hfb}r@{\enspace}l@{\qquad}>{\hfb}r@{\enspace}l@{}}
-\textcolor{fond}{1} & Insiemi e linguaggio & \textcolor{succ}{11} & Limiti di successioni & \textcolor{inte}{20} & \bp{Teorema fondamentale \clessidra}\\
-\textcolor{fond}{2} & Induzione, combinatoria & \textcolor{succ}{12} & Limiti di funzioni & \textcolor{inte}{21} & \bp{Metodi di integrazione \clessidra}\\
+\textcolor{fond}{1} & Insiemi e linguaggio & \textcolor{succ}{11} & Limiti di successioni & \textcolor{inte}{20} & Primitive e metodi\\
+\textcolor{fond}{2} & Induzione, combinatoria & \textcolor{succ}{12} & Limiti di funzioni & \textcolor{inte}{21} & \bp{Razionali e aree \clessidra}\\
 \textcolor{fond}{3} & I numeri reali & \textcolor{cont}{13} & Continuità & \textcolor{line}{22} & \bp{Vettori \clessidra}\\
 \textcolor{alge}{4} & Equazioni, disequazioni & \textcolor{deri}{14} & La derivata & \textcolor{line}{23} & \bp{Rette e piani \clessidra}\\
 \textcolor{alge}{5} & Potenze e radici & \textcolor{deri}{15} & Estremi, ottimizzazione & \textcolor{line}{24} & \bp{Matrici \clessidra}\\
@@ -854,7 +854,7 @@ valore medio: \ $\dfrac1{b-a}\displaystyle\int_a^bf(x)\,dx$}
 \end{blocco}
 
 %----------------------------------------------------------------------- 20
-\begin{bloccop}{inte}{20}{Teorema fondamentale}{L25, L26}
+\begin{blocco}{inte}{20}{Primitive e metodi}{L25, L26}
 \voce{Integrale}{\kw{funzione integrale}: $F(x)=\displaystyle\int_a^xf(t)\,dt$ (area accumulata fino a $x$)}
 \formula{\kw{Teorema fondamentale} \dimo\\ $f$ continua $\Rightarrow$ $F'(x)=f(x)$\\[4pt]
 \kw{Formula fondamentale} \dimo\\ $G'=f$ $\Rightarrow$ $\displaystyle\int_a^bf(x)\,dx=G(b)-G(a)$}
@@ -870,21 +870,28 @@ e^x & e^x & \frac1{\cos^2x} & \tan x\\
 a^x & \frac{a^x}{\log a} & \frac1{1+x^2} & \arctan x\\ \bottomrule
 \end{tabular}
 \end{center}
-\voce{Quasi imm.}{$\displaystyle\int g'\bigl(f(x)\bigr)f'(x)\,dx=g\bigl(f(x)\bigr)+c$: \ $\int\frac{f'}f=\log|f|$ \textperiodcentered\ $\int f'e^f=e^f$ \textperiodcentered\ $\int f'\cos f=\sin f$}
-\voce{Aree}{fra il grafico e l'asse $x$: $\int_a^b|f(x)|\,dx$}
-\occhio{La costante additiva non si dimentica. $\int\frac1x\,dx=\log|x|+c$, su intervalli che non contengono $0$. Si controlla sempre derivando il risultato.}
-\end{bloccop}
+\formula{\kw{prima formula di sostituzione} \dimo\ ($G'=F$)\\[2pt]
+$\displaystyle\int F\bigl(f(x)\bigr)f'(x)\,dx=G\bigl(f(x)\bigr)+c$\\[2pt]
+$\displaystyle\int_a^bF\bigl(f(x)\bigr)f'(x)\,dx=\int_{f(a)}^{f(b)}F(t)\,dt$}
+\voce{Regola}{$t=f(x)$, \ $dt=f'(x)\,dx$, \ e si cambiano gli estremi \textperiodcentered\ $\int\frac{f'}f=\log|f|$ \textperiodcentered\ $\int f'e^f=e^f$ \textperiodcentered\ $\int f'\cos f=\sin f$}
+\formula{\kw{seconda formula} \dimo\ \ $t=f(x)$, $x=f^{-1}(t)$, $f$ invertibile:\\[2pt]
+$\displaystyle\int_a^bg(x)\,dx=\int_{f(a)}^{f(b)}g\bigl(f^{-1}(t)\bigr)\bigl(f^{-1}\bigr)'(t)\,dt$}
+\voce{Esempio}{$\int_0^4\frac{dx}{1+\sqrt x}$, \ $t=\sqrt x$, $x=t^2$, $dx=2t\,dt$: \ $\int_0^2\frac{2t}{1+t}\,dt=4-2\log3$}
+\formula{\kw{per parti} \dimo\\[2pt] $\displaystyle\int f(x)\,g'(x)\,dx=f(x)\,g(x)-\int f'(x)\,g(x)\,dx$}
+\voce{Esempi}{$\int x\sin x\,dx=-x\cos x+\sin x+c$ \textperiodcentered\ $\int\log x\,dx=x\log x-x+c$ ($g'=1$) \textperiodcentered\ $\int x^2\log x$ \textperiodcentered\ $\int e^x\sin x$ ``ritorna''}
+\occhio{La costante additiva non si dimentica. Nella sostituzione cambiano anche gli estremi (oppure si torna alla variabile iniziale). Per parti si deriva il fattore che si semplifica: il polinomio, o il logaritmo.}
+\end{blocco}
 
 %----------------------------------------------------------------------- 21
-\begin{bloccop}{inte}{21}{Metodi di integrazione}{L26, L27 \textperiodcentered\ 25--27/11}
-\formula{\kw{per parti} \dimo\\[2pt] $\displaystyle\int f(x)\,g'(x)\,dx=f(x)\,g(x)-\int f'(x)\,g(x)\,dx$}
-\voce{Esempi}{$\int x\,e^x\,dx=(x-1)e^x+c$ \textperiodcentered\ $\int\log x\,dx=x\log x-x+c$ \ ($f=\log x$, $g'=1$)}
-\formula{\kw{per sostituzione} \dimo\ \ $x=\varphi(t)$:\\[2pt]
-$\displaystyle\int_\alpha^\beta g\bigl(\varphi(t)\bigr)\varphi'(t)\,dt=\int_{\varphi(\alpha)}^{\varphi(\beta)}g(x)\,dx$}
-\voce{Esempio}{$\displaystyle\int_0^1 2x\,e^{x^2}dx$, \ $u=x^2$: \ $\displaystyle\int_0^1e^u\,du=e-1$}
-\voce{Fra grafici}{area fra $f\ge g$ su $[a,b]$: $\int_a^b\bigl(f(x)-g(x)\bigr)dx$; gli estremi sono spesso le intersezioni}
-\voce{Cenno}{l'equazione differenziale $y'=ky$ (Malthus) ha le soluzioni $y=Ce^{kt}$; con $y(0)=y_0$: \ $y=y_0e^{kt}$}
-\occhio{Nella sostituzione cambiano anche gli estremi di integrazione (oppure si torna alla variabile iniziale). Per parti: si deriva il fattore che si semplifica.}
+\begin{bloccop}{inte}{21}{Razionali e aree}{L27 \textperiodcentered\ 27/11}
+\voce{Divisione}{se $\deg P\ge\deg Q$: \ $P=QS+R$, \ $\int\frac PQ=\int S+\int\frac RQ$}
+\voce{$\Delta>0$}{fratti semplici: \ $\frac{px+q}{a(x-x_1)(x-x_2)}=\frac A{x-x_1}+\frac B{x-x_2}$ \ (due logaritmi)}
+\voce{$\Delta=0$}{$\frac{px+q}{(x-x_0)^2}=\frac p{x-x_0}+\frac{px_0+q}{(x-x_0)^2}$ \textperiodcentered\ $\int\frac{dx}{(x-x_0)^2}=-\frac1{x-x_0}$}
+\formula{$\Delta<0$: completare il quadrato\\[2pt]
+$\displaystyle\int\frac{dx}{(x-\alpha)^2+\beta^2}=\frac1\beta\arctan\frac{x-\alpha}\beta+c$}
+\voce{Riconducibili}{$t=e^x$, $dx=\frac{dt}t$ \textperiodcentered\ $t=\sqrt{ax+b}$: \ $\int\frac{dx}{1+e^x}=x-\log(1+e^x)+c$}
+\voce{Aree}{fra il grafico e l'asse $x$: $\int_a^b|f(x)|\,dx$ \textperiodcentered\ fra $f\ge g$: $\int_a^b\bigl(f(x)-g(x)\bigr)dx$, con gli estremi dalle intersezioni}
+\occhio{Prima di integrare una funzione razionale si divide. Nelle aree: prima il disegno, poi le intersezioni, poi l'integrale.}
 \end{bloccop}
 
 %----------------------------------------------------------------------- 22
