@@ -283,10 +283,10 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \prog{$u\cdot v=|u|\,|v|\cos\theta$}{L28}
 \prog{$|\det|$ = area del parallelogramma}{L30}
 \prog{Le mosse di Gauss non cambiano le soluzioni}{L31}
-\prog{$P(A\cup B)$ dagli assiomi}{L32}
+\prog{$P(E_1\cup E_2)=P(E_1)+P(E_2)-P(E_1\cap E_2)$}{L32}
 \prog{Probabilità totale e formula di Bayes}{L33}
-\prog{Linearità della media; binomiale}{L34}
-\prog{$\sum(x_i-\bar x)=0$}{L35}
+\prog{$\mathrm{Perm}(n)=n!$; $\sigma^2=\langle X^2\rangle-\langle X\rangle^2$}{L34}
+\prog{$\sum(X_k-m_X)=0$}{L35}
 \end{enumerate}
 \end{tcolorbox}
 \end{tcbraster}
@@ -974,15 +974,15 @@ $\left(\begin{array}{ccc|c}1&2&-1&3\\0&1&4&2\\0&0&0&c\end{array}\right)$\qquad
 
 %----------------------------------------------------------------------- 26
 \begin{bloccop}{prob}{26}{Probabilità}{L32, L33 \textperiodcentered\ dal 10/12}
-\voce{Eventi}{spazio campionario $\Omega$; eventi = sottoinsiemi (blocco 1): contrario $A^c$, \ ``$A$ o $B$'' $=A\cup B$, \ ``$A$ e $B$'' $=A\cap B$, \ incompatibili: $A\cap B=\emptyset$}
-\formula{assiomi: \ $P(A)\ge0$, \ $P(\Omega)=1$, \ additività\\[3pt]
-$P(A\cup B)=P(A)+P(B)-P(A\cap B)$ \ \dimo\\[3pt]
-$P(A^c)=1-P(A)$}
-\voce{Equiprob.}{$P(A)=\dfrac{\text{casi favorevoli}}{\text{casi possibili}}$, contando con il blocco 2 (con o senza reimmissione)}
-\formula{$P(A\,|\,B)=\dfrac{P(A\cap B)}{P(B)}$ \qquad $P(A\cap B)=P(B)\,P(A\,|\,B)$\\[3pt]
-\kw{indipendenti}: \ $P(A\cap B)=P(A)\,P(B)$\\[3pt]
-\kw{probabilità totale} \dimo\ \ $P(A)=\sum_iP(A\,|\,B_i)\,P(B_i)$\\[3pt]
-\kw{Bayes} \dimo\ \ $P(B\,|\,A)=\dfrac{P(A\,|\,B)\,P(B)}{P(A)}$}
+\formula{\kw{modello}: \ $\mathcal S=\{e_1,\dots,e_n\}$, \ $0\le P(e_i)\le1$, \ $\sum_jP(e_j)=1$\\[3pt]
+\kw{grandi numeri} \sd\ \ $\displaystyle\lim_{N\to+\infty}P\bigl(|f_N(e_i)-P(e_i)|>\varepsilon\bigr)=0$}
+\voce{Eventi}{evento $=$ sottoinsieme $E\subseteq\mathcal S$; $P(E)$ è la somma \textperiodcentered\ equiprobabili: $P(E)=\frac{|E|}{|\mathcal S|}$ (blocco 2) \textperiodcentered\ $E^c$, $E_1\cup E_2$, $E_1\cap E_2$}
+\formula{incompatibili ($E_1\cap E_2=\emptyset$): $P(E_1\cup E_2)=P(E_1)+P(E_2)$\\[3pt]
+$P(E^c)=1-P(E)$ \qquad $P(E_1\cup E_2)=P(E_1)+P(E_2)-P(E_1\cap E_2)$ \dimo}
+\formula{\kw{indipendenti}: \ $P(E_1\cap E_2)=P(E_1)\,P(E_2)$\\[3pt]
+$P(E_B\,|\,E_A)=\dfrac{P(E_A\cap E_B)}{P(E_A)}$ \qquad $P(E_A\cap E_B)=P(E_A)\,P(E_B\,|\,E_A)$\\[3pt]
+\kw{probabilità totale} \dimo\ \ $P(E)=\sum_iP(E\,|\,E_i)\,P(E_i)$\\[3pt]
+\kw{Bayes} \dimo\ \ $P(E_j\,|\,E)=\dfrac{P(E\,|\,E_j)\,P(E_j)}{P(E)}$}
 \voce{Test}{prevalenza $1\%$, sensibilità $99\%$, specificità $95\%$:}
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=0.55cm,font=\scriptsize,n/.style={fill=bcol!12,rounded corners=2pt,inner sep=2pt}]
@@ -995,32 +995,28 @@ $P(A^c)=1-P(A)$}
 \node[anchor=west,align=left] at (4.0,0.5) {$P(\text{malato}\,|\,+)=\dfrac{0{,}0099}{0{,}0099+0{,}0495}$\\[3pt]$\approx0{,}17$};
 \end{tikzpicture}
 \end{center}
-\occhio{Incompatibili $\ne$ indipendenti. $P(A\,|\,B)\ne P(B\,|\,A)$: con una prevalenza bassa, la maggior parte dei positivi è sana. L'equiprobabilità è un'ipotesi del modello, non un fatto.}
+\occhio{Incompatibili $\ne$ indipendenti. $P(E_B\,|\,E_A)\ne P(E_A\,|\,E_B)$: con una prevalenza bassa, la maggior parte dei positivi è sana. L'equiprobabilità è un'ipotesi del modello: la verifica è sperimentale.}
 \end{bloccop}
-
-%----------------------------------------------------------------------- 27
 \begin{bloccop}{prob}{27}{Variabili aleatorie}{L34 \textperiodcentered\ 14/12}
-\voce{Distribuz.}{valori $x_i$ con probabilità $p_i$, \ $\sum_ip_i=1$ \textperiodcentered\ funzione di ripartizione $F(x)=P(X\le x)$}
-\formula{$\mu=E[X]=\sum_ix_i\,p_i$\\[3pt] $E[aX+b]=a\,E[X]+b$ \ \dimo\\[3pt]
-$\mathrm{Var}\,X=E\bigl[(X-\mu)^2\bigr]=E[X^2]-\mu^2$\\[3pt]
-$\sigma=\sqrt{\mathrm{Var}\,X}$ \qquad $\mathrm{Var}(aX+b)=a^2\,\mathrm{Var}\,X$}
-\voce{Bernoulli}{$P(X=1)=p$, $P(X=0)=1-p$: \ $E=p$, \ $\mathrm{Var}=p(1-p)$}
-\formula{\kw{binomiale} \dimo\ \ $n$ prove indipendenti con la stessa $p$:\\[2pt]
-$P(X=k)=\dbinom nk\,p^k(1-p)^{n-k}$ \qquad $E=np$, \ $\mathrm{Var}=np(1-p)$}
-\voce{Continue}{cenno: \kw{densità}, probabilità come area (blocco 19) \textperiodcentered\ normale di media $\mu$ e deviazione $\sigma$: regola $68$--$95$--$99{,}7$}
-\occhio{La binomiale richiede prove indipendenti e $p$ costante: va verificato nel contesto (germinazione, sopravvivenza, conteggi su campioni).}
+\voce{Distribuz.}{a ogni valore $x_k$ della variabile aleatoria $X$ la sua probabilità $P(X=x_k)$}
+\voce{Contare}{$\mathrm{Perm}(n)=n!$ \dimo \textperiodcentered\ $\binom nk=\frac{n!}{k!\,(n-k)!}$: scelte di $k$ oggetti fra $n$}
+\formula{\kw{binomiale}: $n$ prove indipendenti, $q=1-p$:\\[2pt]
+$P(X=k)=\dbinom nk\,p^kq^{n-k}$}
+\formula{media empirica $m_N=\dfrac1N\sum_iX_i=\sum_kx_k\,f_N(x_k)$\\[3pt]
+$\langle X\rangle=\sum_kx_k\,P(X=x_k)$ \qquad $\langle f(X)\rangle=\sum_kf(x_k)\,P(X=x_k)$\\[3pt]
+$\sigma^2=\bigl\langle(X-\langle X\rangle)^2\bigr\rangle=\langle X^2\rangle-\langle X\rangle^2$ \dimo\\[3pt]
+binomiale: \ $\langle X\rangle=np$, \ $\sigma^2=np(1-p)$}
+\voce{Chebyshev}{$P\bigl(|X-\langle X\rangle|\ge\ell\sigma\bigr)\le\frac1{\ell^2}$ \sd}
+\voce{Continue}{\kw{densità} $\rho$: $P(X\in[x_1,x_2])=\int_{x_1}^{x_2}\rho(x)\,dx$ (blocco 19) \textperiodcentered\ uniforme: $\rho=\frac1{b-a}$ \textperiodcentered\ normale $N_{m,\sigma}$: entro $\sigma$, $2\sigma$, $3\sigma$: $0{,}6826$, $0{,}9544$, $0{,}9973$}
+\occhio{La binomiale richiede prove indipendenti e $p$ costante. Limite centrale: $m_N$ è circa gaussiana, con deviazione standard $\frac\sigma{\sqrt N}$.}
 \end{bloccop}
-
-%----------------------------------------------------------------------- 28
 \begin{bloccop}{prob}{28}{Statistica}{L35 \textperiodcentered\ 16/12}
-\voce{Dati}{popolazione, campione, unità statistica, carattere \textperiodcentered\ qualitativo o quantitativo (discreto, continuo)}
-\voce{Frequenze}{assolute, relative, cumulate \textperiodcentered\ istogramma, box plot; il grafico si sceglie in base al tipo di dato}
-\formula{media $\bar x=\dfrac1n\sum_ix_i$ \qquad $\sum_i(x_i-\bar x)=0$ \dimo\\[2pt]
-varianza $\dfrac1n\sum_i(x_i-\bar x)^2$ \qquad deviazione standard}
-\voce{Posizione}{media, mediana, moda, quartili e quantili}
-\voce{Dispersione}{campo di variazione, intervallo interquartile, varianza, deviazione standard}
-\voce{Inferenza}{cenni: dal campione alla popolazione, problemi di campionamento, intervallo di confidenza (l'idea)}
-\occhio{La media risente dei valori anomali, la mediana no. Descrivere il campione non basta per concludere sulla popolazione.}
+\voce{Dati}{popolazione, campione casuale \textperiodcentered\ descrittiva e inferenziale \textperiodcentered\ $k\approx\sqrt N$ classi, classe modale}
+\formula{$m_X=\dfrac1N\sum_kX_k$ \qquad $\sum_k(X_k-m_X)=0$ \dimo\\[2pt]
+$s_X^2=\dfrac1{N-1}\sum_i(X_i-m_X)^2$}
+\voce{Posizione}{mediana $Me$, quartili $Q_1$, $Q_2$, $Q_3$, scarto interquartile, box plot}
+\voce{Campioni}{$\langle m_N\rangle=\mu$ (non distorto); $\langle s_N^2\rangle=\sigma^2$ solo con $N-1$ \textperiodcentered\ $\mu\in\bigl(m_N\pm1{,}96\frac\sigma{\sqrt N}\bigr)$, livello di fiducia $95\%$}
+\occhio{La media risente dei valori anomali, la mediana no. $\mu$ non è aleatoria: livello di fiducia, non probabilità.}
 \end{bloccop}
 
 \end{document}
