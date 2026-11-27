@@ -25,7 +25,7 @@
 \usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
 \usepackage{flowfram}  % colonne vere dalla pagina 3: i riquadri si spezzano a fine colonna
 
-\newcommand{\fatte}{27}   % ultima fermata percorsa: 27 = L26 (25/11)
+\newcommand{\fatte}{28}   % ultima fermata percorsa: 28 = L27 (27/11)
 
 % ---------------------------------------------------------------- caratteri
 \newcommand{\hf}{\fontfamily{Montserrat-LF}\selectfont}          % titoli
@@ -226,9 +226,9 @@
 \item So usare de l'Hôpital solo sulle forme indeterminate.
 \item So studiare una funzione e disegnarne il grafico.
 \item So usare uno sviluppo di Taylor in un limite.
+\item So calcolare integrali (immediati, per sostituzione, per parti, razionali) e aree.
 \end{itemize}
 \begin{itemize}[label={\textcolor{alge!55}{\faSquare[regular]}},leftmargin=1.4em,itemsep=0.5pt]
-\item \textcolor{inchiostro!70}{So calcolare integrali (anche per parti e per sostituzione) e aree.} \textcolor{inte!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So usare il prodotto scalare e scrivere rette e piani.} \textcolor{line!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So calcolare un determinante e risolvere un sistema con Gauss.} \textcolor{line!70}{\clessidra}
 \item \textcolor{inchiostro!70}{So calcolare una probabilità condizionata e usare Bayes.} \textcolor{prob!70}{\clessidra}
@@ -299,7 +299,7 @@ Per ogni voce: sai dare la \kw{definizione}, un \kw{esempio}, un \kw{controesemp
 \renewcommand{\arraystretch}{1.08}
 \begin{tabular}{@{}>{\hfb}r@{\enspace}l@{\qquad}>{\hfb}r@{\enspace}l@{\qquad}>{\hfb}r@{\enspace}l@{}}
 \textcolor{fond}{1} & Insiemi e linguaggio & \textcolor{succ}{11} & Limiti di successioni & \textcolor{inte}{20} & Primitive e metodi\\
-\textcolor{fond}{2} & Induzione, combinatoria & \textcolor{succ}{12} & Limiti di funzioni & \textcolor{inte}{21} & \bp{Razionali e aree \clessidra}\\
+\textcolor{fond}{2} & Induzione, combinatoria & \textcolor{succ}{12} & Limiti di funzioni & \textcolor{inte}{21} & Razionali e aree\\
 \textcolor{fond}{3} & I numeri reali & \textcolor{cont}{13} & Continuità & \textcolor{line}{22} & \bp{Vettori \clessidra}\\
 \textcolor{alge}{4} & Equazioni, disequazioni & \textcolor{deri}{14} & La derivata & \textcolor{line}{23} & \bp{Rette e piani \clessidra}\\
 \textcolor{alge}{5} & Potenze e radici & \textcolor{deri}{15} & Estremi, ottimizzazione & \textcolor{line}{24} & \bp{Matrici \clessidra}\\
@@ -883,7 +883,7 @@ $\displaystyle\int_a^bg(x)\,dx=\int_{f(a)}^{f(b)}g\bigl(f^{-1}(t)\bigr)\bigl(f^{
 \end{blocco}
 
 %----------------------------------------------------------------------- 21
-\begin{bloccop}{inte}{21}{Razionali e aree}{L27 \textperiodcentered\ 27/11}
+\begin{blocco}{inte}{21}{Razionali e aree}{L27}
 \voce{Divisione}{se $\deg P\ge\deg Q$: \ $P=QS+R$, \ $\int\frac PQ=\int S+\int\frac RQ$}
 \voce{$\Delta>0$}{fratti semplici: \ $\frac{px+q}{a(x-x_1)(x-x_2)}=\frac A{x-x_1}+\frac B{x-x_2}$ \ (due logaritmi)}
 \voce{$\Delta=0$}{$\frac{px+q}{(x-x_0)^2}=\frac p{x-x_0}+\frac{px_0+q}{(x-x_0)^2}$ \textperiodcentered\ $\int\frac{dx}{(x-x_0)^2}=-\frac1{x-x_0}$}
@@ -892,7 +892,7 @@ $\displaystyle\int\frac{dx}{(x-\alpha)^2+\beta^2}=\frac1\beta\arctan\frac{x-\alp
 \voce{Riconducibili}{$t=e^x$, $dx=\frac{dt}t$ \textperiodcentered\ $t=\sqrt{ax+b}$: \ $\int\frac{dx}{1+e^x}=x-\log(1+e^x)+c$}
 \voce{Aree}{fra il grafico e l'asse $x$: $\int_a^b|f(x)|\,dx$ \textperiodcentered\ fra $f\ge g$: $\int_a^b\bigl(f(x)-g(x)\bigr)dx$, con gli estremi dalle intersezioni}
 \occhio{Prima di integrare una funzione razionale si divide. Nelle aree: prima il disegno, poi le intersezioni, poi l'integrale.}
-\end{bloccop}
+\end{blocco}
 
 %----------------------------------------------------------------------- 22
 \begin{bloccop}{line}{22}{Vettori}{L28 \textperiodcentered\ 30/11}
